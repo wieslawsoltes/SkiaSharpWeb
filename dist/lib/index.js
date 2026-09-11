@@ -1,3 +1,9 @@
+import { installDocumentCompletion } from './document-completion.js';
+import { installPathMeasureCompletion } from './path-measure-completion.js';
+import { installNativeDocumentPolicy } from './native-document-policy.js';
+import { installPixelAlpha } from './pixel-alpha.js';
+import { installInteropValues } from './interop-values.js';
+import { installFontPathCallbacks } from './font-path-callbacks.js';
 import { installRenderCache } from './render-cache.js';
 import { installGpuReadback } from './gpu-readback.js';
 import { registerCanvasElement } from './web-component.js';
@@ -70,8 +76,14 @@ async function initializeRuntime(options = {}) {
   installMemoryTracing(K, api);
   installGpuReadback(K, api);
   installRenderCache(K, api);
+  installDocumentCompletion(K, api);
+  installPathMeasureCompletion(K, api);
+  installNativeDocumentPolicy(K, api);
+  installPixelAlpha(K, api);
+  installInteropValues(K, api);
+  installFontPathCallbacks(K, api);
   api.CanvasKit = K;
-  api.Version = '0.4.0';
+  api.Version = '0.5.0';
   api.BackendCapabilities = Object.freeze({ WebGL: 'Skia GPU renderer', Canvas: 'Skia software rasterizer presented through Canvas 2D', WebGPU: 'Native Skia Graphite/Dawn; injected runtimes without Graphite use the primitive/raster presenter' });
   if (options.fonts !== false) {
     const fonts = options.fonts || [
