@@ -1,0 +1,106 @@
+name: Qualify and publish native runtime
+on:
+  workflow_run:
+    workflows: ['Build and verify native Skia']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Trusted native build run containing a compiled artifact
+        required: true
+  push:
+    branches: [main]
+    paths: ['.github/native-runtime-request.json']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: qualify-native-runtime
+  cancel-in-progress: false
+jobs:
+  qualify:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - id: source
+        env:
+          EVENT_RUN: ${{ github.event.workflow_run.id }}
+          INPUT_RUN: ${{ inputs.run_id }}
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          RUN_ID="${EVENT_RUN:-$INPUT_RUN}"
+          if [ -z "$RUN_ID" ]; then RUN_ID=$(python -c 'import json;print(json.load(open(".github/native-runtime-request.json"))["run_id"])'); fi
+          [[ "$RUN_ID" =~ ^[0-9]+$ ]]
+          echo "run=$RUN_ID" >> "$GITHUB_OUTPUT"
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.source.outputs.run }}
+          pattern: native-*
+          path: native-candidate
+          merge-multiple: true
+      - name: Verify native source provenance and artifact hashes
+        run: python scripts/restore-native-candidate.py native-candidate
+      - name: Install independent readers and browser
+        run: |
+          sudo apt-get update && sudo apt-get install -y poppler-utils
+          python -m pip install PyMuPDF==1.26.6 Pillow==11.3.0 playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Require compiled PDF and font contracts and run the full suite
+        env:
+          SKIA_REQUIRE_PDF_DIAGNOSTICS: '1'
+        run: |
+          npm run check
+          npm test
+          dotnet run --project tools/contract-reference -c Release -- test-output/contracts/reference.json dist/fonts/DejaVuSans.ttf
+          node scripts/compare-contracts.mjs test-output/contracts/reference.json test-output/contracts/report.json
+      - name: Run finite native-resource soak and alpha benchmark
+        run: |
+          node --expose-gc scripts/soak-runtime.mjs 100000 test-output/soak/runtime.json
+          node scripts/benchmark-alpha.mjs test-output/soak/alpha-benchmark.json
+      - name: Exercise the live qualification UI and all browser backends
+        run: |
+          python scripts/verify-qualification.py
+          python scripts/verify-browser-lifecycle.py --output test-output/browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-qualification-${{ github.run_id }}
+          path: |
+            test-output/
+            !test-output/**/*.ttf
+            !test-output/**/*.otf
+            !test-output/**/*.woff
+            !test-output/**/*.woff2
+            !test-output/**/*.ttc
+          retention-days: 14
+      - name: Commit only a fully qualified runtime without replacing concurrent edits
+        env:
+          TESTED_SHA: ${{ steps.source.outputs.sha }}
+        run: |
+          git fetch origin main
+          if ! git diff --quiet "$TESTED_SHA" origin/main -- native dist/lib tests scripts tools package.json; then
+            echo 'Source changed during qualification; evidence retained, runtime not published.'
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dist/vendor/canvaskit.js dist/vendor/canvaskit.cjs dist/vendor/canvaskit.wasm dist/vendor/native-build-manifest.json native/native-build-manifest.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'build: publish qualified native PDF diagnostics and canonical geometry runtime'
+          git rebase origin/main
+          git push origin HEAD:main

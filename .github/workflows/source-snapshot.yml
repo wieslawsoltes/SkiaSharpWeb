@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_run:
+    workflows: ['Qualify and publish native runtime']
+    types: [completed]
+    branches: [main]
 permissions:
   contents: read
 concurrency:
@@ -10,14 +14,18 @@ concurrency:
   cancel-in-progress: true
 jobs:
   source:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - id: source
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Refresh generated documentation for the committed runtime
         run: npm run coverage && npm run docs
       - name: Package source and generated documentation without font binaries
@@ -31,7 +39,7 @@ jobs:
           rm artifacts/source-files.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: source-${{ github.sha }}
+          name: source-${{ steps.source.outputs.sha }}
           path: artifacts/
           retention-days: 7
           if-no-files-found: error
