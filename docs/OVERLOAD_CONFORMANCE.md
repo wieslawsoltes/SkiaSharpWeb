@@ -6,10 +6,10 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 
 | Status | Declarations |
 | --- | ---: |
-| implemented | 1932 |
-| partial | 1045 |
+| implemented | 1936 |
+| partial | 1042 |
 | not-applicable | 873 |
-| missing | 145 |
+| missing | 144 |
 
 ## Interpretation
 
@@ -32,6 +32,11 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 - Warped glyph outlines use adaptive flattening with a 0.2 px target. Exact native contour ordering and native glyph-warp tolerance are not claimed.
 - `GetFillPath` performs real path stroking and optional effect baking. Native fast-bounds internals and all effect combinations are not directly exposed.
 - Full .NET source-level API parity is not complete. This report intentionally leaves unverified branches partial or missing.
+
+## Release 0.4 review
+
+Native memory tracing, singular matrix/clip accessors, and asynchronous HDR readback have additional concrete tests. Other partial branches remain partial; desktop interop is not relabeled as implemented.
+
 
 ## Signature rows
 
@@ -499,7 +504,7 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public void Flush (SKImage image)` | partial | `GRContext.Flush` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void Flush (SKSurface surface)` | partial | `GRContext.Flush` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public new int GetMaxSurfaceSampleCount (SKColorType colorType)` | partial | `GRContext.GetMaxSurfaceSampleCount` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
-| `public void DumpMemoryStatistics (SKTraceMemoryDump dump)` | missing | `GRContext.DumpMemoryStatistics` — No matching callable member or explicit overload adapter was found. |
+| `public void DumpMemoryStatistics (SKTraceMemoryDump dump)` | implemented | `GRContext.DumpMemoryStatistics` — Compiled native Skia memory-trace callbacks; numeric/string/backing ownership and ulong-to-BigInt behavior have unit tests. Chromium executes both graphics and Ganesh traces with nonempty native rows (browser lifecycle workflow). |
 | `public void PurgeResources ()` | partial | `GRContext.PurgeResources` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void PurgeUnusedResources (long milliseconds)` | partial | `GRContext.PurgeUnusedResources` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void PurgeUnlockedResources (bool scratchResourcesOnly)` | partial | `GRContext.PurgeUnlockedResources` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
@@ -729,8 +734,8 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public void PerformDeferredCleanup (TimeSpan duration)` | partial | `SKGraphiteContext.PerformDeferredCleanup` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void DeleteBackendTexture (SKGraphiteBackendTexture backendTexture)` | partial | `SKGraphiteContext.DeleteBackendTexture` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void CheckAsyncWorkCompletion ()` | partial | `SKGraphiteContext.CheckAsyncWorkCompletion` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
-| `public void RequestReadPixels ( SKSurface surface, SKImageInfo dstInfo, SKRectI srcRect, SKImageRescaleGamma rescaleGamma, SKImageRescaleMode rescaleMode, Action<SKImageReadPixelsResult> callback)` | partial | `SKGraphiteContext.RequestReadPixels` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
-| `public void RequestReadPixels ( SKSurface surface, SKImageInfo dstInfo, SKRectI srcRect, Action<SKImageReadPixelsResult> callback)` | partial | `SKGraphiteContext.RequestReadPixels` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public void RequestReadPixels ( SKSurface surface, SKImageInfo dstInfo, SKRectI srcRect, SKImageRescaleGamma rescaleGamma, SKImageRescaleMode rescaleMode, Action<SKImageReadPixelsResult> callback)` | implemented | `SKGraphiteContext.RequestReadPixels` — Both callback signatures dispatch rescale gamma/mode and preserve native byte stride, color/alpha/color-space and ownership. Unit checks include failures and disposal; Chromium Graphite F16-to-F32 HDR pixels match a color-managed raster reference. JavaScript returns an awaitable Promise in addition to invoking the callback. |
+| `public void RequestReadPixels ( SKSurface surface, SKImageInfo dstInfo, SKRectI srcRect, Action<SKImageReadPixelsResult> callback)` | implemented | `SKGraphiteContext.RequestReadPixels` — Both callback signatures dispatch rescale gamma/mode and preserve native byte stride, color/alpha/color-space and ownership. Unit checks include failures and disposal; Chromium Graphite F16-to-F32 HDR pixels match a color-managed raster reference. JavaScript returns an awaitable Promise in addition to invoking the callback. |
 
 ### SkiaSharp.SKGraphiteDawnBackendContext
 
@@ -740,11 +745,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public IntPtr WgpuDevice` | not-applicable | `SKGraphiteDawnBackendContext.WgpuDevice` — Raw process addresses and native object handles cannot cross the browser sandbox. Typed-array and managed wrapper overloads are audited separately. |
 | `public IntPtr WgpuQueue` | not-applicable | `SKGraphiteDawnBackendContext.WgpuQueue` — Raw process addresses and native object handles cannot cross the browser sandbox. Typed-array and managed wrapper overloads are audited separately. |
 | `public void Dispose ()` | partial | `SKGraphiteDawnBackendContext.Dispose` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
-
-### SkiaSharp.SKGraphiteFindOrCreateImageDelegate
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
 
 ### SkiaSharp.SKGraphiteImageCache
 
@@ -772,11 +772,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public SKGraphiteRecording Snap ()` | implemented | `SKGraphiteRecorder.Snap` — Real Dawn Graphite smoke executes native recorder snap, insertion, default submit and renderer resource setup with exact readback and zero retained device/queue/texture handles. Nondefault callback/synchronous/targeted variants remain separately partial. |
 | `public SKGraphiteBackendTexture CreateBackendTexture (int width, int height, SKGraphiteTextureInfo info)` | partial | `SKGraphiteRecorder.CreateBackendTexture` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void DeleteBackendTexture (SKGraphiteBackendTexture backendTexture)` | partial | `SKGraphiteRecorder.DeleteBackendTexture` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
-
-### SkiaSharp.SKGraphiteRecording
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
 
 ### SkiaSharp.SKGraphiteTextureInfo
 
@@ -1051,11 +1046,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public static bool operator != (SKRectI left, SKRectI right)` | not-applicable | `SKRectI.!Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
 | `public readonly override int GetHashCode ()` | partial | `SKRectI.GetHashCode` — Available, but exact .NET hash algorithm conformance is not proven by the current tests. |
 
-### SkiaSharp.Internals.IPlatformLock
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
 ### SkiaSharp.Internals.PlatformLock
 
 | Declaration | Status | JavaScript mapping / reason |
@@ -1069,16 +1059,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public void ExitWriteLock ()` | missing | `Internals.PlatformLock.ExitWriteLock` — No exported browser type with this declaration identity. |
 | `public void EnterUpgradeableReadLock ()` | missing | `Internals.PlatformLock.EnterUpgradeableReadLock` — No exported browser type with this declaration identity. |
 | `public void ExitUpgradeableReadLock ()` | missing | `Internals.PlatformLock.ExitUpgradeableReadLock` — No exported browser type with this declaration identity. |
-
-### SkiaSharp.SKAbstractManagedStream
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.SKAbstractManagedWStream
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
 
 ### SkiaSharp.SKAutoCoInitialize
 
@@ -1236,11 +1216,11 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public void ClipRoundRect (SKRoundRect rect, SKClipOperation operation = SKClipOperation.Intersect, bool antialias = false)` | partial | `SKCanvas.ClipRoundRect` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void ClipPath (SKPath path, SKClipOperation operation = SKClipOperation.Intersect, bool antialias = false)` | partial | `SKCanvas.ClipPath` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void ClipRegion (SKRegion region, SKClipOperation operation = SKClipOperation.Intersect)` | partial | `SKCanvas.ClipRegion` — Clip bounds and conservative rejection are available, but exact native clip-stack classification and singular transform recovery are not all exposed by CanvasKit. |
-| `public SKRect LocalClipBounds` | implemented | `SKCanvas.LocalClipBounds` — Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active. |
+| `public SKRect LocalClipBounds` | implemented | `SKCanvas.LocalClipBounds` — Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests. |
 | `public SKRectI DeviceClipBounds` | partial | `SKCanvas.DeviceClipBounds` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public bool IsClipEmpty` | partial | `SKCanvas.IsClipEmpty` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
-| `public bool IsClipRect` | implemented | `SKCanvas.IsClipRect` — Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active. |
-| `public bool GetLocalClipBounds (out SKRect bounds)` | implemented | `SKCanvas.GetLocalClipBounds` — Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active. |
+| `public bool IsClipRect` | implemented | `SKCanvas.IsClipRect` — Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests. |
+| `public bool GetLocalClipBounds (out SKRect bounds)` | implemented | `SKCanvas.GetLocalClipBounds` — Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests. |
 | `public bool GetDeviceClipBounds (out SKRectI bounds)` | partial | `SKCanvas.GetDeviceClipBounds` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public void DrawPaint (SKPaint paint)` | implemented | `SKCanvas.DrawPaint` — Signature shape explicitly dispatches to real Skia drawing/state calls; coordinates, point/rect forms, sampling, paint, and optional arguments are separated. Pixel/lattice/vertices regression cases pass. |
 | `public void DrawRegion (SKRegion region, SKPaint paint)` | partial | `SKCanvas.DrawRegion` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
@@ -1326,10 +1306,10 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public void DrawBitmapLattice (SKBitmap bitmap, SKLattice lattice, SKRect dst, SKFilterMode filterMode, SKPaint paint = null)` | implemented | `SKCanvas.DrawBitmapLattice` — Signature shape explicitly dispatches to real Skia drawing/state calls; coordinates, point/rect forms, sampling, paint, and optional arguments are separated. Pixel/lattice/vertices regression cases pass. |
 | `public void DrawImageLattice (SKImage image, SKLattice lattice, SKRect dst, SKPaint paint = null)` | implemented | `SKCanvas.DrawImageLattice` — Signature shape explicitly dispatches to real Skia drawing/state calls; coordinates, point/rect forms, sampling, paint, and optional arguments are separated. Pixel/lattice/vertices regression cases pass. |
 | `public void DrawImageLattice (SKImage image, SKLattice lattice, SKRect dst, SKFilterMode filterMode, SKPaint paint = null)` | implemented | `SKCanvas.DrawImageLattice` — Signature shape explicitly dispatches to real Skia drawing/state calls; coordinates, point/rect forms, sampling, paint, and optional arguments are separated. Pixel/lattice/vertices regression cases pass. |
-| `public void ResetMatrix ()` | implemented | `SKCanvas.ResetMatrix` — Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active. |
-| `public void SetMatrix (in SKMatrix matrix)` | implemented | `SKCanvas.SetMatrix` — Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active. |
-| `public void SetMatrix (SKMatrix matrix)` | implemented | `SKCanvas.SetMatrix` — Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active. |
-| `public void SetMatrix (in SKMatrix44 matrix)` | implemented | `SKCanvas.SetMatrix` — Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active. |
+| `public void ResetMatrix ()` | implemented | `SKCanvas.ResetMatrix` — Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests. |
+| `public void SetMatrix (in SKMatrix matrix)` | implemented | `SKCanvas.SetMatrix` — Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests. |
+| `public void SetMatrix (SKMatrix matrix)` | implemented | `SKCanvas.SetMatrix` — Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests. |
+| `public void SetMatrix (in SKMatrix44 matrix)` | implemented | `SKCanvas.SetMatrix` — Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests. |
 | `public SKMatrix TotalMatrix` | partial | `SKCanvas.TotalMatrix` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public SKMatrix44 TotalMatrix44` | partial | `SKCanvas.TotalMatrix44` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public int SaveCount` | implemented | `SKCanvas.SaveCount` — Signature shape explicitly dispatches to real Skia drawing/state calls; coordinates, point/rect forms, sampling, paint, and optional arguments are separated. Pixel/lattice/vertices regression cases pass. |
@@ -2081,7 +2061,7 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public static long SetResourceCacheTotalByteLimit (long bytes)` | partial | `SKGraphics.SetResourceCacheTotalByteLimit` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public static long GetResourceCacheSingleAllocationByteLimit ()` | partial | `SKGraphics.GetResourceCacheSingleAllocationByteLimit` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public static long SetResourceCacheSingleAllocationByteLimit (long bytes)` | partial | `SKGraphics.SetResourceCacheSingleAllocationByteLimit` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
-| `public static void DumpMemoryStatistics (SKTraceMemoryDump dump)` | partial | `SKGraphics.DumpMemoryStatistics` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public static void DumpMemoryStatistics (SKTraceMemoryDump dump)` | implemented | `SKGraphics.DumpMemoryStatistics` — Compiled native Skia memory-trace callbacks; numeric/string/backing ownership and ulong-to-BigInt behavior have unit tests. Chromium executes both graphics and Ganesh traces with nonempty native rows (browser lifecycle workflow). |
 
 ### SkiaSharp.SKImage
 
@@ -3495,26 +3475,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public bool HasLength` | partial | `SKStream.HasLength` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public int Length` | partial | `SKStream.Length` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 
-### SkiaSharp.SKStreamRewindable
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.SKStreamSeekable
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.SKStreamAsset
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.SKStreamMemory
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
 ### SkiaSharp.SKFileStream
 
 | Declaration | Status | JavaScript mapping / reason |
@@ -3746,11 +3706,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public SKRawRunBuffer<SKRotationScaleMatrix> AllocateRawRotationScaleRun (SKFont font, int count, SKRect? bounds = null)` | implemented | `SKTextBlobBuilder.AllocateRawRotationScaleRun` — Concrete native codec/image/text-blob or managed stream/span overload; native readback gamma, ownership, destination bounds and encoding tests pass in assets.test.mjs. |
 | `public SKRotationScaleTextRunBuffer AllocateRotationScaleTextRun (SKFont font, int count, int textByteCount, SKRect? bounds = null)` | implemented | `SKTextBlobBuilder.AllocateRotationScaleTextRun` — Concrete native codec/image/text-blob or managed stream/span overload; native readback gamma, ownership, destination bounds and encoding tests pass in assets.test.mjs. |
 | `public SKRawRunBuffer<SKRotationScaleMatrix> AllocateRawRotationScaleTextRun (SKFont font, int count, int textByteCount, SKRect? bounds = null)` | implemented | `SKTextBlobBuilder.AllocateRawRotationScaleTextRun` — Concrete native codec/image/text-blob or managed stream/span overload; native readback gamma, ownership, destination bounds and encoding tests pass in assets.test.mjs. |
-
-### SkiaSharp.SKTraceMemoryDump
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
 
 ### SkiaSharp.SKTypeface
 
@@ -4888,36 +4843,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public SKImageSourceService() : this(null)` | not-applicable | `Views.Maui.Handlers.SKImageSourceService(...)` — Platform UI adapter is outside the reusable HTML component API; use <skia-canvas> and browser lifecycle events. |
 | `public SKImageSourceService(ILogger? logger) : base(logger)` | not-applicable | `Views.Maui.Handlers.SKImageSourceService(...)` — Platform UI adapter is outside the reusable HTML component API; use <skia-canvas> and browser lifecycle events. |
 
-### SkiaSharp.Views.Maui.ISKCanvasView
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.Views.Maui.ISKGLView
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.Views.Maui.ISKImageImageSource
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.Views.Maui.ISKBitmapImageSource
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.Views.Maui.ISKPixmapImageSource
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
-### SkiaSharp.Views.Maui.ISKPictureImageSource
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
 ### SkiaSharp.Views.Maui.SKPaintGLSurfaceEventArgs
 
 | Declaration | Status | JavaScript mapping / reason |
@@ -5198,11 +5123,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public double ContentsScale` | not-applicable | `Views.Windows.AngleSwapChainPanel.ContentsScale` — Platform UI adapter is outside the reusable HTML component API; use <skia-canvas> and browser lifecycle events. |
 | `public bool EnableRenderLoop` | not-applicable | `Views.Windows.AngleSwapChainPanel.EnableRenderLoop` — Platform UI adapter is outside the reusable HTML component API; use <skia-canvas> and browser lifecycle events. |
 | `public void Invalidate()` | not-applicable | `Views.Windows.AngleSwapChainPanel.Invalidate` — Platform UI adapter is outside the reusable HTML component API; use <skia-canvas> and browser lifecycle events. |
-
-### SkiaSharp.Views.Windows.WindowsExtensions
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
 
 ### SkiaSharp.Views.Windows.UWPExtensions
 
@@ -5599,11 +5519,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public override void DrawInCGLContext(CGLContext glContext, CGLPixelFormat pixelFormat, double timeInterval, ref CVTimeStamp timeStamp)` | not-applicable | `Views.Mac.SKGLLayer.DrawInCGLContext` — Platform UI adapter is outside the reusable HTML component API; use <skia-canvas> and browser lifecycle events. |
 | `public override void Release(CGLContext glContext)` | not-applicable | `Views.Mac.SKGLLayer.Release` — Platform UI adapter is outside the reusable HTML component API; use <skia-canvas> and browser lifecycle events. |
 
-### SkiaSharp.GRSharpVkGetProcedureAddressDelegate
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
-
 ### SkiaSharp.GRSharpVkBackendContext
 
 | Declaration | Status | JavaScript mapping / reason |
@@ -5621,11 +5536,6 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | --- | --- | --- |
 | `public static void Initialize(this GRVkExtensions extensions, GRSharpVkGetProcedureAddressDelegate getProc, Instance instance, PhysicalDevice physicalDevice)` | missing | `GRVkExtensionsSharpVkExtensions.Initialize` — No exported browser type with this declaration identity. |
 | `public static void Initialize(this GRVkExtensions extensions, GRSharpVkGetProcedureAddressDelegate getProc, Instance instance, PhysicalDevice physicalDevice, string[] instanceExtensions, string[] deviceExtensions)` | missing | `GRVkExtensionsSharpVkExtensions.Initialize` — No exported browser type with this declaration identity. |
-
-### SkiaSharp.GRSilkNetGetProcedureAddressDelegate
-
-| Declaration | Status | JavaScript mapping / reason |
-| --- | --- | --- |
 
 ### SkiaSharp.GRSilkNetBackendContext
 

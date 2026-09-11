@@ -16,7 +16,7 @@ Build provenance: [native build](https://github.com/wieslawsoltes/SkiaSharpWeb/a
 
 ## Local integration
 
-**343 tests passed, 0 failed, 0 skipped**, using Node 22.16.0 and the WASM above. JavaScript syntax, relative imports and HTML entry assets also passed `npm run check`. The suite covers drawing, regions, path/effect geometry, font metrics/shaping/hints, codecs/streams, vector documents and independent readers, animation/resources, overload adapters, ownership, caches, scheduler behavior and GPU readback validation. Some error/lifecycle tests use controlled mocks; these are separate from real-runtime tests and live browser checks.
+**345 tests passed, 0 failed, 0 skipped**, using Node 22.16.0 and the WASM above. JavaScript syntax, relative imports and HTML entry assets also passed `npm run check`. The suite covers drawing, regions, path/effect geometry, font metrics/shaping/hints, codecs/streams, vector documents and independent readers, animation/resources, overload adapters, ownership, caches, scheduler behavior and GPU readback validation. Some error/lifecycle tests use controlled mocks; these are separate from real-runtime tests and live browser checks.
 
 ```sh
 npm run check
@@ -77,6 +77,10 @@ See `docs/BITMAP-PERFORMANCE.json` and `scripts/benchmark-bitmaps.mjs`. This mea
 
 ## Remaining unsupported or unproven behavior
 
-The regenerated audit classifies 1,932 declarations as implemented, 1,046 partial/unverified, 873 not applicable and 144 missing. These are declaration counts rather than feature percentages. Remaining native platform pointer/CLR/COM surfaces are not browser equivalents. An exhaustive overload proof, every valid font/document/Lottie input, a production memory soak, physical GPU coverage and document standards certification have not been completed.
+The regenerated audit classifies 1,936 declarations as implemented, 1,042 partial/unverified, 873 not applicable and 144 missing. These are declaration counts rather than feature percentages. Remaining native platform pointer/CLR/COM surfaces are not browser equivalents. An exhaustive overload proof, every valid font/document/Lottie input, a production memory soak, physical GPU coverage and document standards certification have not been completed.
 
 Native PDF may internally rasterize operations its file format cannot represent; the internal fallback list is unavailable. Managed PDF/XPS report bounded patches or reject unsupported output in strict-vector mode. Injected stock-engine fallback paths retain documented geometric/rounding qualifications. See [COMPATIBILITY.md](../COMPATIBILITY.md), the detailed font/effect/document reports, and the reproducible declaration audit rather than interpreting successful scenes as universal parity.
+
+## Additional 0.4 precision and audit evidence
+
+[Release details](./RELEASE-0.4.md) include HDR data ownership, cache budgets, native matrix/clip tests, the bitmap benchmark and evidence-specific conformance reviews. Existing verification and provenance above are retained.

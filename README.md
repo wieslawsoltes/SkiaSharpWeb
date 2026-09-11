@@ -103,7 +103,7 @@ npm run coverage
 npm run benchmark:bitmaps
 ```
 
-The integrated source passed **343 Node tests**. Completed browser checks include **132 scene/backend combinations**, actual HTML-canvas presentation, redraw/lifetime behavior, native F16 Graphite-to-F32 readback, exact F32 texture copies and readback-buffer reuse. A seeded independent .NET corpus passed **39,224 numerical/Boolean comparisons against each of two SkiaSharp versions**. Chromium used SwiftShader, not a physical GPU. Counts and artifact provenance are in [the verification report](./docs/VERIFICATION.md).
+The integrated source passed **345 Node tests**. Completed browser checks include **132 scene/backend combinations**, actual HTML-canvas presentation, redraw/lifetime behavior, native F16 Graphite-to-F32 readback, exact F32 texture copies and readback-buffer reuse. A seeded independent .NET corpus passed **39,224 numerical/Boolean comparisons against each of two SkiaSharp versions**. Chromium used SwiftShader, not a physical GPU. Counts and artifact provenance are in [the verification report](./docs/VERIFICATION.md).
 
 GitHub Actions runs native builds, .NET reference comparisons, browser tests and Pages deployment. Successful native builds explicitly hand off to Pages, including bot-created runtime commits. Pinned build sources, patches and SHA-256 manifests are in [native/](./native/README.md).
 
@@ -116,3 +116,7 @@ For C# ports, replace operators with named methods and `ref`/`out` with document
 ## Attribution
 
 The API inventory is pinned to mono/SkiaSharp `b33cf54f24edc5347567c95b1924c447669c1de8`. The rendering engine uses Skia `f446aec4ce9e0e95e0a504e875955de3eb521f75`, compiled with Emscripten 4.0.8. This separate project is not officially affiliated with SkiaSharp. Preserve the project MIT license, Skia/CanvasKit notices and all font-processing and asset notices when redistributing. See `dist/licenses/`, `dist/vendor/`, and native third-party notices.
+
+## Additional 0.4 precision and audit evidence
+
+[Release details](./docs/RELEASE-0.4.md) include HDR data ownership, cache budgets, native matrix/clip tests, the bitmap benchmark and evidence-specific conformance reviews. Existing verification and provenance above are retained.

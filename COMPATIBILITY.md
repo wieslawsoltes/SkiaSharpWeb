@@ -8,8 +8,8 @@ Running `node scripts/audit-conformance.mjs` against the assembled 0.4 namespace
 
 | Classification | Declarations |
 | --- | ---: |
-| Implemented according to the audit's evidence rules | 1,932 |
-| Partial or not fully verified | 1,046 |
+| Implemented according to the audit's evidence rules | 1,936 |
+| Partial or not fully verified | 1,042 |
 | Not applicable to the browser adaptation | 873 |
 | Missing | 144 |
 
@@ -58,3 +58,7 @@ The custom component coalesces redraw requests, reuses unchanged surfaces, and h
 ## Verification scope
 
 See [the current verification report](./docs/VERIFICATION.md) for tests, independent .NET cases, browser results and artifact provenance. Passing tests do not establish universal native-pointer equivalence, all fonts/documents/Lottie inputs, an exhaustive .NET differential corpus, long-running production memory behavior, or physical GPU/browser certification. These boundaries are retained rather than counted as completed features.
+
+## Additional 0.4 precision and audit evidence
+
+[Release details](./docs/RELEASE-0.4.md) include HDR data ownership, cache budgets, native matrix/clip tests, the bitmap benchmark and evidence-specific conformance reviews. Existing verification and provenance above are retained.

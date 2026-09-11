@@ -1,0 +1,19 @@
+{
+  "runtime": "v22.16.0",
+  "wasmSHA256": "01f467be89998f0c57857dbc47a1aef1a360e5f5076fcbbed254e54939c416f6",
+  "renderer": "actual Skia CPU raster (not GPU timing)",
+  "count": 10000,
+  "rounds": 21,
+  "bitmap": [24, 24],
+  "surface": [512, 512],
+  "pixelHashes": {
+    "uncached": "2ad1467807f46de1d3857fb9bdeab5d83873791ba00f257030d1c754694789bc",
+    "cached": "2ad1467807f46de1d3857fb9bdeab5d83873791ba00f257030d1c754694789bc"
+  },
+  "identicalPixels": true,
+  "cases": {
+    "uncached": {"medianMs": 43.28132800000003, "p95Ms": 46.606884000000036, "medianSnapshotConstructions": 10000},
+    "cached": {"medianMs": 31.42884600000002, "p95Ms": 35.47942699999999, "medianSnapshotConstructions": 1}
+  },
+  "speedup": 1.3771211326053778
+}

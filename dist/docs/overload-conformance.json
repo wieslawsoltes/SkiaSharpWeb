@@ -1,45 +1,18 @@
 {
-  "baselineChanges": {
-    "before": {
-      "implemented": 716,
-      "partial": 1436,
-      "not-applicable": 873,
-      "missing": 970
-    },
-    "after": {
-      "implemented": 1932,
-      "partial": 1045,
-      "not-applicable": 873,
-      "missing": 145
-    },
-    "transitions": {
-      "implemented -> implemented": 716,
-      "missing -> implemented": 726,
-      "missing -> missing": 145,
-      "missing -> partial": 99,
-      "not-applicable -> not-applicable": 873,
-      "partial -> implemented": 490,
-      "partial -> partial": 946
-    },
-    "normalizedIdentityRows": 204,
-    "normalizationOnlyStatusImpact": {
-      "missing -> implemented": 143
-    },
-    "note": "Normalization impact compares this exact implementation with/without declaration-name correction. Baseline transitions also include concrete new implementation and newly reviewed test evidence; they are not feature percentages."
-  },
+  "baselineChanges": null,
   "normalizationImpact": {
     "missing -> implemented": 143
   },
   "parserCorrections": 204,
   "repository": "https://github.com/mono/SkiaSharp",
   "commit": "b33cf54f24edc5347567c95b1924c447669c1de8",
-  "generatedAt": "2026-09-11T12:01:07.692Z",
+  "generatedAt": "2026-09-11T14:54:45.391Z",
   "declarations": 3995,
   "statusCounts": {
-    "implemented": 1932,
-    "partial": 1045,
+    "implemented": 1936,
+    "partial": 1042,
     "not-applicable": 873,
-    "missing": 145
+    "missing": 144
   },
   "methodology": [
     "One row per pinned lexical declaration, retaining overload signature, source file, and line.",
@@ -4789,10 +4762,10 @@
       "signature": "public void DumpMemoryStatistics (SKTraceMemoryDump dump)",
       "source": "binding/SkiaSharp/GRContext.cs",
       "line": 210,
-      "status": "missing",
+      "status": "implemented",
       "mapping": "GRContext.DumpMemoryStatistics",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "Compiled native Skia memory-trace callbacks; numeric/string/backing ownership and ulong-to-BigInt behavior have unit tests. Chromium executes both graphics and Ganesh traces with nonempty native rows (browser lifecycle workflow).",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.GRContext@binding/SkiaSharp/GRContext.cs:217:27",
@@ -7039,10 +7012,10 @@
       "signature": "public void RequestReadPixels ( SKSurface surface, SKImageInfo dstInfo, SKRectI srcRect, SKImageRescaleGamma rescaleGamma, SKImageRescaleMode rescaleMode, Action<SKImageReadPixelsResult> callback)",
       "source": "binding/SkiaSharp/Gpu/Graphite/SKGraphiteContext.cs",
       "line": 279,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKGraphiteContext.RequestReadPixels",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Both callback signatures dispatch rescale gamma/mode and preserve native byte stride, color/alpha/color-space and ownership. Unit checks include failures and disposal; Chromium Graphite F16-to-F32 HDR pixels match a color-managed raster reference. JavaScript returns an awaitable Promise in addition to invoking the callback.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKGraphiteContext@binding/SkiaSharp/Gpu/Graphite/SKGraphiteContext.cs:310:24",
@@ -7054,10 +7027,10 @@
       "signature": "public void RequestReadPixels ( SKSurface surface, SKImageInfo dstInfo, SKRectI srcRect, Action<SKImageReadPixelsResult> callback)",
       "source": "binding/SkiaSharp/Gpu/Graphite/SKGraphiteContext.cs",
       "line": 310,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKGraphiteContext.RequestReadPixels",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Both callback signatures dispatch rescale gamma/mode and preserve native byte stride, color/alpha/color-space and ownership. Unit checks include failures and disposal; Chromium Graphite F16-to-F32 HDR pixels match a color-managed raster reference. JavaScript returns an awaitable Promise in addition to invoking the callback.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContext@binding/SkiaSharp/Gpu/Graphite/SKGraphiteDawnBackendContext.cs:12:0",
@@ -12921,7 +12894,7 @@
       "line": 333,
       "status": "implemented",
       "mapping": "SKCanvas.LocalClipBounds",
-      "reason": "Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active.",
+      "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests.",
       "statusWithoutNameNormalization": "implemented"
     },
     {
@@ -12966,7 +12939,7 @@
       "line": 355,
       "status": "implemented",
       "mapping": "SKCanvas.IsClipRect",
-      "reason": "Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active.",
+      "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests.",
       "statusWithoutNameNormalization": "implemented"
     },
     {
@@ -12981,7 +12954,7 @@
       "line": 363,
       "status": "implemented",
       "mapping": "SKCanvas.GetLocalClipBounds",
-      "reason": "Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active.",
+      "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests.",
       "statusWithoutNameNormalization": "implemented"
     },
     {
@@ -14271,7 +14244,7 @@
       "line": 1043,
       "status": "implemented",
       "mapping": "SKCanvas.ResetMatrix",
-      "reason": "Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active.",
+      "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests.",
       "statusWithoutNameNormalization": "implemented"
     },
     {
@@ -14286,7 +14259,7 @@
       "line": 1049,
       "status": "implemented",
       "mapping": "SKCanvas.SetMatrix",
-      "reason": "Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active.",
+      "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests.",
       "statusWithoutNameNormalization": "implemented"
     },
     {
@@ -14301,7 +14274,7 @@
       "line": 1053,
       "status": "implemented",
       "mapping": "SKCanvas.SetMatrix",
-      "reason": "Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active.",
+      "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests.",
       "statusWithoutNameNormalization": "implemented"
     },
     {
@@ -14316,7 +14289,7 @@
       "line": 1056,
       "status": "implemented",
       "mapping": "SKCanvas.SetMatrix",
-      "reason": "Compiled native canvas setMatrix/getLocalClipBounds/isClipRect bindings handle singular recovery and true clip classification. Existing software/GPU draw-state guards remain active.",
+      "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests.",
       "statusWithoutNameNormalization": "implemented"
     },
     {
@@ -23794,10 +23767,10 @@
       "signature": "public static void DumpMemoryStatistics (SKTraceMemoryDump dump)",
       "source": "binding/SkiaSharp/SKGraphics.cs",
       "line": 62,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKGraphics.DumpMemoryStatistics",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Compiled native Skia memory-trace callbacks; numeric/string/backing ownership and ulong-to-BigInt behavior have unit tests. Chromium executes both graphics and Ganesh traces with nonempty native rows (browser lifecycle workflow).",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKImage@binding/SkiaSharp/SKImage.cs:28:0",
@@ -59979,5 +59952,82 @@
       "reason": "No exported browser type with this declaration identity.",
       "statusWithoutNameNormalization": "missing"
     }
-  ]
+  ],
+  "review04": {
+    "changes": [
+      {
+        "id": "SkiaSharp.GRContext@binding/SkiaSharp/GRContext.cs:210:26",
+        "before": "partial",
+        "after": "implemented",
+        "reason": "Compiled native Skia memory-trace callbacks; numeric/string/backing ownership and ulong-to-BigInt behavior have unit tests. Chromium executes both graphics and Ganesh traces with nonempty native rows (browser lifecycle workflow)."
+      },
+      {
+        "id": "SkiaSharp.SKGraphiteContext@binding/SkiaSharp/Gpu/Graphite/SKGraphiteContext.cs:279:23",
+        "before": "partial",
+        "after": "implemented",
+        "reason": "Both callback signatures dispatch rescale gamma/mode and preserve native byte stride, color/alpha/color-space and ownership. Unit checks include failures and disposal; Chromium Graphite F16-to-F32 HDR pixels match a color-managed raster reference. JavaScript returns an awaitable Promise in addition to invoking the callback."
+      },
+      {
+        "id": "SkiaSharp.SKGraphiteContext@binding/SkiaSharp/Gpu/Graphite/SKGraphiteContext.cs:310:24",
+        "before": "partial",
+        "after": "implemented",
+        "reason": "Both callback signatures dispatch rescale gamma/mode and preserve native byte stride, color/alpha/color-space and ownership. Unit checks include failures and disposal; Chromium Graphite F16-to-F32 HDR pixels match a color-managed raster reference. JavaScript returns an awaitable Promise in addition to invoking the callback."
+      },
+      {
+        "id": "SkiaSharp.SKCanvas@binding/SkiaSharp/SKCanvas.cs:333:36",
+        "before": "implemented",
+        "after": "implemented",
+        "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests."
+      },
+      {
+        "id": "SkiaSharp.SKCanvas@binding/SkiaSharp/SKCanvas.cs:355:39",
+        "before": "implemented",
+        "after": "implemented",
+        "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests."
+      },
+      {
+        "id": "SkiaSharp.SKCanvas@binding/SkiaSharp/SKCanvas.cs:363:40",
+        "before": "implemented",
+        "after": "implemented",
+        "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests."
+      },
+      {
+        "id": "SkiaSharp.SKCanvas@binding/SkiaSharp/SKCanvas.cs:1043:126",
+        "before": "implemented",
+        "after": "implemented",
+        "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests."
+      },
+      {
+        "id": "SkiaSharp.SKCanvas@binding/SkiaSharp/SKCanvas.cs:1049:127",
+        "before": "implemented",
+        "after": "implemented",
+        "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests."
+      },
+      {
+        "id": "SkiaSharp.SKCanvas@binding/SkiaSharp/SKCanvas.cs:1053:128",
+        "before": "implemented",
+        "after": "implemented",
+        "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests."
+      },
+      {
+        "id": "SkiaSharp.SKCanvas@binding/SkiaSharp/SKCanvas.cs:1056:129",
+        "before": "implemented",
+        "after": "implemented",
+        "reason": "Native SkCanvas setMatrix and clip accessors, not inverse-concat approximations. Singular reset, matrix44 row-vector adaptation, transformed clip bounds, circle/rectangle classification and saved-state restoration pass native-canvas-boundary tests."
+      },
+      {
+        "id": "SkiaSharp.SKGraphics@binding/SkiaSharp/SKGraphics.cs:62:15",
+        "before": "partial",
+        "after": "implemented",
+        "reason": "Compiled native Skia memory-trace callbacks; numeric/string/backing ownership and ulong-to-BigInt behavior have unit tests. Chromium executes both graphics and Ganesh traces with nonempty native rows (browser lifecycle workflow)."
+      }
+    ],
+    "evidence": [
+      "tests/runtime-performance.test.mjs",
+      "tests/native-canvas-boundaries.test.mjs",
+      "tests/gpu-readback.test.mjs",
+      "tests/browser-precision.mjs"
+    ],
+    "note": "Evidence-specific upgrades, not a claim of exhaustive .NET or physical GPU conformance."
+  }
 }

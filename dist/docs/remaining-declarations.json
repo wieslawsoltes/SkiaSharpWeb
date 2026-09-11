@@ -1,27 +1,4 @@
 {
-  "Ganesh memory statistics facade": {
-    "count": 1,
-    "types": {
-      "SkiaSharp.GRContext": 1
-    },
-    "entries": [
-      {
-        "id": "SkiaSharp.GRContext@binding/SkiaSharp/GRContext.cs:210:26",
-        "type": "SkiaSharp.GRContext",
-        "name": "DumpMemoryStatistics",
-        "kind": "method",
-        "originalName": "DumpMemoryStatistics",
-        "originalKind": "method",
-        "signature": "public void DumpMemoryStatistics (SKTraceMemoryDump dump)",
-        "source": "binding/SkiaSharp/GRContext.cs",
-        "line": 210,
-        "status": "missing",
-        "mapping": "GRContext.DumpMemoryStatistics",
-        "reason": "No matching callable member or explicit overload adapter was found.",
-        "statusWithoutNameNormalization": "missing"
-      }
-    ]
-  },
   "Vulkan, Metal and Direct3D native platform interop": {
     "count": 130,
     "types": {

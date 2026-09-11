@@ -4,13 +4,25 @@
   "type": "module",
   "description": "SkiaSharp-style JavaScript graphics API with native Skia Graphite/WebGPU, Ganesh/WebGL and raster Canvas backends",
   "main": "./dist/lib/index.js",
-  "exports": { ".": "./dist/lib/index.js" },
-  "files": ["dist/lib", "dist/vendor", "dist/fonts", "dist/licenses", "native", "README.md", "COMPATIBILITY.md", "docs", "LICENSE"],
+  "exports": {
+    ".": "./dist/lib/index.js"
+  },
+  "files": [
+    "dist/lib",
+    "dist/vendor",
+    "dist/fonts",
+    "dist/licenses",
+    "native",
+    "README.md",
+    "COMPATIBILITY.md",
+    "docs",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "node --test tests/*.test.mjs",
     "check": "node scripts/check.mjs",
     "serve": "python3 -m http.server 8080 -d dist",
-    "coverage": "node scripts/coverage.mjs && node scripts/audit-conformance.mjs",
+    "coverage": "node scripts/coverage.mjs && node scripts/audit-v04.mjs",
     "benchmark": "node scripts/benchmark.mjs",
     "benchmark:bitmaps": "node scripts/benchmark-bitmaps.mjs",
     "verify:graphite": "node scripts/verify-graphite.mjs",
@@ -19,5 +31,8 @@
     "docs": "node scripts/sync-docs.mjs"
   },
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/wieslawsoltes/SkiaSharpWeb.git" }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wieslawsoltes/SkiaSharpWeb.git"
+  }
 }

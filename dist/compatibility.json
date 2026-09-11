@@ -1,12 +1,12 @@
 {
   "title": "Exported JavaScript API inventory",
-  "libraryVersion": "0.3.0",
+  "libraryVersion": "0.4.0",
   "canvasKitBuild": "custom combined Graphite/Ganesh/raster",
   "skiaRevision": "f446aec4ce9e0e95e0a504e875955de3eb521f75",
   "emscriptenVersion": "4.0.8",
   "upstreamCommit": "b33cf54f24edc5347567c95b1924c447669c1de8",
   "notice": "Name presence is not overload or behavioral parity. This reports SK/GR names and Skottie/Resources/SceneGraph namespace entries; aliases may occur more than once. Inheritance and instance fields are not expanded. Consult COMPATIBILITY.md and docs/overload-conformance.json for declaration-level status.",
-  "exportedNames": 240,
+  "exportedNames": 243,
   "types": {
     "SKObject": {
       "kind": "class",
@@ -2386,7 +2386,8 @@
         "PurgeUnlockedResources",
         "PurgeUnusedResources",
         "AbandonContext",
-        "Dispose"
+        "Dispose",
+        "DumpMemoryStatistics"
       ]
     },
     "SKGraphiteBackend": {
@@ -2529,7 +2530,8 @@
         "CopyPlaneTo",
         "ToArray",
         "ToImage",
-        "ToBitmap"
+        "ToBitmap",
+        "GetPixelSpan"
       ]
     },
     "SKPoint3": {
@@ -2767,7 +2769,10 @@
         "PurgePinnedFontCache",
         "PurgeAllCaches",
         "DumpMemoryStatistics",
-        "GetCapabilities"
+        "GetCapabilities",
+        "GetBitmapCacheStatistics",
+        "SetBitmapCacheLimit",
+        "PurgeBitmapCache"
       ],
       "instanceMembers": []
     },
@@ -3445,7 +3450,10 @@
       "kind": "class",
       "staticMembers": [],
       "instanceMembers": [
+        "Capacity",
+        "MaxBytes",
         "FindOrCreate",
+        "PurgeForRecorder",
         "Dispose",
         "GetStatistics"
       ]
@@ -3463,6 +3471,41 @@
         "WgpuQueue",
         "Equals",
         "GetHashCode"
+      ]
+    },
+    "SKTraceMemoryDump": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "OnDumpNumericValue",
+        "OnDumpStringValue",
+        "OnSetMemoryBacking",
+        "OnSetDiscardableMemoryBacking",
+        "OnDumpWrappedState"
+      ]
+    },
+    "SKMemoryTrace": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "OnDumpNumericValue",
+        "OnDumpStringValue",
+        "OnSetMemoryBacking",
+        "OnSetDiscardableMemoryBacking",
+        "OnDumpWrappedState",
+        "Entries",
+        "Clear",
+        "ToJson",
+        "Dispose"
+      ]
+    },
+    "SKGPUReadbackPool": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "IsDisposed",
+        "GetStatistics",
+        "Dispose"
       ]
     },
     "Skottie.Animation": {
