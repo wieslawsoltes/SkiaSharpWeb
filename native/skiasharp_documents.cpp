@@ -37,6 +37,7 @@ public:
     report.set("Dropped",fTotalDiagnostics-fDiagnostics.size()); report.set("Limit",fDiagnosticLimit);
     report.set("Source","SkiaPDF-instrumented-v1"); return report;
   }
+  // Legacy bridge clients expect outlines; the current JS API explicitly sets .NET flags (default 0).
   void setSvgFlags(unsigned flags) { if (!fCanvas && !fClosed) fSvgFlags = flags; }
   void setMetadata(emscripten::val value) {
     if (fDocument || fClosed) return;
@@ -78,7 +79,7 @@ public:
   void abort() { if(fDocument)fDocument->abort(); fSVG.reset();fCanvas=nullptr;fClosed=true; }
 private:
   bool fPDF, fClosed=false;
-  unsigned fPageNumber=0, fSvgFlags=0, fDiagnosticLimit=4096;
+  unsigned fPageNumber=0, fSvgFlags=1, fDiagnosticLimit=4096;
   size_t fTotalDiagnostics=0;
   std::vector<Diagnostic> fDiagnostics;
   SkDynamicMemoryWStream fStream;
