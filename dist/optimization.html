@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10151d"><title>SkiaSharp Web · Geometry & data lab</title><link rel="stylesheet" href="./optimization.css"></head>
+<body>
+<header><a class="brand" href="./"><span class="mark">S↗</span><strong>SkiaSharp <span>Web</span></strong></a><nav aria-label="Laboratories"><a href="./">Graphics</a><a href="./performance.html">Performance</a><a href="./qualification.html">Qualification</a><button id="theme" aria-label="Switch color theme">◐</button></nav></header>
+<main>
+<div class="eyebrow">NATIVE SKIA / WEBGPU · WEBGL · CANVAS</div>
+<div class="heading"><div><h1>Geometry, without the guesswork.</h1><p>Exact stroke outlines. Bounded query caches. Observable document output.</p></div><span id="version" class="pill">Initializing…</span></div>
+<div class="workspace">
+<section class="preview" aria-label="Native rendering preview">
+<div class="toolbar"><span class="status-dot"></span><strong>LIVE COMPARISON</strong><label for="backend">Renderer</label><select id="backend"><option value="auto">Auto · Graphite preferred</option><option value="webgpu">WebGPU · Graphite</option><option value="webgl">WebGL · Ganesh</option><option value="canvas">Canvas · raster</option></select></div>
+<div class="preview-labels"><div><b>01</b> Original stroke</div><div><b>02</b> Native filled outline</div></div>
+<skia-canvas id="view" width="1000" height="420" backend="auto" aria-label="Equivalent original stroke and generated fill path"></skia-canvas>
+<div class="render-status"><span id="mode">Loading compiled runtime…</span><span id="draw-time">—</span></div>
+<div class="stats"><div><span>CONTROL POINTS</span><strong id="points">—</strong></div><div><span>QUERY CACHE HITS</span><strong id="hits">—</strong></div><div><span>RETAINED QUERY BYTES</span><strong id="memory">—</strong></div></div>
+</section>
+<aside>
+<h2>Stroke geometry</h2><p>Both panels use the same path and paint. The right panel fills the native stroke outline.</p>
+<label class="field">Stroke width <output id="width-value">12 px</output><input id="width" type="range" min="1" max="28" value="12"></label>
+<label class="field">Stroke cap<select id="cap"><option value="Round">Round</option><option value="Butt">Butt</option><option value="Square">Square</option></select></label>
+<label class="toggle"><input type="checkbox" id="dash" checked> Dashed path effect</label>
+<label class="toggle"><input type="checkbox" id="cache" checked> Cache path queries</label>
+<label class="toggle"><input type="checkbox" id="controls"> Show control points</label>
+<button id="purge" class="secondary">Purge query cache</button>
+<div class="divider"></div><h2>Document fidelity</h2>
+<label class="toggle"><input type="checkbox" id="blur"> Add a blur mask</label>
+<label class="toggle"><input type="checkbox" id="strict"> Require vector-only PDF</label>
+<button id="export" class="primary">↓ Export native PDF</button>
+<p id="document-status" role="status">Raster decisions are reported by the native PDF writer. Existing image assets are not counted as fallback decisions.</p>
+</aside>
+</div>
+<div id="error" role="alert" hidden></div>
+<section class="benchmark-panel"><div class="benchmark-heading"><div><div class="eyebrow">MEASURE ON THIS DEVICE</div><h2>Same inputs. Less repeated work.</h2><p>Alternating, warmed CPU microbenchmarks. These do not measure physical GPU throughput.</p></div><button id="benchmark" class="primary">Run benchmarks →</button></div>
+<table><thead><tr><th>Workload</th><th>Uncached / previous</th><th>Optimized</th><th>Ratio</th></tr></thead><tbody><tr><th>Path queries</th><td id="path-before">—</td><td id="path-after">—</td><td id="path-ratio">—</td></tr><tr><th>Buffer materialization</th><td id="data-before">—</td><td id="data-after">—</td><td id="data-ratio">—</td></tr></tbody></table>
+<div class="benchmark-footer"><span id="benchmark-status" role="status">Ready · five warmup rounds, nine measured rounds</span><button id="save-report" class="secondary" disabled>↓ Save JSON report</button></div></section>
+<section class="code-panel"><div class="eyebrow">PORTABLE PASCALCASE API</div><pre><code>const paint = new SKPaint({ Style: "Stroke", StrokeWidth: 12 });
+const outline = paint.GetFillPath(path, SKMatrix.Identity);
+canvas.DrawPath(outline, fillPaint);
+
+const data = SKData.Create(bytes, bytes.length, releaseCallback);
+const subset = data.Subset(0, 256); // Retained view, not another byte copy.
+await subset.SaveToAsync(writableStream, { signal });
+
+SKGraphics.SetPathCacheLimit(8 * 1024 * 1024);</code></pre></section>
+<footer><span>Unofficial SkiaSharp-style JavaScript library · font-free sample</span><a href="./COMPATIBILITY.md">Compatibility boundaries ↗</a></footer>
+</main><script type="module" src="./optimization.js"></script></body></html>

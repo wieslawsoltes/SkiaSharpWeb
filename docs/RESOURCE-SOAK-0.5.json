@@ -1,0 +1,893 @@
+{
+  "version": "0.5.0",
+  "node": "v22.16.0",
+  "rounds": 100000,
+  "warmupRounds": 2000,
+  "backend": "native-Skia-raster",
+  "physicalGPU": false,
+  "scope": "Finite native-resource create/render/encode/decode/dispose soak. Not a hardware GPU, complete fuzzing or indefinite production qualification.",
+  "cycles": {
+    "surfaces": 100000,
+    "paints": 100000,
+    "paths": 100000,
+    "shaders": 100000,
+    "snapshots": 100000,
+    "encodes": 4000,
+    "decodes": 4000,
+    "pictures": 2500,
+    "documents": 1000,
+    "animations": 1000
+  },
+  "samples": [
+    {
+      "round": 0,
+      "elapsedMs": 436.43089,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 15238840,
+      "external": 242249875,
+      "rss": 139218944,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 5000,
+      "elapsedMs": 1309.2910619999998,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 15686696,
+      "external": 231918754,
+      "rss": 144572416,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 10000,
+      "elapsedMs": 2109.0423020000003,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 15764208,
+      "external": 231736558,
+      "rss": 145489920,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 15000,
+      "elapsedMs": 2845.424614,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 15771544,
+      "external": 231736558,
+      "rss": 147312640,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 20000,
+      "elapsedMs": 3540.4362810000002,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 15044024,
+      "external": 231732947,
+      "rss": 147312640,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 25000,
+      "elapsedMs": 4258.670706,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 15017040,
+      "external": 231732947,
+      "rss": 151900160,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 30000,
+      "elapsedMs": 4976.589006,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14990648,
+      "external": 231732947,
+      "rss": 151900160,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 35000,
+      "elapsedMs": 5705.0648360000005,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14679424,
+      "external": 231732947,
+      "rss": 151900160,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 40000,
+      "elapsedMs": 6473.989512,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14738784,
+      "external": 231732947,
+      "rss": 151662592,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 45000,
+      "elapsedMs": 7264.931573,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14716744,
+      "external": 231732947,
+      "rss": 151662592,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 50000,
+      "elapsedMs": 8007.361546,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14760864,
+      "external": 231732947,
+      "rss": 151662592,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 55000,
+      "elapsedMs": 8738.863905,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14796992,
+      "external": 231732947,
+      "rss": 151662592,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 60000,
+      "elapsedMs": 9502.52571,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14788928,
+      "external": 231732947,
+      "rss": 151568384,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 65000,
+      "elapsedMs": 10269.463701,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14780032,
+      "external": 231732947,
+      "rss": 151699456,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 70000,
+      "elapsedMs": 11020.304056,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14823416,
+      "external": 231732947,
+      "rss": 151699456,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 75000,
+      "elapsedMs": 11757.497452,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14853192,
+      "external": 231732947,
+      "rss": 151699456,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 80000,
+      "elapsedMs": 12491.378767,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14857472,
+      "external": 231732947,
+      "rss": 151699456,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 85000,
+      "elapsedMs": 13278.756467,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14842760,
+      "external": 231732947,
+      "rss": 151699456,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 90000,
+      "elapsedMs": 14009.580083,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14887944,
+      "external": 231732947,
+      "rss": 151830528,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 95000,
+      "elapsedMs": 14714.105517,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14897128,
+      "external": 231732947,
+      "rss": 152223744,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "round": 100000,
+      "elapsedMs": 15437.672259,
+      "emvalHandles": 1,
+      "wasmCapacityBytes": 134217728,
+      "heapUsed": 14876480,
+      "external": 231732947,
+      "rss": 152223744,
+      "liveTrackedResources": 0,
+      "bitmapCache": {
+        "Hits": 0,
+        "Misses": 0,
+        "Evictions": 0,
+        "EntryCount": 0,
+        "RetainedBytes": 0,
+        "MaxBytes": 33554432
+      },
+      "nativeMemoryRows": [
+        {
+          "Name": "skia/sk_glyph_cache",
+          "Values": {
+            "size": {
+              "Value": 0,
+              "Units": "bytes"
+            },
+            "budget_size": {
+              "Value": 2097152,
+              "Units": "bytes"
+            },
+            "glyph_count": {
+              "Value": 0,
+              "Units": "objects"
+            },
+            "budget_glyph_count": {
+              "Value": 2048,
+              "Units": "objects"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "final": {
+    "durationMs": 15437.81555,
+    "peakTrackedResources": 12,
+    "postGcHeapSpreadBytes": 136264,
+    "emvalHandleGrowth": 0,
+    "wasmCapacityGrowth": 0
+  },
+  "passed": true
+}

@@ -43,15 +43,32 @@ export function createAnimationAPI(K, api) {
 
   class ResourceProvider extends SKObject {
     constructor(resources={}) {super();this._entries=new Map();this._urls=new Map();this._pending=new Map();for(const [name,value]of resources instanceof Map?resources:Object.entries(resources))this.Register(name,value);}
-    Register(name,data){this.ThrowIfDisposed();if(name==null)throw new TypeError('Resource name is required.');this._entries.set(String(name),bytesOf(data).slice());return this;}
-    RegisterUrl(name,url,options={}){this.ThrowIfDisposed();this._urls.set(String(name),{url:String(url),options});return this;}
-    Remove(name){this.ThrowIfDisposed();this._urls.delete(String(name));return this._entries.delete(String(name));}
+    Register(name,data){this.ThrowIfDisposed();if(name==null)throw new TypeError('Resource name is required.');const key=String(name),bytes=bytesOf(data).slice();this._urls.delete(key);this._pending.delete(key);this._entries.set(key,bytes);return this;}
+    RegisterUrl(name,url,options={}){this.ThrowIfDisposed();if(name==null)throw new TypeError('Resource name is required.');const key=String(name);this._entries.delete(key);this._pending.delete(key);this._urls.set(key,{url:String(url),options:{...options}});return this;}
+    Remove(name){this.ThrowIfDisposed();const key=String(name),removed=this._urls.delete(key);this._pending.delete(key);return this._entries.delete(key)||removed;}
     get ResourceNames(){this.ThrowIfDisposed();return [...new Set([...this._entries.keys(),...this._urls.keys()])];}
     _load(path,name){const key=keyOf(path,name);return this._entries.get(key)??null;}
     Load(path,name){this.ThrowIfDisposed();const data=this._load(path,name);return data?SKData.CreateCopy(data):null;}
-    async _loadAsync(path,name){const key=keyOf(path,name),data=this._load(path,name);if(data)return data;const url=this._urls.get(key);if(!url)return null;
-      if(!this._pending.has(key))this._pending.set(key,(async()=>{const response=await fetch(url.url,url.options);if(!response.ok)throw new Error(`Resource ${key}: HTTP ${response.status}`);const bytes=new Uint8Array(await response.arrayBuffer());this._entries.set(key,bytes);return bytes;})().finally(()=>this._pending.delete(key)));
-      return this._pending.get(key);
+    async _loadAsync(path,name){
+      const key=keyOf(path,name),data=this._load(path,name);if(data)return data;
+      const url=this._urls.get(key);if(!url)return null;
+      if(this._pending.has(key))return this._pending.get(key);
+      const pending=(async()=>{
+        const {MaxBytes=512*1024*1024,...options}=url.options;
+        if(!Number.isSafeInteger(MaxBytes)||MaxBytes<0||MaxBytes>512*1024*1024)throw new RangeError('Resource MaxBytes must be 0..512 MiB.');
+        const response=await fetch(url.url,options);if(!response.ok)throw new Error(`Resource ${key}: HTTP ${response.status}`);
+        let bytes;
+        if(response.body&&api.SKData.FromReadableStream){
+          const data=await api.SKData.FromReadableStream(response.body,{signal:options.signal,maxBytes:MaxBytes});
+          try{bytes=data.AsSpan();}finally{data.Dispose();}
+        }else{bytes=new Uint8Array(await response.arrayBuffer());if(bytes.length>MaxBytes)throw new RangeError('Resource exceeds MaxBytes.');}
+        // An older request can still resolve for its original caller, but may
+        // never overwrite a new registration or resurrect a removed resource.
+        if(this._urls.get(key)===url)this._entries.set(key,bytes);
+        return bytes;
+      })();
+      this._pending.set(key,pending);
+      try{return await pending;}finally{if(this._pending.get(key)===pending)this._pending.delete(key);}
     }
     async LoadAsync(path,name){this.ThrowIfDisposed();const bytes=await this._loadAsync(path,name);return bytes?SKData.CreateCopy(bytes):null;}
     async Preload(){this.ThrowIfDisposed();await Promise.all([...this._urls.keys()].map(key=>this._loadAsync(key)));return this;}
@@ -61,11 +78,20 @@ export function createAnimationAPI(K, api) {
     Dispose(){if(this.IsDisposed)return;super.Dispose();}
   }
   class CachingResourceProvider extends ResourceProvider {
-    constructor(provider){super();provider?.ThrowIfDisposed?.();if(!provider?._load)throw new TypeError('A ResourceProvider is required.');this._provider=provider;}
+    constructor(provider){super();provider?.ThrowIfDisposed?.();if(!provider?._load)throw new TypeError('A ResourceProvider is required.');this._provider=provider;this._cacheEpoch=0;}
     _load(path,name){const key=keyOf(path,name);if(this._entries.has(key))return this._entries.get(key);const bytes=this._provider._load(path,name);if(bytes)this._entries.set(key,bytes.slice());return this._entries.get(key)??null;}
-    async _loadAsync(path,name){const key=keyOf(path,name),cached=this._load(path,name);if(cached)return cached;if(!this._pending.has(key))this._pending.set(key,(async()=>{const bytes=await this._provider._loadAsync(path,name);if(bytes)this._entries.set(key,bytes.slice());return this._entries.get(key)??null;})().finally(()=>this._pending.delete(key)));return this._pending.get(key);}
+    async _loadAsync(path,name){
+      const key=keyOf(path,name),cached=this._load(path,name);if(cached)return cached;
+      if(this._pending.has(key))return this._pending.get(key);
+      const epoch=this._cacheEpoch,pending=(async()=>{
+        const bytes=await this._provider._loadAsync(path,name);if(!bytes)return null;
+        const copy=bytes.slice();if(epoch===this._cacheEpoch)this._entries.set(key,copy);return copy;
+      })();
+      this._pending.set(key,pending);
+      try{return await pending;}finally{if(this._pending.get(key)===pending)this._pending.delete(key);}
+    }
     _all(){return new Map([...this._provider._all(),...this._entries]);}
-    Clear(){this.ThrowIfDisposed();this._entries.clear();}
+    Clear(){this.ThrowIfDisposed();this._cacheEpoch++;this._entries.clear();this._pending.clear();}
   }
   class DataUriResourceProvider extends ResourceProvider {
     constructor(fallback=null,preDecode=false){super();if(typeof fallback==='boolean'){preDecode=fallback;fallback=null;}fallback?.ThrowIfDisposed?.();this._fallback=fallback;this.PreDecode=!!preDecode;}

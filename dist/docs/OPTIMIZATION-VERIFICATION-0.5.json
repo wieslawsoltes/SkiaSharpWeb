@@ -1,0 +1,125 @@
+{
+  "version": "0.5.0",
+  "baseline": "c81722688843c24354d728f93ad8a6307cccc598",
+  "newTests": {
+    "tests": 31,
+    "pass": 31,
+    "fail": 0,
+    "skipped": 0
+  },
+  "fullSuite": {
+    "tests": 352,
+    "pass": 347,
+    "fail": 5,
+    "skipped": 0,
+    "failures": [
+      "Missing tests/fixtures/RobotoFlex-Black.otf in the CID document test",
+      "Missing tests/fixtures/RobotoFlex-Variable.woff2 for variable font instancing",
+      "Missing tests/fixtures/RobotoFlex-Variable.woff2 for bounded font edits",
+      "DejaVu font SHA-256 does not match the pinned .NET fixture",
+      "Gallery module cannot load missing dist/fonts/RobotoFlex-Variable.woff2; scene subtests did not run"
+    ]
+  },
+  "dotnetCorpus": {
+    "assembly": "SkiaSharp, Version=4.154.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+    "comparisons": 33962,
+    "failures": [],
+    "passed": true,
+    "caseCounts": {
+      "descriptors": 64,
+      "measures": 32,
+      "segments": 4,
+      "pixels": 840,
+      "glyphPaths": 12,
+      "fillPaths": 0,
+      "fastBounds": 0,
+      "textPaths": 0,
+      "textBreaks": 0
+    }
+  },
+  "dotnetExecutedThisSession": false,
+  "nativeSoak": {
+    "version": "0.5.0",
+    "node": "v22.16.0",
+    "rounds": 100000,
+    "warmupRounds": 2000,
+    "backend": "native-Skia-raster",
+    "physicalGPU": false,
+    "scope": "Finite native-resource create/render/encode/decode/dispose soak. Not a hardware GPU, complete fuzzing or indefinite production qualification.",
+    "cycles": {
+      "surfaces": 100000,
+      "paints": 100000,
+      "paths": 100000,
+      "shaders": 100000,
+      "snapshots": 100000,
+      "encodes": 4000,
+      "decodes": 4000,
+      "pictures": 2500,
+      "documents": 1000,
+      "animations": 1000
+    },
+    "errors": [],
+    "final": {
+      "durationMs": 15437.81555,
+      "peakTrackedResources": 12,
+      "postGcHeapSpreadBytes": 136264,
+      "emvalHandleGrowth": 0,
+      "wasmCapacityGrowth": 0
+    },
+    "passed": true,
+    "sampleCount": 21,
+    "rawReport": "RESOURCE-SOAK-0.5.json"
+  },
+  "browser": {
+    "attempted": true,
+    "passed": false,
+    "reason": "Navigation blocked by host administrator URL policy",
+    "physicalGPU": false
+  },
+  "preview": {
+    "nativeRasterDrawFunction": true,
+    "staticChromiumLayout": true,
+    "applicationJavaScriptVerified": false
+  },
+  "sourceReview": {
+    "declarations": 3995,
+    "newlyReviewed": 25,
+    "implemented": 1961,
+    "partial": 1083,
+    "notApplicable": 873,
+    "missing": 78
+  },
+  "completeParity": false,
+  "earlierSourceBaseline": "9edcb2a13b19fd34ad5e3ddd8743789f143298e7",
+  "integrationNote": "Preserves concurrent upstream canonical paint/text geometry and the qualified native runtime. New changes are layered on the current c817226 source snapshot.",
+  "newAndPreservedGeometryTests": {
+    "tests": 43,
+    "pass": 43,
+    "fail": 0,
+    "skipped": 0,
+    "scope": "31 new optimization/resource/sample tests plus 12 preserved upstream geometry tests"
+  },
+  "benchmarks": {
+    "pathQueries": {
+      "beforeMedianMs": 207.8706769999999,
+      "afterMedianMs": 9.970042999999805,
+      "speedup": 20.84952662691665
+    },
+    "writerMaterialization": {
+      "beforeMedianMs": 2.5398590000004333,
+      "afterMedianMs": 1.3293219999995927,
+      "speedup": 1.910642417714603
+    },
+    "regionConstruction": {
+      "beforeMedianMs": 5.491471999999703,
+      "afterMedianMs": 0.21469600000000355,
+      "speedup": 25.577896188096716
+    }
+  },
+  "delivery": {
+    "remotePushPerformed": false,
+    "deploymentPerformed": false,
+    "reason": "No repository write action is exposed by the connected GitHub tool; no authenticated Git transport is configured in this runtime."
+  },
+  "provenanceNote": "Historical verification of the recovered optimization patch against c817226. This report does not replace the qualified native-runtime report in VERIFICATION-0.5.json. The reconciliation onto 49c7a4e is documented in RECOVERY-PUBLICATION.md."
+}

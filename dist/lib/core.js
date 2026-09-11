@@ -4,14 +4,22 @@ export function createCore(K) {
   const tuple = v => v?.ToArray ? v.ToArray() : v;
   const matrix = v => v == null ? undefined : tuple(v);
   const enumValue = v => v?.value ?? v;
-  // Embind enums carry a .value field. Passing a JS number directly can
-  // silently select enum zero, which corrupts serialized paint replay.
-  const nativeEnum = (table, value) => {
-    const n = typeof value === 'string' ? table[value]?.value : value?.value ?? value;
-    if (!Number.isInteger(n)) throw new TypeError('Expected an enum value or a declared enum name.');
-    return table.values?.[n] ?? Object.freeze({ value: n });
-  };
   const copyEnum = (source, aliases = {}) => Object.freeze({ ...source, ...aliases });
+  const enumTables = new WeakMap();
+  function nativeEnum(group, input, name) {
+    let table = enumTables.get(group);
+    if (!table) {
+      table = { names: new Map(), values: new Map() };
+      for (const [key, value] of Object.entries(group)) if (Number.isInteger(value?.value)) {
+        table.names.set(key.toLowerCase(), value); table.values.set(value.value, value);
+      }
+      enumTables.set(group, table);
+    }
+    const result = typeof input === 'string' ? table.names.get(input.toLowerCase()) : table.values.get(input?.value ?? input);
+    if (!result) throw new (typeof input === 'string' ? TypeError : RangeError)(`Invalid ${name} value: ${String(input?.value ?? input)}`);
+    return result;
+  }
+
   class SKNotSupportedError extends Error { constructor(message) { super(message); this.name = 'SKNotSupportedError'; } }
   class SKObject {
     constructor(native = null, ownsNative = true) { this._native = native; this._disposed = false; this._ownsNative = ownsNative; }
@@ -176,12 +184,12 @@ export function createCore(K) {
     get ColorF(){this.ThrowIfDisposed();return new SKColorF(...this._native.getColor());}set ColorF(v){this.ThrowIfDisposed();this._native.setColor(color(v));}
     get Alpha(){return this.Color.Alpha;}set Alpha(v){this.ThrowIfDisposed();this._native.setAlphaf(byte(v)/255);}
     get IsStroke(){return this.Style===K.PaintStyle.Stroke;}set IsStroke(v){this.Style=v?K.PaintStyle.Stroke:K.PaintStyle.Fill;}
-    get Style(){this.ThrowIfDisposed();return this._state.Style;}set Style(v){this.ThrowIfDisposed();v=nativeEnum(K.PaintStyle,v);this._native.setStyle(v);this._state.Style=v;}
+    get Style(){this.ThrowIfDisposed();return this._state.Style;}set Style(v){this.ThrowIfDisposed();const normalized=nativeEnum(SKPaintStyle,v,'SKPaintStyle');this._native.setStyle(normalized);this._state.Style=normalized;}
     Clone(){return new SKPaint(this);}Reset(){this.ThrowIfDisposed();this._state.Typeface?.Dispose();Object.values(this._effects).forEach(v=>v?.Dispose());this._effects={};this._native.delete();this._native=new K.Paint();this._state={IsAntialias:false,IsDither:false,Style:K.PaintStyle.Fill,BlendMode:K.BlendMode.SrcOver,FilterQuality:SKFilterQuality.None,TextSize:12,TextScaleX:1,TextSkewX:0,TextAlign:K.TextAlign.Left,FakeBoldText:false,Typeface:null};return this;}
     Dispose(){if(this.IsDisposed)return;this._state?.Typeface?.Dispose();Object.values(this._effects||{}).forEach(v=>v?.Dispose());this._effects={};super.Dispose();}
   }
-  for(const [name,getter,setter] of [['StrokeWidth','getStrokeWidth','setStrokeWidth'],['StrokeMiter','getStrokeMiter','setStrokeMiter'],['StrokeCap','getStrokeCap','setStrokeCap'],['StrokeJoin','getStrokeJoin','setStrokeJoin']])Object.defineProperty(SKPaint.prototype,name,{enumerable:true,get(){this.ThrowIfDisposed();return this._native[getter]();},set(v){this.ThrowIfDisposed();if(name==='StrokeCap')v=nativeEnum(K.StrokeCap,v);else if(name==='StrokeJoin')v=nativeEnum(K.StrokeJoin,v);this._native[setter](v);}});
-  for(const [name,setter] of [['IsAntialias','setAntiAlias'],['IsDither','setDither'],['BlendMode','setBlendMode']])Object.defineProperty(SKPaint.prototype,name,{enumerable:true,get(){this.ThrowIfDisposed();return this._state[name];},set(v){this.ThrowIfDisposed();if(name==='BlendMode'){v=nativeEnum(K.BlendMode,v);this._effects.Blender?.Dispose();delete this._effects.Blender;}this._native[setter](v);this._state[name]=v;}});
+  for(const [name,getter,setter] of [['StrokeWidth','getStrokeWidth','setStrokeWidth'],['StrokeMiter','getStrokeMiter','setStrokeMiter'],['StrokeCap','getStrokeCap','setStrokeCap'],['StrokeJoin','getStrokeJoin','setStrokeJoin']])Object.defineProperty(SKPaint.prototype,name,{enumerable:true,get(){this.ThrowIfDisposed();return this._native[getter]();},set(v){this.ThrowIfDisposed();this._native[setter](name==='StrokeCap'?nativeEnum(SKStrokeCap,v,'SKStrokeCap'):name==='StrokeJoin'?nativeEnum(SKStrokeJoin,v,'SKStrokeJoin'):v);}});
+  for(const [name,setter] of [['IsAntialias','setAntiAlias'],['IsDither','setDither'],['BlendMode','setBlendMode']])Object.defineProperty(SKPaint.prototype,name,{enumerable:true,get(){this.ThrowIfDisposed();return this._state[name];},set(v){this.ThrowIfDisposed();const normalized=name==='BlendMode'?nativeEnum(SKBlendMode,v,'SKBlendMode'):!!v;this._native[setter](normalized);this._state[name]=normalized;if(name==='BlendMode'){this._effects.Blender?.Dispose();delete this._effects.Blender;}}});
   Object.defineProperty(SKPaint.prototype,'FilterQuality',{get(){this.ThrowIfDisposed();return this._state.FilterQuality;},set(v){this.ThrowIfDisposed();this._state.FilterQuality=v;}});
   for(const [name,setter] of [['Shader','setShader'],['ColorFilter','setColorFilter'],['ImageFilter','setImageFilter'],['MaskFilter','setMaskFilter'],['PathEffect','setPathEffect'],['Blender','setBlender']])Object.defineProperty(SKPaint.prototype,name,{enumerable:true,get(){this.ThrowIfDisposed();const ref=this._effects[name];return cloneEffect(ref);},set(v){this.ThrowIfDisposed();v?.ThrowIfDisposed?.();const native=v?._software?null:unwrap(v);const held=cloneEffect(v);try{this._native[setter](native);}catch(e){held?.Dispose();throw e;}this._effects[name]?.Dispose();this._effects[name]=held;}});
   for(const name of ['TextSize','TextScaleX','TextSkewX','TextAlign','FakeBoldText'])Object.defineProperty(SKPaint.prototype,name,{enumerable:true,get(){this.ThrowIfDisposed();return this._state[name];},set(v){this.ThrowIfDisposed();this._state[name]=v;}});

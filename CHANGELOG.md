@@ -1,5 +1,16 @@
 # Changes
 
+## 0.5.0 — portable completion and optimization
+
+- Rebased onto c817226, preserving the concurrently published native document diagnostics, canonical glyph paths, paint/text geometry and qualified runtime.
+- Preserved all 18 upstream exact native GetFillPath branches; expanded GetFastBounds rectangle/output forms and capability reporting.
+- Hardened numeric/named/native paint-enum normalization while retaining the upstream filled-versus-outlined PDF/XPS fix and custom-blender cleanup.
+- Added checked SKData overloads, retained zero-copy subsets/streams, release callbacks, chunked writes, bounded asynchronous reads, cancellation and single-copy writer materialization.
+- Added an 8 MiB default bounded path-query LRU and balanced region union / allocation-free intersection queries.
+- Fixed resource registration, URL replacement, removal, cache-clear and in-flight promise races.
+- Added the font-free Optimization Lab, 31 regression tests, exact-output benchmarks, finite native resource-soak evidence and a browser verification workflow.
+- Current verification and remaining gaps are recorded in docs/OPTIMIZATION-0.5.md. This is not a full-parity or physical-GPU-qualified release.
+
 ## 0.2.0
 
 - Added 18 scenes, for 40 total, with variable-font controls, native Skottie playback/properties/resources, regions/effects, vector documents and GPU diagnostics.

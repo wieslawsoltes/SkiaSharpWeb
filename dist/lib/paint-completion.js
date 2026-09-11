@@ -5,9 +5,13 @@
 export function installPaintCompletion(K, api) {
   const P = api.SKPaint.prototype;
   const oldFill = P.GetFillPath, oldBounds = P.GetFastBounds;
-  const array = x => x?.ToArray?.() ?? x?.Values ?? x;
+  const array = x => x?.ToArray?.() ?? x?.Values ?? (x?.Left !== undefined ? [x.Left,x.Top,x.Right,x.Bottom] : x);
   const isMatrix = x => x instanceof api.SKMatrix || array(x)?.length === 9;
   const isRect = x => x instanceof api.SKRect || x?.Left !== undefined || array(x)?.length === 4;
+  const writeBounds = (destination, rect) => {
+    if (Array.isArray(destination)) destination.splice(0, 4, ...rect.ToArray());
+    else { Object.assign(destination, rect); if (!(destination instanceof api.SKRect)) destination.Value = rect; }
+  };
   const hasSoftwareGeometry = paint => !!paint._effects?.PathEffect?._software;
 
   P.GetFillPath = function (source, ...args) {
@@ -54,14 +58,17 @@ export function installPaintCompletion(K, api) {
     const software = Object.values(this._effects ?? {}).some(effect => effect?._software);
     if (typeof K.SkiaSharpPaintFastBounds !== 'function' || software) {
       const result = software ? false : oldBounds.call(this, bounds, destination);
-      if (result === false && destination) Object.assign(destination, api.SKRect.Empty);
+      if (result === false && destination) writeBounds(destination, api.SKRect.Empty);
       return result;
     }
     const result = K.SkiaSharpPaintFastBounds(this._native, Array.from(array(bounds)));
     const computed = new api.SKRect(...result.Bounds);
-    if (destination) { Object.assign(destination, computed); return !!result.Success; }
+    if (destination) { writeBounds(destination, computed); return !!result.Success; }
     return result.Success ? computed : false;
   };
+  Object.defineProperty(api.SKPaint, 'HasNativeGeometry', {
+    get: () => typeof K.SkiaSharpPaintGetFillPath === 'function' && typeof K.SkiaSharpPaintFastBounds === 'function'
+  });
   Object.defineProperty(api.SKPaint, 'HasNativePathExpansion', {
     get: () => typeof K.SkiaSharpPaintGetFillPath === 'function' && typeof K.SkiaSharpPaintFastBounds === 'function'
   });

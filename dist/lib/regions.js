@@ -16,9 +16,35 @@ export function createRegions(K, api) {
     return out;
   }
   function append(bands,top,bottom,spans){if(top>=bottom||spans.length===0)return;const last=bands.at(-1);if(last&&last.bottom===top&&equal(last.spans,spans))last.bottom=bottom;else bands.push({top,bottom,spans});}
+  // Consume already sorted canonical bands directly. A Set + boundary sort
+  // used to allocate and sort every endpoint for every Boolean operation.
+  const noSpans=Object.freeze([]);
   function combine(a,b,op){
-    const ys=[...new Set([...a,...b].flatMap(x=>[x.top,x.bottom]))].sort((a,b)=>a-b),out=[];let i=0,j=0;
-    for(let k=0;k<ys.length-1;k++){const y=ys[k];while(i<a.length&&a[i].bottom<=y)i++;while(j<b.length&&b[j].bottom<=y)j++;append(out,y,ys[k+1],intervals(a[i]?.top<=y?a[i].spans:[],b[j]?.top<=y?b[j].spans:[],op));}return out;
+    const out=[];let i=0,j=0,y=Math.min(a[0]?.top??Infinity,b[0]?.top??Infinity);
+    while(Number.isFinite(y)){
+      while(i<a.length&&a[i].bottom<=y)i++;
+      while(j<b.length&&b[j].bottom<=y)j++;
+      const left=a[i],right=b[j],inA=left&&left.top<=y,inB=right&&right.top<=y;
+      const next=Math.min(inA?left.bottom:left?.top??Infinity,inB?right.bottom:right?.top??Infinity);
+      if(!Number.isFinite(next))break;
+      append(out,y,next,intervals(inA?left.spans:noSpans,inB?right.spans:noSpans,op));y=next;
+    }
+    return out;
+  }
+  function overlaps(a,b){
+    let i=0,j=0;
+    while(i<a.length&&j<b.length){
+      const left=a[i],right=b[j];
+      if(left.bottom<=right.top){i++;continue;}
+      if(right.bottom<=left.top){j++;continue;}
+      let x=0,y=0;
+      while(x<left.spans.length&&y<right.spans.length){
+        if(left.spans[x]<right.spans[y+1]&&right.spans[y]<left.spans[x+1])return true;
+        if(left.spans[x+1]<=right.spans[y+1])x+=2;else y+=2;
+      }
+      if(left.bottom<=right.bottom)i++;else j++;
+    }
+    return false;
   }
   const fromRect=r=>{const [l,t,rr,b]=rect(r);return l<rr&&t<b?[{top:t,bottom:b,spans:[l,rr]}]:[];};
   const copy=b=>b.map(x=>({...x,spans:x.spans.slice()}));
@@ -37,7 +63,16 @@ export function createRegions(K, api) {
     SetEmpty(){this.ThrowIfDisposed();this._bands=[];}
     SetRegion(other){this.ThrowIfDisposed();other.ThrowIfDisposed();this._bands=copy(other._bands);return !this.IsEmpty;}
     SetRect(r){this.ThrowIfDisposed();this._bands=fromRect(r);return !this.IsEmpty;}
-    SetRects(rectangles){this.ThrowIfDisposed();let bands=[];for(const r of rectangles)bands=combine(bands,fromRect(r),2);this._bands=bands;return !this.IsEmpty;}
+    SetRects(rectangles){
+      this.ThrowIfDisposed();const levels=[];
+      // Balanced incremental union avoids repeatedly copying all earlier bands.
+      // Do not publish until all inputs are validated: invalid input is atomic.
+      for(const r of rectangles){let bands=fromRect(r),level=0;if(!bands.length)continue;
+        while(levels[level]){bands=combine(levels[level],bands,2);levels[level++]=null;}levels[level]=bands;
+      }
+      let result=[];for(const bands of levels)if(bands)result=combine(result,bands,2);
+      this._bands=result;return !this.IsEmpty;
+    }
     SetPath(path,clip=null){
       this.ThrowIfDisposed();path.ThrowIfDisposed();let clipping=clip?copy(bandsOf(clip)):fromRect(SKRect.RoundOut(path.Bounds));
       if(!path.IsInverseFillType)clipping=combine(clipping,fromRect(SKRect.RoundOut(path.Bounds)),1);
@@ -60,7 +95,7 @@ export function createRegions(K, api) {
     }
     QuickContains(r){return this.IsRect&&this.Bounds.Contains(new SKRectI(...rect(r)));}
     QuickReject(other){const b=other instanceof SKPath?other.Bounds:other instanceof SKRegion?other.Bounds:new SKRectI(...rect(other));return this.IsEmpty||b.Width<=0||b.Height<=0||!this.Bounds.IntersectsWith(b);}
-    Intersects(other){this.ThrowIfDisposed();return combine(this._bands,bandsOf(other),1).length>0;}
+    Intersects(other){this.ThrowIfDisposed();return overlaps(this._bands,bandsOf(other));}
     Translate(x,y){this.ThrowIfDisposed();if(typeof x==='object'){y=x.Y;x=x.X;}integer(x);integer(y);const next=this._bands.map(b=>({top:integer(b.top+y),bottom:integer(b.bottom+y),spans:b.spans.map(n=>integer(n+x))}));this._bands=next;}
     Op(...args){this.ThrowIfDisposed();let other,op;if(args.length===5){other=new SKRectI(...args.slice(0,4));op=args[4];}else [other,op]=args;op=value(op);if(!Number.isInteger(op)||op<0||op>5)throw new RangeError('Unknown region operation.');this._bands=combine(this._bands,bandsOf(other),op);return !this.IsEmpty;}
     GetBoundaryPath(destination){this.ThrowIfDisposed();const p=new SKPath();for(const r of this)p.AddRect(r);if(!p.IsEmpty)p.Simplify(p);if(destination){destination.Reset().AddPath(p);const nonempty=!p.IsEmpty;p.Dispose();return nonempty;}return p;}

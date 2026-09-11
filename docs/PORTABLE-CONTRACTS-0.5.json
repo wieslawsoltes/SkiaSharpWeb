@@ -1,0 +1,17 @@
+{
+  "assembly": "SkiaSharp, Version=4.154.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+  "comparisons": 33962,
+  "failures": [],
+  "passed": true,
+  "caseCounts": {
+    "descriptors": 64,
+    "measures": 32,
+    "segments": 4,
+    "pixels": 840,
+    "glyphPaths": 12,
+    "fillPaths": 0,
+    "fastBounds": 0,
+    "textPaths": 0,
+    "textBreaks": 0
+  }
+}

@@ -32,7 +32,10 @@
     "verify:geometry": "python3 scripts/verify-geometry.py",
     "verify:qualification": "python3 scripts/verify-qualification.py",
     "benchmark:alpha": "node scripts/benchmark-alpha.mjs",
-    "soak": "node --expose-gc scripts/soak-runtime.mjs"
+    "soak": "node --expose-gc scripts/soak-runtime.mjs",
+    "test:optimization": "node --test tests/optimization-round.test.mjs tests/resource-concurrency.test.mjs tests/optimization-lab.test.mjs",
+    "benchmark:optimization": "node scripts/benchmark-optimization.mjs",
+    "verify:optimization": "python3 scripts/verify-optimization.py"
   },
   "license": "MIT",
   "repository": {

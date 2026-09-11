@@ -1,4 +1,4 @@
-# SkiaSharp Web 0.4
+# SkiaSharp Web 0.5
 
 An unofficial, reusable JavaScript graphics library with a familiar PascalCase `SK*` API, compiled Skia Graphite/Dawn WebGPU, Ganesh WebGL, and a Skia raster Canvas fallback. The project includes 44 interactive graphics scenes and a separate component/performance lab.
 
@@ -8,6 +8,25 @@ The bundled runtime executes native Graphite; it is not a placeholder or a CPU-f
 
 This is not complete SkiaSharp behavioral parity. The 3,995-entry declaration inventory, remaining overload evidence and browser-specific adaptations are retained explicitly. Desktop driver pointers and CLR/COM lifetime interfaces are not equivalent to browser resources.
 
+## 0.5 portable completion and optimization
+
+The new [font-free Optimization Lab](./dist/optimization.html) shows exact stroke-to-fill geometry,
+path query caching, data materialization benchmarks, native PDF raster decisions and strict-vector rejection.
+Serve `dist/` and open `/optimization.html`. See [the current verification and API notes](./docs/OPTIMIZATION-0.5.md).
+
+The update preserves the current upstream native paint/text geometry and qualified runtime,
+adds retained SKData views/streams and asynchronous imports/exports, a bounded path-query LRU,
+balanced region construction, race-safe resource loading, and stronger enum/output validation.
+It is based on remote commit `c81722688843c24354d728f93ad8a6307cccc598`.
+
+**Current local evidence:** all 31 new tests pass; the combined geometry/optimization run
+is 43/43. The wider suite is 347/352 with five unresolved font-asset failures, not a
+completely passing release. 33,962 comparisons against the recovered .NET-generated
+contract corpus and a 100,000-cycle native resource soak pass. Browser navigation is
+blocked by this host's managed policy, so no new interactive-browser or physical-GPU
+pass is claimed. This update is committed locally but has not been pushed or deployed.
+The older 0.4 verification below is historical and must not be mistaken for a result on this revision.
+
 ## Run
 
 From a repository checkout:
@@ -16,6 +35,7 @@ From a repository checkout:
 python3 -m http.server 8080 -d dist
 # Open http://localhost:8080/
 # Component/performance lab: http://localhost:8080/performance.html
+# New font-free optimization lab: http://localhost:8080/optimization.html
 ```
 
 No application server, cloud credentials, CDN or npm installation is required to serve the repository's application. WebGPU needs HTTPS or localhost. `auto` falls back to WebGL and Canvas when unavailable. The source-snapshot ZIP excludes font binaries; the deployed gallery and repository checkout retain their font assets. The performance lab uses no font files.
@@ -101,9 +121,12 @@ npm run check
 npm test
 npm run coverage
 npm run benchmark:bitmaps
+npm run test:optimization
+npm run benchmark:optimization
+node scripts/review-optimization.mjs
 ```
 
-The integrated source passed **345 Node tests**. Completed browser checks include **132 scene/backend combinations**, actual HTML-canvas presentation, redraw/lifetime behavior, native F16 Graphite-to-F32 readback, exact F32 texture copies and readback-buffer reuse. A seeded independent .NET corpus passed **39,224 numerical/Boolean comparisons against each of two SkiaSharp versions**. Chromium used SwiftShader, not a physical GPU. Counts and artifact provenance are in [the verification report](./docs/VERIFICATION.md).
+The earlier 0.4 integrated source passed **345 Node tests** (historical evidence, not the current revision). Completed browser checks include **132 scene/backend combinations**, actual HTML-canvas presentation, redraw/lifetime behavior, native F16 Graphite-to-F32 readback, exact F32 texture copies and readback-buffer reuse. A seeded independent .NET corpus passed **39,224 numerical/Boolean comparisons against each of two SkiaSharp versions**. Chromium used SwiftShader, not a physical GPU. Counts and artifact provenance are in [the verification report](./docs/VERIFICATION.md).
 
 GitHub Actions runs native builds, .NET reference comparisons, browser tests and Pages deployment. Successful native builds explicitly hand off to Pages, including bot-created runtime commits. Pinned build sources, patches and SHA-256 manifests are in [native/](./native/README.md).
 
