@@ -2,7 +2,7 @@ name: Refresh release documentation
 on:
   push:
     branches: [main]
-    paths: ['scripts/audit-v04.mjs', 'scripts/publish-release.mjs', 'docs/RELEASE-0.4.md', '.github/workflows/release-docs.yml']
+    paths: ['scripts/audit-v05.mjs', 'scripts/publish-release.mjs', 'docs/RELEASE-0.5.md', 'docs/VERIFICATION-0.5.json', '.github/workflows/release-docs.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -30,9 +30,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add package.json README.md COMPATIBILITY.md docs/ dist/README.md dist/COMPATIBILITY.md dist/compatibility.json dist/docs/ dist/native/
+          git add package.json README.md COMPATIBILITY.md docs/ dist/README.md dist/COMPATIBILITY.md dist/compatibility.json dist/docs/ dist/native/ dist/index.html dist/qualification.html dist/VERIFICATION.md
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'docs: publish evidence-reviewed 0.4 audit and verification guides'
+          git commit -m 'docs: publish evidence-reviewed 0.5 audit and verification guides'
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main

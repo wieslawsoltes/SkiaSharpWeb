@@ -1,0 +1,38 @@
+{
+  "release": "0.5.0",
+  "sourceCommit": "c81722688843c24354d728f93ad8a6307cccc598",
+  "qualificationRun": 34627270171,
+  "qualificationJob": 103355299160,
+  "upstreamApiRevision": "b33cf54f24edc5347567c95b1924c447669c1de8",
+  "runtimeSha256": "698921da1c2d684dc52b9607cb2031aee9d9f4ddb06a6dca107265d684a73505",
+  "integration": {"passed":374,"failed":0,"skipped":0,"checkedJavaScriptModules":148,"source":"Qualification job log, Require compiled PDF and font contracts and run the full suite"},
+  "contracts": {"assembly":"SkiaSharp, Version=4.154.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756","comparisons":193931,"failures":[],"passed":true,"caseCounts":{"descriptors":64,"measures":32,"segments":4,"pixels":840,"glyphPaths":12,"fillPaths":162,"fastBounds":15,"textPaths":216,"textBreaks":216}},
+  "soak": {"rounds":100000,"warmupRounds":2000,"cycles":{"surfaces":100000,"paints":100000,"paths":100000,"shaders":100000,"snapshots":100000,"encodes":4000,"decodes":4000,"pictures":2500,"documents":1000,"animations":1000},"final":{"durationMs":20914.418240000003,"peakTrackedResources":12,"postGcHeapSpreadBytes":146712,"emvalHandleGrowth":0,"wasmCapacityGrowth":0},"passed":true,"scope":"Finite native-resource create/render/encode/decode/dispose soak. Not a hardware GPU, complete fuzzing or indefinite production qualification."},
+  "alphaBenchmark": {"version":"0.5.0","node":"v22.23.2","dimensions":[512,512],"rowBytes":2064,"warmupRounds":5,"measuredRounds":21,"previousMedianMs":40.698297999999795,"currentMedianMs":0.24137199999995573,"speedup":168.61234111664675,"pixelsEqual":true,"scope":"CPU alpha scan only, valid RGBA8 storage, including padded rows; not rendering/GPU throughput"},
+  "browser": {"version":"140.0.7339.16","galleryScenesPerBackend":{"canvas":44,"webgl":44,"webgpu":44},"geometryPassed":true,"physicalGPU":false,"adapter":"SwiftShader software Vulkan","qualificationPassed":true},
+  "testedSourceSha256": {
+    "dist/lib/core.js":"65cbfd22b8a3b8e0aac7e13c07e513ad3ed4042bdc727f2d1e380f66b4bb890a",
+    "dist/lib/paint-completion.js":"3bcd4b07e1e43f4c1fe16c2d4df2c8ea68e026afa87471946da5409e5471239c",
+    "dist/lib/text-path-completion.js":"c6cc6c402004a1ff81eba6c7b3d0a0f902751a86d5cb202418b10a1bebe90dd5",
+    "dist/lib/text-measure-completion.js":"a66ac6f219f00131f798135cebb37c7336cc2a07d04e48216546218c2206a179",
+    "dist/lib/path-measure-completion.js":"bdd451942f467334927cdce805ad50229b7fd740848c8e8837fb53c44e773c2f",
+    "dist/lib/font-path-callbacks.js":"0c721ff9f46e2554d1bdb25a3c65f4f1363b2425347cd490b27bd488b57ccb28",
+    "dist/lib/document-completion.js":"4555186d072932b1b6b3001a4b42dbcf60c018ce3eae39fd5ef76466f7fbf6bb",
+    "tests/geometry-completion.test.mjs":"342e9a06c444c5ac1d2b3a02532e53f1e01e2f7d8fd71d960ebe25cf3f89454a",
+    "tests/completion-contracts.test.mjs":"57194b35a6e89bc9f990877957ce51147cc320b5c96a3b0d793ace51a2be179d",
+    "tests/document-observability.test.mjs":"a93147c1327e4a13f26ed7b91739c941010bdd36e1003f2e2c06d317ab316a86",
+    "tools/contract-reference/Program.cs":"8a787f4fd0e2c3a1045e1a87a85210df03665273ce02c64e1e5759ffac68ff4d",
+    "scripts/compare-contracts.mjs":"abe7259cde52f39f27f4f26d7f4653412b4232bf544be05003e693388003b2ca"
+  },
+  "evidenceSha256": {
+    "contracts/report.json":"8a5878e7e351722c094ece2ad49587cf61440b572d0483b38590c2dff3ebea50",
+    "contracts/reference.json":"901b5b0b11e56e254d1104904f9cc8b13d73292c83927371c7d296e21e739e7c",
+    "soak/runtime.json":"3cabb874f148ab018ee8a448f03e459cab0bdd44bca73b9d4b86eab076ace5f4",
+    "soak/alpha-benchmark.json":"35b52edb72b410e94f1830f1c19d2fcf37e2567f4b1873d8a8da3dfe12462faf",
+    "geometry/browser.json":"35be51c5e83fa8399d3d84e9ba60c68288737cc0717b2836cf97d44d68da1dcd",
+    "browser/rendering.json":"4e190bffa3341fcce00a33ee5b357dd3543e4410d7b7a6078a9c576d985023bc",
+    "browser/ui.json":"83b8d10fc6d111b62a5e4f56e8698391c959bdb1d51f73425890c721bc4975e4",
+    "qualification/report.json":"b7b8e61eac468e822dd5b22bfe0b5f3e8a41790318ed28f5add4d7264dbc1405"
+  },
+  "limits": ["Finite input corpus, not exhaustive conformance for 3,995 declarations.","No physical GPU or vendor driver qualification.","Native PDF diagnostics cover instrumented decision sites; formats still cannot represent arbitrary effects as vectors.","Source archives omit font binaries."]
+}
