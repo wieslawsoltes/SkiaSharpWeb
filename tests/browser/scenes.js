@@ -21,6 +21,7 @@ async function verifyScenes({ backend, width = 480, height = 300 }) {
     if (surface.Backend !== backend) throw new Error('Unexpected fallback to ' + surface.Backend);
     if (backend === 'webgpu' && surface.RenderMode !== 'skia-graphite-webgpu') throw new Error('WebGPU must use native Graphite, not raster uploads');
     for (const scene of window.graphicsLab.scenes) {
+      console.log('verify ' + backend + ': ' + scene.id);
       let image, expectedImage;
       const start = performance.now();
       try {
@@ -38,6 +39,7 @@ async function verifyScenes({ backend, width = 480, height = 300 }) {
       } catch (error) { results.push({ scene: scene.id, passed: false, error: error.stack }); }
       finally { image?.Dispose(); expectedImage?.Dispose(); }
     }
+    // Validate actual browser presentation independently of snapshot readback.
     surface.Canvas.Clear(S.SKColors.White);
     const paint = new S.SKPaint({ Color: S.SKColors.Red, IsAntialias: false });
     try { surface.Canvas.DrawRect(0, 0, width / 2, height, paint); }

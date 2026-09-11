@@ -13,6 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--output', type=pathlib.Path, default=ROOT / 'test-output/browser')
 parser.add_argument('--require-physical-gpu', action='store_true')
+parser.add_argument('--headed', action='store_true')
 parser.add_argument('--executable', default=os.environ.get('CHROMIUM_EXECUTABLE'))
 args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=True)
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -25,10 +26,11 @@ try:
     with sync_playwright() as p:
         flags = ['--no-sandbox', '--enable-unsafe-webgpu']
         if not args.require_physical_gpu:
-            flags += ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--use-vulkan=swiftshader']
-        browser = p.chromium.launch(executable_path=args.executable, headless=True, args=flags)
+            flags += ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--use-vulkan=swiftshader', '--use-webgpu-adapter=swiftshader']
+        browser = p.chromium.launch(executable_path=args.executable, headless=not args.headed, args=flags)
         report['browser'] = browser.version
         page = browser.new_page(viewport={'width': 1440, 'height': 1000}, device_scale_factor=1)
+        page.on('console', lambda message: print(message.type + ': ' + message.text, flush=True))
         page.on('pageerror', lambda e: report['errors'].append(str(e)))
         page.goto(f'http://127.0.0.1:{server.server_port}/', wait_until='networkidle', timeout=90000)
         page.wait_for_function('!!window.graphicsLab', timeout=90000)
@@ -44,7 +46,12 @@ try:
         source = (ROOT / 'tests/browser/scenes.js').read_text()
         for backend in ['webgpu', 'webgl', 'canvas']:
             try:
-                entry = page.evaluate('(' + source + ')', {'backend': backend})
+                page.evaluate('window.__verifyScenes = (' + source + ')')
+                page.evaluate("settings => { window.__browserResult=null; window.__browserError=null; void window.__verifyScenes(settings).then(r=>window.__browserResult=r).catch(e=>window.__browserError=e.stack); }", {'backend': backend})
+                page.wait_for_function('window.__browserResult || window.__browserError', timeout=180000)
+                failure = page.evaluate('window.__browserError')
+                if failure: raise RuntimeError(failure)
+                entry = page.evaluate('window.__browserResult')
                 page.locator('#verification-canvas').screenshot(path=str(args.output / (backend + '.png')))
                 image = Image.open(args.output / (backend + '.png')).convert('RGB')
                 left = image.getpixel((40, 40)); right = image.getpixel((440, 40))
@@ -52,17 +59,19 @@ try:
                 entry['presentationPassed'] = left[0] > 240 and left[1] < 15 and left[2] < 15 and min(right) > 240
                 assert entry['presentationPassed'], f'{backend} HTML presentation is incorrect: {left}, {right}'
                 report['backends'].append(entry)
+                report['errors'].extend(backend + ': ' + error for error in entry['errors'])
             except Exception as error:
                 report['errors'].append(backend + ': ' + str(error))
             finally:
-                page.evaluate('''async()=>{const s=window.__verificationSurface;if(s){if(s.DisposeAsync)await s.DisposeAsync();else s.Dispose();s.Element?.remove();delete window.__verificationSurface;}}''')
+                page.evaluate('''()=>{const s=window.__verificationSurface;if(s){s.Dispose();s.Element?.remove();delete window.__verificationSurface;}}''')
+        # Exercise the public UI rather than only calling draw functions.
         page.locator('#theme').click(); report['controls'].append('theme')
         page.locator('#search').fill('font'); assert page.locator('nav button').count() > 0
         page.locator('#search').fill(''); report['controls'].append('search')
         page.select_option('#backend', 'canvas')
         page.wait_for_function("window.graphicsLab.surface.Backend==='canvas' && document.querySelector('#loading').hidden")
         page.evaluate("window.graphicsLab.select('skottie')")
-        page.locator('#timeline').fill('35'); page.locator('#timeline').dispatch_event('input')
+        page.locator('#timeline').evaluate("e => { e.value = '35'; e.dispatchEvent(new Event('input', {bubbles:true})); }")
         report['controls'].append('timeline')
         page.locator('#animate').click(); page.wait_for_timeout(100); page.locator('#animate').click()
         report['controls'].append('animation')

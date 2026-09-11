@@ -1,0 +1,39 @@
+name: Independent .NET differential conformance
+on:
+  push:
+    branches: [main]
+    paths: ['dist/lib/**', 'tools/differential/**', 'scripts/compare-dotnet.mjs', '.github/workflows/differential.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: differential-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        skia: ['3.119.0', '4.154.0-preview.1.26454.9']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Execute native .NET reference implementation
+        run: dotnet run --project tools/differential -c Release -p:SkiaVersion=${{ matrix.skia }} -- test-output/differential/reference.json
+      - name: Compare shipped JavaScript and WASM
+        run: node scripts/compare-dotnet.mjs test-output/differential/reference.json test-output/differential/report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: differential-${{ matrix.skia }}-${{ github.sha }}
+          path: test-output/differential/
+          retention-days: 14
