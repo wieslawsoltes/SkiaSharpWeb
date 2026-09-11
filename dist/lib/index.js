@@ -1,3 +1,4 @@
+import { installRenderCache } from './render-cache.js';
 import { registerCanvasElement } from './web-component.js';
 import { installMemoryTracing } from './memory.js';
 import { installGpuRecords } from './gpu-records.js';
@@ -66,6 +67,7 @@ async function initializeRuntime(options = {}) {
   installSurfaceFormats(K, api);
   installGpuRecords(K, api);
   installMemoryTracing(K, api);
+  installRenderCache(K, api);
   api.CanvasKit = K;
   api.Version = '0.4.0';
   api.BackendCapabilities = Object.freeze({ WebGL: 'Skia GPU renderer', Canvas: 'Skia software rasterizer presented through Canvas 2D', WebGPU: 'Native Skia Graphite/Dawn; injected runtimes without Graphite use the primitive/raster presenter' });

@@ -77,6 +77,20 @@ try:
         report['controls'].append('animation')
         assert page.locator('#error').is_hidden(), page.locator('#error').inner_text()
         page.screenshot(path=str(args.output / 'graphics-lab.png'), full_page=True)
+        page.goto(f'http://127.0.0.1:{server.server_port}/performance.html', wait_until='networkidle', timeout=90000)
+        page.wait_for_function('!!window.performanceLab', timeout=90000)
+        report['component'] = page.evaluate('''async()=>{
+          const {view,S}=window.performanceLab;await view.InvalidateSurface();
+          const before=view.Statistics;
+          await Promise.all(Array.from({length:100},()=>view.InvalidateSurface()));
+          const after=view.Statistics;
+          return {before,after,cache:S.SKGraphics.GetBitmapCacheStatistics(),mode:view.Surface.RenderMode};
+        }''')
+        assert report['component']['after']['Frames'] - report['component']['before']['Frames'] == 1
+        assert report['component']['cache']['Hits'] > 0
+        assert report['component']['cache']['RetainedBytes'] > 0
+        assert page.locator('#error').is_hidden(), page.locator('#error').inner_text()
+        page.screenshot(path=str(args.output / 'performance-lab.png'), full_page=True)
         browser.close()
 except Exception as error:
     report['errors'].append(str(error))
