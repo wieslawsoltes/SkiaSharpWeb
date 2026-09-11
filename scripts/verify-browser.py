@@ -26,7 +26,7 @@ try:
     with sync_playwright() as p:
         flags = ['--no-sandbox', '--enable-unsafe-webgpu']
         if not args.require_physical_gpu:
-            flags += ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--use-vulkan=swiftshader', '--use-webgpu-adapter=swiftshader']
+            flags += ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--use-vulkan=swiftshader', '--enable-features=Vulkan', '--disable-vulkan-surface']
         browser = p.chromium.launch(executable_path=args.executable, headless=not args.headed, args=flags)
         report['browser'] = browser.version
         page = browser.new_page(viewport={'width': 1440, 'height': 1000}, device_scale_factor=1)
@@ -46,7 +46,7 @@ try:
         source = (ROOT / 'tests/browser/scenes.js').read_text()
         for backend in ['webgpu', 'webgl', 'canvas']:
             try:
-                page.evaluate('window.__verifyScenes = (' + source + ')')
+                page.evaluate('() => { window.__verifyScenes = (' + source + '); }')
                 page.evaluate("settings => { window.__browserResult=null; window.__browserError=null; void window.__verifyScenes(settings).then(r=>window.__browserResult=r).catch(e=>window.__browserError=e.stack); }", {'backend': backend})
                 page.wait_for_function('window.__browserResult || window.__browserError', timeout=180000)
                 failure = page.evaluate('window.__browserError')
@@ -64,7 +64,6 @@ try:
                 report['errors'].append(backend + ': ' + str(error))
             finally:
                 page.evaluate('''()=>{const s=window.__verificationSurface;if(s){s.Dispose();s.Element?.remove();delete window.__verificationSurface;}}''')
-        # Exercise the public UI rather than only calling draw functions.
         page.locator('#theme').click(); report['controls'].append('theme')
         page.locator('#search').fill('font'); assert page.locator('nav button').count() > 0
         page.locator('#search').fill(''); report['controls'].append('search')
