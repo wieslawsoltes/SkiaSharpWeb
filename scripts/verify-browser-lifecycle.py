@@ -39,6 +39,29 @@ async def main():
    await page.fill('#search','font');assert await page.locator('#navigation button').count()>0
    assert not errors, errors
    (out/'ui.json').write_text(json.dumps({'controls':ui,'download':download.suggested_filename,'pageErrors':errors},indent=2))
+   await page.goto(base+'/dist/performance.html',wait_until='load')
+   await page.wait_for_function('Boolean(window.performanceLab?.view.Surface)',timeout=120000)
+   performance_modes=[]
+   for backend in ['canvas','webgl','webgpu']:
+    await page.select_option('#renderer',backend)
+    await page.wait_for_function('(b)=>window.performanceLab.view.Surface?.Backend===b',arg=backend,timeout=60000)
+    await page.evaluate('window.performanceLab.view.InvalidateSurface()')
+    assert not await page.locator('#error').is_visible(), await page.locator('#error').inner_text()
+    performance_modes.append(await page.locator('#status').inner_text())
+   before=await page.evaluate('window.performanceLab.view.Statistics.Frames')
+   await page.click('#burst')
+   await page.wait_for_function('(n)=>window.performanceLab.view.Statistics.Frames===n+1',arg=before)
+   await page.uncheck('#cache')
+   await page.evaluate('window.performanceLab.view.InvalidateSurface()')
+   assert await page.evaluate('window.performanceLab.S.SKGraphics.GetBitmapCacheStatistics().RetainedBytes')==0
+   await page.check('#cache');await page.evaluate('window.performanceLab.view.InvalidateSurface()')
+   await page.click('#trace')
+   memory=json.loads(await page.locator('#memory').inner_text())
+   assert len(memory)>0 and any(row.get('Values') for row in memory)
+   stats=await page.evaluate('({component:window.performanceLab.view.Statistics,cache:window.performanceLab.S.SKGraphics.GetBitmapCacheStatistics()})')
+   assert not errors, errors
+   await page.screenshot(path=str(out/'performance-lab.png'),full_page=True)
+   (out/'performance.json').write_text(json.dumps({'backends':performance_modes,'statistics':stats,'pageErrors':errors},indent=2))
   except Exception as e:
    (out/'failure.json').write_text(json.dumps({'error':str(e),'pageErrors':errors},indent=2))
    await page.screenshot(path=str(out/'failure.png'),full_page=True)
