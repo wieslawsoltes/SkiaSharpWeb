@@ -1,0 +1,15 @@
+{
+  "integrationBase": "49c7a4e294caaac6663f2c784342e8867a598281",
+  "originalLocalCommit": "9b3ca3edfcecc19d8262d89243077d9b3b1095a0",
+  "patchSha256": "7d876a742d7cbb24a6e577b8903b162082207f8c325f9eaf78101aba201a737f",
+  "packedSha256": "7f111df38e10add07f72d87d4b497092d7f24d13fedb4c3f4ceddc2e93f68e2e",
+  "patchBytes": 221322,
+  "files": [".github/workflows/optimization.yml", ".github/workflows/pages.yml", ".github/workflows/source-snapshot.yml", "CHANGELOG.md", "README.md", "dist/README.md", "dist/docs/OPTIMIZATION-0.5.md", "dist/docs/OPTIMIZATION-BENCHMARK-0.5.json", "dist/docs/OPTIMIZATION-CONFORMANCE-0.5.json", "dist/docs/OPTIMIZATION-VERIFICATION-0.5.json", "dist/docs/PORTABLE-CONTRACTS-0.5.json", "dist/docs/RECOVERY-PUBLICATION.md", "dist/docs/RESOURCE-SOAK-0.5.json", "dist/index.html", "dist/lib/animation.js", "dist/lib/core.js", "dist/lib/data-completion.js", "dist/lib/index.js", "dist/lib/paint-completion.js", "dist/lib/path-query-cache.js", "dist/lib/regions.js", "dist/optimization-scene.js", "dist/optimization.css", "dist/optimization.html", "dist/optimization.js", "docs/OPTIMIZATION-0.5.md", "docs/OPTIMIZATION-BENCHMARK-0.5.json", "docs/OPTIMIZATION-CONFORMANCE-0.5.json", "docs/OPTIMIZATION-VERIFICATION-0.5.json", "docs/PORTABLE-CONTRACTS-0.5.json", "docs/RECOVERY-PUBLICATION.md", "docs/RESOURCE-SOAK-0.5.json", "package.json", "scripts/benchmark-optimization.mjs", "scripts/render-optimization-preview.mjs", "scripts/review-optimization.mjs", "scripts/verify-optimization.py", "tests/optimization-lab.test.mjs", "tests/optimization-round.test.mjs", "tests/resource-concurrency.test.mjs"],
+  "parts": [
+    {"path":"part-00.xzpart","size":8000,"gitBlob":"8313302c3f1a0d4957f3f4a701261a8383ded260"},
+    {"path":"part-01.xzpart","size":8000,"gitBlob":"170bc53306f3831e809ca241f78ed21879ce4184"},
+    {"path":"part-02.xzpart","size":8000,"gitBlob":"cb39b986e4da62edf2e2ff3069ba89b3dc99fed2"},
+    {"path":"part-03.xzpart","size":8000,"gitBlob":"51810227fbccd95f9f0d6c3eaf89028959d88ad4"},
+    {"path":"part-04.xzpart","size":7528,"gitBlob":"3434bb532458b9c6c10a0d13d266c11efbe72093"}
+  ]
+}
