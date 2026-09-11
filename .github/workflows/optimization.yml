@@ -1,0 +1,59 @@
+name: Optimization and portable completion
+on:
+  push:
+    branches: [main]
+    paths: ['dist/lib/**', 'dist/vendor/**', 'dist/optimization*', 'tests/*optimization*', 'tests/resource-concurrency.test.mjs', 'scripts/*optimization*', 'scripts/soak-runtime.mjs', '.github/workflows/optimization.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: optimization-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  portable:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run check
+      - run: npm run test:optimization
+      - name: Collect exact-output microbenchmarks and native resource soak
+        run: |
+          node scripts/benchmark-optimization.mjs test-output/optimization/benchmark.json
+          node --expose-gc scripts/soak-runtime.mjs 100000 test-output/optimization/soak.json
+          node scripts/review-optimization.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: optimization-cpu-${{ github.sha }}
+          path: |
+            test-output/optimization/
+            docs/OPTIMIZATION-CONFORMANCE-0.5.json
+          if-no-files-found: error
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned test browser
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Verify sample, native Graphite, precision, and software-adapter qualification
+        run: python scripts/verify-optimization.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: optimization-browser-${{ github.sha }}
+          path: test-output/optimization-browser/
+          if-no-files-found: error

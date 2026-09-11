@@ -17,15 +17,21 @@ Serve `dist/` and open `/optimization.html`. See [the current verification and A
 The update preserves the current upstream native paint/text geometry and qualified runtime,
 adds retained SKData views/streams and asynchronous imports/exports, a bounded path-query LRU,
 balanced region construction, race-safe resource loading, and stronger enum/output validation.
-It is based on remote commit `c81722688843c24354d728f93ad8a6307cccc598`.
+The recovered patch was integrated onto `49c7a4e294caaac6663f2c784342e8867a598281`
+and published directly to `main` in commit `030fc4d581005b9f49de40118310b9743e9fe1f5`.
 
-**Current local evidence:** all 31 new tests pass; the combined geometry/optimization run
-is 43/43. The wider suite is 347/352 with five unresolved font-asset failures, not a
-completely passing release. 33,962 comparisons against the recovered .NET-generated
-contract corpus and a 100,000-cycle native resource soak pass. Browser navigation is
-blocked by this host's managed policy, so no new interactive-browser or physical-GPU
-pass is claimed. This update is committed locally but has not been pushed or deployed.
-The older 0.4 verification below is historical and must not be mistaken for a result on this revision.
+**Verified GitHub recovery:** 405 integration tests passed with zero failures and zero skips,
+including all 31 new tests. A freshly executed SkiaSharp 4.154 reference passed 193,931
+comparisons. The live Optimization Lab, the gallery's Canvas/WebGL/Graphite lifecycle checks,
+exact-output benchmarks and a 100,000-cycle native resource soak also passed in
+[recovery workflow 34638344529](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/runs/34638344529).
+GPU tests used a software adapter; physical-device qualification is not claimed.
+The native runtime and font binaries were not changed.
+
+[Publication result and tested-source hashes](./docs/RECOVERY-PUBLICATION-RESULT.json)
+identify the executed source and check counts. The older local reports are retained
+as historical evidence: their missing-font failures and blocked browser environment
+do not describe the successful repository recovery run. Complete API parity remains unproven.
 
 ## Run
 

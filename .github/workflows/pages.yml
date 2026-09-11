@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
   workflow_run:
-    workflows: ['Build and verify native Skia', 'Refresh release documentation', 'Qualify and publish native runtime']
+    workflows: ['Build and verify native Skia', 'Refresh release documentation', 'Qualify and publish native runtime', 'Commit recovered optimization']
     types: [completed]
     branches: [main]
 permissions:

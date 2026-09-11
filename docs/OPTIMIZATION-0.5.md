@@ -1,5 +1,23 @@
 # SkiaSharp Web 0.5 — completion, optimization, and verification
 
+## Verified repository publication
+
+The recovered source was committed directly to `main` as
+`030fc4d581005b9f49de40118310b9743e9fe1f5` after reconciliation with `49c7a4e`.
+[GitHub run 34638344529](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/runs/34638344529)
+passed **405 integration tests (zero failures/skips)**, including all 31 new tests,
+and **193,931 comparisons** against freshly executed SkiaSharp 4.154. The live
+Optimization Lab, Canvas/WebGL/native Graphite gallery lifecycle, exact-output
+benchmarks and 100,000-cycle native resource soak passed. No physical GPU or
+universal API parity is claimed. Runtime and font binaries remain unchanged.
+
+[RECOVERY-PUBLICATION-RESULT.json](./RECOVERY-PUBLICATION-RESULT.json) records the
+actual checks and tested-source hashes. The local verification results and benchmark
+measurements below describe the earlier environment, not a failed repository release.
+
+---
+
+
 ## Source and runtime provenance
 
 Work started from remote main `9edcb2a13b19fd34ad5e3ddd8743789f143298e7`. During the work,
@@ -131,10 +149,10 @@ raster decisions, and the managed PDF/XPS path retains its existing policy.
 original stroke beside its native fill geometry, supports width/cap/dash controls,
 shows cache statistics, runs warmed CPU benchmarks, and exports native PDF with a
 blur toggle, raster-decision report and strict-vector gate. The shared drawing code
-is used unchanged in Node scene tests and preview generation. The actual sample
-JavaScript/interactive controls have not passed a browser run on this host.
+is used unchanged in Node scene tests and preview generation. The original local host blocked browser navigation. The later GitHub recovery run
+reported above exercised the actual sample JavaScript and interactive controls.
 
-## Measured optimization results
+## Historical local optimization measurements
 
 Node v22.16.0, Linux x64. Each comparison uses five warmups and 21 measured rounds,
 alternating before/after order. Equal outputs are asserted. These are CPU
@@ -152,7 +170,7 @@ baseline is sequential Op(Union) versus balanced SetRects in the same runtime, n
 an old-revision whole-engine comparison. Canonical regions must compare equal.
 Raw samples and checksums are in `OPTIMIZATION-BENCHMARK-0.5.json`.
 
-## Verification actually performed
+## Historical local verification (before repository recovery)
 
 - All **31 new tests pass**, zero skipped: native paint overloads and enum fidelity,
   path-cache invalidation/budgets/output independence, data ownership/cancellation,
@@ -205,8 +223,8 @@ python scripts/verify-optimization.py
 python scripts/verify-optimization.py --require-physical-gpu
 ```
 
-The new workflow runs the font-free checks and publishes CPU/browser evidence when
-committed to a connected runner. Adding a workflow is not evidence that it has run.
+The committed workflow runs the font-free checks and publishes CPU/browser evidence.
+The successful recovery run is linked above; the earlier local reports remain unchanged.
 
 ## Declaration review and remaining gaps
 
