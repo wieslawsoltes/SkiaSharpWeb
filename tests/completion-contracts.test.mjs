@@ -6,7 +6,6 @@ import {Initialize} from '../dist/lib/index.js';
 const K=await createRequire(import.meta.url)('../dist/vendor/canvaskit.cjs')({wasmBinary:readFileSync(new URL('../dist/vendor/canvaskit.wasm',import.meta.url))});
 const S=await Initialize({CanvasKit:K,isolated:true,fonts:false});
 const asArray=p=>p.ToArray();
-
 test('descriptor defaults, high UInt64 values, nested value-copy, equality and JSON',()=>{
  const a=new S.GRVkAlloc({Memory:0xffffffffffffffffn,Offset:1n<<60n,Size:4096,Flags:4294967295});
  const image=new S.GRVkImageInfo({Image:9007199254740993n,Alloc:a});
@@ -25,6 +24,7 @@ test('descriptor defaults, high UInt64 values, nested value-copy, equality and J
 test('Vulkan YCbCr and Graphite descriptors preserve all scalar fields without pretending to import devices',()=>{
  const y=new S.GRVkYcbcrConversionInfo({Format:37,ExternalFormat:1n<<63n,YcbcrModel:3,YcbcrRange:1,XChromaOffset:1,YChromaOffset:0,ChromaFilter:1,ForceExplicitReconstruction:1,Components:{R:4,G:5,B:6,A:3},SamplerFilterMustMatchChromaFilter:true,SupportsLinearFilter:true});
  const legacy=new S.GrVkYcbcrConversionInfo(y);legacy.FormatFeatures=100;assert.equal(legacy.FormatFeatures,0);assert(legacy.ToCurrent().Equals(y));
+ const decoded=S.GrVkYcbcrConversionInfo.FromJSON({...JSON.parse(JSON.stringify(legacy)),FormatFeatures:123});assert(decoded.ToCurrent().Equals(y));assert.equal(decoded.FormatFeatures,0);
  const copied=y.Components;copied.R=99;assert.equal(y.Components.R,4);
  const texture=new S.SKGraphiteVkTextureInfo({SampleCount:4,Mipmapped:true,Flags:1,Format:-1,ImageTiling:1,ImageUsageFlags:16,SharingMode:0,AspectMask:1});
  assert(texture.Clone().Equals(texture));assert(S.SKGraphiteVkTextureInfo.FromJSON(JSON.stringify(texture)).Equals(texture));
@@ -64,7 +64,7 @@ test('opacity scans preserve native floating-point threshold behavior without RG
  const bits=new Uint16Array([0,0,0,0x4000]),half=new S.SKPixmap(new S.SKImageInfo(1,1,K.ColorType.RGBA_F16),bits);try{assert(half.ComputeIsOpaque());assert.equal(half.GetPixelAlpha(0,0),2);bits[3]=0x3bff;assert(!half.ComputeIsOpaque());}finally{half.Dispose();}
 });
 test('all pixel alpha encodings have direct storage scans, including packed 10-bit and 16-bit formats',()=>{
- const samples=[['Alpha8',1,255],['Argb4444',2,0xf123],['Bgra1010102',4,0xc0123456],['Bgra10101010XR',8,894<<6],['Rgba10x6',8,0xffc1],['Alpha16',2,65535],['Rgba16161616',8,65535]];
+ const samples=[['Alpha8',1,255],['Argb4444',2,0x123f],['Bgra1010102',4,0xc0123456],['Bgra10101010XR',8,894<<6],['Rgba10x6',8,0xffc1],['Alpha16',2,65535],['Rgba16161616',8,65535]];
  for(const [type,bpp,alpha]of samples){const bytes=new Uint8Array(bpp),dv=new DataView(bytes.buffer);if(bpp===1)bytes[0]=alpha;else if(bpp===4)dv.setUint32(0,alpha,true);else dv.setUint16(bpp===8?6:0,alpha,true);const p=new S.SKPixmap(new S.SKImageInfo(1,1,S.SKColorType[type],K.AlphaType.Unpremul),bytes);try{assert(p.ComputeIsOpaque(),type);bytes.fill(0);assert.equal(p.ComputeIsOpaque(),false,type);}finally{p.Dispose();}}
 });
 test('document abort and failed output are terminal, with no successful ToData or repeated writes',()=>{

@@ -1,5 +1,7 @@
-/** Raw alpha inspection matching pinned SkPixmap (not image alpha metadata).
- * Loops read storage directly and allocate no per-pixel objects or images. */
+/** Raw alpha inspection matching the pinned .NET/SkPixmap contract.
+ * Loops read storage directly and allocate no per-pixel color objects.
+ * ARGB4444 uses the low alpha nibble. XR's unsigned underflow matches native
+ * getAlphaf even for noncanonical component codes below the alpha range. */
 export function installPixelAlpha(K, api) {
   const nativeValue=v=>v?.value??v;
   const noAlpha=new Set([2,5,9,10,11,14,17,19,21,22,24,25,28]);
@@ -15,11 +17,11 @@ export function installPixelAlpha(K, api) {
     if(noAlpha.has(type)){raw=()=>1;opaque=()=>true;}
     else switch(type) {
       case 0:raw=()=>0;opaque=()=>false;break;
-      case 1: raw=o=>Math.fround(bytes[o]*Math.fround(1/255));opaque=o=>bytes[o]===255;break;
-      case 3: raw=o=>Math.fround((view.getUint16(o,true)>>>12)*Math.fround(1/15));opaque=o=>(view.getUint16(o,true)&0xf000)===0xf000;break;
+      case 1:raw=o=>Math.fround(bytes[o]*Math.fround(1/255));opaque=o=>bytes[o]===255;break;
+      case 3:raw=o=>Math.fround((view.getUint16(o,true)&15)*Math.fround(1/15));opaque=o=>(view.getUint16(o,true)&15)===15;break;
       case 4:case 6:case 27:raw=o=>Math.fround(bytes[o+3]*Math.fround(1/255));opaque=o=>bytes[o+3]===255;break;
       case 7:case 8:raw=o=>Math.fround((view.getUint32(o,true)>>>30)*Math.fround(1/3));opaque=o=>(view.getUint32(o,true)>>>30)===3;break;
-      case 12:raw=o=>Math.fround(((view.getUint16(o+6,true)>>>6)-384)/510);opaque=o=>(view.getUint16(o+6,true)>>>6)>=894;break;
+      case 12:raw=o=>Math.fround(Number(BigInt.asUintN(64,BigInt(view.getUint16(o+6,true)>>>6)-384n))/510);opaque=o=>(view.getUint16(o+6,true)>>>6)>=894;break;
       case 13:raw=o=>Math.fround((view.getUint16(o+6,true)>>>6)*Math.fround(1/1023));opaque=o=>(view.getUint16(o+6,true)&0xffc0)===0xffc0;break;
       case 15:case 16:raw=o=>half(view.getUint16(o+6,true));opaque=o=>view.getUint16(o+6,true)>=0x3c00;break;
       case 18:raw=o=>view.getFloat32(o+12,true);opaque=o=>!(view.getFloat32(o+12,true)<1);break;
@@ -44,7 +46,6 @@ export function installPixelAlpha(K, api) {
     const a=access(this),width=this.Width,height=this.Height,stride=this.RowBytes;
     if(a.type===0)return false;
     if(noAlpha.has(a.type))return true;
-    // Specialize the common RGBA8 scan to avoid even a callback per pixel.
     if(a.type===4||a.type===6||a.type===27) {
       const data=a.bytes;
       for(let y=0;y<height;y++)for(let p=y*stride+3,end=y*stride+width*4;p<end;p+=4)if(data[p]!==255)return false;

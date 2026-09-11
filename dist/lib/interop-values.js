@@ -33,7 +33,6 @@ export function installInteropValues(K, api) {
           if(!(key in schema))throw new TypeError('Unknown '+name+' field: '+key);
           this[key]=value;
         }
-        // Reading another struct must not depend on its fields being own properties.
         if(values instanceof Record) for(const [key]of fields)this[key]=values[key];
       }
       Equals(other) {
@@ -43,7 +42,6 @@ export function installInteropValues(K, api) {
       }
       Clone() { const clone=new this.constructor();for(const [key]of fields)clone[key]=this[key];return clone; }
       GetHashCode() {
-        // .NET HashCode is process-seeded; only equal-values/equal-hash is portable.
         const text=JSON.stringify(this),data=new TextEncoder().encode(text);let hash=2166136261;
         for(const b of data)hash=Math.imul(hash^b,16777619);return hash|0;
       }
@@ -74,8 +72,16 @@ export function installInteropValues(K, api) {
   for(const [name,schema]of Object.entries(schemas))define(name,schema);
   class GrVkYcbcrConversionInfo extends types.GRVkYcbcrConversionInfo {
     constructor(values={}) { const {FormatFeatures,...rest}=values;super(rest);if(values instanceof types.GRVkYcbcrConversionInfo)for(const key of Object.keys(schemas.GRVkYcbcrConversionInfo))this[key]=values[key]; }
+    static FromJSON(input){
+      const parsed=typeof input==='string'?JSON.parse(input):input;
+      if(parsed===null||typeof parsed!=='object')throw new TypeError('Descriptor JSON must be an object.');
+      const {FormatFeatures,...fields}=parsed;
+      const current=types.GRVkYcbcrConversionInfo.FromJSON(fields),result=new this(current);
+      if(FormatFeatures!==undefined)result.FormatFeatures=FormatFeatures;
+      return result;
+    }
     get FormatFeatures(){return 0;}
-    set FormatFeatures(value){integer(value,32,false,'FormatFeatures');} // Obsolete upstream no-op property.
+    set FormatFeatures(value){integer(value,32,false,'FormatFeatures');}
     ToCurrent(){return new types.GRVkYcbcrConversionInfo(this.toJSONValues());}
     toJSONValues(){return Object.fromEntries(Object.keys(schemas.GRVkYcbcrConversionInfo).map(key=>[key,this[key]]));}
   }
