@@ -20,3 +20,15 @@ export function NormalizeOptions(options = {}) {
   options.signal?.throwIfAborted();
   return { ...options, fonts: options.fonts ?? false };
 }
+
+/** Give package consumers one lifetime contract; preserve Graphite's instance fence. */
+export function PrepareRuntime(api) {
+  const prototype = api.SKSurface.prototype;
+  if (typeof prototype.DisposeAsync !== 'function') {
+    Object.defineProperty(prototype, 'DisposeAsync', {
+      configurable: true, writable: true,
+      value: async function () { await this.Dispose(); }
+    });
+  }
+  return api;
+}

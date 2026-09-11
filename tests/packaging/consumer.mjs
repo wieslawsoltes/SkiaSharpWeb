@@ -22,7 +22,7 @@ try {
   }finally{image.Dispose();}
   const document=S.SKDocument.CreatePdf({NativeBackend:true,StrictVector:true});
   try {document.BeginPage(16,16).DrawRect(0,0,8,16,paint);const bytes=document.ToData();try{assert.equal(new TextDecoder().decode(bytes.ToArray().slice(0,5)),'%PDF-');}finally{bytes.Dispose();}}finally{document.Dispose();}
-}finally{paint.Dispose();surface.Dispose();}
+}finally{paint.Dispose();await surface.DisposeAsync();assert(surface.IsDisposed);await surface.DisposeAsync();}
 const abort=new AbortController();abort.abort();await assert.rejects(Initialize({signal:abort.signal}),{name:'AbortError'});
 await assert.rejects(Initialize({fonts:true}),TypeError);
 await assert.rejects(cjs.RegisterWebComponent(),/browser/);

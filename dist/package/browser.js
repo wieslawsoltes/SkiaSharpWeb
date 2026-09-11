@@ -1,6 +1,6 @@
 import { Initialize as InitializeCore } from '../lib/index.js';
 import { registerCanvasElement } from '../lib/web-component.js';
-import { GetAssetUrls, NormalizeOptions } from './assets.js';
+import { GetAssetUrls, NormalizeOptions, PrepareRuntime } from './assets.js';
 export { Version } from './version.js';
 export { GetAssetUrls } from './assets.js';
 
@@ -9,7 +9,7 @@ export function Initialize(options = {}) {
   try {
     const normalized = NormalizeOptions(options);
     const urls = GetAssetUrls(normalized.assetBaseUrl);
-    return InitializeCore({ ...urls, ...normalized });
+    return InitializeCore({ ...urls, ...normalized }).then(PrepareRuntime);
   } catch (error) { return Promise.reject(error); }
 }
 export async function RegisterWebComponent(options = {}) {

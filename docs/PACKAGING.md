@@ -6,6 +6,9 @@ JavaScript library, Node/browser entry points, TypeScript declarations, native
 hash manifest, bundled-component SBOM and license notices. It contains no demo,
 test corpus, secret configuration, native build toolchain, or font binaries.
 There are no runtime npm dependencies or install-time scripts.
+The package build replaces two legacy WOFF2 JavaScript invoker generators with
+static closures, with exact input/output hashes. Its embedded decoder WASM and
+qualified CanvasKit runtime remain unchanged; JavaScript `unsafe-eval` is not required.
 
 ## Install the tested tarball
 
@@ -35,7 +38,7 @@ try {
     try { /* data.ToArray() contains PNG bytes */ }
     finally { data?.Dispose(); }
   } finally { image.Dispose(); }
-} finally { surface.Dispose(); }
+} finally { await surface.DisposeAsync(); }
 ```
 
 Initialization is asynchronous in both module systems. The Node entry reads the
@@ -44,6 +47,8 @@ remote assets. Node rendering is Skia raster; this entry does not manufacture a
 browser WebGPU device. Supply `CanvasKit` explicitly for custom engines.
 `isolated:true` creates separate SK namespace/cache state, **not a separate Node
 WASM heap**. Inject an independently initialized engine when heap isolation matters.
+The package provides `DisposeAsync()` for all surfaces; native Graphite retains its
+own asynchronous completion fence, while raster/Canvas surfaces dispose synchronously.
 
 ## Browser with a bundler
 
@@ -127,8 +132,9 @@ checks the package allowlist, native hashes, size budgets and produces:
 `npm run test:package` installs this tarball into a new external directory, performs
 real native drawing/PNG/PDF checks, and tests the asset CLI. No repository symlink or
 font fixture can hide a missing package file. `npm run test:types` uses that same
-clean installation. The browser check serves it under a restrictive CSP and checks
-Canvas, WebGL, Graphite and the custom element. Runtime binaries are verified against
+clean installation. The browser check serves both raw ESM and an esbuild 0.25.10
+minified production bundle under a restrictive CSP and checks Canvas, WebGL,
+Graphite and the custom element. Runtime binaries are verified against
 `dist/vendor/native-build-manifest.json`, not rebuilt as an npm lifecycle side effect.
 The SBOM inventories preserved npm manifests plus Skia's revision; full native
 transitive build dependencies remain recorded in the native third-party notices.

@@ -8,10 +8,12 @@ maintainer decision even when source is in a private GitHub repository.
 
 For registry publication, configure an npm trusted publisher for the exact GitHub
 owner `wieslawsoltes`, repository `SkiaSharpWeb`, workflow `npm-publish.yml` and
-environment `npm`. Set repository variable `NPM_PUBLISH_ENABLED` to `true` only when
-ready. Protect the `npm` environment with maintainer approval and restrict it to
-release tags. Before that opt-in, the registry job is intentionally skipped.
-The first publication may require bootstrapping package ownership interactively.
+environment `npm`. Explicitly allow the `npm publish` action in the trusted-publisher
+settings (new configurations may default to staged publishing only). Set repository
+variable `NPM_PUBLISH_ENABLED` to `true` only when ready. Protect the `npm`
+environment with maintainer approval and restrict it to release tags. Before that
+opt-in, the registry job is intentionally skipped. The first publication may require
+bootstrapping package ownership interactively.
 
 OIDC is the default. Where bootstrap requires it, provide a narrowly scoped,
 expiring granular token as the `NPM_TOKEN` environment secret. Never commit tokens.
@@ -59,8 +61,11 @@ The exact tarball is installed and tested before publication. Build metadata and
 archives are deterministic for the same checkout/tool versions, without timestamps
 or absolute paths. Release size gates are 12 MiB compressed / 24 MiB unpacked.
 No fonts, tests, gallery, secrets or native build tree are in the npm tarball.
-`npm run build` does not require a C++ toolchain. A source checkout's pinned dev
-compiler is installed with `npm ci`; consumers have no runtime npm dependencies.
+`npm run build` does not require a C++ toolchain. Its only dependency-code
+transform is the hash-checked WOFF2 JavaScript invoker adaptation for CSP; native
+WASM bytes are unchanged. The adapter transform is idempotent and is recorded
+in the build manifest. A source checkout's pinned development compiler is installed
+with `npm ci`; consumers have no runtime npm dependencies.
 
 ## Tag and stage a GitHub release
 
@@ -83,12 +88,12 @@ overwrite an existing release. Its manual dispatch accepts an existing tag and
 Review the draft and its checks. Publishing the draft triggers `Publish npm package`
 only when the explicit repository opt-in is enabled. That workflow downloads the
 already-tested assets; it does **not rebuild** a different tarball. It regenerates
-deterministic metadata and compares every packed file with the checked-out tag. It verifies the
-source commit, tag, package identity, every packaged-file hash, native binary hashes,
-and checksum list before `npm publish --ignore-scripts`. Stable releases use `latest`;
-prereleases use `next`. An existing registry version is accepted only when its
-integrity equals the tested tarball. A different integrity aborts rather than
-attempting replacement. Package install lifecycle hooks are absent.
+deterministic metadata and compares every packed file with the checked-out tag.
+It verifies the source commit, tag, package identity, every packaged-file hash,
+native binary hashes and checksum list before `npm publish --ignore-scripts`.
+Stable releases use `latest`; prereleases use `next`. An existing registry version
+is accepted only when its integrity equals the tested tarball. A different integrity
+aborts rather than attempting replacement. Package install lifecycle hooks are absent.
 
 ## Failures, rollback and security
 

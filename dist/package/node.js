@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module';
 import { readFile } from 'node:fs/promises';
 import { Initialize as InitializeCore } from '../lib/index.js';
-import { NormalizeOptions } from './assets.js';
+import { NormalizeOptions, PrepareRuntime } from './assets.js';
 export { Version } from './version.js';
 export { GetAssetUrls } from './assets.js';
 const require = createRequire(import.meta.url);
@@ -22,7 +22,7 @@ export async function Initialize(options = {}) {
     if (font.data || !String(font.url).startsWith('file:')) return font;
     return { ...font, data: new Uint8Array(await readFile(new URL(font.url), { signal: normalized.signal })) };
   }));
-  return InitializeCore({ ...normalized, CanvasKit, fonts });
+  return PrepareRuntime(await InitializeCore({ ...normalized, CanvasKit, fonts }));
 }
 export async function RegisterWebComponent() {
   throw new Error('RegisterWebComponent requires the skiasharp-web/browser entry and a browser DOM.');
