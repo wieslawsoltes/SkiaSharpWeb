@@ -1,0 +1,28 @@
+name: Source snapshot
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: source-snapshot-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Package committed source without local font binaries
+        run: |
+          mkdir -p artifacts
+          git archive --format=tar.gz --output=artifacts/SkiaSharpWeb-source.tar.gz HEAD -- . ':!*.ttf' ':!*.otf' ':!*.woff' ':!*.woff2' ':!*.ttc' ':!*.otc'
+          sha256sum artifacts/SkiaSharpWeb-source.tar.gz > artifacts/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-${{ github.sha }}
+          path: artifacts/
+          retention-days: 7
+          if-no-files-found: error
