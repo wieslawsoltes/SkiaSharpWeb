@@ -49,7 +49,9 @@ jobs:
           python -m pip install PyMuPDF==1.26.6 Pillow==11.3.0 playwright==1.55.0
           python -m playwright install --with-deps chromium
       - run: npm run check && npm run release:check
+      - run: node --disallow-code-generation-from-strings tests/packaging/font-csp.mjs
       - run: npm test
+      - run: node scripts/verify-package-bundle.mjs
       - run: python scripts/verify-package-browser.py
       - run: node scripts/verify-release.mjs
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

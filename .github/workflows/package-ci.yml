@@ -64,6 +64,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p test-output/package-native
+          node --disallow-code-generation-from-strings tests/packaging/font-csp.mjs
           npm test | tee test-output/package-native/tests.log
           dotnet run --project tools/contract-reference -c Release -- test-output/package-native/reference.json dist/fonts/DejaVuSans.ttf
           node scripts/compare-contracts.mjs test-output/package-native/reference.json test-output/package-native/report.json
@@ -92,6 +93,7 @@ jobs:
       - run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
+      - run: node scripts/verify-package-bundle.mjs
       - run: python scripts/verify-package-browser.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()

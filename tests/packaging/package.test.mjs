@@ -67,3 +67,7 @@ test('npm tarball is reproducible, bounded and contains no demo, font or private
  for(const p of ['dist/package/node.js','dist/package/node.cjs','dist/package/browser.js','dist/package/index.d.ts','dist/vendor/canvaskit.wasm','LICENSE','docs/PACKAGING.md'])assert(files.has(p),p);
  assert(meta.size<12*1024*1024);assert(meta.entryCount>50);
 });
+test('packaged module and WOFF2 adapter initialize with JavaScript string compilation disabled',()=>{
+ const output=execFileSync(process.execPath,['--disallow-code-generation-from-strings','--input-type=module','-e',"const {Initialize}=await import('./dist/package/node.js'); const S=await Initialize(); console.log(S.Version);"],{cwd:root,encoding:'utf8'});
+ assert.equal(output.trim(),Version);
+});

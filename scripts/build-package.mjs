@@ -1,14 +1,15 @@
-/** Assemble metadata only. Never rebuild/modify the qualified native binaries. */
+/** Assemble metadata and CSP-safe WOFF2 invokers. Never rebuild qualified native binaries. */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { createRequire } from 'node:module';
 import { root, readJson, walk, digest } from './packaging/common.mjs';
 import { Version } from '../dist/package/version.js';
-import { Initialize } from '../dist/package/node.js';
+import { PrepareWoff2 } from './packaging/prepare-woff2.mjs';
 const pkg=readJson('package.json'),native=readJson('dist/vendor/native-build-manifest.json');
 if(pkg.version!==Version||readJson('package-lock.json').version!==Version)throw new Error('Version drift; run npm version or node scripts/sync-version.mjs.');
 if(pkg.private||pkg.name!=='skiasharp-web'||pkg.license!=='MIT')throw new Error('Unexpected package identity or private flag.');
 for(const[name,sha]of Object.entries(native.artifacts))if(digest('dist/vendor/'+name)!==sha)throw new Error(`Native artifact integrity failed: ${name}`);
+const woff2=PrepareWoff2();
+const { Initialize } = await import('../dist/package/node.js');
 const S=await Initialize({fonts:false,isolated:true});
 if(S.Version!==Version)throw new Error('Runtime/package version drift.');
 for(const name of ['SkiaSharpGraphicsDumpMemoryStatistics','SkiaSharpPaintGetFillPath','SkiaSharpFontGetPaths'])if(typeof S.CanvasKit[name]!=='function')throw new Error(`Required native export missing: ${name}`);
@@ -23,5 +24,5 @@ const components=[{type:'library',name:'Skia',version:native.skiaRevision,extern
 writeFileSync(resolve(root,'dist/package/sbom.cdx.json'),JSON.stringify({bomFormat:'CycloneDX',specVersion:'1.6',version:1,metadata:{component:{type:'library',name:pkg.name,version:pkg.version},properties:[{name:'scope',value:'Bundled runtime and preserved npm dependency manifests; not a complete native compiler dependency graph.'}]},components},null,2)+'\n');
 const files=[...walk('dist/lib'),...walk('dist/vendor'),...walk('dist/package'),...walk('dist/licenses')].filter(p=>p!=='dist/package/build-manifest.json').sort();
 for(const file of files)if(/\.(ttf|otf|woff2?|ttc|otc|eot|pfa|pfb)$/i.test(file))throw new Error(`Font binary unexpectedly enters package: ${file}`);
-writeFileSync(resolve(root,'dist/package/build-manifest.json'),JSON.stringify({schemaVersion:1,name:pkg.name,version:Version,nativeRevision:native.skiaRevision,nativeArtifacts:native.artifacts,fontsIncluded:false,files:Object.fromEntries(files.map(p=>[p,digest(p)]))},null,2)+'\n');
+writeFileSync(resolve(root,'dist/package/build-manifest.json'),JSON.stringify({schemaVersion:1,name:pkg.name,version:Version,nativeRevision:native.skiaRevision,nativeArtifacts:native.artifacts,fontsIncluded:false,transformations:[woff2],files:Object.fromEntries(files.map(p=>[p,digest(p)]))},null,2)+'\n');
 console.log(`Built ${pkg.name}@${Version}: ${files.length} runtime/type/notice files, native hashes verified, no fonts.`);
