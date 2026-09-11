@@ -18,7 +18,16 @@ export async function RunPrecision(S) {
     const result = await context.RequestReadPixels(surface, new S.SKImageInfo(4, 4, K.ColorType.RGBA_F32, K.AlphaType.Premul, space), new S.SKRectI(0, 0, 4, 4), 'Src', 'Nearest', () => callbacks++);
     ensure(result, 'Native F16-to-F32 Graphite readback failed');
     try { const f = result.GetPixelSpan(Float32Array); report.nativeF16Pixel = [...f.slice(0, 4)];
-      ensure(Math.abs(f[0] - 2) < .002 && Math.abs(f[1] - .125) < .002 && Math.abs(f[2] - .5) < .002 && f[3] === 1, 'HDR color was quantized during native readback');
+      // SKCanvas.Clear interprets SKColorF as sRGB. A linear destination must
+      // receive the transfer-function result, not the original component values.
+      const reference = S.SKSurface.Create(new S.SKImageInfo(4, 4, K.ColorType.RGBA_F16, K.AlphaType.Premul, space));
+      try {
+        reference.Canvas.Clear(new S.SKColorF(2, .125, .5, 1));
+        const expected = reference.ReadPixels(new S.SKImageInfo(4, 4, K.ColorType.RGBA_F32, K.AlphaType.Premul, space));
+        report.rasterF16Pixel = [...expected.slice(0, 4)];
+        ensure(f[0] > 1 && expected[0] > 1 && f.slice(0, 4).every((v, i) => Math.abs(v - expected[i]) < .002),
+          'HDR Graphite/raster color mismatch: ' + JSON.stringify({ actual: report.nativeF16Pixel, expected: report.rasterF16Pixel }));
+      } finally { reference.Dispose(); }
       ensure(callbacks === 1 && result.RowBytes === 64, 'Readback callback/stride contract');
     } finally { result.Dispose(); }
     report.checks.push('native F16 Graphite rendering and F32 HDR readback');
