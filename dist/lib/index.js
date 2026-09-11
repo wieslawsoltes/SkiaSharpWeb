@@ -1,3 +1,5 @@
+import { registerCanvasElement } from './web-component.js';
+import { installMemoryTracing } from './memory.js';
 import { installGpuRecords } from './gpu-records.js';
 import { installSurfaceFormats } from './surface-formats.js';
 import { createCore } from './core.js';
@@ -63,8 +65,9 @@ async function initializeRuntime(options = {}) {
   installConformance(K, api);
   installSurfaceFormats(K, api);
   installGpuRecords(K, api);
+  installMemoryTracing(K, api);
   api.CanvasKit = K;
-  api.Version = '0.3.0';
+  api.Version = '0.4.0';
   api.BackendCapabilities = Object.freeze({ WebGL: 'Skia GPU renderer', Canvas: 'Skia software rasterizer presented through Canvas 2D', WebGPU: 'Native Skia Graphite/Dawn; injected runtimes without Graphite use the primitive/raster presenter' });
   if (options.fonts !== false) {
     const fonts = options.fonts || [
@@ -72,9 +75,20 @@ async function initializeRuntime(options = {}) {
       { url: new URL('fonts/DejaVuSerif.ttf', root).href, family: 'DejaVu Serif' },
       { url: new URL('fonts/DejaVuSansMono.ttf', root).href, family: 'DejaVu Sans Mono' }
     ];
-    for (const font of fonts) {
-      const bytes = font.data || new Uint8Array(await (await fetch(font.url).then(r => { if (!r.ok) throw new Error('Font request failed: ' + r.status); return r; })).arrayBuffer());
-      api.SKFontManager.Default.RegisterFont(bytes, font.family).Dispose();
+    if (!Array.isArray(fonts)) throw new TypeError('fonts must be false or an array of font descriptors.');
+    // Overlap I/O but register in the supplied order: fallback precedence is stable.
+    const buffers = await Promise.all(fonts.map(async font => {
+      if (font.data) return font.data;
+      const response = await fetch(font.url, { signal: options.signal });
+      if (!response.ok) throw new Error('Font request failed: ' + response.status);
+      return new Uint8Array(await response.arrayBuffer());
+    }));
+    options.signal?.throwIfAborted();
+    const manager = api.SKFontManager.Default;
+    try {
+      for (let i = 0; i < fonts.length; i++) manager.RegisterFont(buffers[i], fonts[i].family).Dispose();
+    } catch (error) {
+      manager.Dispose(); api.SKFontCache?.Clear(); throw error;
     }
   }
   if (!options.isolated) defaultRuntime = api;
@@ -83,38 +97,7 @@ async function initializeRuntime(options = {}) {
 
 export async function RegisterWebComponent(options = {}) {
   const api = await Initialize(options);
-  if (typeof customElements === 'undefined' || customElements.get('skia-canvas')) return api;
-  class SkiaCanvasElement extends HTMLElement {
-    static observedAttributes = ['backend', 'width', 'height'];
-    constructor() {
-      super(); this._generation = 0; this.attachShadow({mode:'open'});
-      this.shadowRoot.innerHTML = '<style>:host{display:block;min-height:160px}canvas{display:block;width:100%;height:100%}</style><canvas part="canvas"></canvas>';
-    }
-    connectedCallback() { this._observer = new ResizeObserver(() => this.InvalidateSurface()); this._observer.observe(this); this.InvalidateSurface(); }
-    disconnectedCallback() { this._generation++; this._observer?.disconnect(); this.Surface?.Dispose(); this.Surface = null; }
-    attributeChangedCallback() { if (this.isConnected) this.InvalidateSurface(); }
-    async InvalidateSurface() {
-      const generation = ++this._generation;
-      await Promise.resolve(); if (generation !== this._generation || !this.isConnected) return;
-      const old = this.shadowRoot.querySelector('canvas'); const element = old.cloneNode(false);
-      const dpr = globalThis.devicePixelRatio || 1;
-      element.width = Math.round(+(this.getAttribute('width') || Math.max(1, this.clientWidth * dpr)));
-      element.height = Math.round(+(this.getAttribute('height') || Math.max(1, this.clientHeight * dpr)));
-      try {
-        const requestedBackend=this.getAttribute('backend') || 'auto';
-        if(this.Surface && !this.Surface.IsDisposed && this.Surface.Width===element.width && this.Surface.Height===element.height && this._requestedBackend===requestedBackend){
-          this.dispatchEvent(new CustomEvent('paintsurface',{detail:{Surface:this.Surface,Info:new api.SKImageInfo(element.width,element.height),Canvas:this.Surface.Canvas}}));
-          this.Surface.Flush();return;
-        }
-        const surface = await api.SKSurface.Create(element, {backend:this.getAttribute('backend') || 'auto'});
-        if (generation !== this._generation || !this.isConnected) { surface.Dispose(); return; }
-        this.Surface?.Dispose(); old.replaceWith(surface.Element||element); this.Surface = surface;this._requestedBackend=requestedBackend;
-        this.dispatchEvent(new CustomEvent('paintsurface', {detail:{Surface:surface,Info:new api.SKImageInfo(element.width,element.height),Canvas:surface.Canvas}}));
-        surface.Flush();
-      } catch(error) { this.dispatchEvent(new CustomEvent('surfaceerror',{detail:error})); }
-    }
-  }
-  customElements.define('skia-canvas', SkiaCanvasElement);
+  registerCanvasElement(api);
   return api;
 }
 

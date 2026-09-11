@@ -138,7 +138,7 @@ test('forced backend with disabled fallback rejects failed initialization',async
 });
 
 test('custom element inserts the canvas actually returned by fallback',async()=>{
-  const saved=Object.fromEntries(['HTMLElement','customElements','ResizeObserver','CustomEvent'].map(name=>[name,Object.getOwnPropertyDescriptor(globalThis,name)]));const definitions=new Map();
+  const saved=Object.fromEntries(['HTMLElement','customElements','ResizeObserver','CustomEvent','document','requestAnimationFrame','cancelAnimationFrame'].map(name=>[name,Object.getOwnPropertyDescriptor(globalThis,name)]));const definitions=new Map();
   class Host {
     constructor(){this.clientWidth=64;this.clientHeight=48;this.isConnected=true;this.events=[];this.attributes=new Map()}
     attachShadow(){const root={canvas:new FakeCanvas(64,48),querySelector(){return this.canvas}};root.canvas.parent=root;root.canvas.isConnected=true;this.shadowRoot=root;return root}
@@ -146,10 +146,11 @@ test('custom element inserts the canvas actually returned by fallback',async()=>
     dispatchEvent(event){this.events.push(event);return true}
   }
   Object.defineProperties(globalThis,{HTMLElement:{value:Host,configurable:true},customElements:{value:{get:name=>definitions.get(name),define:(name,type)=>definitions.set(name,type)},configurable:true},ResizeObserver:{value:class{observe(){}disconnect(){}},configurable:true},CustomEvent:{value:class{constructor(type,options){this.type=type;this.detail=options.detail}},configurable:true}});
+  Object.defineProperties(globalThis,{document:{value:{createElement(){const c=new FakeCanvas();c.setAttribute=()=>{};return c;}},configurable:true},requestAnimationFrame:{value:cb=>setTimeout(cb,0),configurable:true},cancelAnimationFrame:{value:handle=>clearTimeout(handle),configurable:true}});
   let surface;
   try{
     const api=await RegisterWebComponent({CanvasKit:K,fonts:false,isolated:true});const replacement=new FakeCanvas(64,48);let flushed=0;
     api.SKSurface.Create=async()=>surface={Element:replacement,Canvas:{},IsDisposed:false,Flush(){flushed++},Dispose(){this.IsDisposed=true}};
-    const element=new(definitions.get('skia-canvas'))();await element.InvalidateSurface();assert.equal(element.shadowRoot.canvas,replacement);assert.equal(element.Surface,surface);assert.equal(flushed,1);assert(element.events.some(e=>e.type==='paintsurface'));element.disconnectedCallback();assert(surface.IsDisposed);
+    const element=new(definitions.get('skia-canvas'))();element.connectedCallback();await element.InvalidateSurface();assert.equal(element.shadowRoot.canvas,replacement);assert.equal(element.Surface,surface);assert.equal(flushed,1);assert(element.events.some(e=>e.type==='paintsurface'));element.disconnectedCallback();assert(surface.IsDisposed);
   }finally{surface?.Dispose();for(const [name,descriptor]of Object.entries(saved)){if(descriptor)Object.defineProperty(globalThis,name,descriptor);else delete globalThis[name]}}
 });

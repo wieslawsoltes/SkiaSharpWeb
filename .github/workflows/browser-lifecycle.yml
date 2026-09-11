@@ -1,0 +1,60 @@
+name: Browser lifecycle and live .NET conformance
+on:
+  push:
+    branches: [main]
+    paths: ['dist/lib/**', 'dist/vendor/**', 'dist/app.js', 'tests/**', 'tools/dotnet-reference/**', 'scripts/verify-browser-lifecycle.py', '.github/workflows/browser-lifecycle.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: browser-lifecycle-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned browser test environment
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Exercise native Graphite, Ganesh, Canvas and component lifetime
+        run: python scripts/verify-browser-lifecycle.py --output test-output/lifecycle
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-lifecycle-${{ github.sha }}
+          path: test-output/lifecycle/
+          retention-days: 14
+  dotnet:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Execute real .NET reference and compare JavaScript
+        run: |
+          mkdir -p test-output/dotnet
+          dotnet build tools/dotnet-reference/Reference.csproj -c Release
+          dotnet tools/dotnet-reference/bin/Release/net8.0/Reference.dll dist/fonts/DejaVuSans.ttf > test-output/dotnet/current.json
+          cp test-output/dotnet/current.json tests/fixtures/dotnet-4.154.json
+          node --test tests/conformance.test.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dotnet-${{ github.sha }}
+          path: test-output/dotnet/
+          retention-days: 14
