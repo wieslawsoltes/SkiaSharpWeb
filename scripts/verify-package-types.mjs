@@ -1,0 +1,10 @@
+import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { root, readJson } from './packaging/common.mjs';
+const {consumer}=readJson('test-output/package-verification.json');
+const tsc=resolve(root,'node_modules/typescript/bin/tsc');
+if(!existsSync(tsc))throw new Error('Install locked development dependencies with npm ci before type validation.');
+execFileSync(process.execPath,[tsc,'--noEmit','--strict','--skipLibCheck','false','--target','ES2022','--module','NodeNext','--moduleResolution','NodeNext','--lib','ES2022,DOM','consumer.mts','consumer.cts'],{cwd:consumer,stdio:'inherit'});
+execFileSync(process.execPath,[tsc,'--noEmit','--strict','--target','ES2022','--module','ESNext','--moduleResolution','Bundler','--lib','ES2022,DOM','consumer.mts'],{cwd:consumer,stdio:'inherit'});
+console.log('Installed-package TypeScript consumers passed: NodeNext ESM/CommonJS and Bundler resolution.');

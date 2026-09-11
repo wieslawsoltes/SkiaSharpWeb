@@ -4,3 +4,9 @@ test-output/
 *.zip
 __pycache__/
 *.pyc
+artifacts/
+*.tgz
+dist/package/build-manifest.json
+dist/package/sbom.cdx.json
+dist/package/THIRD_PARTY_NOTICES.txt
+dist/package/runtime.d.ts

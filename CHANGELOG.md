@@ -1,3 +1,12 @@
+# Packaging readiness (unreleased)
+
+- Add conditional Node ESM/CommonJS and browser entries with no implicit font downloads.
+- Add typed initialization/core drawing/component APIs and a generated advanced namespace.
+- Add deterministic tarball manifests, native integrity/size/content checks, bundled notices and SBOM.
+- Add clean consumer, cross-platform, TypeScript, browser, native/.NET and release gates.
+- Add opt-in, tag-checked draft GitHub releases and verified-artifact npm trusted publishing.
+- Preserve the qualified native renderer and gallery behavior; no registry publication performed.
+
 # Changes
 
 ## 0.5.0 — portable completion and optimization
