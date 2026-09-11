@@ -1,0 +1,39 @@
+{
+  "runtime": "v24.19.0",
+  "backend": "Dawn Vulkan",
+  "adapterInfo": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "swiftshader-device-subzero-",
+    "description": "SwiftShader driver 5.0.0",
+    "isFallbackAdapter": true
+  },
+  "physicalGPU": false,
+  "results": [
+    {
+      "label": "baseline",
+      "primitiveChecks": 3,
+      "uploadBytes": 780,
+      "validationErrors": [],
+      "adapter": null
+    },
+    {
+      "label": "current",
+      "primitiveChecks": 3,
+      "uploadBytes": 780,
+      "validationErrors": [],
+      "adapter": {
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "device": "swiftshader-device-subzero-",
+        "description": "SwiftShader driver 5.0.0",
+        "isFallbackAdapter": true
+      }
+    }
+  ],
+  "difference": {
+    "changedComponents": 0,
+    "maxComponentError": 0,
+    "meanAbsoluteError": 0
+  }
+}

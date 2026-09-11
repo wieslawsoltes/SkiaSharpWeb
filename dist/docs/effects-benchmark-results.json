@@ -1,0 +1,14 @@
+{
+  "environment": "Node v24.19.0 / CanvasKit 0.42 CPU raster",
+  "iterations": 7,
+  "before": {
+    "regionSetPath1024MedianMs": 271.63735899999995,
+    "clippedColorDrawMedianMs": 24.193506999999954
+  },
+  "after": {
+    "regionSetPath1024MedianMs": 3.4986549999998715,
+    "clippedColorDrawMedianMs": 0.45775400000002264
+  },
+  "regionSpeedup": 77.64051013889907,
+  "clippedEffectsSpeedup": 52.85263919047951
+}

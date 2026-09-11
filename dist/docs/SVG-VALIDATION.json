@@ -1,0 +1,227 @@
+{
+  "passed": 44,
+  "failed": 0,
+  "verification": "Native serialization of every sample; independent SVG rendering is covered separately in documents-native.test.mjs.",
+  "results": [
+    {
+      "scene": "primitives",
+      "bytes": 2129,
+      "passed": true
+    },
+    {
+      "scene": "paths",
+      "bytes": 25529,
+      "passed": true
+    },
+    {
+      "scene": "pathops",
+      "bytes": 98213,
+      "passed": true
+    },
+    {
+      "scene": "measure",
+      "bytes": 18486,
+      "passed": true
+    },
+    {
+      "scene": "gradients",
+      "bytes": 26362,
+      "passed": true
+    },
+    {
+      "scene": "strokes",
+      "bytes": 19375,
+      "passed": true
+    },
+    {
+      "scene": "filters",
+      "bytes": 23861,
+      "passed": true
+    },
+    {
+      "scene": "blend",
+      "bytes": 21937,
+      "passed": true
+    },
+    {
+      "scene": "typography",
+      "bytes": 60528,
+      "passed": true
+    },
+    {
+      "scene": "shaping",
+      "bytes": 47605,
+      "passed": true
+    },
+    {
+      "scene": "fontmanager",
+      "bytes": 71272,
+      "passed": true
+    },
+    {
+      "scene": "outlines",
+      "bytes": 41511,
+      "passed": true
+    },
+    {
+      "scene": "paragraph",
+      "bytes": 99897,
+      "passed": true
+    },
+    {
+      "scene": "transforms",
+      "bytes": 151813,
+      "passed": true
+    },
+    {
+      "scene": "clipping",
+      "bytes": 26484,
+      "passed": true
+    },
+    {
+      "scene": "images",
+      "bytes": 91315,
+      "passed": true
+    },
+    {
+      "scene": "pixels",
+      "bytes": 21335,
+      "passed": true
+    },
+    {
+      "scene": "vertices",
+      "bytes": 205,
+      "passed": true
+    },
+    {
+      "scene": "colormatrix",
+      "bytes": 24757,
+      "passed": true
+    },
+    {
+      "scene": "pictures",
+      "bytes": 5733,
+      "passed": true
+    },
+    {
+      "scene": "shader",
+      "bytes": 261,
+      "passed": true
+    },
+    {
+      "scene": "benchmark",
+      "bytes": 19696,
+      "passed": true
+    },
+    {
+      "scene": "vector_documents",
+      "bytes": 88261,
+      "passed": true
+    },
+    {
+      "scene": "document_fallbacks",
+      "bytes": 85363,
+      "passed": true
+    },
+    {
+      "scene": "drawables",
+      "bytes": 87080,
+      "passed": true
+    },
+    {
+      "scene": "gpu_capabilities",
+      "bytes": 136355,
+      "passed": true
+    },
+    {
+      "scene": "variations",
+      "bytes": 85502,
+      "passed": true
+    },
+    {
+      "scene": "colorfonts",
+      "bytes": 61284,
+      "passed": true
+    },
+    {
+      "scene": "cffoutlines",
+      "bytes": 83696,
+      "passed": true
+    },
+    {
+      "scene": "fontmetadata",
+      "bytes": 150139,
+      "passed": true
+    },
+    {
+      "scene": "variablelayout",
+      "bytes": 94833,
+      "passed": true
+    },
+    {
+      "scene": "variablecolor",
+      "bytes": 119322,
+      "passed": true
+    },
+    {
+      "scene": "font-hints",
+      "bytes": 111302,
+      "passed": true
+    },
+    {
+      "scene": "font-cache",
+      "bytes": 117524,
+      "passed": true
+    },
+    {
+      "scene": "skottie",
+      "bytes": 61506,
+      "passed": true
+    },
+    {
+      "scene": "skottie-properties",
+      "bytes": 70487,
+      "passed": true
+    },
+    {
+      "scene": "skottie-slots",
+      "bytes": 31723,
+      "passed": true
+    },
+    {
+      "scene": "scenegraph",
+      "bytes": 90688,
+      "passed": true
+    },
+    {
+      "scene": "region_boolean",
+      "bytes": 40732,
+      "passed": true
+    },
+    {
+      "scene": "region_path",
+      "bytes": 96985,
+      "passed": true
+    },
+    {
+      "scene": "lookup_effects",
+      "bytes": 86163,
+      "passed": true
+    },
+    {
+      "scene": "path_effects",
+      "bytes": 25572,
+      "passed": true
+    },
+    {
+      "scene": "native_asset_codecs",
+      "bytes": 112641,
+      "passed": true
+    },
+    {
+      "scene": "typed_text_runs",
+      "bytes": 101445,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "100": {
+    "xHeight": 450,
+    "capHeight": 700,
+    "typoAscent": 800,
+    "typoLineGap": 10,
+    "underlinePosition": -80,
+    "underlineThickness": 30,
+    "vheaAscent": 850,
+    "vheaLineGap": 20,
+    "verticalMetrics": {
+      ".notdef": [
+        900,
+        100
+      ],
+      "space": [
+        900,
+        100
+      ],
+      "A": [
+        900,
+        100
+      ],
+      "V": [
+        900,
+        100
+      ],
+      "acutecomb": [
+        900,
+        100
+      ],
+      "A.alt": [
+        900,
+        100
+      ]
+    }
+  },
+  "500": {
+    "xHeight": 525,
+    "capHeight": 725,
+    "typoAscent": 850,
+    "typoLineGap": 20,
+    "underlinePosition": -105,
+    "underlineThickness": 55,
+    "vheaAscent": 975,
+    "vheaLineGap": 35,
+    "verticalMetrics": {
+      ".notdef": [
+        1050,
+        125
+      ],
+      "space": [
+        1050,
+        125
+      ],
+      "A": [
+        1050,
+        125
+      ],
+      "V": [
+        1050,
+        125
+      ],
+      "acutecomb": [
+        1050,
+        125
+      ],
+      "A.alt": [
+        1050,
+        125
+      ]
+    }
+  },
+  "900": {
+    "xHeight": 600,
+    "capHeight": 750,
+    "typoAscent": 900,
+    "typoLineGap": 30,
+    "underlinePosition": -130,
+    "underlineThickness": 80,
+    "vheaAscent": 1100,
+    "vheaLineGap": 50,
+    "verticalMetrics": {
+      ".notdef": [
+        1200,
+        150
+      ],
+      "space": [
+        1200,
+        150
+      ],
+      "A": [
+        1200,
+        150
+      ],
+      "V": [
+        1200,
+        150
+      ],
+      "acutecomb": [
+        1200,
+        150
+      ],
+      "A.alt": [
+        1200,
+        150
+      ]
+    }
+  }
+}

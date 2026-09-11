@@ -1,0 +1,53 @@
+import { createAssetScenes } from './asset-samples.js';
+import { Initialize } from './lib/index.js';
+import { createScenes } from './samples.js';
+import { createRegionEffectScenes } from './region-effect-scenes.js';
+import { createFontScenes } from './font-samples.js';
+import { createAdvancedScenes } from './samples-advanced.js';
+import { createAnimationScenes } from './animation-samples.js';
+const $=s=>document.querySelector(s);
+let S,scenes,current,surface,animationScenes,fontScenes,playing=false,frame=0,time=0,last=0,generation=0,disposed=false,uploadGeneration=0;
+const options={amount:8,count:2000,text:'',time:0,weight:650,palette:0};
+const symbols={Drawing:'◇','Paint & effects':'◈','Fonts & text':'T','Canvas & resources':'▧',Performance:'⌁','Documents':'▤','Animation & resources':'▷','GPU & compatibility':'⌘','Regions & extended effects':'▥'};
+function toast(message){const e=$('#toast');e.textContent=message;e.hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>e.hidden=true,3000);}
+function error(e){$('#error').textContent=e.message||String(e);$('#error').hidden=false;console.error(e);}
+function renderNav(filter=''){if(disposed||!scenes)return;
+ const nav=$('#navigation');nav.replaceChildren();let group='';const filtered=scenes.filter(s=>(s.title+' '+s.group).toLowerCase().includes(filter.toLowerCase()));
+ for(const scene of [...new Set(filtered.map(s=>s.group))].flatMap(group=>filtered.filter(s=>s.group===group))){
+  if(scene.group!==group){const h=document.createElement('h2');h.textContent=group=scene.group;nav.append(h);}
+  const b=document.createElement('button');b.className=scene===current?'active':'';b.setAttribute('aria-current',scene===current?'page':'false');b.innerHTML='<i></i><span></span><span class="arrow">›</span>';b.children[0].textContent=symbols[scene.group];b.children[1].textContent=scene.title;b.onclick=()=>select(scene.id);nav.append(b);
+ }
+}
+function animationDuration(){return current?.id==='skottie'?Math.max(.001,animationScenes?.Animation?.Duration.TotalSeconds??5):5;}
+function select(id){if(disposed||!scenes)return;current=scenes.find(s=>s.id===id)||scenes[0];history.replaceState(null,'','#'+current.id);$('#title').textContent=current.title;$('#description').textContent=current.description;$('#category').textContent=current.group;$('#sample-index').textContent=String(scenes.indexOf(current)+1).padStart(2,'0')+' / '+scenes.length;$('#code code').textContent=current.code;$('#detail').textContent=current.tag+'. '+current.description;$('#font-controls').hidden=!['variations','colorfonts','cffoutlines','fontmetadata','variablelayout','variablecolor','font-hints'].includes(current.id);$('#animation-controls').hidden=current.group!=='Animation & resources';renderNav($('#search').value);draw();}
+function draw(){if(disposed||!surface||!current)return;try{$('#error').hidden=true;const start=performance.now();const c=surface.Canvas;c.RestoreToCount(1);c.ResetMatrix();c.Clear(S.SKColor.Parse('#0E1823'));const saved=c.Save();try{current.draw(c,960,600,{...options,time,surface});}finally{c.RestoreToCount(saved);}surface.Flush();$('#frame-time').textContent=(performance.now()-start).toFixed(2)+' ms';$('#mode').textContent=surface.RenderMode==='skia-graphite-webgpu'?'Skia Graphite':surface.RenderMode==='native-primitives'?'Native GPU primitives':surface.RenderMode==='skia-raster-upload'?'Skia raster → WebGPU':surface.Backend==='webgl'?'Skia GPU':'Skia software';$('#timeline').value=String((time%animationDuration())/animationDuration()*100);$('#time-value').textContent=time.toFixed(2)+' s';}catch(e){if(playing)toggleAnimation(false);error(e);}}
+async function setBackend(){if(disposed||!S)return;const id=++generation;const old=$('#canvas'),fresh=old.cloneNode(false);$('#loading').hidden=false;$('#error').hidden=true;try{
+ const s=await S.SKSurface.Create(fresh,{backend:$('#backend').value,onDeviceLost:()=>{if(disposed||id!==generation)return;toast('GPU device lost. Reinitializing renderer.');setBackend();}});
+ if(disposed||id!==generation){s.Dispose();return;}surface?.Dispose();surface=s;old.replaceWith(s.Element||fresh);surface.Element.id='canvas';$('#backend-status').textContent=surface.RenderMode==='skia-graphite-webgpu'?'WebGPU · Graphite':surface.Backend==='webgpu'?'WebGPU · hybrid':surface.Backend==='webgl'?'WebGL · accelerated':'Canvas · software';$('#backend-status').title=surface.FallbackReasons.join('\n');draw();
+ }catch(e){if(!disposed&&id===generation)error(e);}finally{if(!disposed&&id===generation)$('#loading').hidden=true;}}
+function loop(t){if(disposed||!playing)return;time+=(t-last)/1000;last=t;draw();if(playing&&!disposed)frame=requestAnimationFrame(loop);}
+function toggleAnimation(force){playing=!disposed&&(force??!playing);$('#animate').setAttribute('aria-pressed',playing);$('#animate').textContent=playing?'Ⅱ Pause':'▷ Animate';cancelAnimationFrame(frame);if(playing){last=performance.now();frame=requestAnimationFrame(loop);}}
+$('#theme').onclick=()=>{const mode=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=mode;try{localStorage.setItem('skia-theme',mode);}catch{}};
+try{document.documentElement.dataset.theme=localStorage.getItem('skia-theme')||'dark';}catch{}
+$('#backend').onchange=()=>setBackend();$('#animate').onclick=()=>toggleAnimation();$('#search').oninput=e=>renderNav(e.target.value);
+$('#text').oninput=e=>{options.text=e.target.value;draw();};$('#amount').oninput=e=>{options.amount=+e.target.value;$('#amount-value').value=e.target.value;draw();};$('#count').onchange=e=>{options.count=+e.target.value;draw();};
+$('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(current.code);toast('Code copied');}catch{toast('Select the code to copy it in this browser context.');}};
+$('#code-tab').onclick=()=>{$('#code').hidden=false;$('#about').hidden=true;$('#code-tab').classList.add('active');$('#about-tab').classList.remove('active');};
+$('#about-tab').onclick=()=>{$('#code').hidden=true;$('#about').hidden=false;$('#about-tab').classList.add('active');$('#code-tab').classList.remove('active');};
+function download(bytes,type,extension,sceneId=current.id){const url=URL.createObjectURL(new Blob([bytes],{type}));const a=document.createElement('a');a.href=url;a.download='skiasharp-'+sceneId+'.'+extension;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+$('#export').onclick=async()=>{if(disposed||!surface||!current)return;let image,data,document;const format=$('#export-format').value,selected=current,drawOptions={...options,time,surface};$('#export').disabled=true;try{
+ if(format==='png'){image=await surface.SnapshotAsync();if(disposed)return;data=image.Encode(S.SKEncodedImageFormat.Png,100);download(data.ToArray(),'image/png','png',selected.id);}
+ else if(format==='svg'){const stream=new S.SKDynamicMemoryWStream();let canvas;try{canvas=S.SKSvgCanvas.Create(S.SKRect.Create(0,0,960,600),stream);canvas.Clear(S.SKColor.Parse('#0E1823'));selected.draw(canvas,960,600,drawOptions);canvas.Dispose();canvas=null;data=stream.DetachAsData();if(disposed)return;download(data.ToArray(),'image/svg+xml','svg',selected.id);}finally{canvas?.Dispose();stream.Dispose();}}
+ else {document=format==='pdf'?S.SKDocument.CreatePdf({Title:selected.title,Author:'SkiaSharp Web'}):S.SKDocument.CreateXps({Title:selected.title});const canvas=document.BeginPage(960,600);canvas.Clear(S.SKColor.Parse('#0E1823'));const count=canvas.Save();try{selected.draw(canvas,960,600,drawOptions);}finally{canvas.RestoreToCount(count);}document.EndPage();data=await document.ToData();if(disposed)return;download(data.ToArray(),format==='pdf'?'application/pdf':'application/vnd.ms-xpsdocument',format,selected.id);}
+ if(!disposed)toast(format.toUpperCase()+' exported');
+ }catch(e){if(!disposed)error(e);}finally{data?.Dispose();image?.Dispose();document?.Dispose();if(!disposed)$('#export').disabled=false;}};
+$('#font-upload').onchange=async e=>{const file=e.target.files[0];if(disposed||!S||!file)return;try{const bytes=new Uint8Array(await file.arrayBuffer());if(disposed)return;const face=S.SKFontManager.Default.RegisterFont(bytes);$('#font-status').textContent='Added '+face.FamilyName+' · '+S.SKFontManager.Default.FontFamilyCount+' families';face.Dispose();select('fontmanager');toast('Font loaded');}catch(e){error(e);}finally{$('#font-upload').value='';}};
+for(const label of document.querySelectorAll('.upload-button'))label.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();label.querySelector('input[type=file]').click();}};
+$('#font-weight').oninput=e=>{options.weight=+e.target.value;$('#weight-value').textContent=e.target.value;draw();};
+$('#palette').onchange=e=>{options.palette=+e.target.value;draw();};
+$('#timeline').oninput=e=>{toggleAnimation(false);const duration=animationDuration();time=Math.min(+e.target.value/100*duration,Math.max(0,duration-1e-6));draw();};
+$('#animation-upload').onchange=async e=>{const file=e.target.files[0];if(disposed||!animationScenes||!file)return;const request=++uploadGeneration;try{const value=JSON.parse(await file.text());if(disposed||request!==uploadGeneration)return;await animationScenes.loadAnimation(value);if(disposed||request!==uploadGeneration)return;time=0;select('skottie');toast('Animation loaded');}catch(errorValue){if(!disposed&&request===uploadGeneration&&errorValue.name!=='AbortError')error(errorValue);}finally{if(request===uploadGeneration)e.target.value='';}};
+document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();$('#search').focus();}});
+window.addEventListener('hashchange',()=>{if(scenes)select(location.hash.slice(1));});window.addEventListener('pagehide',event=>{toggleAnimation(false);if(event.persisted)return;disposed=true;generation++;uploadGeneration++;surface?.Dispose();surface=null;animationScenes?.Dispose();fontScenes?.Dispose();});
+async function start(){try{S=await Initialize();if(disposed)return;window.SkiaSharp=S;animationScenes=createAnimationScenes(S);fontScenes=await createFontScenes(S);if(disposed){animationScenes.Dispose();fontScenes.Dispose();return;}scenes=[...createScenes(S),...createAdvancedScenes(S),...animationScenes.scenes,...fontScenes.scenes,...createRegionEffectScenes(S),...createAssetScenes(S)];$('#scene-count').textContent=scenes.length;select(location.hash.slice(1));await setBackend();if(disposed)return;window.graphicsLab={get surface(){return surface;},scenes,select,draw,loadAnimation:animationScenes.loadAnimation};}catch(e){animationScenes?.Dispose();fontScenes?.Dispose();if(!disposed){$('#loading').hidden=true;error(e);}}}
+await start();

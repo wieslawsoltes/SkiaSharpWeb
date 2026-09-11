@@ -1,0 +1,21 @@
+{
+  "Environment": "Node v24.19.0, bundled CanvasKit/Skia native extension WASM; shared host, median wall milliseconds",
+  "Typeface": "Roboto Flex WOFF2, weight750",
+  "ColdInstanceMedianMs": 3.3040579999999977,
+  "CachedInstanceMedianMs": 0.011286999999981617,
+  "OwnedCloneMedianMs": 0.005117999999981748,
+  "RepeatedWoff2LoadMedianMs": 0.32112300000000005,
+  "InstanceSpeedup": 292.731283778274,
+  "Cache": {
+    "NativeHits": 150,
+    "NativeMisses": 32,
+    "SourceHits": 49,
+    "SourceMisses": 2,
+    "InstanceHits": 101,
+    "InstanceMisses": 30,
+    "Evictions": 0,
+    "EntryCount": 4,
+    "RetainedBytes": 254176,
+    "MaxBytes": 33554432
+  }
+}

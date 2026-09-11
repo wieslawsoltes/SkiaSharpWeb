@@ -1,0 +1,1 @@
+CFF-Regular.otf, CFF2-Variable.otf, ColorFixture.ttf, ColorFixture.woff, ColorFixture.woff2, ColorLayers.ttf, and ColorGradient.ttf are original synthetic test fonts created for this project, released under the MIT license of the project. Roboto Flex is Copyright 2017 The Roboto Flex Project Authors and is distributed under the SIL Open Font License 1.1 in RobotoFlex-OFL.txt.

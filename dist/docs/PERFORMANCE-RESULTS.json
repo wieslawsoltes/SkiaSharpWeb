@@ -1,0 +1,57 @@
+{
+  "runtime": "v24.19.0",
+  "nativeWasmSHA256": "1aa5c4d821ad933ef908825898d868983df5bf2a606f447d1f041c32893c977b",
+  "adapter": "submission sink (CPU benchmarks only)",
+  "count": 10000,
+  "rounds": 31,
+  "results": [
+    {
+      "label": "baseline",
+      "rasterSHA256": "7f4d65a181f6fb81a212ca97af6462cf49149ec2367a9f19aa0b4fb35e9a3401",
+      "cases": {
+        "raster_primitives": {
+          "medianMs": 66.79573500000015,
+          "medianCpuMs": 68.699,
+          "p95Ms": 76.93235699999991,
+          "uploadedBytesPerFrame": 0
+        },
+        "webgpu_command_preparation": {
+          "medianMs": 5.426494000000275,
+          "medianCpuMs": 5.431,
+          "p95Ms": 6.426877999999306,
+          "uploadedBytesPerFrame": 2640000
+        },
+        "texture_upload_preparation": {
+          "medianMs": 0.08060899999964022,
+          "medianCpuMs": 0.082,
+          "p95Ms": 0.16093700000055833,
+          "uploadedBytesPerFrame": 2306048
+        }
+      }
+    },
+    {
+      "label": "current",
+      "rasterSHA256": "7f4d65a181f6fb81a212ca97af6462cf49149ec2367a9f19aa0b4fb35e9a3401",
+      "cases": {
+        "raster_primitives": {
+          "medianMs": 45.2630250000002,
+          "medianCpuMs": 45.282,
+          "p95Ms": 49.36823299999992,
+          "uploadedBytesPerFrame": 0
+        },
+        "webgpu_command_preparation": {
+          "medianMs": 0.2996610000000146,
+          "medianCpuMs": 0.306,
+          "p95Ms": 0.7723779999996623,
+          "uploadedBytesPerFrame": 520000
+        },
+        "texture_upload_preparation": {
+          "medianMs": 0.001952999999957683,
+          "medianCpuMs": 0.003,
+          "p95Ms": 0.025208000000020547,
+          "uploadedBytesPerFrame": 2245244
+        }
+      }
+    }
+  ]
+}

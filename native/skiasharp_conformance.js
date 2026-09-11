@@ -1,0 +1,10 @@
+(function(){CanvasKit._extraInitializations=CanvasKit._extraInitializations||[];CanvasKit._extraInitializations.push(function(){var K=CanvasKit,N=K.SkiaSharpNative=K.SkiaSharpNative||{};
+ N.Picture={ApproximateOperationCount:K._SkiaSharpPictureOpCount};N.Surface={CreateNull:K._SkiaSharpNullSurface};
+ N.Milestone=K._SkiaSharpMilestone();N.HarfBuzz={MakeFont:function(bytes,index){return new K.SkiaSharpHarfBuzzFont(bytes,index||0);}};
+ N.ColorSpace=Object.assign(N.ColorSpace||{},{GetInfo:K._SkiaSharpColorSpaceInfo,MakeRgb:K._SkiaSharpMakeRGB,MakeCicp:K._SkiaSharpMakeCICP});
+ N.Shader=Object.assign(N.Shader||{},{WithLocalMatrix:K._SkiaSharpShaderLocalMatrix,WithColorFilter:K._SkiaSharpShaderColorFilter,Blend:K._SkiaSharpBlendShaders});
+ var kids=function(a){return a.map(function(v){var name=v&&v.$$&&v.$$.ptrType&&v.$$.ptrType.name||'';return{type:name.indexOf('ColorFilter')>=0?1:name.indexOf('Blender')>=0?2:0,value:v};});};
+ N.RuntimeEffect=Object.assign(N.RuntimeEffect||{},{MakeForColorFilter:K._SkiaSharpRuntimeColorFilter,ToShader:function(e,b,c,m){return K._SkiaSharpRuntimeShaderRaw(e,b,kids(c),m||null);},ToColorFilter:function(e,b,c){return K._SkiaSharpRuntimeColorFilterRaw(e,b,kids(c));},ToBlender:function(e,b,c){return K._SkiaSharpRuntimeBlenderRaw(e,b,kids(c));}});
+ N.Path=Object.assign(N.Path||{},{Classification:K._SkiaSharpPathClassification});N.ColorTypes=K._SkiaSharpColorTypes();
+ N.Canvas=Object.assign(N.Canvas||{},{Annotation:K._SkiaSharpCanvasAnnotation,SetMatrix:K._SkiaSharpCanvasSetMatrix,IsClipRect:K._SkiaSharpCanvasIsClipRect,LocalClipBounds:K._SkiaSharpCanvasLocalClipBounds});
+});})();

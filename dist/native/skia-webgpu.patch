@@ -1,0 +1,284 @@
+diff --git a/modules/canvaskit/BUILD.gn b/modules/canvaskit/BUILD.gn
+index e54983e..11c1dfa 100644
+--- a/modules/canvaskit/BUILD.gn
++++ b/modules/canvaskit/BUILD.gn
+@@ -175,7 +175,7 @@ skia_wasm_lib("canvaskit") {
+     externs_path = rebase_path("externs.js")
+     ldflags += [
+       "-Oz",
+-      "--closure=1",
++      "--closure=0",
+       "--pre-js",
+       rebase_path("release.js"),
+       "--closure-args=--externs=$externs_path",
+@@ -194,10 +194,13 @@ skia_wasm_lib("canvaskit") {
+       "--pre-js",
+       rebase_path("cpu.js"),
+       "--pre-js",
+-      rebase_path("webgpu.js"),
+-      "-sUSE_WEBGL2=0",
++      rebase_path("skiasharp_gpu.js"),
++      "-lGL",
++      "--pre-js",
++      rebase_path("webgl.js"),
++      "-sUSE_WEBGL2=1",
++      "-sMAX_WEBGL_VERSION=2",
+       "-sUSE_WEBGPU=1",
+-      "-sASYNCIFY",
+ 
+       # Modules from html5_webgpu for JS<->WASM interop
+       "-sEXPORTED_RUNTIME_METHODS=WebGPU,JsValStore",
+@@ -237,6 +240,10 @@ skia_wasm_lib("canvaskit") {
+     rebase_path("util.js"),
+     "--pre-js",
+     rebase_path("interface.js"),
++    "--pre-js",
++    rebase_path("skiasharp_effects.js"),
++    "--pre-js",
++    rebase_path("skiasharp_conformance.js"),
+   ]
+ 
+   if (skia_canvaskit_enable_matrix_helper) {
+@@ -349,11 +356,11 @@ skia_wasm_lib("canvaskit") {
+     "-sINITIAL_MEMORY=128MB",
+     "-sWASM",
+     "-sSTRICT=1",
+-    "-sEXPORTED_RUNTIME_METHODS=HEAP32,HEAPU8,HEAPU16,HEAPU32,HEAPF32",
++    "-sEXPORTED_RUNTIME_METHODS=HEAP32,HEAPU8,HEAPU16,HEAPU32,HEAPF32,WebGPU,JsValStore",
+ 
+     # INCOMING_MODULE_JS_API is set to empty by default.
+     # https://github.com/emscripten-core/emscripten/blob/8dc91db45bf96c174531006839472a3924d105aa/src/settings.js#L1204
+-    "-sINCOMING_MODULE_JS_API=onRuntimeInitialized,locateFile",
++    "-sINCOMING_MODULE_JS_API=onRuntimeInitialized,locateFile,wasmBinary,print,printErr",
+   ]
+ 
+   defines = [
+@@ -386,6 +393,10 @@ skia_wasm_lib("canvaskit") {
+   if (skia_canvaskit_enable_skp_serialization) {
+     defines += [ "CK_SERIALIZE_SKP" ]
+   }
++  if (skia_enable_graphite && skia_use_dawn) {
++    defines += [ "SK_GRAPHITE", "SK_DAWN" ]
++  }
++
+   if (skia_enable_ganesh) {
+     defines += [ "SK_GANESH" ]
+     if (skia_canvaskit_enable_webgl) {
+diff --git a/modules/canvaskit/canvaskit_bindings.cpp b/modules/canvaskit/canvaskit_bindings.cpp
+index 279ebb8..d3fb476 100644
+--- a/modules/canvaskit/canvaskit_bindings.cpp
++++ b/modules/canvaskit/canvaskit_bindings.cpp
+@@ -73,7 +73,7 @@
+ #include <emscripten/html5.h>
+ #include "modules/canvaskit/WasmCommon.h"
+ 
+-#if defined(CK_ENABLE_WEBGL) || defined(CK_ENABLE_WEBGPU)
++#if defined(CK_ENABLE_WEBGL) || defined(CK_LEGACY_WEBGPU)
+ #define ENABLE_GPU
+ #endif
+ 
+@@ -102,11 +102,11 @@
+ #include <GLES2/gl2.h>
+ #endif  // CK_ENABLE_WEBGL
+ 
+-#ifdef CK_ENABLE_WEBGPU
++#ifdef CK_LEGACY_WEBGPU
+ #include <emscripten/html5_webgpu.h>
+ #include <webgpu/webgpu.h>
+ #include <webgpu/webgpu_cpp.h>
+-#endif  // CK_ENABLE_WEBGPU
++#endif  // CK_LEGACY_WEBGPU
+ 
+ #ifndef CK_NO_FONTS
+ #include "include/core/SkFont.h"
+@@ -365,7 +365,7 @@ sk_sp<SkSurface> MakeRenderTarget(sk_sp<GrDirectContext> dContext, SimpleImageIn
+ }
+ #endif  // CK_ENABLE_WEBGL
+ 
+-#ifdef CK_ENABLE_WEBGPU
++#ifdef CK_LEGACY_WEBGPU
+ 
+ sk_sp<GrDirectContext> MakeGrContext() {
+     GrContextOptions options;
+@@ -434,7 +434,7 @@ bool ReplaceBackendTexture(
+             target, kTopLeft_GrSurfaceOrigin, SkSurface::kDiscard_ContentChangeMode);
+ }
+ 
+-#endif  // CK_ENABLE_WEBGPU
++#endif  // CK_LEGACY_WEBGPU
+ 
+ //========================================================================================
+ // Path things
+@@ -1143,10 +1143,10 @@ EMSCRIPTEN_BINDINGS(Skia) {
+                      &MakeRenderTarget));
+ #endif  // CK_ENABLE_WEBGL
+ 
+-#ifdef CK_ENABLE_WEBGPU
++#ifdef CK_LEGACY_WEBGPU
+     constant("webgpu", true);
+     function("_MakeGPUTextureSurface", &MakeGPUTextureSurface);
+-#endif  // CK_ENABLE_WEBGPU
++#endif  // CK_LEGACY_WEBGPU
+ 
+     function("getDecodeCacheLimitBytes", &SkResourceCache::GetTotalByteLimit);
+     function("setDecodeCacheLimitBytes", &SkResourceCache::SetTotalByteLimit);
+@@ -2897,7 +2897,7 @@ EMSCRIPTEN_BINDINGS(Skia) {
+                                   releaseCtx);
+                       }))
+ #endif  // CK_ENABLE_WEBGL
+-#ifdef CK_ENABLE_WEBGPU
++#ifdef CK_LEGACY_WEBGPU
+             .function("_replaceBackendTexture",
+                       optional_override([](SkSurface& self,
+                                            uint32_t texHandle,
+@@ -2906,7 +2906,7 @@ EMSCRIPTEN_BINDINGS(Skia) {
+                                            int height) {
+                           return ReplaceBackendTexture(self, texHandle, texFormat, width, height);
+                       }))
+-#endif  // CK_ENABLE_WEBGPU
++#endif  // CK_LEGACY_WEBGPU
+             .function("_makeImageSnapshot",
+                       optional_override([](SkSurface& self, WASMPointerU32 iPtr) -> sk_sp<SkImage> {
+                           SkIRect* bounds = reinterpret_cast<SkIRect*>(iPtr);
+@@ -3262,3 +3262,15 @@ EMSCRIPTEN_BINDINGS(Skia) {
+              (int)skia::textlayout::Paragraph::kWhiteSpace_VisitorFlag);
+ #endif
+ }
++
++#include "skiasharp_gpu.cpp"
++
++#include "skiasharp_effects.cpp"
++#include "skiasharp_documents.cpp"
++#include "skiasharp_fonts.cpp"
++
++#include "skiasharp_encoders.cpp"
++
++#include "skiasharp_conformance.cpp"
++
++#include "skiasharp_assets.cpp"
+diff --git a/modules/canvaskit/compile.sh b/modules/canvaskit/compile.sh
+index c56d1d0..c588dec 100755
+--- a/modules/canvaskit/compile.sh
++++ b/modules/canvaskit/compile.sh
+@@ -9,7 +9,7 @@ set -ex
+ # Navigate to SKIA_HOME from where this file is located.
+ BASE_DIR=`cd $(dirname ${BASH_SOURCE[0]}) && pwd`
+ pushd $BASE_DIR/../..
+-./bin/fetch-gn
++# already fetched gn
+ 
+ IS_OFFICIAL_BUILD="true"
+ IS_DEBUG="false"
+@@ -50,7 +50,8 @@ elif [[ $@ == *webgpu* ]]; then
+   echo "Using WebGPU instead of WebGL"
+   ENABLE_WEBGPU="true"
+   ENABLE_GRAPHITE="true"
+-  ENABLE_GANESH="false"
++  ENABLE_GANESH="true"
++  ENABLE_WEBGL="true"
+ else
+   ENABLE_WEBGL="true"
+ fi
+@@ -75,7 +76,7 @@ if [[ $@ == *no_skottie* ]]; then
+ fi
+ 
+ INCLUDE_VIEWER="false"
+-USE_EXPAT="false"
++USE_EXPAT="true"
+ if [[ $@ == *viewer* ]]; then
+   echo "Including viewer"
+   INCLUDE_VIEWER="true"
+@@ -199,7 +200,7 @@ else
+ 
+ fi # no_codecs
+ 
+-./bin/fetch-ninja
++# already fetched ninja
+ NINJA=third_party/ninja/ninja
+ 
+ echo "Compiling"
+@@ -210,14 +211,16 @@ echo "Compiling"
+   is_component_build=false \
+   is_trivial_abi=true \
+   is_canvaskit=true \
+-  werror=true \
++  werror=false \
+   target_cpu=\"wasm\" \
+   \
++  skia_use_partition_alloc=false \
+   skia_use_angle=false \
+   skia_use_dng_sdk=false \
+   skia_use_dawn=${ENABLE_WEBGPU} \
+   skia_use_webgl=${ENABLE_WEBGL} \
+   skia_use_webgpu=${ENABLE_WEBGPU} \
++  skia_use_system_expat=false \
+   skia_use_expat=${USE_EXPAT} \
+   skia_use_fontconfig=false \
+   skia_use_freetype=true \
+@@ -251,7 +254,8 @@ echo "Compiling"
+   \
+   skia_enable_skshaper=true \
+   skia_enable_skparagraph=true \
+-  skia_enable_pdf=false \
++  skia_enable_pdf=true \
++  skia_emsdk_dir=\"${SKIA_EMSDK_DIR}\" \
+   skia_canvaskit_enable_rt_shader=true \
+   skia_canvaskit_force_tracing=${FORCE_TRACING} \
+   skia_canvaskit_profile_build=${PROFILE_BUILD} \
+@@ -271,4 +275,4 @@ echo "Compiling"
+   skia_canvaskit_enable_webgl=${ENABLE_WEBGL} \
+   skia_canvaskit_enable_webgpu=${ENABLE_WEBGPU}"
+ 
+-${NINJA} -C ${BUILD_DIR} canvaskit.js -k 10
++${NINJA} -C ${BUILD_DIR} canvaskit.js -k 10 -j "${NATIVE_BUILD_JOBS:-8}"
+diff --git a/src/gpu/graphite/dawn/DawnBuffer.cpp b/src/gpu/graphite/dawn/DawnBuffer.cpp
+index 40ae5ea..7bce998 100644
+--- a/src/gpu/graphite/dawn/DawnBuffer.cpp
++++ b/src/gpu/graphite/dawn/DawnBuffer.cpp
+@@ -55,7 +55,8 @@ void log_map_error(WGPUBufferMapAsyncStatus status, const char*) {
+             statusStr = "<other>";
+             break;
+     }
+-    SKIA_LOG(priority, "Buffer async map failed with status %s.", statusStr);
++    if (priority == SkLogPriority::kError) { SKIA_LOG_E("Buffer async map failed with status %s.", statusStr); }
++    else { SKIA_LOG_D("Buffer async map failed with status %s.", statusStr); }
+ }
+ 
+ #else
+diff --git a/src/gpu/graphite/dawn/DawnCaps.cpp b/src/gpu/graphite/dawn/DawnCaps.cpp
+index edba60f..07a76c3 100644
+--- a/src/gpu/graphite/dawn/DawnCaps.cpp
++++ b/src/gpu/graphite/dawn/DawnCaps.cpp
+@@ -295,8 +295,8 @@ void DawnCaps::initCaps(const DawnBackendContext& backendContext, const ContextO
+ 
+ #if defined(__EMSCRIPTEN__)
+     wgpu::SupportedLimits supportedLimits;
+-    [[maybe_unused]] wgpu::Status status = backendContext.fDevice.GetLimits(&supportedLimits);
+-    SkASSERT(status == wgpu::Status::Success);
++    [[maybe_unused]] bool status = backendContext.fDevice.GetLimits(&supportedLimits);
++    SkASSERT(status);
+     wgpu::Limits& limits = supportedLimits.limits;
+ #else
+     wgpu::CompatibilityModeLimits compatLimits;
+diff --git a/third_party/dawn/BUILD.gn b/third_party/dawn/BUILD.gn
+index 03579f4..d5b356f 100644
+--- a/third_party/dawn/BUILD.gn
++++ b/third_party/dawn/BUILD.gn
+@@ -154,7 +154,7 @@ config("dawn_api_config") {
+   } else {
+     libs = []
+   }
+-  libs += [ "$root_out_dir/$_dawn_lib_name" ]
++  if (!is_canvaskit) { libs += [ "$root_out_dir/$_dawn_lib_name" ] }
+ 
+   # https://dawn.googlesource.com/dawn/+/647c352f57aa8a4c2666258455158a36c0c385af/src/dawn/native/BUILD.gn#645
+   if (is_mac || is_ios) {
+@@ -314,7 +314,7 @@ config("dawn_defines") {
+ }
+ 
+ group("dawn") {
+-  public_deps = [ ":dawn_cmake" ]
++  if (!is_canvaskit) { public_deps = [ ":dawn_cmake" ] }
+ 
+   public_configs = [ ":dawn_api_config" ]
+ 

@@ -1,0 +1,412 @@
+{
+  "engine": "native Skia Graphite / Dawn / Vulkan",
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "swiftshader-device-subzero-",
+    "description": "SwiftShader driver 5.0.0",
+    "isFallbackAdapter": true
+  },
+  "physicalGPU": false,
+  "passed": 44,
+  "failed": 0,
+  "validationErrors": [],
+  "results": [
+    {
+      "scene": "primitives",
+      "passed": true,
+      "elapsedMs": 394.42959799999994,
+      "referenceInk": 28850,
+      "graphiteInk": 28940,
+      "meanAbsoluteError": 0.10341145833333333,
+      "sha256": "d96ae48b599f7c2aeac8051748796866790ff09b6274b98509b9bf5daa073dcc"
+    },
+    {
+      "scene": "paths",
+      "passed": true,
+      "elapsedMs": 426.1144660000001,
+      "referenceInk": 2737,
+      "graphiteInk": 2638,
+      "meanAbsoluteError": 0.09887847222222222,
+      "sha256": "b0b7514e7b8c9da6a8889a2fa7e13cda3f830e0f40cfe562eaeac92d95151029"
+    },
+    {
+      "scene": "pathops",
+      "passed": true,
+      "elapsedMs": 189.87510199999997,
+      "referenceInk": 12875,
+      "graphiteInk": 12901,
+      "meanAbsoluteError": 0.06740277777777778,
+      "sha256": "48e931284d1759c042e6f9901ec6bff3880b82a956fb433a24cd085dfddfecd2"
+    },
+    {
+      "scene": "measure",
+      "passed": true,
+      "elapsedMs": 44.002658999999994,
+      "referenceInk": 2648,
+      "graphiteInk": 2526,
+      "meanAbsoluteError": 0.026588541666666667,
+      "sha256": "387128d209ab9647cc4e9435c521ad545681eb537a6d1475859834db2fef5074"
+    },
+    {
+      "scene": "gradients",
+      "passed": true,
+      "elapsedMs": 675.642883,
+      "referenceInk": 65319,
+      "graphiteInk": 65322,
+      "meanAbsoluteError": 0.04967361111111111,
+      "sha256": "6b6477c20b333e531a516400ea50769a7223a1ae6fb3cf240221145db6969faf"
+    },
+    {
+      "scene": "strokes",
+      "passed": true,
+      "elapsedMs": 63.82866399999966,
+      "referenceInk": 10228,
+      "graphiteInk": 10228,
+      "meanAbsoluteError": 0.015649305555555555,
+      "sha256": "59dc5fe3b4d1865a25e178d421e8dbdc799a4cf60e72817929765f5165fd3df2"
+    },
+    {
+      "scene": "filters",
+      "passed": true,
+      "elapsedMs": 256.84265400000004,
+      "referenceInk": 41838,
+      "graphiteInk": 41817,
+      "meanAbsoluteError": 0.07512152777777778,
+      "sha256": "04600cc03685358772ecad9348a58fdba599faa7e5a11eea8cf714c96a0f3568"
+    },
+    {
+      "scene": "blend",
+      "passed": true,
+      "elapsedMs": 511.21436300000005,
+      "referenceInk": 43004,
+      "graphiteInk": 43208,
+      "meanAbsoluteError": 0.24872916666666667,
+      "sha256": "574fb3f3ed5958a12721ebe4b992c2d10ac99fc9c8798cc06d7bd58ee3a382de"
+    },
+    {
+      "scene": "typography",
+      "passed": true,
+      "elapsedMs": 32.86976000000004,
+      "referenceInk": 4978,
+      "graphiteInk": 4982,
+      "meanAbsoluteError": 0.014321180555555556,
+      "sha256": "f7f891ce346a4e4a0ee1784c4d19c33a5ca6c7969ebb65ab289ff4ce804c8042"
+    },
+    {
+      "scene": "shaping",
+      "passed": true,
+      "elapsedMs": 65.51096300000017,
+      "referenceInk": 5495,
+      "graphiteInk": 5495,
+      "meanAbsoluteError": 0.012529513888888889,
+      "sha256": "83c629dc60872c431bfc220d1f7c1395f017e5693384d50865455ae81ae61f5e"
+    },
+    {
+      "scene": "fontmanager",
+      "passed": true,
+      "elapsedMs": 26.99378200000001,
+      "referenceInk": 3414,
+      "graphiteInk": 3418,
+      "meanAbsoluteError": 0.010543402777777778,
+      "sha256": "c19c7a87d5c27cea98e17e882ddc9aa87fda7d83f0402a74d142727722c6b5c7"
+    },
+    {
+      "scene": "outlines",
+      "passed": true,
+      "elapsedMs": 35.16217800000004,
+      "referenceInk": 8957,
+      "graphiteInk": 9017,
+      "meanAbsoluteError": 0.16846180555555557,
+      "sha256": "2ab24ce8a49cc69fb3c28d2338a1ab8b531a8f8409569829f9b4ec68e183425a"
+    },
+    {
+      "scene": "paragraph",
+      "passed": true,
+      "elapsedMs": 38.47571999999991,
+      "referenceInk": 11854,
+      "graphiteInk": 11854,
+      "meanAbsoluteError": 0.03261111111111111,
+      "sha256": "33fc26ac1aadac5d46a0c910eaa35b6fd29b3697c0e042c478dcf087105dc188"
+    },
+    {
+      "scene": "transforms",
+      "passed": true,
+      "elapsedMs": 49.82106500000009,
+      "referenceInk": 27433,
+      "graphiteInk": 28546,
+      "meanAbsoluteError": 0.8219288194444444,
+      "sha256": "4ec68e207d05f7a4106973ad50ee9a5c01a644ec1dfd2cae93dec476172586ad"
+    },
+    {
+      "scene": "clipping",
+      "passed": true,
+      "elapsedMs": 71.80202299999974,
+      "referenceInk": 28475,
+      "graphiteInk": 28561,
+      "meanAbsoluteError": 0.19630555555555557,
+      "sha256": "aece225de17d98cefb24c6f067ee085c764d03cb202e76533a20d1649a3bade3"
+    },
+    {
+      "scene": "images",
+      "passed": true,
+      "elapsedMs": 104.55618199999981,
+      "referenceInk": 25052,
+      "graphiteInk": 25064,
+      "meanAbsoluteError": 0.030137152777777777,
+      "sha256": "2ae7e62943ac85dd6ca77e3f6fd5cc1a21c3a1ec3cddbc90c8223da799a08224"
+    },
+    {
+      "scene": "pixels",
+      "passed": true,
+      "elapsedMs": 31.069828000000143,
+      "referenceInk": 78835,
+      "graphiteInk": 78832,
+      "meanAbsoluteError": 0.149,
+      "sha256": "44582cdfeeb8d13dbdf79aadeffd9bac5639855d2ebd7edbcd4603b1cafaec98"
+    },
+    {
+      "scene": "vertices",
+      "passed": true,
+      "elapsedMs": 49.27639900000031,
+      "referenceInk": 55157,
+      "graphiteInk": 54947,
+      "meanAbsoluteError": 0.18229340277777778,
+      "sha256": "573db60652f076264bd64da7f14d98e795b243564f19c8af3895d4df3243a0a3"
+    },
+    {
+      "scene": "colormatrix",
+      "passed": true,
+      "elapsedMs": 32.30895899999996,
+      "referenceInk": 36559,
+      "graphiteInk": 36787,
+      "meanAbsoluteError": 0.16320833333333334,
+      "sha256": "42392112d9ff595de91abc64b361e5aedd7968e00bda14b93ea5a15c21576f0d"
+    },
+    {
+      "scene": "pictures",
+      "passed": true,
+      "elapsedMs": 42.30489200000011,
+      "referenceInk": 16988,
+      "graphiteInk": 17189,
+      "meanAbsoluteError": 0.30566145833333336,
+      "sha256": "6ad6ff919c2d3908b7b3b73c1241e1bca8484e2fcdbd5ae8f627aadaf9dd97ac"
+    },
+    {
+      "scene": "shader",
+      "passed": true,
+      "elapsedMs": 107.55522000000019,
+      "referenceInk": 144000,
+      "graphiteInk": 144000,
+      "meanAbsoluteError": 0,
+      "sha256": "b874d381d54c25fe95dfae089d053d1ad0ed837cd5348202300c232e45333437"
+    },
+    {
+      "scene": "benchmark",
+      "passed": true,
+      "elapsedMs": 42.563382000000274,
+      "referenceInk": 12622,
+      "graphiteInk": 12816,
+      "meanAbsoluteError": 0.23555034722222223,
+      "sha256": "780b2ab573fd33176f5b3311f59cf3db6480311e18cd85b5017cab2c53a6b7da"
+    },
+    {
+      "scene": "vector_documents",
+      "passed": true,
+      "elapsedMs": 299.048495,
+      "referenceInk": 17900,
+      "graphiteInk": 17908,
+      "meanAbsoluteError": 0.08797222222222222,
+      "sha256": "597345704e96b7720b168925a8f67b495a1278f3406342bfd7785acabe3f5c88"
+    },
+    {
+      "scene": "document_fallbacks",
+      "passed": true,
+      "elapsedMs": 82.68621900000016,
+      "referenceInk": 25574,
+      "graphiteInk": 25649,
+      "meanAbsoluteError": 0.12020833333333333,
+      "sha256": "409cce5a64dd8c86c89653918b40add931c0bcaec00331796a933a34f35d41ac"
+    },
+    {
+      "scene": "drawables",
+      "passed": true,
+      "elapsedMs": 31.130526999999347,
+      "referenceInk": 10319,
+      "graphiteInk": 10390,
+      "meanAbsoluteError": 0.13115625,
+      "sha256": "e6abf6f7fe7d3b75ab90e1858fcd80dee46277fe328a49a34d96ecc4f57d531f"
+    },
+    {
+      "scene": "gpu_capabilities",
+      "passed": true,
+      "elapsedMs": 45.119658999999956,
+      "referenceInk": 5830,
+      "graphiteInk": 5830,
+      "meanAbsoluteError": 0.025741319444444445,
+      "sha256": "f4d27f922aac45a13d81cd718ae74ab7e7ad4604d950d158cddd23fafc36973d"
+    },
+    {
+      "scene": "skottie",
+      "passed": true,
+      "elapsedMs": 39.184213000000454,
+      "referenceInk": 5704,
+      "graphiteInk": 5736,
+      "meanAbsoluteError": 0.02415972222222222,
+      "sha256": "aa6fdac9b0536ec01ce3516c734a78294ef4e7ebc062bcb0f0c708b7d0631af8"
+    },
+    {
+      "scene": "skottie-properties",
+      "passed": true,
+      "elapsedMs": 32.36048000000028,
+      "referenceInk": 5122,
+      "graphiteInk": 5121,
+      "meanAbsoluteError": 0.021291666666666667,
+      "sha256": "0569a2213a061670f16e70092e966a23ce8c1274ab269a1a1d21319a95865bcc"
+    },
+    {
+      "scene": "skottie-slots",
+      "passed": true,
+      "elapsedMs": 22.049769000000197,
+      "referenceInk": 4695,
+      "graphiteInk": 4709,
+      "meanAbsoluteError": 0.018472222222222223,
+      "sha256": "9870c7c9a25814e05417711c601e761a92271014a07297a673d2ed919e143f87"
+    },
+    {
+      "scene": "scenegraph",
+      "passed": true,
+      "elapsedMs": 122.96097999999984,
+      "referenceInk": 9548,
+      "graphiteInk": 9601,
+      "meanAbsoluteError": 0.06268576388888888,
+      "sha256": "a316ac448cbe3d63ca2eebe7c4cff864b09b7c32d5598b18fc110beb643088be"
+    },
+    {
+      "scene": "variations",
+      "passed": true,
+      "elapsedMs": 62.23750999999993,
+      "referenceInk": 9889,
+      "graphiteInk": 9894,
+      "meanAbsoluteError": 0.017460069444444445,
+      "sha256": "04eb6190331c6527d6d40efec9bd0c03c8a3d9281b458f3457c7b64c63711c60"
+    },
+    {
+      "scene": "colorfonts",
+      "passed": true,
+      "elapsedMs": 104.2255239999995,
+      "referenceInk": 18593,
+      "graphiteInk": 18633,
+      "meanAbsoluteError": 0.021840277777777778,
+      "sha256": "a9b622b5d4dc82bd9f58c3440eea3997b242c18ff67eb4e430253cc1330bad4a"
+    },
+    {
+      "scene": "cffoutlines",
+      "passed": true,
+      "elapsedMs": 40.64984900000036,
+      "referenceInk": 8615,
+      "graphiteInk": 8649,
+      "meanAbsoluteError": 0.07126388888888889,
+      "sha256": "60d7d1791f2db3a4ec472ec5e7df7c555d018287646a92c387e2d89be4a5515f"
+    },
+    {
+      "scene": "fontmetadata",
+      "passed": true,
+      "elapsedMs": 41.63657599999988,
+      "referenceInk": 4949,
+      "graphiteInk": 4955,
+      "meanAbsoluteError": 0.03723958333333333,
+      "sha256": "260bb51574a83894c81d614178ac914e2e0b0506805c7535e58e7cb8d03ee20f"
+    },
+    {
+      "scene": "variablelayout",
+      "passed": true,
+      "elapsedMs": 95.11801599999944,
+      "referenceInk": 6679,
+      "graphiteInk": 6679,
+      "meanAbsoluteError": 0.015765625,
+      "sha256": "ad43666ed2a2d9337f652294eb8386b4501aa240fdf6ec822e70ebdaa364da33"
+    },
+    {
+      "scene": "variablecolor",
+      "passed": true,
+      "elapsedMs": 36.390918000000056,
+      "referenceInk": 11217,
+      "graphiteInk": 11246,
+      "meanAbsoluteError": 0.026708333333333334,
+      "sha256": "2d766ee9738d967cd44bcbeea802235e988d4d62bbd2943ed5f9100ebf6dccbb"
+    },
+    {
+      "scene": "font-hints",
+      "passed": true,
+      "elapsedMs": 41.66482900000028,
+      "referenceInk": 5873,
+      "graphiteInk": 5921,
+      "meanAbsoluteError": 0.118734375,
+      "sha256": "93fcec67939e5d989be1e8c3135ffd8a0f75332ff41f43d79b8d331831a57d80"
+    },
+    {
+      "scene": "font-cache",
+      "passed": true,
+      "elapsedMs": 79.46680500000002,
+      "referenceInk": 9021,
+      "graphiteInk": 9034,
+      "meanAbsoluteError": 0.07590277777777778,
+      "sha256": "01ba16b777075b176efff032b9eb9ef5a924d29acb6202329403aed753cf9f04"
+    },
+    {
+      "scene": "region_boolean",
+      "passed": true,
+      "elapsedMs": 35.58067400000073,
+      "referenceInk": 21402,
+      "graphiteInk": 21404,
+      "meanAbsoluteError": 0.015116319444444444,
+      "sha256": "fbff0a88a7cc5ce12f4916bd000ee75ba251aff6ead337f2b3a073dd34114c7d"
+    },
+    {
+      "scene": "region_path",
+      "passed": true,
+      "elapsedMs": 42.095282000000225,
+      "referenceInk": 18864,
+      "graphiteInk": 18864,
+      "meanAbsoluteError": 0.033819444444444444,
+      "sha256": "3c0c730aca526a2b88a65e23d76a6fc69c4ca0e785e68bed0a028270ca3e9246"
+    },
+    {
+      "scene": "lookup_effects",
+      "passed": true,
+      "elapsedMs": 619.1925659999997,
+      "referenceInk": 60478,
+      "graphiteInk": 60489,
+      "meanAbsoluteError": 0.022713541666666667,
+      "sha256": "bca7f57d60a12ca8fa43a323515e69b94fd96ce97b97c0b9d01d5132405344fb"
+    },
+    {
+      "scene": "path_effects",
+      "passed": true,
+      "elapsedMs": 35.01860899999974,
+      "referenceInk": 4416,
+      "graphiteInk": 4449,
+      "meanAbsoluteError": 0.108015625,
+      "sha256": "12fcdb51ddb0d4f5cc87e67c697b3a58dc6c5cc6aae2e329b5d7211e4af5c452"
+    },
+    {
+      "scene": "native_asset_codecs",
+      "passed": true,
+      "elapsedMs": 94.2634049999997,
+      "referenceInk": 53357,
+      "graphiteInk": 53357,
+      "meanAbsoluteError": 0.05846354166666667,
+      "sha256": "845d1f66db9dbca953d05db553048cee2f17373d295d2c0dd3cf3c8bcf063ba0"
+    },
+    {
+      "scene": "typed_text_runs",
+      "passed": true,
+      "elapsedMs": 34.9985999999999,
+      "referenceInk": 14560,
+      "graphiteInk": 14568,
+      "meanAbsoluteError": 0.019600694444444445,
+      "sha256": "fd67c2c9acdcd386007d62223c0f6b0fb83a7c7fc1e9e8422e468266405139a6"
+    }
+  ]
+}

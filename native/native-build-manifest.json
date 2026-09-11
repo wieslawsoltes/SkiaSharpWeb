@@ -1,0 +1,34 @@
+{
+  "skiaRevision": "f446aec4ce9e0e95e0a504e875955de3eb521f75",
+  "emsdkRevision": "5eb0bde7585670252e8ba05e9d361627bffd08b5",
+  "emscriptenVersion": "4.0.8",
+  "backends": [
+    "Graphite/Dawn/WebGPU",
+    "Ganesh/WebGL",
+    "Skia raster"
+  ],
+  "artifacts": {
+    "canvaskit.js": "a73af5df0ae177043159c76237cce61c1bf68ba1fcf8fa4ddba29f7be12fbd57",
+    "canvaskit.cjs": "a73af5df0ae177043159c76237cce61c1bf68ba1fcf8fa4ddba29f7be12fbd57",
+    "canvaskit.wasm": "1aa5c4d821ad933ef908825898d868983df5bf2a606f447d1f041c32893c977b"
+  },
+  "extensionSources": {
+    "README.md": "a1758c3bd7b79da0da7726f1fef37daf7238b0347dfade693b9a0eda03335a99",
+    "THIRD_PARTY_LICENSES.txt": "0b8b565cfb9c7216da4341c5773bba3f9f3b8c82fab81d9120242e0108e95ca2",
+    "build_native.py": "0dafe49cec3b4b29508cd8a7cb8e73f9948d34c09d9e80bdaef0cd69e3ddba2d",
+    "patch_emscripten_webgpu.py": "8e43d5fb8c6fec7121602fe24f7634bcadb837089da34930b888ff0a1b8126b3",
+    "prepare_native.py": "f723acc452f7b8b67ccb68f485baa45bfc149b12c992ca7cb9efa2f52cfc41b4",
+    "skia-webgpu.patch": "069f13969fc618427c877b037d94d7f2eda509bf28db67cc0cbf501abf5c0e69",
+    "skiasharp_assets.cpp": "8c448fe43a71d03cd6ade0f74c2f0914bed79713ee83bbe37c996adba5f5af97",
+    "skiasharp_conformance.cpp": "117f8a84f9e75b0db96a885bb513c5e57ffe078eee40a46a9228b84c5a4b5958",
+    "skiasharp_conformance.js": "d3cee172aa52e5872fa3b86ba5d2e02bec5d0eb823d225625ca4bc6062a0ac3b",
+    "skiasharp_documents.cpp": "37c2340c6730dfbf2227c2e3a91b9ecf38eb5f7b800c9f39bc7d23f2aa5a49d2",
+    "skiasharp_effects.cpp": "a25ba3a21ceb92fc9a4e11eecbab629d2246cd85b914e234e0de17a41ed33243",
+    "skiasharp_effects.js": "eca1c9427f048f3c0db0c2a504551909fae51594023900eec4d676615477e6f5",
+    "skiasharp_encoders.cpp": "05a2ed299ab49af906d22eb258873af88f866cb7bbff4c9bc984ca247ce2798d",
+    "skiasharp_fonts.cpp": "a65bc5b46e9ace9b7fc72f0e1563a56f0faba6da75fcf8fd08adfbea6e1dd7d9",
+    "skiasharp_gpu.cpp": "7b51271afb98a51dbec039b1f0b18ce55cb8d8f46d94c950b3865ceadde114b9",
+    "skiasharp_gpu.js": "34397377c5186a2986d264415cdfdff31d83b1d0b06f1110cde4f22288caada1",
+    "verify_native.mjs": "f6c255d3b10eda64d64dbf9c18036c1ae057bd8d4650c17c8eb888c4072d94f8"
+  }
+}

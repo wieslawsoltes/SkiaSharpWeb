@@ -1,0 +1,2779 @@
+{
+  "title": "Exported JavaScript API inventory",
+  "libraryVersion": "0.2.0",
+  "canvasKitVersion": "0.42.0",
+  "upstreamCommit": "b33cf54f24edc5347567c95b1924c447669c1de8",
+  "notice": "Name presence is not overload or behavioral parity. This reports SK/GR names and Skottie/Resources/SceneGraph namespace entries; aliases may occur more than once. Inheritance and instance fields are not expanded. Consult COMPATIBILITY.md and docs/overload-conformance.json for declaration-level status.",
+  "exportedNames": 167,
+  "types": {
+    "SKObject": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "IsDisposed",
+        "ThrowIfDisposed",
+        "Dispose",
+        "Close"
+      ]
+    },
+    "SKNotSupportedError": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKColor": {
+      "kind": "class",
+      "staticMembers": [
+        "FromHsl",
+        "FromHsv",
+        "Parse",
+        "TryParse",
+        "Empty"
+      ],
+      "instanceMembers": [
+        "Red",
+        "Green",
+        "Blue",
+        "Alpha",
+        "Hue",
+        "WithRed",
+        "WithGreen",
+        "WithBlue",
+        "WithAlpha",
+        "ToArray",
+        "ToFloatArray",
+        "ToUint",
+        "valueOf",
+        "Equals",
+        "ToString",
+        "toString",
+        "ToCss",
+        "ToHsl",
+        "ToHsv",
+        "GetHashCode"
+      ]
+    },
+    "SKColorF": {
+      "kind": "class",
+      "staticMembers": [
+        "FromHsv",
+        "FromHsl"
+      ],
+      "instanceMembers": [
+        "ToArray",
+        "ToFloatArray",
+        "ToSKColor",
+        "WithAlpha",
+        "Equals",
+        "ToHsv",
+        "ToHsl",
+        "GetHashCode"
+      ]
+    },
+    "SKColors": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Empty",
+        "AliceBlue",
+        "AntiqueWhite",
+        "Aqua",
+        "Aquamarine",
+        "Azure",
+        "Beige",
+        "Bisque",
+        "Black",
+        "BlanchedAlmond",
+        "Blue",
+        "BlueViolet",
+        "Brown",
+        "BurlyWood",
+        "CadetBlue",
+        "Chartreuse",
+        "Chocolate",
+        "Coral",
+        "CornflowerBlue",
+        "Cornsilk",
+        "Crimson",
+        "Cyan",
+        "DarkBlue",
+        "DarkCyan",
+        "DarkGoldenrod",
+        "DarkGray",
+        "DarkGreen",
+        "DarkKhaki",
+        "DarkMagenta",
+        "DarkOliveGreen",
+        "DarkOrange",
+        "DarkOrchid",
+        "DarkRed",
+        "DarkSalmon",
+        "DarkSeaGreen",
+        "DarkSlateBlue",
+        "DarkSlateGray",
+        "DarkTurquoise",
+        "DarkViolet",
+        "DeepPink",
+        "DeepSkyBlue",
+        "DimGray",
+        "DodgerBlue",
+        "Firebrick",
+        "FloralWhite",
+        "ForestGreen",
+        "Fuchsia",
+        "Gainsboro",
+        "GhostWhite",
+        "Gold",
+        "Goldenrod",
+        "Gray",
+        "Green",
+        "GreenYellow",
+        "Honeydew",
+        "HotPink",
+        "IndianRed",
+        "Indigo",
+        "Ivory",
+        "Khaki",
+        "Lavender",
+        "LavenderBlush",
+        "LawnGreen",
+        "LemonChiffon",
+        "LightBlue",
+        "LightCoral",
+        "LightCyan",
+        "LightGoldenrodYellow",
+        "LightGray",
+        "LightGreen",
+        "LightPink",
+        "LightSalmon",
+        "LightSeaGreen",
+        "LightSkyBlue",
+        "LightSlateGray",
+        "LightSteelBlue",
+        "LightYellow",
+        "Lime",
+        "LimeGreen",
+        "Linen",
+        "Magenta",
+        "Maroon",
+        "MediumAquamarine",
+        "MediumBlue",
+        "MediumOrchid",
+        "MediumPurple",
+        "MediumSeaGreen",
+        "MediumSlateBlue",
+        "MediumSpringGreen",
+        "MediumTurquoise",
+        "MediumVioletRed",
+        "MidnightBlue",
+        "MintCream",
+        "MistyRose",
+        "Moccasin",
+        "NavajoWhite",
+        "Navy",
+        "OldLace",
+        "Olive",
+        "OliveDrab",
+        "Orange",
+        "OrangeRed",
+        "Orchid",
+        "PaleGoldenrod",
+        "PaleGreen",
+        "PaleTurquoise",
+        "PaleVioletRed",
+        "PapayaWhip",
+        "PeachPuff",
+        "Peru",
+        "Pink",
+        "Plum",
+        "PowderBlue",
+        "Purple",
+        "Red",
+        "RosyBrown",
+        "RoyalBlue",
+        "SaddleBrown",
+        "Salmon",
+        "SandyBrown",
+        "SeaGreen",
+        "SeaShell",
+        "Sienna",
+        "Silver",
+        "SkyBlue",
+        "SlateBlue",
+        "SlateGray",
+        "Snow",
+        "SpringGreen",
+        "SteelBlue",
+        "Tan",
+        "Teal",
+        "Thistle",
+        "Tomato",
+        "Turquoise",
+        "Violet",
+        "Wheat",
+        "White",
+        "WhiteSmoke",
+        "Yellow",
+        "YellowGreen",
+        "Transparent"
+      ],
+      "instanceMembers": []
+    },
+    "SKPoint": {
+      "kind": "class",
+      "staticMembers": [
+        "Add",
+        "Subtract",
+        "Distance",
+        "DistanceSquared",
+        "Normalize",
+        "Empty",
+        "Reflect"
+      ],
+      "instanceMembers": [
+        "IsEmpty",
+        "Length",
+        "LengthSquared",
+        "ToArray",
+        "Equals",
+        "Offset",
+        "ToSize",
+        "ToString",
+        "GetHashCode"
+      ]
+    },
+    "SKPointI": {
+      "kind": "class",
+      "staticMembers": [
+        "Ceiling",
+        "Floor",
+        "Round",
+        "Truncate",
+        "Normalize"
+      ],
+      "instanceMembers": [
+        "ToSize",
+        "Length"
+      ]
+    },
+    "SKSize": {
+      "kind": "class",
+      "staticMembers": [
+        "Empty",
+        "Add",
+        "Subtract"
+      ],
+      "instanceMembers": [
+        "IsEmpty",
+        "ToArray",
+        "Equals",
+        "ToPoint",
+        "ToString",
+        "GetHashCode",
+        "ToSizeI"
+      ]
+    },
+    "SKSizeI": {
+      "kind": "class",
+      "staticMembers": [
+        "Ceiling",
+        "Round",
+        "Truncate",
+        "Floor"
+      ],
+      "instanceMembers": [
+        "ToPointI"
+      ]
+    },
+    "SKRect": {
+      "kind": "class",
+      "staticMembers": [
+        "Create",
+        "Empty",
+        "Intersect",
+        "Union",
+        "Inflate",
+        "Round",
+        "RoundOut",
+        "Ceiling",
+        "Floor",
+        "Truncate"
+      ],
+      "instanceMembers": [
+        "Width",
+        "Height",
+        "MidX",
+        "MidY",
+        "Size",
+        "Location",
+        "IsEmpty",
+        "IsFinite",
+        "Standardized",
+        "ToArray",
+        "Equals",
+        "Contains",
+        "IntersectsWith",
+        "Offset",
+        "Inflate",
+        "Intersect",
+        "Union",
+        "ToString",
+        "ContainsRect",
+        "IntersectsWithInclusive",
+        "AspectFit",
+        "AspectFill",
+        "GetHashCode"
+      ]
+    },
+    "SKRectI": {
+      "kind": "class",
+      "staticMembers": [
+        "Round",
+        "Truncate",
+        "Ceiling",
+        "Floor"
+      ],
+      "instanceMembers": [
+        "Size",
+        "Location",
+        "MidX",
+        "MidY",
+        "AspectFit",
+        "AspectFill"
+      ]
+    },
+    "SKRoundRect": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKRoundRectCorner": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "UpperLeft",
+        "UpperRight",
+        "LowerRight",
+        "LowerLeft"
+      ],
+      "instanceMembers": []
+    },
+    "SKMatrix": {
+      "kind": "class",
+      "staticMembers": [
+        "Identity",
+        "Empty",
+        "CreateIdentity",
+        "CreateTranslation",
+        "CreateScale",
+        "CreateRotation",
+        "CreateRotationDegrees",
+        "CreateSkew",
+        "CreateScaleTranslation",
+        "Concat"
+      ],
+      "instanceMembers": [
+        "Values",
+        "Value",
+        "ToArray",
+        "GetValues",
+        "IsIdentity",
+        "IsInvertible",
+        "Equals",
+        "PreConcat",
+        "PostConcat",
+        "TryInvert",
+        "Invert",
+        "MapPoint",
+        "MapPoints",
+        "MapVector",
+        "MapVectors",
+        "MapRect",
+        "MapRadius",
+        "ScaleX",
+        "SkewX",
+        "TransX",
+        "SkewY",
+        "ScaleY",
+        "TransY",
+        "Persp0",
+        "Persp1",
+        "Persp2",
+        "GetHashCode"
+      ]
+    },
+    "SKMatrix44": {
+      "kind": "class",
+      "staticMembers": [
+        "Identity",
+        "CreateIdentity",
+        "CreateTranslation",
+        "CreateRotation",
+        "Empty",
+        "FromRowMajor",
+        "FromColumnMajor",
+        "CreateScale",
+        "Concat",
+        "Negate",
+        "Add",
+        "Subtract",
+        "Multiply"
+      ],
+      "instanceMembers": [
+        "Values",
+        "Matrix",
+        "ToMatrix",
+        "MapScalars",
+        "ToRowMajor",
+        "ToColumnMajor",
+        "IsInvertible",
+        "TryInvert",
+        "Invert",
+        "Transpose",
+        "PreConcat",
+        "PostConcat",
+        "Determinant",
+        "MapPoint",
+        "Equals",
+        "Get",
+        "Set",
+        "M00",
+        "M01",
+        "M02",
+        "M03",
+        "M10",
+        "M11",
+        "M12",
+        "M13",
+        "M20",
+        "M21",
+        "M22",
+        "M23",
+        "M30",
+        "M31",
+        "M32",
+        "M33",
+        "GetHashCode"
+      ]
+    },
+    "SKImageInfo": {
+      "kind": "class",
+      "staticMembers": [
+        "Empty",
+        "PlatformColorType",
+        "PlatformColorAlphaShift",
+        "PlatformColorRedShift",
+        "PlatformColorGreenShift",
+        "PlatformColorBlueShift"
+      ],
+      "instanceMembers": [
+        "BytesPerPixel",
+        "BitsPerPixel",
+        "BitShiftPerPixel",
+        "BytesSize",
+        "BytesSize64",
+        "RowBytes",
+        "RowBytes64",
+        "IsEmpty",
+        "IsOpaque",
+        "Size",
+        "Rect",
+        "ToNative",
+        "WithSize",
+        "WithColorType",
+        "WithAlphaType",
+        "WithColorSpace",
+        "Equals"
+      ]
+    },
+    "SKColorSpace": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateSrgb",
+        "CreateDisplayP3",
+        "CreateAdobeRgb",
+        "CreateSrgbLinear",
+        "CreateIcc",
+        "CreateRgb",
+        "Equal"
+      ],
+      "instanceMembers": [
+        "Equals",
+        "IsSrgb",
+        "GammaIsLinear",
+        "GammaIsCloseToSrgb"
+      ]
+    },
+    "SKSamplingOptions": {
+      "kind": "class",
+      "staticMembers": [
+        "Default"
+      ],
+      "instanceMembers": [
+        "ToNative"
+      ]
+    },
+    "SKCubicResampler": {
+      "kind": "class",
+      "staticMembers": [
+        "Mitchell",
+        "CatmullRom"
+      ],
+      "instanceMembers": [
+        "ToNative"
+      ]
+    },
+    "SKPaint": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKShader": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateColor",
+        "CreateLinearGradient",
+        "CreateRadialGradient",
+        "CreateSweepGradient",
+        "CreateTwoPointConicalGradient",
+        "CreateCompose",
+        "CreatePerlinNoiseFractalNoise",
+        "CreatePerlinNoiseTurbulence",
+        "CreateImage",
+        "CreateEmpty"
+      ],
+      "instanceMembers": []
+    },
+    "SKColorFilter": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateBlendMode",
+        "CreateColorMatrix",
+        "CreateCompose",
+        "CreateLerp",
+        "CreateLumaColor",
+        "CreateSrgbToLinearGamma",
+        "CreateLinearToSrgbGamma",
+        "CreateLighting",
+        "ColorMatrixSize",
+        "TableMaxLength",
+        "CreateTable",
+        "CreateTableARGB",
+        "CreateHslaColorMatrix",
+        "CreateHighContrast",
+        "CreateOverdraw"
+      ],
+      "instanceMembers": []
+    },
+    "SKImageFilter": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateBlur",
+        "CreateColorFilter",
+        "CreateCompose",
+        "CreateDilate",
+        "CreateErode",
+        "CreateDisplacementMapEffect",
+        "CreateDropShadow",
+        "CreateDropShadowOnly",
+        "CreateOffset",
+        "CreateMatrix",
+        "CreateBlendMode",
+        "CreateImage",
+        "CreateShader",
+        "CreateMerge",
+        "CreateEmpty",
+        "CreateCrop",
+        "CreateArithmetic",
+        "CreateMatrixConvolution",
+        "CreateMagnifier",
+        "CreateTile",
+        "CreatePicture",
+        "CreatePaint",
+        "CreateDistantLitDiffuse",
+        "CreateDistantLitSpecular",
+        "CreatePointLitDiffuse",
+        "CreatePointLitSpecular",
+        "CreateSpotLitDiffuse",
+        "CreateSpotLitSpecular"
+      ],
+      "instanceMembers": []
+    },
+    "SKMaskFilter": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateBlur",
+        "ConvertRadiusToSigma",
+        "ConvertSigmaToRadius"
+      ],
+      "instanceMembers": []
+    },
+    "SKPathEffect": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateDash",
+        "CreateCorner",
+        "CreateDiscrete",
+        "Create1DPath",
+        "Create2DLine",
+        "Create2DPath",
+        "CreateTrim",
+        "CreateCompose",
+        "CreateSum"
+      ],
+      "instanceMembers": []
+    },
+    "SKRuntimeEffect": {
+      "kind": "class",
+      "staticMembers": [
+        "Create",
+        "CreateShader",
+        "CreateBlender"
+      ],
+      "instanceMembers": [
+        "UniformSize",
+        "Uniforms",
+        "ToShader",
+        "ToBlender"
+      ]
+    },
+    "SKRuntimeEffectUniforms": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Set",
+        "Add",
+        "Count",
+        "ToArray",
+        "Names"
+      ]
+    },
+    "SKRuntimeEffectChildren": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Add",
+        "Set",
+        "Count",
+        "ToArray"
+      ]
+    },
+    "SKBlender": {
+      "kind": "class",
+      "staticMembers": [
+        "Create"
+      ],
+      "instanceMembers": []
+    },
+    "SKAlphaType": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Opaque",
+        "Premul",
+        "Unpremul"
+      ],
+      "instanceMembers": []
+    },
+    "SKBlendMode": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Clear",
+        "Src",
+        "Dst",
+        "SrcOver",
+        "DstOver",
+        "SrcIn",
+        "DstIn",
+        "SrcOut",
+        "DstOut",
+        "SrcATop",
+        "DstATop",
+        "Xor",
+        "Plus",
+        "Modulate",
+        "Screen",
+        "Overlay",
+        "Darken",
+        "Lighten",
+        "ColorDodge",
+        "ColorBurn",
+        "HardLight",
+        "SoftLight",
+        "Difference",
+        "Exclusion",
+        "Multiply",
+        "Hue",
+        "Saturation",
+        "Color",
+        "Luminosity"
+      ],
+      "instanceMembers": []
+    },
+    "SKBlurStyle": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Normal",
+        "Solid",
+        "Outer",
+        "Inner"
+      ],
+      "instanceMembers": []
+    },
+    "SKClipOperation": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Difference",
+        "Intersect"
+      ],
+      "instanceMembers": []
+    },
+    "SKColorChannel": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Red",
+        "Green",
+        "Blue",
+        "Alpha"
+      ],
+      "instanceMembers": []
+    },
+    "SKColorType": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Alpha_8",
+        "RGB_565",
+        "RGBA_8888",
+        "BGRA_8888",
+        "RGBA_1010102",
+        "RGB_101010x",
+        "Gray_8",
+        "RGBA_F16",
+        "RGB_F16F16F16x",
+        "RGBA_F32",
+        "Alpha8",
+        "Rgb565",
+        "Rgba8888",
+        "Bgra8888",
+        "Rgba1010102",
+        "Rgb101010x",
+        "Gray8",
+        "RgbaF16",
+        "RgbaF32"
+      ],
+      "instanceMembers": []
+    },
+    "SKPaintStyle": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Fill",
+        "Stroke",
+        "StrokeAndFill"
+      ],
+      "instanceMembers": []
+    },
+    "SKStrokeCap": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Butt",
+        "Round",
+        "Square"
+      ],
+      "instanceMembers": []
+    },
+    "SKStrokeJoin": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Miter",
+        "Round",
+        "Bevel"
+      ],
+      "instanceMembers": []
+    },
+    "SKShaderTileMode": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Clamp",
+        "Repeat",
+        "Mirror",
+        "Decal"
+      ],
+      "instanceMembers": []
+    },
+    "SKPathFillType": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Winding",
+        "EvenOdd",
+        "InverseWinding",
+        "InverseEvenOdd"
+      ],
+      "instanceMembers": []
+    },
+    "SKPathOp": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Difference",
+        "Intersect",
+        "Union",
+        "XOR",
+        "ReverseDifference",
+        "Xor"
+      ],
+      "instanceMembers": []
+    },
+    "SKPathDirection": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Clockwise",
+        "CounterClockwise"
+      ],
+      "instanceMembers": []
+    },
+    "SKPathVerb": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Move",
+        "Line",
+        "Quad",
+        "Conic",
+        "Cubic",
+        "Close",
+        "Done"
+      ],
+      "instanceMembers": []
+    },
+    "SKPointMode": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Points",
+        "Lines",
+        "Polygon"
+      ],
+      "instanceMembers": []
+    },
+    "SKVertexMode": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Triangles",
+        "TriangleStrip",
+        "TriangleFan"
+      ],
+      "instanceMembers": []
+    },
+    "SKPath1DPathEffectStyle": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Translate",
+        "Rotate",
+        "Morph"
+      ],
+      "instanceMembers": []
+    },
+    "SKFilterMode": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Nearest",
+        "Linear"
+      ],
+      "instanceMembers": []
+    },
+    "SKMipmapMode": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "None",
+        "Nearest",
+        "Linear"
+      ],
+      "instanceMembers": []
+    },
+    "SKFilterQuality": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "instanceMembers": []
+    },
+    "SKEncodedImageFormat": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "values",
+        "ke",
+        "PNG",
+        "JPEG",
+        "WEBP",
+        "Png",
+        "Jpeg",
+        "Webp",
+        "Bmp",
+        "Gif",
+        "Ico",
+        "Wbmp",
+        "Pkm",
+        "Ktx",
+        "Astc",
+        "Dng",
+        "Heif",
+        "Avif",
+        "Jpegxl"
+      ],
+      "instanceMembers": []
+    },
+    "SKPath": {
+      "kind": "class",
+      "staticMembers": [
+        "FromNative",
+        "ParseSvgPathData",
+        "FromCommands",
+        "FromVerbsPointsWeights",
+        "ConvertConicToQuads",
+        "Op",
+        "Simplify",
+        "Iterator",
+        "RawIterator",
+        "OpBuilder"
+      ],
+      "instanceMembers": [
+        "ThrowIfDisposed",
+        "Dispose",
+        "Close",
+        "Reset",
+        "Rewind",
+        "Clone",
+        "Equals",
+        "IsEmpty",
+        "PointCount",
+        "VerbCount",
+        "Points",
+        "Bounds",
+        "TightBounds",
+        "LastPoint",
+        "IsFinite",
+        "IsLastContourClosed",
+        "IsInverseFillType",
+        "GenerationId",
+        "FillType",
+        "IsLine",
+        "IsRect",
+        "IsOval",
+        "IsRoundRect",
+        "GetLine",
+        "GetRect",
+        "GetOvalBounds",
+        "GetRoundRect",
+        "SegmentMasks",
+        "ToggleInverseFillType",
+        "GetPoint",
+        "GetPoints",
+        "SetLastPoint",
+        "Contains",
+        "GetBounds",
+        "ComputeTightBounds",
+        "GetTightBounds",
+        "MoveTo",
+        "LineTo",
+        "QuadTo",
+        "ConicTo",
+        "CubicTo",
+        "RMoveTo",
+        "RLineTo",
+        "RQuadTo",
+        "RConicTo",
+        "RCubicTo",
+        "ArcTo",
+        "RArcTo",
+        "AddArc",
+        "AddCircle",
+        "AddOval",
+        "AddRect",
+        "AddRoundRect",
+        "AddRoundedRect",
+        "AddPoly",
+        "AddPath",
+        "ReverseAddPath",
+        "AddPathReverse",
+        "Offset",
+        "Transform",
+        "Op",
+        "Simplify",
+        "ToWinding",
+        "Trim",
+        "Dash",
+        "Stroke",
+        "IsInterpolatable",
+        "Interpolate",
+        "GetContours",
+        "ToSvgPathData",
+        "ToCommands",
+        "CreateIterator",
+        "CreateRawIterator"
+      ]
+    },
+    "SKPathBuilder": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Snapshot",
+        "Detach",
+        "DetachAndDispose",
+        "SetFillType"
+      ]
+    },
+    "SKPathMeasure": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "ThrowIfDisposed",
+        "SetPath",
+        "Length",
+        "IsClosed",
+        "NextContour",
+        "GetPositionAndTangent",
+        "GetPosition",
+        "GetTangent",
+        "GetMatrix",
+        "GetSegment",
+        "Dispose"
+      ]
+    },
+    "SKPathIterator": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SetPath",
+        "Next",
+        "IsCloseLine",
+        "IsCloseContour",
+        "IsClosedContour"
+      ]
+    },
+    "SKPathRawIterator": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "ThrowIfDisposed",
+        "SetPath",
+        "ConicWeight",
+        "Peek",
+        "Next",
+        "Rewind",
+        "Dispose"
+      ]
+    },
+    "SKPathOpBuilder": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Add",
+        "Resolve",
+        "Dispose"
+      ]
+    },
+    "SKFontArguments": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SetCollectionIndex",
+        "GetCollectionIndex",
+        "SetVariationDesignPosition",
+        "GetVariationDesignPosition",
+        "SetPalette",
+        "GetPalette"
+      ]
+    },
+    "SKFontArgumentsVariationPosition": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "CoordinateCount"
+      ]
+    },
+    "SKFontArgumentsVariationPositionCoordinate": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "AxisName"
+      ]
+    },
+    "SKFontArgumentsPalette": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "OverrideCount"
+      ]
+    },
+    "SKFontArgumentsPaletteOverride": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKTypeface": {
+      "kind": "class",
+      "staticMembers": [
+        "FromData",
+        "FromStream",
+        "FromBlob",
+        "FromFile",
+        "FromFamilyName",
+        "Default"
+      ],
+      "instanceMembers": [
+        "FamilyName",
+        "FontStyle",
+        "FontWeight",
+        "FontWidth",
+        "FontSlant",
+        "IsBold",
+        "IsItalic",
+        "IsFixedPitch",
+        "UnitsPerEm",
+        "GlyphCount",
+        "TableCount",
+        "UniqueId",
+        "PostScriptName",
+        "GetGlyphs",
+        "GetGlyph",
+        "ContainsGlyph",
+        "ContainsGlyphs",
+        "CountGlyphs",
+        "GetTableTags",
+        "GetTableSize",
+        "GetTableData",
+        "TryGetTableData",
+        "GetKerningPairAdjustments",
+        "GetVariationDesignParameters",
+        "GetVariationDesignPosition",
+        "GetNamedVariations",
+        "IsVariable",
+        "IsColor",
+        "FontFormat",
+        "GetColorPalettes",
+        "GetColorGlyphLayers",
+        "GetColorGlyphPaint",
+        "WithTables",
+        "GetGlyphBitmap",
+        "GetGlyphSvg",
+        "GetGlyphSvgText",
+        "GetSupportedCodepoints",
+        "GetGlyphName",
+        "Clone",
+        "ToFont",
+        "OpenStream",
+        "Serialize"
+      ]
+    },
+    "SKFontManager": {
+      "kind": "class",
+      "staticMembers": [
+        "Default",
+        "CreateDefault",
+        "CreateFromData",
+        "CanAccessLocalFonts"
+      ],
+      "instanceMembers": [
+        "FontFamilies",
+        "FontFamilyCount",
+        "Count",
+        "GetFontFamilies",
+        "GetFamilyName",
+        "RegisterFont",
+        "RegisterFontFromUrl",
+        "RegisterFontFromBlob",
+        "ImportLocalFonts",
+        "CreateTypeface",
+        "CreateStyleSet",
+        "GetFontStyles",
+        "MatchFamily",
+        "MatchTypeface",
+        "MatchCharacter",
+        "Dispose"
+      ]
+    },
+    "SKFontStyle": {
+      "kind": "class",
+      "staticMembers": [
+        "Normal",
+        "Bold",
+        "Italic",
+        "BoldItalic"
+      ],
+      "instanceMembers": [
+        "Equals"
+      ]
+    },
+    "SKFontStyleSet": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Count",
+        "GetStyle",
+        "GetStyleName",
+        "CreateTypeface",
+        "MatchStyle"
+      ]
+    },
+    "SKFont": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Size",
+        "ScaleX",
+        "SkewX",
+        "Typeface",
+        "Embolden",
+        "Edging",
+        "Hinting",
+        "EmbeddedBitmaps",
+        "LinearMetrics",
+        "Subpixel",
+        "Metrics",
+        "Spacing",
+        "GetFontMetrics",
+        "GetGlyphs",
+        "CountGlyphs",
+        "ContainsGlyphs",
+        "GetGlyphWidths",
+        "GetGlyphBounds",
+        "GetGlyphPositions",
+        "GetGlyphOffsets",
+        "GetGlyphIntercepts",
+        "MeasureText",
+        "BreakText",
+        "GetGlyphPath",
+        "GetTextPath",
+        "GetGlyphPaths",
+        "Dispose",
+        "GetGlyph",
+        "ContainsGlyph",
+        "GetTextPathOnPath"
+      ]
+    },
+    "SKTextBlob": {
+      "kind": "class",
+      "staticMembers": [
+        "Create",
+        "CreatePositioned",
+        "CreateHorizontal",
+        "CreateRotationScale",
+        "CreateOnPath"
+      ],
+      "instanceMembers": [
+        "UniqueId",
+        "Bounds",
+        "Draw",
+        "Dispose"
+      ]
+    },
+    "SKTextBlobBuilder": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "AddRun",
+        "AddPositionedRun",
+        "AddHorizontalRun",
+        "AddRotationScaleRun",
+        "AllocateRun",
+        "AllocatePositionedRun",
+        "AllocateHorizontalRun",
+        "AllocateRotationScaleRun",
+        "Build",
+        "Dispose"
+      ]
+    },
+    "SKShaper": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Typeface",
+        "Shape",
+        "Dispose"
+      ]
+    },
+    "SKShaperResult": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Paint",
+        "Dispose"
+      ]
+    },
+    "SKParagraph": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Layout",
+        "Paint",
+        "Height",
+        "MaxWidth",
+        "MaxIntrinsicWidth",
+        "MinIntrinsicWidth",
+        "LongestLine",
+        "AlphabeticBaseline",
+        "IdeographicBaseline",
+        "DidExceedMaxLines",
+        "NumberOfLines",
+        "GetLineMetrics",
+        "GetLineMetricsAt",
+        "GetLineNumberAt",
+        "GetGlyphPositionAtCoordinate",
+        "GetClosestGlyphInfoAtCoordinate",
+        "GetGlyphInfoAt",
+        "GetWordBoundary",
+        "GetRectsForRange",
+        "GetRectsForPlaceholders",
+        "GetShapedLines",
+        "UnresolvedCodepoints",
+        "Dispose"
+      ]
+    },
+    "SKParagraphBuilder": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "AddText",
+        "PushStyle",
+        "PushPaintStyle",
+        "Pop",
+        "AddPlaceholder",
+        "Build",
+        "Reset",
+        "GetText",
+        "SetWordsUtf16",
+        "SetGraphemeBreaksUtf16",
+        "SetLineBreaksUtf16"
+      ]
+    },
+    "SKFontStyleWeight": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Invisible",
+        "Thin",
+        "ExtraLight",
+        "Light",
+        "Normal",
+        "Medium",
+        "SemiBold",
+        "Bold",
+        "ExtraBold",
+        "Black",
+        "ExtraBlack"
+      ],
+      "instanceMembers": []
+    },
+    "SKFontStyleWidth": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "UltraCondensed",
+        "ExtraCondensed",
+        "Condensed",
+        "SemiCondensed",
+        "Normal",
+        "SemiExpanded",
+        "Expanded",
+        "ExtraExpanded",
+        "UltraExpanded"
+      ],
+      "instanceMembers": []
+    },
+    "SKFontStyleSlant": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Upright",
+        "Italic",
+        "Oblique"
+      ],
+      "instanceMembers": []
+    },
+    "SKFontEdging": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Alias",
+        "AntiAlias",
+        "SubpixelAntiAlias"
+      ],
+      "instanceMembers": []
+    },
+    "SKFontHinting": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "None",
+        "Slight",
+        "Normal",
+        "Full"
+      ],
+      "instanceMembers": []
+    },
+    "SKTextDirection": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "LTR",
+        "RTL"
+      ],
+      "instanceMembers": []
+    },
+    "SKTextAlign": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Left",
+        "Right",
+        "Center",
+        "Justify",
+        "Start",
+        "End"
+      ],
+      "instanceMembers": []
+    },
+    "SKRectHeightStyle": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Tight",
+        "Max",
+        "IncludeLineSpacingMiddle",
+        "IncludeLineSpacingTop",
+        "IncludeLineSpacingBottom",
+        "Strut"
+      ],
+      "instanceMembers": []
+    },
+    "SKRectWidthStyle": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Tight",
+        "Max"
+      ],
+      "instanceMembers": []
+    },
+    "SKPlaceholderAlignment": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Baseline",
+        "AboveBaseline",
+        "BelowBaseline",
+        "Top",
+        "Bottom",
+        "Middle"
+      ],
+      "instanceMembers": []
+    },
+    "SKTextBaseline": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Alphabetic",
+        "Ideographic"
+      ],
+      "instanceMembers": []
+    },
+    "SKTextHeightBehavior": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "All",
+        "DisableFirstAscent",
+        "DisableLastDescent",
+        "DisableAll"
+      ],
+      "instanceMembers": []
+    },
+    "SKTextDecorationStyle": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Solid",
+        "Double",
+        "Dotted",
+        "Dashed",
+        "Wavy"
+      ],
+      "instanceMembers": []
+    },
+    "SKTextDecoration": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "Underline",
+        "Overline",
+        "LineThrough"
+      ],
+      "instanceMembers": []
+    },
+    "SKData": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateCopy",
+        "CreateUninitialized",
+        "CreateSubset",
+        "Create",
+        "Empty",
+        "FromUrl"
+      ],
+      "instanceMembers": [
+        "Size",
+        "IsEmpty",
+        "AsSpan",
+        "ToArray",
+        "AsStream",
+        "SaveTo",
+        "ToBlob",
+        "Dispose"
+      ]
+    },
+    "SKStream": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Length",
+        "Position",
+        "HasLength",
+        "HasPosition",
+        "IsAtEnd",
+        "Read",
+        "ReadByte",
+        "ReadToEnd",
+        "Peek",
+        "Seek",
+        "Move",
+        "Rewind",
+        "Duplicate",
+        "Fork",
+        "Dispose"
+      ]
+    },
+    "SKStreamAsset": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Length",
+        "Position",
+        "HasLength",
+        "HasPosition",
+        "IsAtEnd",
+        "Read",
+        "ReadByte",
+        "ReadToEnd",
+        "Peek",
+        "Seek",
+        "Move",
+        "Rewind",
+        "Duplicate",
+        "Fork",
+        "Dispose"
+      ]
+    },
+    "SKMemoryStream": {
+      "kind": "class",
+      "staticMembers": [
+        "FromData"
+      ],
+      "instanceMembers": [
+        "SetMemory"
+      ]
+    },
+    "SKDynamicMemoryWStream": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "BytesWritten",
+        "Write",
+        "WriteByte",
+        "WriteText",
+        "Flush",
+        "CopyToData",
+        "DetachAsData",
+        "DetachAsStream",
+        "WriteToStream",
+        "Reset",
+        "Dispose"
+      ]
+    },
+    "SKImage": {
+      "kind": "class",
+      "staticMembers": [
+        "FromEncodedData",
+        "FromEncodedDataAsync",
+        "FromBitmap",
+        "FromPixels",
+        "FromPixelCopy",
+        "FromCanvasImageSource",
+        "FromTexture"
+      ],
+      "instanceMembers": [
+        "Width",
+        "Height",
+        "Info",
+        "ColorType",
+        "AlphaType",
+        "ColorSpace",
+        "IsOpaque",
+        "Encode",
+        "ReadPixels",
+        "PeekPixels",
+        "ToRasterImage",
+        "Subset",
+        "Resize",
+        "ScalePixels",
+        "ToShader",
+        "WithDefaultMipmaps"
+      ]
+    },
+    "SKBitmap": {
+      "kind": "class",
+      "staticMembers": [
+        "Decode",
+        "DecodeAsync",
+        "FromImage",
+        "DecodeBounds"
+      ],
+      "instanceMembers": [
+        "Width",
+        "Height",
+        "Info",
+        "RowBytes",
+        "ByteCount",
+        "BytesPerPixel",
+        "ColorType",
+        "AlphaType",
+        "ColorSpace",
+        "IsEmpty",
+        "IsNull",
+        "IsImmutable",
+        "IsOpaque",
+        "AllocPixels",
+        "TryAllocPixels",
+        "GetPixels",
+        "GetPixelSpan",
+        "Bytes",
+        "SetPixels",
+        "NotifyPixelsChanged",
+        "PeekPixels",
+        "ReadPixels",
+        "GetPixel",
+        "SetPixel",
+        "Pixels",
+        "Erase",
+        "Copy",
+        "CopyTo",
+        "ExtractSubset",
+        "Resize",
+        "ScalePixels",
+        "Encode",
+        "ToShader",
+        "SetImmutable",
+        "Reset",
+        "Dispose"
+      ]
+    },
+    "SKPixmap": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Info",
+        "Width",
+        "Height",
+        "RowBytes",
+        "BytesSize",
+        "ColorType",
+        "AlphaType",
+        "ColorSpace",
+        "GetPixels",
+        "GetPixelSpan",
+        "GetPixelColor",
+        "ReadPixels",
+        "ScalePixels",
+        "Encode",
+        "Erase",
+        "Dispose"
+      ]
+    },
+    "SKCodec": {
+      "kind": "class",
+      "staticMembers": [
+        "Create"
+      ],
+      "instanceMembers": [
+        "Info",
+        "EncodedFormat",
+        "FrameCount",
+        "RepetitionCount",
+        "FrameInfo",
+        "GetImage",
+        "GetPixels",
+        "GetScaledDimensions",
+        "Dispose"
+      ]
+    },
+    "SKVertices": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateCopy"
+      ],
+      "instanceMembers": [
+        "Bounds",
+        "UniqueId"
+      ]
+    },
+    "SKDocument": {
+      "kind": "class",
+      "staticMembers": [
+        "CreatePdf",
+        "CreateXps"
+      ],
+      "instanceMembers": [
+        "IsRasterDocument",
+        "RasterDpi",
+        "PageCount",
+        "RasterFallbacks",
+        "Format",
+        "BeginPage",
+        "EndPage",
+        "Close",
+        "ToData",
+        "Flush",
+        "Abort",
+        "Dispose"
+      ]
+    },
+    "SKCodecResult": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Success",
+        "IncompleteInput",
+        "ErrorInInput",
+        "InvalidConversion",
+        "InvalidScale",
+        "InvalidParameters",
+        "InvalidInput",
+        "CouldNotRewind",
+        "InternalError",
+        "Unimplemented"
+      ],
+      "instanceMembers": []
+    },
+    "SKCanvas": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Clear",
+        "DrawColor",
+        "DrawPaint",
+        "DrawRect",
+        "DrawCircle",
+        "DrawLine",
+        "DrawPoint",
+        "DrawPoints",
+        "DrawOval",
+        "DrawRoundRect",
+        "DrawRoundRectDifference",
+        "DrawArc",
+        "DrawPath",
+        "DrawImage",
+        "DrawBitmap",
+        "DrawImageNinePatch",
+        "DrawImageLattice",
+        "DrawText",
+        "DrawShapedText",
+        "DrawTextBlob",
+        "DrawGlyphs",
+        "DrawParagraph",
+        "DrawPicture",
+        "DrawVertices",
+        "DrawAtlas",
+        "DrawPatch",
+        "Save",
+        "SaveLayer",
+        "Restore",
+        "RestoreToCount",
+        "SaveCount",
+        "TotalMatrix",
+        "DeviceClipBounds",
+        "Translate",
+        "Scale",
+        "RotateDegrees",
+        "RotateRadians",
+        "Skew",
+        "Concat",
+        "SetMatrix",
+        "ResetMatrix",
+        "ClipRect",
+        "ClipRoundRect",
+        "ClipPath",
+        "QuickReject",
+        "ReadPixels",
+        "WritePixels",
+        "Flush",
+        "DrawSurface",
+        "DrawDrawable",
+        "Surface",
+        "Context",
+        "TotalMatrix44",
+        "LocalClipBounds",
+        "IsClipEmpty",
+        "GetLocalClipBounds",
+        "GetDeviceClipBounds",
+        "DrawRegion",
+        "ClipRegion",
+        "Discard",
+        "DrawBitmapLattice",
+        "DrawBitmapNinePatch",
+        "DrawTextOnPath",
+        "DrawPositionedText",
+        "Dispose"
+      ]
+    },
+    "SKSurface": {
+      "kind": "class",
+      "staticMembers": [
+        "Create",
+        "CreateForCanvas",
+        "CreateRenderTarget",
+        "CreateFromBackendRenderTarget",
+        "CreateGraphite"
+      ],
+      "instanceMembers": [
+        "Width",
+        "Height",
+        "Flush",
+        "Snapshot",
+        "Draw",
+        "Dispose",
+        "Context",
+        "ReadPixels",
+        "PeekPixels"
+      ]
+    },
+    "SKPicture": {
+      "kind": "class",
+      "staticMembers": [
+        "Deserialize"
+      ],
+      "instanceMembers": [
+        "CullRect",
+        "ApproximateBytesUsed",
+        "Serialize",
+        "Playback",
+        "ToShader"
+      ]
+    },
+    "SKPictureRecorder": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "BeginRecording",
+        "EndRecording",
+        "Dispose"
+      ]
+    },
+    "SKAutoCanvasRestore": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Restore",
+        "Dispose"
+      ]
+    },
+    "SKRegion": {
+      "kind": "class",
+      "staticMembers": [
+        "Deserialize",
+        "RectIterator",
+        "ClipIterator",
+        "SpanIterator",
+        "Iterator",
+        "Cliperator"
+      ],
+      "instanceMembers": [
+        "IsEmpty",
+        "IsRect",
+        "IsComplex",
+        "Bounds",
+        "Complexity",
+        "Clone",
+        "Equals",
+        "SetEmpty",
+        "SetRegion",
+        "SetRect",
+        "SetRects",
+        "SetPath",
+        "Contains",
+        "QuickContains",
+        "QuickReject",
+        "Intersects",
+        "Translate",
+        "Op",
+        "GetBoundaryPath",
+        "CreateRectIterator",
+        "CreateClipIterator",
+        "CreateSpanIterator",
+        "Serialize",
+        "Dispose"
+      ]
+    },
+    "SKRegionOperation": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Difference",
+        "Intersect",
+        "Union",
+        "XOR",
+        "Xor",
+        "ReverseDifference",
+        "Replace"
+      ],
+      "instanceMembers": []
+    },
+    "SKHighContrastConfig": {
+      "kind": "class",
+      "staticMembers": [
+        "Default"
+      ],
+      "instanceMembers": [
+        "IsValid",
+        "Equals"
+      ]
+    },
+    "SKHighContrastConfigInvertStyle": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "NoInvert",
+        "InvertBrightness",
+        "InvertLightness"
+      ],
+      "instanceMembers": []
+    },
+    "SKTrimPathEffectMode": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Normal",
+        "Inverted"
+      ],
+      "instanceMembers": []
+    },
+    "SKTimeSpan": {
+      "kind": "class",
+      "staticMembers": [
+        "FromSeconds",
+        "FromMilliseconds"
+      ],
+      "instanceMembers": [
+        "TotalMilliseconds",
+        "Ticks",
+        "valueOf",
+        "ToString"
+      ]
+    },
+    "GRBackend": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Metal",
+        "OpenGL",
+        "Vulkan",
+        "Dawn",
+        "Direct3D",
+        "Unsupported"
+      ],
+      "instanceMembers": []
+    },
+    "GRSurfaceOrigin": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "TopLeft",
+        "BottomLeft"
+      ],
+      "instanceMembers": []
+    },
+    "GRGlBackendState": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "RenderTarget",
+        "TextureBinding",
+        "View",
+        "Blend",
+        "MSAAEnable",
+        "Vertex",
+        "Stencil",
+        "PixelStore",
+        "Program",
+        "FixedFunction",
+        "Misc",
+        "PathRendering",
+        "All"
+      ],
+      "instanceMembers": []
+    },
+    "GRBackendState": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "All"
+      ],
+      "instanceMembers": []
+    },
+    "GRGlFramebufferInfo": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Equals",
+        "GetHashCode"
+      ]
+    },
+    "GRGlTextureInfo": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Equals",
+        "GetHashCode"
+      ]
+    },
+    "GRBackendRenderTarget": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "IsValid",
+        "Size",
+        "Rect",
+        "GetGlFramebufferInfo"
+      ]
+    },
+    "GRBackendTexture": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "IsValid",
+        "Size",
+        "Rect",
+        "GetGlTextureInfo"
+      ]
+    },
+    "GRGlInterface": {
+      "kind": "class",
+      "staticMembers": [
+        "Create",
+        "CreateWebGl",
+        "CreateGles",
+        "CreateAngle",
+        "CreateOpenGl"
+      ],
+      "instanceMembers": [
+        "Validate",
+        "HasExtension",
+        "Dispose"
+      ]
+    },
+    "GRContextOptions": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "GRRecordingContext": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Backend",
+        "IsAbandoned",
+        "MaxTextureSize",
+        "MaxRenderTargetSize",
+        "GetMaxSurfaceSampleCount"
+      ]
+    },
+    "GRContext": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateGl",
+        "CreateVulkan",
+        "CreateMetal",
+        "CreateDirect3D",
+        "FromSurface"
+      ],
+      "instanceMembers": [
+        "GetResourceCacheLimit",
+        "SetResourceCacheLimit",
+        "GetResourceCacheUsage",
+        "ResetContext",
+        "Flush",
+        "Submit",
+        "SubmitAsync",
+        "CheckAsyncWorkCompletion",
+        "PurgeResources",
+        "PurgeUnlockedResources",
+        "PurgeUnusedResources",
+        "AbandonContext",
+        "Dispose"
+      ]
+    },
+    "SKGraphiteBackend": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Dawn",
+        "Metal",
+        "Vulkan",
+        "Unknown"
+      ],
+      "instanceMembers": []
+    },
+    "SKGraphiteInsertStatus": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Success",
+        "InvalidRecording",
+        "PromiseInstantiationFailed",
+        "AddCommandsFailed",
+        "AsyncShaderCompilesFailed",
+        "OutOfOrderRecording"
+      ],
+      "instanceMembers": []
+    },
+    "SKGraphiteDawnBackendContext": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKGraphiteContextOptions": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKGraphiteSubmitInfo": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKGraphiteInsertRecordingInfo": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKGraphiteContext": {
+      "kind": "class",
+      "staticMembers": [
+        "IsBackendAvailable",
+        "CreateDawn",
+        "CreateMetal",
+        "CreateVulkan"
+      ],
+      "instanceMembers": [
+        "Backend",
+        "IsDeviceLost",
+        "MaxTextureSize",
+        "SupportsProtectedContent",
+        "CurrentBudgetedBytes",
+        "MaxBudgetedBytes",
+        "CreateRecorder",
+        "InsertRecording",
+        "Submit",
+        "SubmitAsync",
+        "CheckAsyncWorkCompletion",
+        "FreeGpuResources",
+        "PerformDeferredCleanup",
+        "DeleteBackendTexture",
+        "RequestReadPixels",
+        "Dispose",
+        "DisposeAsync"
+      ]
+    },
+    "SKGraphiteRecorder": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Backend",
+        "MaxTextureSize",
+        "Snap",
+        "CreateBackendTexture",
+        "DeleteBackendTexture",
+        "Dispose"
+      ]
+    },
+    "SKGraphiteRecording": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Dispose"
+      ]
+    },
+    "SKGraphiteTextureInfo": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateDawn",
+        "CreateVulkan"
+      ],
+      "instanceMembers": [
+        "IsValid",
+        "Backend",
+        "SampleCount",
+        "Mipmapped"
+      ]
+    },
+    "SKGraphiteBackendTexture": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateDawn",
+        "CreateMetal",
+        "CreateVulkan"
+      ],
+      "instanceMembers": [
+        "IsValid",
+        "Backend",
+        "Dimensions"
+      ]
+    },
+    "SKImageReadPixelsResult": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Count",
+        "GetData",
+        "GetRowBytes",
+        "Dispose"
+      ]
+    },
+    "SKPoint3": {
+      "kind": "class",
+      "staticMembers": [
+        "Add",
+        "Subtract",
+        "Empty"
+      ],
+      "instanceMembers": [
+        "IsEmpty",
+        "Length",
+        "ToArray",
+        "Equals",
+        "ToString"
+      ]
+    },
+    "SKRotationScaleMatrix": {
+      "kind": "class",
+      "staticMembers": [
+        "Empty",
+        "Identity",
+        "Create",
+        "CreateDegrees",
+        "CreateIdentity",
+        "CreateTranslation",
+        "CreateScale",
+        "CreateRotation",
+        "CreateRotationDegrees"
+      ],
+      "instanceMembers": [
+        "Tx",
+        "Ty",
+        "ToArray",
+        "ToMatrix",
+        "Equals",
+        "GetHashCode"
+      ]
+    },
+    "SKRoundRectType": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Empty",
+        "Rect",
+        "Oval",
+        "Simple",
+        "NinePatch",
+        "Complex"
+      ],
+      "instanceMembers": []
+    },
+    "SKCanvasSaveLayerRec": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SKCanvasSaveLayerRecFlags": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "PreserveLCDText",
+        "InitWithPrevious",
+        "F16ColorType"
+      ],
+      "instanceMembers": []
+    },
+    "SKLattice": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Equals",
+        "GetHashCode"
+      ]
+    },
+    "SKLatticeRectType": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Default",
+        "Transparent",
+        "FixedColor"
+      ],
+      "instanceMembers": []
+    },
+    "SKTextEncoding": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Utf8",
+        "Utf16",
+        "Utf32",
+        "GlyphId"
+      ],
+      "instanceMembers": []
+    },
+    "SKDrawable": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "GenerationId",
+        "Bounds",
+        "ApproximateBytesUsed",
+        "OnGetBounds",
+        "OnGetApproximateBytesUsed",
+        "OnDraw",
+        "Draw",
+        "NotifyDrawingChanged",
+        "Snapshot"
+      ]
+    },
+    "SKNoDrawCanvas": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SaveLayer",
+        "WritePixels",
+        "ReadPixels",
+        "Flush",
+        "Dispose",
+        "Clear",
+        "DrawColor",
+        "DrawPaint",
+        "DrawRect",
+        "DrawCircle",
+        "DrawLine",
+        "DrawPoint",
+        "DrawPoints",
+        "DrawOval",
+        "DrawRoundRect",
+        "DrawRoundRectDifference",
+        "DrawArc",
+        "DrawPath",
+        "DrawImage",
+        "DrawBitmap",
+        "DrawImageNinePatch",
+        "DrawImageLattice",
+        "DrawText",
+        "DrawShapedText",
+        "DrawTextBlob",
+        "DrawGlyphs",
+        "DrawParagraph",
+        "DrawPicture",
+        "DrawVertices",
+        "DrawAtlas",
+        "DrawPatch",
+        "DrawSurface",
+        "DrawDrawable",
+        "DrawRegion",
+        "DrawBitmapLattice",
+        "DrawBitmapNinePatch",
+        "DrawTextOnPath",
+        "DrawPositionedText"
+      ]
+    },
+    "SKNWayCanvas": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "AddCanvas",
+        "RemoveCanvas",
+        "RemoveAll",
+        "Dispose",
+        "Clear",
+        "DrawColor",
+        "DrawPaint",
+        "DrawRect",
+        "DrawCircle",
+        "DrawLine",
+        "DrawPoint",
+        "DrawPoints",
+        "DrawOval",
+        "DrawRoundRect",
+        "DrawRoundRectDifference",
+        "DrawArc",
+        "DrawPath",
+        "DrawImage",
+        "DrawBitmap",
+        "DrawImageNinePatch",
+        "DrawImageLattice",
+        "DrawText",
+        "DrawShapedText",
+        "DrawTextBlob",
+        "DrawGlyphs",
+        "DrawParagraph",
+        "DrawPicture",
+        "DrawVertices",
+        "DrawAtlas",
+        "DrawPatch",
+        "Save",
+        "SaveLayer",
+        "Restore",
+        "RestoreToCount",
+        "Translate",
+        "Scale",
+        "RotateDegrees",
+        "RotateRadians",
+        "Skew",
+        "Concat",
+        "SetMatrix",
+        "ResetMatrix",
+        "ClipRect",
+        "ClipRoundRect",
+        "ClipPath",
+        "WritePixels",
+        "Flush",
+        "DrawSurface",
+        "DrawDrawable",
+        "DrawRegion",
+        "ClipRegion",
+        "DrawBitmapLattice",
+        "DrawBitmapNinePatch",
+        "DrawTextOnPath",
+        "DrawPositionedText"
+      ]
+    },
+    "SKGraphics": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "Init",
+        "GetResourceCacheTotalByteLimit",
+        "SetResourceCacheTotalByteLimit",
+        "GetResourceCacheTotalBytesUsed",
+        "PurgeResourceCache",
+        "GetFontCacheLimit",
+        "SetFontCacheLimit",
+        "GetFontCacheUsed",
+        "GetFontCacheCountUsed",
+        "GetFontCacheCountLimit",
+        "SetFontCacheCountLimit",
+        "PurgeFontCache",
+        "GetResourceCacheSingleAllocationByteLimit",
+        "SetResourceCacheSingleAllocationByteLimit",
+        "GetTypefaceCacheCountLimit",
+        "SetTypefaceCacheCountLimit",
+        "PurgePinnedFontCache",
+        "PurgeAllCaches",
+        "DumpMemoryStatistics",
+        "GetCapabilities"
+      ],
+      "instanceMembers": []
+    },
+    "Skottie.Animation": {
+      "kind": "class",
+      "staticMembers": [
+        "CreateBuilder",
+        "Parse",
+        "TryParse",
+        "Create",
+        "TryCreate",
+        "CreateAsync"
+      ],
+      "instanceMembers": [
+        "Duration",
+        "Fps",
+        "InPoint",
+        "OutPoint",
+        "Version",
+        "Size",
+        "Diagnostics",
+        "CurrentFrame",
+        "Render",
+        "Seek",
+        "SeekFrame",
+        "SeekFrameTime",
+        "Markers",
+        "GetColorProperties",
+        "GetOpacityProperties",
+        "GetTextProperties",
+        "GetTransformProperties",
+        "SetColor",
+        "SetOpacity",
+        "SetText",
+        "SetTransform",
+        "GetSlotInfo",
+        "SetColorSlot",
+        "GetColorSlot",
+        "SetScalarSlot",
+        "GetScalarSlot",
+        "SetVectorSlot",
+        "GetVectorSlot",
+        "SetImageSlot",
+        "SetTextSlot",
+        "GetTextSlot",
+        "AttachEditor",
+        "EnableEditor",
+        "DispatchEditorKey",
+        "DispatchEditorPointer",
+        "SetEditorCursorWeight",
+        "Dispose"
+      ]
+    },
+    "Skottie.AnimationBuilder": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SetFontManager",
+        "SetResourceProvider",
+        "SetPropertyPrefix",
+        "SetSoundMap",
+        "Stats",
+        "Build",
+        "BuildAsync"
+      ]
+    },
+    "Skottie.AnimationBuilderStats": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "Skottie.AnimationBuilderFlags": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "DeferImageLoading",
+        "PreferEmbeddedFonts"
+      ],
+      "instanceMembers": []
+    },
+    "Skottie.AnimationRenderFlags": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "SkipTopLevelIsolation",
+        "DisableTopLevelClipping"
+      ],
+      "instanceMembers": []
+    },
+    "Skottie.TimeSpan": {
+      "kind": "class",
+      "staticMembers": [
+        "FromSeconds",
+        "FromMilliseconds"
+      ],
+      "instanceMembers": [
+        "TotalMilliseconds",
+        "Ticks",
+        "valueOf",
+        "ToString"
+      ]
+    },
+    "Skottie.InputState": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "Down",
+        "Up",
+        "Move",
+        "Right",
+        "Left"
+      ],
+      "instanceMembers": []
+    },
+    "Skottie.ModifierKey": {
+      "kind": "class",
+      "staticMembers": [
+        "values",
+        "ke",
+        "None",
+        "Shift",
+        "Control",
+        "Option",
+        "Command",
+        "FirstPress"
+      ],
+      "instanceMembers": []
+    },
+    "Resources.ResourceProvider": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Register",
+        "RegisterUrl",
+        "Remove",
+        "ResourceNames",
+        "Load",
+        "LoadAsync",
+        "Preload",
+        "Dispose"
+      ]
+    },
+    "Resources.CachingResourceProvider": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Clear"
+      ]
+    },
+    "Resources.DataUriResourceProvider": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "Resources.FileResourceProvider": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": []
+    },
+    "SceneGraph.InvalidationController": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Invalidate",
+        "Bounds",
+        "Rectangles",
+        "Begin",
+        "End",
+        "Reset"
+      ]
+    },
+    "SceneGraph.SceneNode": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "GenerationId",
+        "Matrix",
+        "IsVisible",
+        "Opacity",
+        "Invalidate",
+        "Bounds",
+        "Revalidate",
+        "Render",
+        "HitTest",
+        "Dispose"
+      ]
+    },
+    "SceneGraph.GroupNode": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Children",
+        "Add",
+        "Remove",
+        "Clear",
+        "HitTest",
+        "Dispose"
+      ]
+    },
+    "SceneGraph.GeometryNode": {
+      "kind": "class",
+      "staticMembers": [
+        "Rectangle",
+        "Ellipse",
+        "Path"
+      ],
+      "instanceMembers": [
+        "SetPaint",
+        "SetGeometry",
+        "HitTest",
+        "Dispose"
+      ]
+    },
+    "SceneGraph.DrawableNode": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SetBounds"
+      ]
+    },
+    "SceneGraph.ClipNode": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SetClip",
+        "HitTest",
+        "Dispose"
+      ]
+    },
+    "SceneGraph.ImageNode": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SetDestination",
+        "Dispose"
+      ]
+    },
+    "SceneGraph.TextNode": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Text",
+        "SetOrigin",
+        "Dispose"
+      ]
+    },
+    "SceneGraph.AnimationNode": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "SeekFrame"
+      ]
+    },
+    "SceneGraph.Scene": {
+      "kind": "class",
+      "staticMembers": [],
+      "instanceMembers": [
+        "Render",
+        "HitTest",
+        "ResetInvalidation",
+        "Dispose"
+      ]
+    }
+  }
+}

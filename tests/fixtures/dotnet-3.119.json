@@ -1,0 +1,2213 @@
+{
+  "regionRects": [
+    [
+      10,
+      10,
+      20,
+      20
+    ],
+    [
+      30,
+      10,
+      40,
+      20
+    ],
+    [
+      15,
+      30,
+      25,
+      40
+    ]
+  ],
+  "regionMemoryError": "Unable to find an entry point named 'sk_region_write_to_memory' in shared library 'libSkiaSharp'.",
+  "circleRects": [
+    [
+      7,
+      2,
+      13,
+      3
+    ],
+    [
+      6,
+      3,
+      14,
+      4
+    ],
+    [
+      4,
+      4,
+      16,
+      6
+    ],
+    [
+      3,
+      6,
+      17,
+      7
+    ],
+    [
+      2,
+      7,
+      18,
+      13
+    ],
+    [
+      3,
+      13,
+      17,
+      14
+    ],
+    [
+      4,
+      14,
+      16,
+      16
+    ],
+    [
+      6,
+      16,
+      14,
+      17
+    ],
+    [
+      7,
+      17,
+      13,
+      18
+    ]
+  ],
+  "highContrast": [
+    255,
+    246,
+    101,
+    255
+  ],
+  "cornerSvg": "M1.5 0Q1.5 34.9166 16.825 55.35Q30.4375 73.5 50 73.5Q69.5625 73.5 83.175 55.35Q98.5 34.9167 98.5 0L98.5 -1.5L112 -1.5L138 -1.5Q151.5 -1.5 151.5 12L151.5 68L151.5 80L148.5 80L148.5 68L148.5 12Q148.5 1.5 138 1.5L112 1.5L100 1.5L100 0L101.5 0Q101.5 35.9167 85.575 57.15Q71.0625 76.5001 50 76.5Q28.9375 76.5 14.425 57.15Q-1.5 35.9166 -1.5 0L1.5 0Z",
+  "colors": [
+    {
+      "h": 0,
+      "hsl": "#ffac2f2f",
+      "hsv": "#ff6d2f2f"
+    },
+    {
+      "h": 7,
+      "hsl": "#ffac3d2f",
+      "hsv": "#ff6d362f"
+    },
+    {
+      "h": 14,
+      "hsl": "#ffac4c2f",
+      "hsv": "#ff6d3d2f"
+    },
+    {
+      "h": 21,
+      "hsl": "#ffac5a2f",
+      "hsv": "#ff6d452f"
+    },
+    {
+      "h": 28,
+      "hsl": "#ffac692f",
+      "hsv": "#ff6d4c2f"
+    },
+    {
+      "h": 35,
+      "hsl": "#ffac782f",
+      "hsv": "#ff6d532f"
+    },
+    {
+      "h": 42,
+      "hsl": "#ffac862f",
+      "hsv": "#ff6d5a2f"
+    },
+    {
+      "h": 49,
+      "hsl": "#ffac952f",
+      "hsv": "#ff6d622f"
+    },
+    {
+      "h": 56,
+      "hsl": "#ffaca32f",
+      "hsv": "#ff6d692f"
+    },
+    {
+      "h": 63,
+      "hsl": "#ffa5ac2f",
+      "hsv": "#ff6a6d2f"
+    },
+    {
+      "h": 70,
+      "hsl": "#ff97ac2f",
+      "hsv": "#ff636d2f"
+    },
+    {
+      "h": 77,
+      "hsl": "#ff88ac2f",
+      "hsv": "#ff5b6d2f"
+    },
+    {
+      "h": 84,
+      "hsl": "#ff7aac2f",
+      "hsv": "#ff546d2f"
+    },
+    {
+      "h": 91,
+      "hsl": "#ff6bac2f",
+      "hsv": "#ff4d6d2f"
+    },
+    {
+      "h": 98,
+      "hsl": "#ff5cac2f",
+      "hsv": "#ff466d2f"
+    },
+    {
+      "h": 105,
+      "hsl": "#ff4eac2f",
+      "hsv": "#ff3e6d2f"
+    },
+    {
+      "h": 112,
+      "hsl": "#ff3fac2f",
+      "hsv": "#ff376d2f"
+    },
+    {
+      "h": 119,
+      "hsl": "#ff31ac2f",
+      "hsv": "#ff306d2f"
+    },
+    {
+      "h": 126,
+      "hsl": "#ff2fac3b",
+      "hsv": "#ff2f6d35"
+    },
+    {
+      "h": 133,
+      "hsl": "#ff2fac4a",
+      "hsv": "#ff2f6d3c"
+    },
+    {
+      "h": 140,
+      "hsl": "#ff2fac58",
+      "hsv": "#ff2f6d43"
+    },
+    {
+      "h": 147,
+      "hsl": "#ff2fac67",
+      "hsv": "#ff2f6d4b"
+    },
+    {
+      "h": 154,
+      "hsl": "#ff2fac75",
+      "hsv": "#ff2f6d52"
+    },
+    {
+      "h": 161,
+      "hsl": "#ff2fac84",
+      "hsv": "#ff2f6d59"
+    },
+    {
+      "h": 168,
+      "hsl": "#ff2fac93",
+      "hsv": "#ff2f6d61"
+    },
+    {
+      "h": 175,
+      "hsl": "#ff2faca1",
+      "hsv": "#ff2f6d68"
+    },
+    {
+      "h": 182,
+      "hsl": "#ff2fa7ac",
+      "hsv": "#ff2f6b6d"
+    },
+    {
+      "h": 189,
+      "hsl": "#ff2f99ac",
+      "hsv": "#ff2f646d"
+    },
+    {
+      "h": 196,
+      "hsl": "#ff2f8aac",
+      "hsv": "#ff2f5c6d"
+    },
+    {
+      "h": 203,
+      "hsl": "#ff2f7cac",
+      "hsv": "#ff2f556d"
+    },
+    {
+      "h": 210,
+      "hsl": "#ff2f6dac",
+      "hsv": "#ff2f4e6d"
+    },
+    {
+      "h": 217,
+      "hsl": "#ff2f5fac",
+      "hsv": "#ff2f476d"
+    },
+    {
+      "h": 224,
+      "hsl": "#ff2f50ac",
+      "hsv": "#ff2f3f6d"
+    },
+    {
+      "h": 231,
+      "hsl": "#ff2f41ac",
+      "hsv": "#ff2f386d"
+    },
+    {
+      "h": 238,
+      "hsl": "#ff2f33ac",
+      "hsv": "#ff2f316d"
+    },
+    {
+      "h": 245,
+      "hsl": "#ff392fac",
+      "hsv": "#ff342f6d"
+    },
+    {
+      "h": 252,
+      "hsl": "#ff482fac",
+      "hsv": "#ff3b2f6d"
+    },
+    {
+      "h": 259,
+      "hsl": "#ff562fac",
+      "hsv": "#ff422f6d"
+    },
+    {
+      "h": 266,
+      "hsl": "#ff652fac",
+      "hsv": "#ff4a2f6d"
+    },
+    {
+      "h": 273,
+      "hsl": "#ff732fac",
+      "hsv": "#ff512f6d"
+    },
+    {
+      "h": 280,
+      "hsl": "#ff822fac",
+      "hsv": "#ff582f6d"
+    },
+    {
+      "h": 287,
+      "hsl": "#ff912fac",
+      "hsv": "#ff602f6d"
+    },
+    {
+      "h": 294,
+      "hsl": "#ff9f2fac",
+      "hsv": "#ff672f6d"
+    },
+    {
+      "h": 301,
+      "hsl": "#ffac2faa",
+      "hsv": "#ff6d2f6c"
+    },
+    {
+      "h": 308,
+      "hsl": "#ffac2f9b",
+      "hsv": "#ff6d2f65"
+    },
+    {
+      "h": 315,
+      "hsl": "#ffac2f8c",
+      "hsv": "#ff6d2f5e"
+    },
+    {
+      "h": 322,
+      "hsl": "#ffac2f7e",
+      "hsv": "#ff6d2f56"
+    },
+    {
+      "h": 329,
+      "hsl": "#ffac2f6f",
+      "hsv": "#ff6d2f4f"
+    },
+    {
+      "h": 336,
+      "hsl": "#ffac2f61",
+      "hsv": "#ff6d2f48"
+    },
+    {
+      "h": 343,
+      "hsl": "#ffac2f52",
+      "hsv": "#ff6d2f40"
+    },
+    {
+      "h": 350,
+      "hsl": "#ffac2f43",
+      "hsv": "#ff6d2f39"
+    },
+    {
+      "h": 357,
+      "hsl": "#ffac2f35",
+      "hsv": "#ff6d2f32"
+    }
+  ],
+  "pmColors": [
+    {
+      "a": 0,
+      "color": 0,
+      "roundtrip": "#00000000"
+    },
+    {
+      "a": 1,
+      "color": 16777217,
+      "roundtrip": "#010000ff"
+    },
+    {
+      "a": 2,
+      "color": 33554690,
+      "roundtrip": "#020080ff"
+    },
+    {
+      "a": 3,
+      "color": 50331907,
+      "roundtrip": "#030055ff"
+    },
+    {
+      "a": 4,
+      "color": 67109380,
+      "roundtrip": "#040080ff"
+    },
+    {
+      "a": 5,
+      "color": 83886597,
+      "roundtrip": "#050066ff"
+    },
+    {
+      "a": 6,
+      "color": 100664069,
+      "roundtrip": "#060080d5"
+    },
+    {
+      "a": 7,
+      "color": 117441286,
+      "roundtrip": "#07006ddb"
+    },
+    {
+      "a": 8,
+      "color": 134284295,
+      "roundtrip": "#082080df"
+    },
+    {
+      "a": 9,
+      "color": 151061512,
+      "roundtrip": "#091c71e3"
+    },
+    {
+      "a": 10,
+      "color": 167838729,
+      "roundtrip": "#0a1a66e6"
+    },
+    {
+      "a": 11,
+      "color": 184616202,
+      "roundtrip": "#0b1774e8"
+    },
+    {
+      "a": 12,
+      "color": 201393419,
+      "roundtrip": "#0c156aea"
+    },
+    {
+      "a": 13,
+      "color": 218170892,
+      "roundtrip": "#0d1476eb"
+    },
+    {
+      "a": 14,
+      "color": 234948109,
+      "roundtrip": "#0e126ded"
+    },
+    {
+      "a": 15,
+      "color": 251725582,
+      "roundtrip": "#0f1177ee"
+    },
+    {
+      "a": 16,
+      "color": 268502798,
+      "roundtrip": "#101070df"
+    },
+    {
+      "a": 17,
+      "color": 285280271,
+      "roundtrip": "#110f78e1"
+    },
+    {
+      "a": 18,
+      "color": 302057488,
+      "roundtrip": "#120e71e3"
+    },
+    {
+      "a": 19,
+      "color": 318834705,
+      "roundtrip": "#130d6be4"
+    },
+    {
+      "a": 20,
+      "color": 335612178,
+      "roundtrip": "#140d73e6"
+    },
+    {
+      "a": 21,
+      "color": 352389395,
+      "roundtrip": "#150c6de7"
+    },
+    {
+      "a": 22,
+      "color": 369166868,
+      "roundtrip": "#160c74e8"
+    },
+    {
+      "a": 23,
+      "color": 386009621,
+      "roundtrip": "#17166fe9"
+    },
+    {
+      "a": 24,
+      "color": 402787094,
+      "roundtrip": "#181575ea"
+    },
+    {
+      "a": 25,
+      "color": 419564311,
+      "roundtrip": "#191470eb"
+    },
+    {
+      "a": 26,
+      "color": 436341784,
+      "roundtrip": "#1a1476eb"
+    },
+    {
+      "a": 27,
+      "color": 453119000,
+      "roundtrip": "#1b1371e3"
+    },
+    {
+      "a": 28,
+      "color": 469896217,
+      "roundtrip": "#1c126de4"
+    },
+    {
+      "a": 29,
+      "color": 486673690,
+      "roundtrip": "#1d1272e5"
+    },
+    {
+      "a": 30,
+      "color": 503450907,
+      "roundtrip": "#1e116fe6"
+    },
+    {
+      "a": 31,
+      "color": 520228380,
+      "roundtrip": "#1f1073e6"
+    },
+    {
+      "a": 32,
+      "color": 537005597,
+      "roundtrip": "#201070e7"
+    },
+    {
+      "a": 33,
+      "color": 553783070,
+      "roundtrip": "#210f74e8"
+    },
+    {
+      "a": 34,
+      "color": 570560287,
+      "roundtrip": "#220f71e9"
+    },
+    {
+      "a": 35,
+      "color": 587337760,
+      "roundtrip": "#230f75e9"
+    },
+    {
+      "a": 36,
+      "color": 604114977,
+      "roundtrip": "#240e71ea"
+    },
+    {
+      "a": 37,
+      "color": 620892194,
+      "roundtrip": "#250e6eea"
+    },
+    {
+      "a": 38,
+      "color": 637735202,
+      "roundtrip": "#261472e4"
+    },
+    {
+      "a": 39,
+      "color": 654512419,
+      "roundtrip": "#27146fe5"
+    },
+    {
+      "a": 40,
+      "color": 671289892,
+      "roundtrip": "#281373e6"
+    },
+    {
+      "a": 41,
+      "color": 688067109,
+      "roundtrip": "#291370e6"
+    },
+    {
+      "a": 42,
+      "color": 704844582,
+      "roundtrip": "#2a1273e7"
+    },
+    {
+      "a": 43,
+      "color": 721621799,
+      "roundtrip": "#2b1271e7"
+    },
+    {
+      "a": 44,
+      "color": 738399016,
+      "roundtrip": "#2c116ee8"
+    },
+    {
+      "a": 45,
+      "color": 755176489,
+      "roundtrip": "#2d1171e8"
+    },
+    {
+      "a": 46,
+      "color": 771953706,
+      "roundtrip": "#2e116fe9"
+    },
+    {
+      "a": 47,
+      "color": 788731179,
+      "roundtrip": "#2f1072e9"
+    },
+    {
+      "a": 48,
+      "color": 805508395,
+      "roundtrip": "#301070e4"
+    },
+    {
+      "a": 49,
+      "color": 822285868,
+      "roundtrip": "#311072e5"
+    },
+    {
+      "a": 50,
+      "color": 839063085,
+      "roundtrip": "#320f70e6"
+    },
+    {
+      "a": 51,
+      "color": 855840558,
+      "roundtrip": "#330f73e6"
+    },
+    {
+      "a": 52,
+      "color": 872617775,
+      "roundtrip": "#340f71e6"
+    },
+    {
+      "a": 53,
+      "color": 889460528,
+      "roundtrip": "#35136fe7"
+    },
+    {
+      "a": 54,
+      "color": 906238001,
+      "roundtrip": "#361371e7"
+    },
+    {
+      "a": 55,
+      "color": 923015218,
+      "roundtrip": "#37136fe8"
+    },
+    {
+      "a": 56,
+      "color": 939792691,
+      "roundtrip": "#381272e8"
+    },
+    {
+      "a": 57,
+      "color": 956569908,
+      "roundtrip": "#391270e9"
+    },
+    {
+      "a": 58,
+      "color": 973347381,
+      "roundtrip": "#3a1272e9"
+    },
+    {
+      "a": 59,
+      "color": 990124597,
+      "roundtrip": "#3b1170e5"
+    },
+    {
+      "a": 60,
+      "color": 1006902070,
+      "roundtrip": "#3c1173e6"
+    },
+    {
+      "a": 61,
+      "color": 1023679287,
+      "roundtrip": "#3d1171e6"
+    },
+    {
+      "a": 62,
+      "color": 1040456504,
+      "roundtrip": "#3e106fe6"
+    },
+    {
+      "a": 63,
+      "color": 1057233977,
+      "roundtrip": "#3f1071e7"
+    },
+    {
+      "a": 64,
+      "color": 1074011194,
+      "roundtrip": "#401070e7"
+    },
+    {
+      "a": 65,
+      "color": 1090788667,
+      "roundtrip": "#411072e7"
+    },
+    {
+      "a": 66,
+      "color": 1107565884,
+      "roundtrip": "#420f70e8"
+    },
+    {
+      "a": 67,
+      "color": 1124343357,
+      "roundtrip": "#430f72e8"
+    },
+    {
+      "a": 68,
+      "color": 1141186110,
+      "roundtrip": "#441371e9"
+    },
+    {
+      "a": 69,
+      "color": 1157963583,
+      "roundtrip": "#451273e9"
+    },
+    {
+      "a": 70,
+      "color": 1174740799,
+      "roundtrip": "#461271e5"
+    },
+    {
+      "a": 71,
+      "color": 1191518016,
+      "roundtrip": "#47126fe6"
+    },
+    {
+      "a": 72,
+      "color": 1208295489,
+      "roundtrip": "#481271e6"
+    },
+    {
+      "a": 73,
+      "color": 1225072706,
+      "roundtrip": "#491170e7"
+    },
+    {
+      "a": 74,
+      "color": 1241850179,
+      "roundtrip": "#4a1172e7"
+    },
+    {
+      "a": 75,
+      "color": 1258627396,
+      "roundtrip": "#4b1170e7"
+    },
+    {
+      "a": 76,
+      "color": 1275404869,
+      "roundtrip": "#4c1172e8"
+    },
+    {
+      "a": 77,
+      "color": 1292182086,
+      "roundtrip": "#4d1171e8"
+    },
+    {
+      "a": 78,
+      "color": 1308959559,
+      "roundtrip": "#4e1072e8"
+    },
+    {
+      "a": 79,
+      "color": 1325736776,
+      "roundtrip": "#4f1071e8"
+    },
+    {
+      "a": 80,
+      "color": 1342513992,
+      "roundtrip": "#501070e6"
+    },
+    {
+      "a": 81,
+      "color": 1359291465,
+      "roundtrip": "#511071e6"
+    },
+    {
+      "a": 82,
+      "color": 1376068682,
+      "roundtrip": "#521070e6"
+    },
+    {
+      "a": 83,
+      "color": 1392911691,
+      "roundtrip": "#531272e6"
+    },
+    {
+      "a": 84,
+      "color": 1409688908,
+      "roundtrip": "#541270e7"
+    },
+    {
+      "a": 85,
+      "color": 1426466381,
+      "roundtrip": "#551272e7"
+    },
+    {
+      "a": 86,
+      "color": 1443243598,
+      "roundtrip": "#561271e7"
+    },
+    {
+      "a": 87,
+      "color": 1460021071,
+      "roundtrip": "#571272e8"
+    },
+    {
+      "a": 88,
+      "color": 1476798288,
+      "roundtrip": "#581171e8"
+    },
+    {
+      "a": 89,
+      "color": 1493575505,
+      "roundtrip": "#591170e8"
+    },
+    {
+      "a": 90,
+      "color": 1510352978,
+      "roundtrip": "#5a1171e8"
+    },
+    {
+      "a": 91,
+      "color": 1527130194,
+      "roundtrip": "#5b1170e6"
+    },
+    {
+      "a": 92,
+      "color": 1543907667,
+      "roundtrip": "#5c1172e6"
+    },
+    {
+      "a": 93,
+      "color": 1560684884,
+      "roundtrip": "#5d1070e6"
+    },
+    {
+      "a": 94,
+      "color": 1577462357,
+      "roundtrip": "#5e1072e7"
+    },
+    {
+      "a": 95,
+      "color": 1594239574,
+      "roundtrip": "#5f1071e7"
+    },
+    {
+      "a": 96,
+      "color": 1611017047,
+      "roundtrip": "#601072e7"
+    },
+    {
+      "a": 97,
+      "color": 1627794264,
+      "roundtrip": "#611071e7"
+    },
+    {
+      "a": 98,
+      "color": 1644637017,
+      "roundtrip": "#621270e8"
+    },
+    {
+      "a": 99,
+      "color": 1661414490,
+      "roundtrip": "#631271e8"
+    },
+    {
+      "a": 100,
+      "color": 1678191707,
+      "roundtrip": "#641270e8"
+    },
+    {
+      "a": 101,
+      "color": 1694969179,
+      "roundtrip": "#651272e6"
+    },
+    {
+      "a": 102,
+      "color": 1711746396,
+      "roundtrip": "#661271e6"
+    },
+    {
+      "a": 103,
+      "color": 1728523869,
+      "roundtrip": "#671172e6"
+    },
+    {
+      "a": 104,
+      "color": 1745301086,
+      "roundtrip": "#681171e6"
+    },
+    {
+      "a": 105,
+      "color": 1762078559,
+      "roundtrip": "#691172e7"
+    },
+    {
+      "a": 106,
+      "color": 1778855776,
+      "roundtrip": "#6a1171e7"
+    },
+    {
+      "a": 107,
+      "color": 1795632993,
+      "roundtrip": "#6b1170e7"
+    },
+    {
+      "a": 108,
+      "color": 1812410466,
+      "roundtrip": "#6c1171e7"
+    },
+    {
+      "a": 109,
+      "color": 1829187683,
+      "roundtrip": "#6d1070e8"
+    },
+    {
+      "a": 110,
+      "color": 1845965156,
+      "roundtrip": "#6e1072e8"
+    },
+    {
+      "a": 111,
+      "color": 1862742373,
+      "roundtrip": "#6f1071e8"
+    },
+    {
+      "a": 112,
+      "color": 1879519845,
+      "roundtrip": "#701072e6"
+    },
+    {
+      "a": 113,
+      "color": 1896362598,
+      "roundtrip": "#711271e6"
+    },
+    {
+      "a": 114,
+      "color": 1913140071,
+      "roundtrip": "#721272e6"
+    },
+    {
+      "a": 115,
+      "color": 1929917288,
+      "roundtrip": "#731271e7"
+    },
+    {
+      "a": 116,
+      "color": 1946694505,
+      "roundtrip": "#741270e7"
+    },
+    {
+      "a": 117,
+      "color": 1963471978,
+      "roundtrip": "#751171e7"
+    },
+    {
+      "a": 118,
+      "color": 1980249195,
+      "roundtrip": "#761170e7"
+    },
+    {
+      "a": 119,
+      "color": 1997026668,
+      "roundtrip": "#771172e7"
+    },
+    {
+      "a": 120,
+      "color": 2013803885,
+      "roundtrip": "#781171e8"
+    },
+    {
+      "a": 121,
+      "color": 2030581358,
+      "roundtrip": "#791172e8"
+    },
+    {
+      "a": 122,
+      "color": 2047358575,
+      "roundtrip": "#7a1171e8"
+    },
+    {
+      "a": 123,
+      "color": 2064136047,
+      "roundtrip": "#7b1172e6"
+    },
+    {
+      "a": 124,
+      "color": 2080913264,
+      "roundtrip": "#7c1071e6"
+    },
+    {
+      "a": 125,
+      "color": 2097690481,
+      "roundtrip": "#7d1070e7"
+    },
+    {
+      "a": 126,
+      "color": 2114467954,
+      "roundtrip": "#7e1071e7"
+    },
+    {
+      "a": 127,
+      "color": 2131245171,
+      "roundtrip": "#7f1070e7"
+    },
+    {
+      "a": 128,
+      "color": 2148088180,
+      "roundtrip": "#801272e7"
+    },
+    {
+      "a": 129,
+      "color": 2164865397,
+      "roundtrip": "#811271e7"
+    },
+    {
+      "a": 130,
+      "color": 2181642870,
+      "roundtrip": "#821272e7"
+    },
+    {
+      "a": 131,
+      "color": 2198420087,
+      "roundtrip": "#831271e8"
+    },
+    {
+      "a": 132,
+      "color": 2215197304,
+      "roundtrip": "#841170e8"
+    },
+    {
+      "a": 133,
+      "color": 2231974776,
+      "roundtrip": "#851171e6"
+    },
+    {
+      "a": 134,
+      "color": 2248751993,
+      "roundtrip": "#861170e6"
+    },
+    {
+      "a": 135,
+      "color": 2265529466,
+      "roundtrip": "#871171e6"
+    },
+    {
+      "a": 136,
+      "color": 2282306683,
+      "roundtrip": "#881171e7"
+    },
+    {
+      "a": 137,
+      "color": 2299084156,
+      "roundtrip": "#891172e7"
+    },
+    {
+      "a": 138,
+      "color": 2315861373,
+      "roundtrip": "#8a1171e7"
+    },
+    {
+      "a": 139,
+      "color": 2332638846,
+      "roundtrip": "#8b1172e7"
+    },
+    {
+      "a": 140,
+      "color": 2349416063,
+      "roundtrip": "#8c1071e7"
+    },
+    {
+      "a": 141,
+      "color": 2366193280,
+      "roundtrip": "#8d1070e7"
+    },
+    {
+      "a": 142,
+      "color": 2382970753,
+      "roundtrip": "#8e1071e8"
+    },
+    {
+      "a": 143,
+      "color": 2399813506,
+      "roundtrip": "#8f1270e8"
+    },
+    {
+      "a": 144,
+      "color": 2416590978,
+      "roundtrip": "#901271e6"
+    },
+    {
+      "a": 145,
+      "color": 2433368195,
+      "roundtrip": "#911271e6"
+    },
+    {
+      "a": 146,
+      "color": 2450145668,
+      "roundtrip": "#921172e7"
+    },
+    {
+      "a": 147,
+      "color": 2466922885,
+      "roundtrip": "#931171e7"
+    },
+    {
+      "a": 148,
+      "color": 2483700358,
+      "roundtrip": "#941172e7"
+    },
+    {
+      "a": 149,
+      "color": 2500477575,
+      "roundtrip": "#951171e7"
+    },
+    {
+      "a": 150,
+      "color": 2517254792,
+      "roundtrip": "#961170e7"
+    },
+    {
+      "a": 151,
+      "color": 2534032265,
+      "roundtrip": "#971171e7"
+    },
+    {
+      "a": 152,
+      "color": 2550809482,
+      "roundtrip": "#981170e8"
+    },
+    {
+      "a": 153,
+      "color": 2567586955,
+      "roundtrip": "#991171e8"
+    },
+    {
+      "a": 154,
+      "color": 2584364172,
+      "roundtrip": "#9a1171e8"
+    },
+    {
+      "a": 155,
+      "color": 2601141644,
+      "roundtrip": "#9b1072e6"
+    },
+    {
+      "a": 156,
+      "color": 2617918861,
+      "roundtrip": "#9c1071e6"
+    },
+    {
+      "a": 157,
+      "color": 2634696334,
+      "roundtrip": "#9d1072e7"
+    },
+    {
+      "a": 158,
+      "color": 2651539087,
+      "roundtrip": "#9e1271e7"
+    },
+    {
+      "a": 159,
+      "color": 2668316304,
+      "roundtrip": "#9f1270e7"
+    },
+    {
+      "a": 160,
+      "color": 2685093777,
+      "roundtrip": "#a01271e7"
+    },
+    {
+      "a": 161,
+      "color": 2701870994,
+      "roundtrip": "#a11170e7"
+    },
+    {
+      "a": 162,
+      "color": 2718648467,
+      "roundtrip": "#a21171e7"
+    },
+    {
+      "a": 163,
+      "color": 2735425684,
+      "roundtrip": "#a31171e8"
+    },
+    {
+      "a": 164,
+      "color": 2752203157,
+      "roundtrip": "#a41172e8"
+    },
+    {
+      "a": 165,
+      "color": 2768980373,
+      "roundtrip": "#a51171e6"
+    },
+    {
+      "a": 166,
+      "color": 2785757846,
+      "roundtrip": "#a61172e6"
+    },
+    {
+      "a": 167,
+      "color": 2802535063,
+      "roundtrip": "#a71171e7"
+    },
+    {
+      "a": 168,
+      "color": 2819312280,
+      "roundtrip": "#a81170e7"
+    },
+    {
+      "a": 169,
+      "color": 2836089753,
+      "roundtrip": "#a91171e7"
+    },
+    {
+      "a": 170,
+      "color": 2852866970,
+      "roundtrip": "#aa1171e7"
+    },
+    {
+      "a": 171,
+      "color": 2869644443,
+      "roundtrip": "#ab1071e7"
+    },
+    {
+      "a": 172,
+      "color": 2886421660,
+      "roundtrip": "#ac1071e7"
+    },
+    {
+      "a": 173,
+      "color": 2903264669,
+      "roundtrip": "#ad1271e7"
+    },
+    {
+      "a": 174,
+      "color": 2920041886,
+      "roundtrip": "#ae1271e8"
+    },
+    {
+      "a": 175,
+      "color": 2936819359,
+      "roundtrip": "#af1172e8"
+    },
+    {
+      "a": 176,
+      "color": 2953596575,
+      "roundtrip": "#b01171e6"
+    },
+    {
+      "a": 177,
+      "color": 2970373792,
+      "roundtrip": "#b11170e7"
+    },
+    {
+      "a": 178,
+      "color": 2987151265,
+      "roundtrip": "#b21171e7"
+    },
+    {
+      "a": 179,
+      "color": 3003928482,
+      "roundtrip": "#b31171e7"
+    },
+    {
+      "a": 180,
+      "color": 3020705955,
+      "roundtrip": "#b41171e7"
+    },
+    {
+      "a": 181,
+      "color": 3037483172,
+      "roundtrip": "#b51171e7"
+    },
+    {
+      "a": 182,
+      "color": 3054260645,
+      "roundtrip": "#b61171e7"
+    },
+    {
+      "a": 183,
+      "color": 3071037862,
+      "roundtrip": "#b71171e7"
+    },
+    {
+      "a": 184,
+      "color": 3087815335,
+      "roundtrip": "#b81172e7"
+    },
+    {
+      "a": 185,
+      "color": 3104592552,
+      "roundtrip": "#b91171e8"
+    },
+    {
+      "a": 186,
+      "color": 3121369768,
+      "roundtrip": "#ba1070e6"
+    },
+    {
+      "a": 187,
+      "color": 3138147241,
+      "roundtrip": "#bb1071e6"
+    },
+    {
+      "a": 188,
+      "color": 3154989994,
+      "roundtrip": "#bc1271e7"
+    },
+    {
+      "a": 189,
+      "color": 3171767467,
+      "roundtrip": "#bd1271e7"
+    },
+    {
+      "a": 190,
+      "color": 3188544684,
+      "roundtrip": "#be1171e7"
+    },
+    {
+      "a": 191,
+      "color": 3205322157,
+      "roundtrip": "#bf1171e7"
+    },
+    {
+      "a": 192,
+      "color": 3222099374,
+      "roundtrip": "#c01171e7"
+    },
+    {
+      "a": 193,
+      "color": 3238876847,
+      "roundtrip": "#c11172e7"
+    },
+    {
+      "a": 194,
+      "color": 3255654064,
+      "roundtrip": "#c21171e7"
+    },
+    {
+      "a": 195,
+      "color": 3272431281,
+      "roundtrip": "#c31170e7"
+    },
+    {
+      "a": 196,
+      "color": 3289208754,
+      "roundtrip": "#c41171e8"
+    },
+    {
+      "a": 197,
+      "color": 3305985970,
+      "roundtrip": "#c51171e6"
+    },
+    {
+      "a": 198,
+      "color": 3322763443,
+      "roundtrip": "#c61171e7"
+    },
+    {
+      "a": 199,
+      "color": 3339540660,
+      "roundtrip": "#c71171e7"
+    },
+    {
+      "a": 200,
+      "color": 3356318133,
+      "roundtrip": "#c81171e7"
+    },
+    {
+      "a": 201,
+      "color": 3373095350,
+      "roundtrip": "#c91071e7"
+    },
+    {
+      "a": 202,
+      "color": 3389872823,
+      "roundtrip": "#ca1072e7"
+    },
+    {
+      "a": 203,
+      "color": 3406715576,
+      "roundtrip": "#cb1271e7"
+    },
+    {
+      "a": 204,
+      "color": 3423492793,
+      "roundtrip": "#cc1271e7"
+    },
+    {
+      "a": 205,
+      "color": 3440270266,
+      "roundtrip": "#cd1171e7"
+    },
+    {
+      "a": 206,
+      "color": 3457047483,
+      "roundtrip": "#ce1171e7"
+    },
+    {
+      "a": 207,
+      "color": 3473824956,
+      "roundtrip": "#cf1171e8"
+    },
+    {
+      "a": 208,
+      "color": 3490602172,
+      "roundtrip": "#d01171e6"
+    },
+    {
+      "a": 209,
+      "color": 3507379645,
+      "roundtrip": "#d11171e7"
+    },
+    {
+      "a": 210,
+      "color": 3524156862,
+      "roundtrip": "#d21171e7"
+    },
+    {
+      "a": 211,
+      "color": 3540934335,
+      "roundtrip": "#d31172e7"
+    },
+    {
+      "a": 212,
+      "color": 3557711552,
+      "roundtrip": "#d41171e7"
+    },
+    {
+      "a": 213,
+      "color": 3574488769,
+      "roundtrip": "#d51171e7"
+    },
+    {
+      "a": 214,
+      "color": 3591266242,
+      "roundtrip": "#d61171e7"
+    },
+    {
+      "a": 215,
+      "color": 3608043459,
+      "roundtrip": "#d71171e7"
+    },
+    {
+      "a": 216,
+      "color": 3624820932,
+      "roundtrip": "#d81171e7"
+    },
+    {
+      "a": 217,
+      "color": 3641598149,
+      "roundtrip": "#d91071e7"
+    },
+    {
+      "a": 218,
+      "color": 3658441157,
+      "roundtrip": "#da1271e6"
+    },
+    {
+      "a": 219,
+      "color": 3675218374,
+      "roundtrip": "#db1171e7"
+    },
+    {
+      "a": 220,
+      "color": 3691995591,
+      "roundtrip": "#dc1170e7"
+    },
+    {
+      "a": 221,
+      "color": 3708773064,
+      "roundtrip": "#dd1171e7"
+    },
+    {
+      "a": 222,
+      "color": 3725550281,
+      "roundtrip": "#de1171e7"
+    },
+    {
+      "a": 223,
+      "color": 3742327754,
+      "roundtrip": "#df1171e7"
+    },
+    {
+      "a": 224,
+      "color": 3759104971,
+      "roundtrip": "#e01171e7"
+    },
+    {
+      "a": 225,
+      "color": 3775882444,
+      "roundtrip": "#e11171e7"
+    },
+    {
+      "a": 226,
+      "color": 3792659661,
+      "roundtrip": "#e21171e7"
+    },
+    {
+      "a": 227,
+      "color": 3809437134,
+      "roundtrip": "#e31171e7"
+    },
+    {
+      "a": 228,
+      "color": 3826214351,
+      "roundtrip": "#e41171e8"
+    },
+    {
+      "a": 229,
+      "color": 3842991567,
+      "roundtrip": "#e51170e7"
+    },
+    {
+      "a": 230,
+      "color": 3859769040,
+      "roundtrip": "#e61171e7"
+    },
+    {
+      "a": 231,
+      "color": 3876546257,
+      "roundtrip": "#e71171e7"
+    },
+    {
+      "a": 232,
+      "color": 3893323730,
+      "roundtrip": "#e81071e7"
+    },
+    {
+      "a": 233,
+      "color": 3910166483,
+      "roundtrip": "#e91271e7"
+    },
+    {
+      "a": 234,
+      "color": 3926943956,
+      "roundtrip": "#ea1171e7"
+    },
+    {
+      "a": 235,
+      "color": 3943721173,
+      "roundtrip": "#eb1171e7"
+    },
+    {
+      "a": 236,
+      "color": 3960498646,
+      "roundtrip": "#ec1171e7"
+    },
+    {
+      "a": 237,
+      "color": 3977275863,
+      "roundtrip": "#ed1171e7"
+    },
+    {
+      "a": 238,
+      "color": 3994053080,
+      "roundtrip": "#ee1171e7"
+    },
+    {
+      "a": 239,
+      "color": 4010830553,
+      "roundtrip": "#ef1171e8"
+    },
+    {
+      "a": 240,
+      "color": 4027607769,
+      "roundtrip": "#f01171e7"
+    },
+    {
+      "a": 241,
+      "color": 4044385242,
+      "roundtrip": "#f11171e7"
+    },
+    {
+      "a": 242,
+      "color": 4061162459,
+      "roundtrip": "#f21171e7"
+    },
+    {
+      "a": 243,
+      "color": 4077939932,
+      "roundtrip": "#f31171e7"
+    },
+    {
+      "a": 244,
+      "color": 4094717149,
+      "roundtrip": "#f41171e7"
+    },
+    {
+      "a": 245,
+      "color": 4111494622,
+      "roundtrip": "#f51171e7"
+    },
+    {
+      "a": 246,
+      "color": 4128271839,
+      "roundtrip": "#f61171e7"
+    },
+    {
+      "a": 247,
+      "color": 4145049056,
+      "roundtrip": "#f71171e7"
+    },
+    {
+      "a": 248,
+      "color": 4161892065,
+      "roundtrip": "#f81171e7"
+    },
+    {
+      "a": 249,
+      "color": 4178669282,
+      "roundtrip": "#f91171e7"
+    },
+    {
+      "a": 250,
+      "color": 4195446754,
+      "roundtrip": "#fa1171e7"
+    },
+    {
+      "a": 251,
+      "color": 4212223971,
+      "roundtrip": "#fb1171e7"
+    },
+    {
+      "a": 252,
+      "color": 4229001444,
+      "roundtrip": "#fc1171e7"
+    },
+    {
+      "a": 253,
+      "color": 4245778661,
+      "roundtrip": "#fd1171e7"
+    },
+    {
+      "a": 254,
+      "color": 4262556134,
+      "roundtrip": "#fe1171e7"
+    },
+    {
+      "a": 255,
+      "color": 4279333351,
+      "roundtrip": "#ff1171e7"
+    }
+  ],
+  "transfer": [
+    {
+      "name": "Srgb",
+      "values": [
+        2.4,
+        0.9478673,
+        0.0521327,
+        0.07739938,
+        0.04045,
+        0,
+        0
+      ],
+      "transforms": [
+        0,
+        0.0039355457,
+        0.010020733,
+        0.019605279,
+        0.03309822,
+        0.05086398,
+        0.07323456,
+        0.10047579,
+        0.13283539,
+        0.1706152,
+        0.21399307,
+        0.26320457,
+        0.31850624,
+        0.38004684,
+        0.44797516,
+        0.5224838,
+        0.6037369,
+        0.6919327,
+        0.7872162,
+        0.889801,
+        1
+      ],
+      "inverse": [
+        0.41666666,
+        1.1372833,
+        0,
+        12.92,
+        0.003130805,
+        -0.054969788,
+        0
+      ]
+    },
+    {
+      "name": "TwoDotTwo",
+      "values": [
+        2.2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "transforms": [
+        0,
+        0.0013730824,
+        0.0063088834,
+        0.015393257,
+        0.028987408,
+        0.047366142,
+        0.07072544,
+        0.099298954,
+        0.13319016,
+        0.172575,
+        0.21762943,
+        0.26833725,
+        0.3249836,
+        0.38760376,
+        0.45624924,
+        0.5310135,
+        0.6119957,
+        0.699276,
+        0.7929306,
+        0.8930969,
+        1
+      ],
+      "inverse": [
+        0.45454544,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Linear",
+      "values": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "transforms": [
+        0,
+        0.04999709,
+        0.09999418,
+        0.14998436,
+        0.19998837,
+        0.2500038,
+        0.29996872,
+        0.35000038,
+        0.39997673,
+        0.44993782,
+        0.5000076,
+        0.5499191,
+        0.59993744,
+        0.64998627,
+        0.70000076,
+        0.7499962,
+        0.79995346,
+        0.8499069,
+        0.89987564,
+        0.94989777,
+        1
+      ],
+      "inverse": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Rec2020",
+      "values": [
+        2.22222,
+        0.909672,
+        0.0903276,
+        0.222222,
+        0.0812429,
+        0,
+        0
+      ],
+      "transforms": [
+        0,
+        0.0111111,
+        0.02248907,
+        0.036973715,
+        0.055501938,
+        0.07824755,
+        0.10534477,
+        0.13690281,
+        0.17307281,
+        0.21399689,
+        0.2596531,
+        0.31028175,
+        0.3659382,
+        0.4266472,
+        0.4925213,
+        0.5635681,
+        0.63993835,
+        0.7216606,
+        0.808815,
+        0.90153885,
+        1.0000153
+      ],
+      "inverse": [
+        0.45000046,
+        1.2343903,
+        0,
+        4.5000043,
+        0.018053958,
+        -0.09931946,
+        0
+      ]
+    },
+    {
+      "name": "Pq",
+      "values": [
+        -2,
+        -0.8359375,
+        1,
+        0.012683313,
+        18.851562,
+        -18.6875,
+        6.277395
+      ],
+      "transforms": [
+        0,
+        5.9695158e-06,
+        3.2320386e-05,
+        9.9714845e-05,
+        0.00024229567,
+        0.0005140342,
+        0.0010021254,
+        0.0018418431,
+        0.003243342,
+        0.005528778,
+        0.00922668,
+        0.015102327,
+        0.02442503,
+        0.039057255,
+        0.062226295,
+        0.09869957,
+        0.15615845,
+        0.24709034,
+        0.39240456,
+        0.62659836,
+        1
+      ],
+      "inverse": [
+        -2,
+        0.8359375,
+        18.851562,
+        0.15930176,
+        1,
+        18.6875,
+        78.84375
+      ]
+    },
+    {
+      "name": "Hlg",
+      "values": [
+        -3,
+        2,
+        2,
+        5.5918164,
+        0.28466892,
+        0.5599107,
+        0
+      ],
+      "transforms": [
+        0,
+        0.009999037,
+        0.039996147,
+        0.089987755,
+        0.15998459,
+        0.2500038,
+        0.35995102,
+        0.48999977,
+        0.63993835,
+        0.8098297,
+        1,
+        1.2307291,
+        1.5359278,
+        1.9395609,
+        2.473359,
+        3.1795664,
+        4.1133127,
+        5.3484507,
+        6.9818735,
+        9.142091,
+        12.000001
+      ],
+      "inverse": [
+        -4,
+        0.5,
+        0.5,
+        0.17883277,
+        0.28466892,
+        0.5599107,
+        0
+      ]
+    }
+  ],
+  "namedColors": {
+    "AliceBlue": "#fff0f8ff",
+    "AntiqueWhite": "#fffaebd7",
+    "Aqua": "#ff00ffff",
+    "Aquamarine": "#ff7fffd4",
+    "Azure": "#fff0ffff",
+    "Beige": "#fff5f5dc",
+    "Bisque": "#ffffe4c4",
+    "Black": "#ff000000",
+    "BlanchedAlmond": "#ffffebcd",
+    "Blue": "#ff0000ff",
+    "BlueViolet": "#ff8a2be2",
+    "Brown": "#ffa52a2a",
+    "BurlyWood": "#ffdeb887",
+    "CadetBlue": "#ff5f9ea0",
+    "Chartreuse": "#ff7fff00",
+    "Chocolate": "#ffd2691e",
+    "Coral": "#ffff7f50",
+    "CornflowerBlue": "#ff6495ed",
+    "Cornsilk": "#fffff8dc",
+    "Crimson": "#ffdc143c",
+    "Cyan": "#ff00ffff",
+    "DarkBlue": "#ff00008b",
+    "DarkCyan": "#ff008b8b",
+    "DarkGoldenrod": "#ffb8860b",
+    "DarkGray": "#ffa9a9a9",
+    "DarkGreen": "#ff006400",
+    "DarkKhaki": "#ffbdb76b",
+    "DarkMagenta": "#ff8b008b",
+    "DarkOliveGreen": "#ff556b2f",
+    "DarkOrange": "#ffff8c00",
+    "DarkOrchid": "#ff9932cc",
+    "DarkRed": "#ff8b0000",
+    "DarkSalmon": "#ffe9967a",
+    "DarkSeaGreen": "#ff8fbc8b",
+    "DarkSlateBlue": "#ff483d8b",
+    "DarkSlateGray": "#ff2f4f4f",
+    "DarkTurquoise": "#ff00ced1",
+    "DarkViolet": "#ff9400d3",
+    "DeepPink": "#ffff1493",
+    "DeepSkyBlue": "#ff00bfff",
+    "DimGray": "#ff696969",
+    "DodgerBlue": "#ff1e90ff",
+    "Firebrick": "#ffb22222",
+    "FloralWhite": "#fffffaf0",
+    "ForestGreen": "#ff228b22",
+    "Fuchsia": "#ffff00ff",
+    "Gainsboro": "#ffdcdcdc",
+    "GhostWhite": "#fff8f8ff",
+    "Gold": "#ffffd700",
+    "Goldenrod": "#ffdaa520",
+    "Gray": "#ff808080",
+    "Green": "#ff008000",
+    "GreenYellow": "#ffadff2f",
+    "Honeydew": "#fff0fff0",
+    "HotPink": "#ffff69b4",
+    "IndianRed": "#ffcd5c5c",
+    "Indigo": "#ff4b0082",
+    "Ivory": "#fffffff0",
+    "Khaki": "#fff0e68c",
+    "Lavender": "#ffe6e6fa",
+    "LavenderBlush": "#fffff0f5",
+    "LawnGreen": "#ff7cfc00",
+    "LemonChiffon": "#fffffacd",
+    "LightBlue": "#ffadd8e6",
+    "LightCoral": "#fff08080",
+    "LightCyan": "#ffe0ffff",
+    "LightGoldenrodYellow": "#fffafad2",
+    "LightGray": "#ffd3d3d3",
+    "LightGreen": "#ff90ee90",
+    "LightPink": "#ffffb6c1",
+    "LightSalmon": "#ffffa07a",
+    "LightSeaGreen": "#ff20b2aa",
+    "LightSkyBlue": "#ff87cefa",
+    "LightSlateGray": "#ff778899",
+    "LightSteelBlue": "#ffb0c4de",
+    "LightYellow": "#ffffffe0",
+    "Lime": "#ff00ff00",
+    "LimeGreen": "#ff32cd32",
+    "Linen": "#fffaf0e6",
+    "Magenta": "#ffff00ff",
+    "Maroon": "#ff800000",
+    "MediumAquamarine": "#ff66cdaa",
+    "MediumBlue": "#ff0000cd",
+    "MediumOrchid": "#ffba55d3",
+    "MediumPurple": "#ff9370db",
+    "MediumSeaGreen": "#ff3cb371",
+    "MediumSlateBlue": "#ff7b68ee",
+    "MediumSpringGreen": "#ff00fa9a",
+    "MediumTurquoise": "#ff48d1cc",
+    "MediumVioletRed": "#ffc71585",
+    "MidnightBlue": "#ff191970",
+    "MintCream": "#fff5fffa",
+    "MistyRose": "#ffffe4e1",
+    "Moccasin": "#ffffe4b5",
+    "NavajoWhite": "#ffffdead",
+    "Navy": "#ff000080",
+    "OldLace": "#fffdf5e6",
+    "Olive": "#ff808000",
+    "OliveDrab": "#ff6b8e23",
+    "Orange": "#ffffa500",
+    "OrangeRed": "#ffff4500",
+    "Orchid": "#ffda70d6",
+    "PaleGoldenrod": "#ffeee8aa",
+    "PaleGreen": "#ff98fb98",
+    "PaleTurquoise": "#ffafeeee",
+    "PaleVioletRed": "#ffdb7093",
+    "PapayaWhip": "#ffffefd5",
+    "PeachPuff": "#ffffdab9",
+    "Peru": "#ffcd853f",
+    "Pink": "#ffffc0cb",
+    "Plum": "#ffdda0dd",
+    "PowderBlue": "#ffb0e0e6",
+    "Purple": "#ff800080",
+    "Red": "#ffff0000",
+    "RosyBrown": "#ffbc8f8f",
+    "RoyalBlue": "#ff4169e1",
+    "SaddleBrown": "#ff8b4513",
+    "Salmon": "#fffa8072",
+    "SandyBrown": "#fff4a460",
+    "SeaGreen": "#ff2e8b57",
+    "SeaShell": "#fffff5ee",
+    "Sienna": "#ffa0522d",
+    "Silver": "#ffc0c0c0",
+    "SkyBlue": "#ff87ceeb",
+    "SlateBlue": "#ff6a5acd",
+    "SlateGray": "#ff708090",
+    "Snow": "#fffffafa",
+    "SpringGreen": "#ff00ff7f",
+    "SteelBlue": "#ff4682b4",
+    "Tan": "#ffd2b48c",
+    "Teal": "#ff008080",
+    "Thistle": "#ffd8bfd8",
+    "Tomato": "#ffff6347",
+    "Turquoise": "#ff40e0d0",
+    "Violet": "#ffee82ee",
+    "Wheat": "#fff5deb3",
+    "White": "#ffffffff",
+    "WhiteSmoke": "#fff5f5f5",
+    "Yellow": "#ffffff00",
+    "YellowGreen": "#ff9acd32",
+    "Transparent": "#00ffffff"
+  },
+  "fonts": [
+    {
+      "size": 12,
+      "metrics": {
+        "Top": -14.7890625,
+        "Ascent": -11.138672,
+        "Descent": 2.8300781,
+        "Bottom": 5.5546875,
+        "Leading": 0,
+        "AverageCharacterWidth": 6.0820312,
+        "MaxCharacterWidth": 33.76758,
+        "XMin": -12.246094,
+        "XMax": 21.521484,
+        "XHeight": 7,
+        "CapHeight": 9,
+        "UnderlineThickness": 0.52734375,
+        "UnderlinePosition": 0.234375,
+        "StrikeoutThickness": 0.59765625,
+        "StrikeoutPosition": -3.1054688
+      },
+      "glyphs": [
+        43,
+        72,
+        79,
+        79,
+        82,
+        3,
+        830
+      ],
+      "widths": [
+        9,
+        7,
+        3,
+        3,
+        7,
+        4,
+        9
+      ],
+      "bounds": [
+        [
+          1,
+          -9,
+          8,
+          0
+        ],
+        [
+          0,
+          -7,
+          7,
+          0
+        ],
+        [
+          1,
+          -10,
+          3,
+          0
+        ],
+        [
+          1,
+          -10,
+          3,
+          0
+        ],
+        [
+          0,
+          -7,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -9,
+          9,
+          0
+        ]
+      ]
+    },
+    {
+      "size": 32,
+      "metrics": {
+        "Top": -39.4375,
+        "Ascent": -29.703125,
+        "Descent": 7.546875,
+        "Bottom": 14.8125,
+        "Leading": 0,
+        "AverageCharacterWidth": 16.21875,
+        "MaxCharacterWidth": 90.046875,
+        "XMin": -32.65625,
+        "XMax": 57.390625,
+        "XHeight": 18,
+        "CapHeight": 23,
+        "UnderlineThickness": 1.40625,
+        "UnderlinePosition": 0.625,
+        "StrikeoutThickness": 1.59375,
+        "StrikeoutPosition": -8.28125
+      },
+      "glyphs": [
+        43,
+        72,
+        79,
+        79,
+        82,
+        3,
+        830
+      ],
+      "widths": [
+        24,
+        20,
+        9,
+        9,
+        20,
+        10,
+        24
+      ],
+      "bounds": [
+        [
+          3,
+          -23,
+          21,
+          0
+        ],
+        [
+          1,
+          -18,
+          18,
+          0
+        ],
+        [
+          3,
+          -24,
+          6,
+          0
+        ],
+        [
+          3,
+          -24,
+          6,
+          0
+        ],
+        [
+          1,
+          -18,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          -23,
+          24,
+          0
+        ]
+      ]
+    }
+  ],
+  "assembly": "SkiaSharp, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+  "referenceMetadata": {
+    "runtime": "Linux x64 .NET8.0.15",
+    "package": "SkiaSharp3.119.0",
+    "upstreamPinnedCommit": "b33cf54f24edc5347567c95b1924c447669c1de8",
+    "packageCommit": "64f24b1cddb68d30ec0ac6b661964178fc21d5ec",
+    "note": "Reference package release commit differs from pinned declaration inventory; do not claim an exhaustive pinned-commit differential suite."
+  }
+}

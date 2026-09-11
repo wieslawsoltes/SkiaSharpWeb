@@ -1,0 +1,28 @@
+{
+  "before": {
+    "implemented": 716,
+    "partial": 1436,
+    "not-applicable": 873,
+    "missing": 970
+  },
+  "after": {
+    "implemented": 1928,
+    "partial": 1029,
+    "not-applicable": 873,
+    "missing": 165
+  },
+  "transitions": {
+    "implemented -> implemented": 716,
+    "missing -> implemented": 722,
+    "missing -> missing": 165,
+    "missing -> partial": 83,
+    "not-applicable -> not-applicable": 873,
+    "partial -> implemented": 490,
+    "partial -> partial": 946
+  },
+  "normalizedIdentityRows": 204,
+  "normalizationOnlyStatusImpact": {
+    "missing -> implemented": 143
+  },
+  "note": "Normalization impact compares this exact implementation with/without declaration-name correction. Baseline transitions also include concrete new implementation and newly reviewed test evidence; they are not feature percentages."
+}

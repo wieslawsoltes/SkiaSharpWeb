@@ -1,0 +1,81 @@
+{
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "swiftshader-device-subzero-",
+    "description": "SwiftShader driver 5.0.0"
+  },
+  "physicalGpu": false,
+  "checks": [
+    "native Graphite TextureFromImage",
+    "mipmapped and unmipmapped images",
+    "source raster disposal before draw",
+    "owner recorder disposal guard",
+    "image wrappers disposed before GPU submission",
+    "exact RGBA pixels for both textures",
+    "zero native device/queue/texture handles after cleanup"
+  ],
+  "pixels": {
+    "plain": [
+      [
+        255,
+        0,
+        0,
+        255
+      ],
+      [
+        0,
+        255,
+        0,
+        255
+      ],
+      [
+        0,
+        0,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        0,
+        255
+      ]
+    ],
+    "mipmapped": [
+      [
+        255,
+        0,
+        0,
+        255
+      ],
+      [
+        0,
+        255,
+        0,
+        255
+      ],
+      [
+        0,
+        0,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        0,
+        255
+      ]
+    ]
+  },
+  "handles": {
+    "devices": 0,
+    "queues": 0,
+    "textures": 0
+  },
+  "errors": [],
+  "notExercised": [
+    "Ganesh FromAdoptedTexture and Ganesh ToTextureImage require a WebGL context; Dawn/Vulkan does not provide WebGL."
+  ]
+}

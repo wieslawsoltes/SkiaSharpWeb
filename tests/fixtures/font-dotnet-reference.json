@@ -1,0 +1,176 @@
+{
+  "Assembly": "SkiaSharp, Version=4.154.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+  "Font": "dist/fonts/DejaVuSans.ttf",
+  "FontSha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280",
+  "Text": "Hello \u03a9",
+  "Samples": [
+    {
+      "size": 12,
+      "metrics": {
+        "Top": -14.7890625,
+        "Ascent": -11.138672,
+        "Descent": 2.8300781,
+        "Bottom": 5.5546875,
+        "Leading": 0,
+        "AverageCharacterWidth": 6.0820312,
+        "MaxCharacterWidth": 33.76758,
+        "XMin": -12.246094,
+        "XMax": 21.521484,
+        "XHeight": 7,
+        "CapHeight": 9,
+        "UnderlineThickness": 0.52734375,
+        "UnderlinePosition": 0.234375,
+        "StrikeoutThickness": 0.59765625,
+        "StrikeoutPosition": -3.1054688
+      },
+      "glyphs": [
+        43,
+        72,
+        79,
+        79,
+        82,
+        3,
+        830
+      ],
+      "widths": [
+        9,
+        7,
+        3,
+        3,
+        7,
+        4,
+        9
+      ],
+      "bounds": [
+        [
+          1,
+          -9,
+          8,
+          0
+        ],
+        [
+          0,
+          -7,
+          7,
+          0
+        ],
+        [
+          1,
+          -10,
+          3,
+          0
+        ],
+        [
+          1,
+          -10,
+          3,
+          0
+        ],
+        [
+          0,
+          -7,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -9,
+          9,
+          0
+        ]
+      ]
+    },
+    {
+      "size": 32,
+      "metrics": {
+        "Top": -39.4375,
+        "Ascent": -29.703125,
+        "Descent": 7.546875,
+        "Bottom": 14.8125,
+        "Leading": 0,
+        "AverageCharacterWidth": 16.21875,
+        "MaxCharacterWidth": 90.046875,
+        "XMin": -32.65625,
+        "XMax": 57.390625,
+        "XHeight": 18,
+        "CapHeight": 23,
+        "UnderlineThickness": 1.40625,
+        "UnderlinePosition": 0.625,
+        "StrikeoutThickness": 1.59375,
+        "StrikeoutPosition": -8.28125
+      },
+      "glyphs": [
+        43,
+        72,
+        79,
+        79,
+        82,
+        3,
+        830
+      ],
+      "widths": [
+        24,
+        20,
+        9,
+        9,
+        20,
+        10,
+        24
+      ],
+      "bounds": [
+        [
+          3,
+          -23,
+          21,
+          0
+        ],
+        [
+          1,
+          -18,
+          18,
+          0
+        ],
+        [
+          3,
+          -24,
+          6,
+          0
+        ],
+        [
+          3,
+          -24,
+          6,
+          0
+        ],
+        [
+          1,
+          -18,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          -23,
+          24,
+          0
+        ]
+      ]
+    }
+  ],
+  "ReferenceAssemblies": [
+    "SkiaSharp, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+    "SkiaSharp, Version=4.154.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756"
+  ]
+}

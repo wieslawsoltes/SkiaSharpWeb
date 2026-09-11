@@ -1,0 +1,27 @@
+{
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "swiftshader-device-subzero-",
+    "description": "SwiftShader driver 5.0.0"
+  },
+  "features": {
+    "graphite": true,
+    "ganesh": true,
+    "paragraph": true,
+    "pathops": true,
+    "skottie": true,
+    "effects": true,
+    "pdf": true,
+    "fontInstance": true
+  },
+  "checks": [
+    "real Graphite context",
+    "native circle render",
+    "RGBA texture readback",
+    "raster image upload",
+    "bounded image cache reuse and purge",
+    "resource disposal and zero retained native device/queue/texture handles"
+  ],
+  "errors": []
+}
