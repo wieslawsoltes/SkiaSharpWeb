@@ -1,0 +1,60 @@
+name: Build and verify native Skia
+on:
+  push:
+    branches: [main]
+    paths: ['native/**', '.github/workflows/native.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: native-skia
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install build and document verification tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build cmake poppler-utils
+          python -m pip install PyMuPDF==1.26.6 Pillow==11.3.0
+      - name: Compile pinned combined Graphite, Ganesh and raster engine
+        run: python native/build_native.py --work-dir "$RUNNER_TEMP/skia-build" --output dist/vendor --jobs 2
+      - name: Verify native bindings and integration suite
+        run: |
+          node -e 'const fs=require("fs");require("./dist/vendor/canvaskit.cjs")({wasmBinary:fs.readFileSync("dist/vendor/canvaskit.wasm")}).then(k=>{for(const n of ["SkiaSharpGraphicsDumpMemoryStatistics","SkiaSharpGaneshDumpMemoryStatistics","SkiaSharpImageUniqueID"])if(typeof k[n]!=="function")throw new Error(n);console.log("Native memory and image identity bindings verified")})'
+          npm run check
+          npm test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-${{ github.sha }}
+          path: |
+            dist/vendor/canvaskit.js
+            dist/vendor/canvaskit.cjs
+            dist/vendor/canvaskit.wasm
+            dist/vendor/native-build-manifest.json
+          retention-days: 14
+          if-no-files-found: error
+      - name: Commit verified runtime without replacing concurrent source edits
+        run: |
+          git fetch origin main
+          if ! git diff --quiet "$GITHUB_SHA" origin/main -- 'native/*.cpp' 'native/*.js' 'native/*.py' 'native/*.patch'; then
+            echo 'Native sources changed during compilation; retained the build as an artifact.'
+            exit 0
+          fi
+          cp dist/vendor/native-build-manifest.json native/native-build-manifest.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dist/vendor/canvaskit.js dist/vendor/canvaskit.cjs dist/vendor/canvaskit.wasm dist/vendor/native-build-manifest.json native/native-build-manifest.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'build: ship verified native memory tracing and image identity runtime'
+          git rebase origin/main
+          git push origin HEAD:main
