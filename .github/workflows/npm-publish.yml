@@ -1,0 +1,44 @@
+name: Publish npm package
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+concurrency:
+  group: npm-publish-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: vars.NPM_PUBLISH_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4; no dependency cache
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org/
+      - name: Validate immutable version and main ancestry
+        run: node scripts/check-release-tag.mjs
+      - name: Fetch already-tested release assets (no rebuild)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release download "$RELEASE_TAG" --repo "$GH_REPO" --dir artifacts --pattern '*.tgz' --pattern SHA256SUMS --pattern package-manifest.json --pattern sbom.cdx.json
+      - name: Verify artifact identities, hashes and native runtime
+        run: npm run build && node scripts/verify-release.mjs
+      - name: Publish verified bytes using trusted publishing or an explicit bootstrap token
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: ${{ !github.event.repository.private }}
+        run: node scripts/publish-npm.mjs

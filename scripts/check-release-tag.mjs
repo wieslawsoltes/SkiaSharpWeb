@@ -1,0 +1,11 @@
+import { execFileSync } from 'node:child_process';
+import { appendFileSync } from 'node:fs';
+import { root, readJson, assertReleaseTag } from './packaging/common.mjs';
+const pkg=readJson('package.json'),tag=process.env.RELEASE_TAG;
+const distTag=assertReleaseTag(tag,pkg.version);
+const git=args=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
+const commit=git(['rev-parse','HEAD']);
+if(git(['rev-parse',`refs/tags/${tag}^{commit}`])!==commit)throw new Error('Release must check out the exact existing tag.');
+git(['merge-base','--is-ancestor',commit,'origin/main']);
+if(process.env.GITHUB_OUTPUT)appendFileSync(process.env.GITHUB_OUTPUT,`version=${pkg.version}\ntag=${tag}\nprerelease=${distTag==='next'}\ncommit=${commit}\n`);
+console.log(`Verified ${tag} at ${commit}, reachable from main (${distTag}).`);

@@ -1,3 +1,4 @@
+import { Version } from '../package/version.js';
 import { installTextMeasureCompletion } from './text-measure-completion.js';
 import { installPaintCompletion } from './paint-completion.js';
 import { installTextPathCompletion } from './text-path-completion.js';
@@ -93,7 +94,7 @@ async function initializeRuntime(options = {}) {
   installPathQueryCache(K, api);
   installDataCompletion(K, api);
   api.CanvasKit = K;
-  api.Version = '0.5.0';
+  api.Version = Version;
   api.BackendCapabilities = Object.freeze({ WebGL: 'Skia GPU renderer', Canvas: 'Skia software rasterizer presented through Canvas 2D', WebGPU: 'Native Skia Graphite/Dawn; injected runtimes without Graphite use the primitive/raster presenter' });
   if (options.fonts !== false) {
     const fonts = options.fonts || [
