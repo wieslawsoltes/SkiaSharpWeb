@@ -1,4 +1,5 @@
 import { installRenderCache } from './render-cache.js';
+import { installGpuReadback } from './gpu-readback.js';
 import { registerCanvasElement } from './web-component.js';
 import { installMemoryTracing } from './memory.js';
 import { installGpuRecords } from './gpu-records.js';
@@ -67,6 +68,7 @@ async function initializeRuntime(options = {}) {
   installSurfaceFormats(K, api);
   installGpuRecords(K, api);
   installMemoryTracing(K, api);
+  installGpuReadback(K, api);
   installRenderCache(K, api);
   api.CanvasKit = K;
   api.Version = '0.4.0';

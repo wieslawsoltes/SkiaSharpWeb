@@ -71,5 +71,5 @@ test('controlled WebGPU readback cleans resources after failed mapping', async (
   const device = { createBuffer() { return { async mapAsync() { throw Error('device lost'); }, unmap() {}, destroy() { destroyed = true; } }; }, createCommandEncoder() { return { copyTextureToBuffer() {}, finish() { return {}; } }; }, queue: { submit() {} } };
   await assert.rejects(S.ReadWebGPUTexture(device, { width: 2, height: 2, format: 'rgba8unorm' }), /device lost/);
   assert.ok(destroyed);
-  await assert.rejects(S.ReadWebGPUTexture(device, { width: 2, height: 2, format: 'rgba16float' }), /RGBA8/);
+  await assert.rejects(S.ReadWebGPUTexture(device, { width: 2, height: 2, format: 'depth24plus' }), /uncompressed/);
 });

@@ -1,3 +1,4 @@
+import {RunPrecision} from './browser-precision.mjs';
 import {Initialize,RegisterWebComponent} from '../dist/lib/index.js';
 import {createScenes} from '../dist/samples.js';
 import {createAdvancedScenes} from '../dist/samples-advanced.js';
@@ -70,6 +71,7 @@ export async function Run({software=true,requirePhysical=false}={}){
   report.component={burstRequests:10000,burstFrames:paints-before-2,statistics:view.Statistics};
   view.remove();paint.Dispose();
   assert(report.backends.length===3,'Missing backend');
+  report.precision=await RunPrecision(S);
   return report;
  }finally{fonts.Dispose();animation.Dispose();}
 }
