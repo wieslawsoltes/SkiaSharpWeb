@@ -41,5 +41,34 @@ else for(const [i,c]of reference.glyphPaths.entries()){
  const font=new S.SKFont(null,c.size,c.scale,c.skew),rows=[];
  try{font.GetGlyphPaths(c.glyphs,(p,m)=>rows.push({hasPath:p!==null,matrix:m.Values,points:p?.Points.map(p=>p.ToArray())??null,verbs:p?.VerbCount??null}));check(rows,c.rows,'fontPaths/'+i);}finally{font.Dispose();}
 }
-const report={assembly:reference.assembly,comparisons,failures,passed:failures.length===0,caseCounts:Object.fromEntries(['descriptors','measures','segments','pixels','glyphPaths'].map(k=>[k,reference[k].length]))};
+const geometry=p=>p===null?null:{points:p.Points.map(p=>p.ToArray()),verbs:p.VerbCount,fill:p.FillType?.value??p.FillType,bounds:p.Bounds.ToArray()};
+function follow(shape){const p=new S.SKPath();if(shape===0)return p;p.MoveTo(0,60);if(shape===1)p.LineTo(260,60);if(shape===2)p.QuadTo(110,-40,260,60);if(shape===3)p.ConicTo(120,-60,260,60,.6);if(shape>=4)p.CubicTo(80,-30,190,150,260,60);if(shape===5)p.MoveTo(280,30).LineTo(550,30);return p;}
+if(!S.SKPaint.HasNativePathExpansion)failures.push({path:'paint',error:'Native path expansion is required'});
+for(const [i,c]of(reference.fillPaths??[]).entries()){
+ const p=new S.SKPaint({Style:c.style,StrokeWidth:c.width,StrokeCap:1,StrokeJoin:2,StrokeMiter:3}),source=follow(4).LineTo(-40,35),dst=new S.SKPath().MoveTo(999,998),b=new S.SKPathBuilder(dst);let result;
+ try{const pe=c.effect===1?S.SKPathEffect.CreateDash([7,3],2):c.effect===2?S.SKPathEffect.CreateCorner(9):null;p.PathEffect=pe;pe?.Dispose();
+  const cull=new S.SKRect(0,0,120,100),m=S.SKMatrix.CreateScale(1.25,.75),suffix=[[],[2],[m],[cull],[cull,2],[cull,m]][c.form];
+  result=p.GetFillPath(source,...suffix);check(geometry(result),c.result,'fill/'+i+'/return');check(p.GetFillPath(source,dst,...suffix),c.pathOk,'fill/'+i+'/pathOk');check(geometry(dst),c.destination,'fill/'+i+'/destination');check(p.GetFillPath(source,b,...suffix),c.builderOk,'fill/'+i+'/builderOk');check(geometry(b),c.builder,'fill/'+i+'/builder');
+ }finally{result?.Dispose();p.Dispose();source.Dispose();dst.Dispose();b.Dispose();}
+}
+for(const [i,c]of(reference.fastBounds??[]).entries()){
+ const p=new S.SKPaint({Style:c.style,StrokeWidth:5,StrokeJoin:0,StrokeMiter:3}),stamp=new S.SKPath().AddCircle(0,0,3),out=new S.SKRect();let effect;
+ try{if(c.effect===1)p.MaskFilter=effect=S.SKMaskFilter.CreateBlur(S.SKBlurStyle.Normal,3);if(c.effect===2)p.ImageFilter=effect=S.SKImageFilter.CreateBlur(2,4);if(c.effect===3)p.PathEffect=effect=S.SKPathEffect.CreateDash([7,3],2);if(c.effect===4)p.PathEffect=effect=S.SKPathEffect.Create1DPath(stamp,10,0,0);
+  check(p.GetFastBounds(new S.SKRect(10,20,50,80),out),c.ok,'fastBounds/'+i+'/ok');check(out.ToArray(),c.bounds,'fastBounds/'+i+'/bounds');
+ }finally{effect?.Dispose();p.Dispose();stamp.Dispose();}
+}
+for(const [i,c]of(reference.textPaths??[]).entries()){
+ const font=new S.SKFont(null,c.size,c.scale,.15),path=follow(c.shape),origin=new S.SKPoint(c.ox,3),glyphs=font.GetGlyphs(c.text),widths=font.GetGlyphWidths(glyphs),positions=[];let x=Math.fround(c.ox),a,b;
+ for(const w of widths){positions.push(new S.SKPoint(x,3));x=Math.fround(x+w);}
+ try{a=font.GetTextPathOnPath(c.text,path,c.align,origin);b=font.GetTextPathOnPath(glyphs,widths,positions,path,c.align);check(geometry(a),c.result,'textPath/'+i+'/string');check(geometry(b),c.explicitResult,'textPath/'+i+'/glyphs');}
+ finally{a?.Dispose();b?.Dispose();font.Dispose();path.Dispose();}
+}
+for(const [i,c]of(reference.textBreaks??[]).entries()){
+ const font=new S.SKFont(null,c.size,c.scale,.15),out={};
+ try{const limit=numeric(c.limit);check(font.BreakText(c.text,limit,out),c.count,'break/'+i+'/string/count');check(out.Value,c.width,'break/'+i+'/string/width');
+  for(const form of c.forms){check(font.BreakText(Buffer.from(form.bytes,'base64'),form.encoding,limit,out),form.count,'break/'+i+'/'+form.encoding+'/count');check(out.Value,form.width,'break/'+i+'/'+form.encoding+'/width');}
+ }finally{font.Dispose();}
+}
+
+const report={assembly:reference.assembly,comparisons,failures,passed:failures.length===0,caseCounts:Object.fromEntries(['descriptors','measures','segments','pixels','glyphPaths','fillPaths','fastBounds','textPaths','textBreaks'].map(k=>[k,reference[k]?.length??0]))};
 console.log(JSON.stringify(report,null,2));if(process.argv[3])fs.writeFileSync(process.argv[3],JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;

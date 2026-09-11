@@ -83,7 +83,64 @@ using(var face=SKTypeface.FromFile(fontFile)) {
         glyphPaths.Add(new{size,scale,skew,glyphs,rows});
     }
 }
-var document=new{format=2,assembly=assembly.FullName,descriptors,measures,segments,pixels,glyphPaths};
+// The following corpus executes the public C# overloads, independently of JS.
+object? Geometry(SKPath? path) => path == null ? null : new { points=path.Points.Select(XY).ToArray(), verbs=path.VerbCount, fill=(int)path.FillType, bounds=new[]{path.Bounds.Left,path.Bounds.Top,path.Bounds.Right,path.Bounds.Bottom} };
+SKPath Follow(int shape) {
+    var p=new SKPath();
+    if(shape==0)return p;
+    p.MoveTo(0,60);
+    if(shape==1)p.LineTo(260,60);
+    if(shape==2)p.QuadTo(110,-40,260,60);
+    if(shape==3)p.ConicTo(120,-60,260,60,.6f);
+    if(shape>=4)p.CubicTo(80,-30,190,150,260,60);
+    if(shape==5){p.MoveTo(280,30);p.LineTo(550,30);}
+    return p;
+}
+var fillPaths=new List<object>();
+for(int style=0;style<3;style++)foreach(float width in new[]{0f,1.5f,8f})for(int effect=0;effect<3;effect++)for(int form=0;form<6;form++) {
+    using var p=new SKPaint { Style=(SKPaintStyle)style,StrokeWidth=width,StrokeCap=SKStrokeCap.Round,StrokeJoin=SKStrokeJoin.Bevel,StrokeMiter=3 };
+    using var pe=effect==1?SKPathEffect.CreateDash(new[]{7f,3f},2):effect==2?SKPathEffect.CreateCorner(9):null;p.PathEffect=pe;
+    using var source=Follow(4);source.LineTo(-40,35);
+    var cull=new SKRect(0,0,120,100);var matrix=SKMatrix.CreateScale(1.25f,.75f);
+    using var dst=new SKPath();dst.MoveTo(999,998);using var builder=new SKPathBuilder(dst);
+    using var result=form switch {0=>p.GetFillPath(source),1=>p.GetFillPath(source,2),2=>p.GetFillPath(source,matrix),3=>p.GetFillPath(source,cull),4=>p.GetFillPath(source,cull,2),_=>p.GetFillPath(source,cull,matrix)};
+    bool pathOk=form switch {0=>p.GetFillPath(source,dst),1=>p.GetFillPath(source,dst,2),2=>p.GetFillPath(source,dst,matrix),3=>p.GetFillPath(source,dst,cull),4=>p.GetFillPath(source,dst,cull,2),_=>p.GetFillPath(source,dst,cull,matrix)};
+    bool builderOk=form switch {0=>p.GetFillPath(source,builder),1=>p.GetFillPath(source,builder,2),2=>p.GetFillPath(source,builder,matrix),3=>p.GetFillPath(source,builder,cull),4=>p.GetFillPath(source,builder,cull,2),_=>p.GetFillPath(source,builder,cull,matrix)};
+    using var snapshot=builder.Snapshot();fillPaths.Add(new{style,width,effect,form,result=Geometry(result),pathOk,destination=Geometry(dst),builderOk,builder=Geometry(snapshot)});
+}
+var fastBounds=new List<object>();
+for(int style=0;style<3;style++)for(int effect=0;effect<5;effect++) {
+    using var p=new SKPaint { Style=(SKPaintStyle)style,StrokeWidth=5,StrokeJoin=SKStrokeJoin.Miter,StrokeMiter=3 };
+    using var mask=effect==1?SKMaskFilter.CreateBlur(SKBlurStyle.Normal,3):null;
+    using var filter=effect==2?SKImageFilter.CreateBlur(2,4):null;
+    using var dash=effect==3?SKPathEffect.CreateDash(new[]{7f,3f},2):null;
+    using var stamp=new SKPath();stamp.AddCircle(0,0,3);
+    using var pe=effect==4?SKPathEffect.Create1DPath(stamp,10,0,SKPath1DPathEffectStyle.Translate):null;
+    p.MaskFilter=mask;p.ImageFilter=filter;p.PathEffect=dash??pe;
+    bool ok=p.GetFastBounds(new SKRect(10,20,50,80),out var bounds);fastBounds.Add(new{style,effect,ok,bounds=new[]{bounds.Left,bounds.Top,bounds.Right,bounds.Bottom}});
+}
+var textPaths=new List<object>();var textBreaks=new List<object>();
+using(var face=SKTypeface.FromFile(fontFile)) {
+    foreach(float size in new[]{0,13.5f,27})foreach(float scale in new[]{.75f,1.25f}) {
+        using var font=new SKFont(face,size,scale,.15f);
+        for(int shape=0;shape<6;shape++)for(int align=0;align<3;align++)foreach(float ox in new[]{-20f,9f}) {
+            using var follow=Follow(shape);var origin=new SKPoint(ox,3);const string text="Ag Ω";var glyphs=font.GetGlyphs(text);var widths=font.GetGlyphWidths(glyphs);var positions=font.GetGlyphPositions(glyphs,origin);
+            using var result=font.GetTextPathOnPath(text,follow,(SKTextAlign)align,origin);
+            using var explicitResult=font.GetTextPathOnPath(glyphs,widths,positions,follow,(SKTextAlign)align);
+            textPaths.Add(new{size,scale,shape,align,ox,text,result=Geometry(result),explicitResult=Geometry(explicitResult)});
+        }
+        foreach(string text in new[]{"", "AΩ🙂B", "A\u0301 b", "مرحبا"})foreach(float limit in new[]{-1,0,1,13,25,50,1000,float.NaN,float.PositiveInfinity}) {
+            int count=font.BreakText(text,limit,out float measured);var forms=new List<object>();
+            for(int encoding=0;encoding<4;encoding++) {
+                byte[] bytes=encoding==0?System.Text.Encoding.UTF8.GetBytes(text):encoding==1?System.Text.Encoding.Unicode.GetBytes(text):encoding==2?System.Text.Encoding.UTF32.GetBytes(text):font.GetGlyphs(text).SelectMany(BitConverter.GetBytes).ToArray();
+                int byteCount=font.BreakText(bytes,(SKTextEncoding)encoding,limit,out float byteWidth);forms.Add(new{encoding,bytes=Convert.ToBase64String(bytes),count=byteCount,width=byteWidth});
+            }
+            textBreaks.Add(new{size,scale,text,limit,count,width=measured,forms});
+        }
+    }
+}
+
+var document=new{format=2,assembly=assembly.FullName,descriptors,measures,segments,pixels,glyphPaths,fillPaths,fastBounds,textPaths,textBreaks};
 Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(output))!);
 File.WriteAllText(output,JsonSerializer.Serialize(document,new JsonSerializerOptions{WriteIndented=true,NumberHandling=JsonNumberHandling.AllowNamedFloatingPointLiterals}));
 Console.WriteLine($"{descriptors.Count} descriptor, {measures.Count} measure, {pixels.Count} raw pixel and {glyphPaths.Count} canonical font-path cases");

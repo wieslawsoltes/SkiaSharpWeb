@@ -53,6 +53,14 @@ jobs:
           pattern: native-*
           path: native-candidate
           merge-multiple: true
+      - name: Stage reviewed source patches for the same qualification gate
+        run: |
+          shopt -s nullglob
+          for patch in .github/patches/*.patch; do
+            git apply --check "$patch"
+            git apply --index "$patch"
+            git rm "$patch"
+          done
       - name: Verify native source provenance and artifact hashes
         run: python scripts/restore-native-candidate.py native-candidate
       - name: Install independent readers and browser
@@ -74,6 +82,7 @@ jobs:
           node scripts/benchmark-alpha.mjs test-output/soak/alpha-benchmark.json
       - name: Exercise the live qualification UI and all browser backends
         run: |
+          python scripts/verify-geometry.py
           python scripts/verify-qualification.py
           python scripts/verify-browser-lifecycle.py --output test-output/browser
       - uses: actions/upload-artifact@v4
