@@ -40,6 +40,8 @@ jobs:
         run: npm run check
       - name: Run native Skia integration suite
         run: npm test
+      - name: Generate and synchronize current conformance documentation
+        run: npm run coverage && npm run docs
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload sample app

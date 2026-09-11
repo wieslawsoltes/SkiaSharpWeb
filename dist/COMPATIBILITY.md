@@ -1,80 +1,60 @@
-# Compatibility and implementation boundaries
+# Compatibility and remaining boundaries — 0.4
 
-SkiaSharp Web 0.3 provides a PascalCase JavaScript graphics API, a reusable web component, and a bundled native Skia engine with Graphite/WebGPU, Ganesh/WebGL, and software Canvas rendering. Graphite is compiled and operational in this release. Complete SkiaSharp overload and behavioral parity is still not established; the declaration audit preserves the unresolved entries instead of equating matching names with conformance.
+This is a browser-oriented JavaScript adaptation of the SkiaSharp API, backed by a compiled Skia runtime. It is not a CLR, a native-driver pointer bridge, or a certified complete SkiaSharp replacement. Names, overload adapters and test evidence are tracked separately.
 
-The API inventory remains pinned to [mono/SkiaSharp b33cf54f24edc5347567c95b1924c447669c1de8](https://github.com/mono/SkiaSharp/tree/b33cf54f24edc5347567c95b1924c447669c1de8). The native engine is built from [Skia f446aec4ce9e0e95e0a504e875955de3eb521f75](https://github.com/google/skia/tree/f446aec4ce9e0e95e0a504e875955de3eb521f75) with the extension sources under `native/`. The 3,995-entry inventory is a lexical source inventory, including overloads, enum values, obsolete forms and conditional declarations. Its counts are not feature percentages.
+## Current declaration audit
 
-The final audit records **1,932 implemented, 1,045 partial or unverified, 873 not applicable, and 145 missing declarations**. It separately identifies 204 lexical identity corrections; 143 status upgrades result solely from those parser corrections. See the [change accounting](./docs/conformance-changes.json) and [remaining declarations](./docs/remaining-declarations.json).
+Running `node scripts/audit-conformance.mjs` against the assembled 0.4 namespace and the pinned 3,995-entry inventory gives:
 
-## Capability map
+| Classification | Declarations |
+| --- | ---: |
+| Implemented according to the audit's evidence rules | 1,932 |
+| Partial or not fully verified | 1,046 |
+| Not applicable to the browser adaptation | 873 |
+| Missing | 144 |
 
-| Family | Delivered implementation | Practical qualification |
-| --- | --- | --- |
-| Values and geometry | Colors and PM colors, points/sizes/rectangles, rounded rectangles, 3×3/4×4 matrices, transforms, color-space transfer functions, primaries/XYZ/ICC, enums and mutable outputs | Operators, spans and `ref`/`out` use explicit JavaScript conventions. The audit tracks overload evidence separately. |
-| Canvas and drawing | Native Skia shapes, paths, images, vertices/atlas/patches, text/glyphs/paragraphs, pictures, transforms, clipping and layers | GPU readback is asynchronous on WebGPU. Direct `_native` access bypasses managed ownership and document tracking. |
-| Paths and regions | Native Boolean paths and path effects; integer region algebra, iterators and boundary paths; native `SkRegion::setPath` and native region serialization | Legacy web SKRG data remains readable. An independently supplied unextended CanvasKit uses the documented portable fallback. |
-| Paint, shaders and effects | Native gradients, color-space conversion, SkSL shader/filter/blender children and raw uniforms; native specialized color/image/path effects | Rendering follows the pinned Skia implementation. Unsupported bindings in an injected older engine are capability checked. |
-| Software effects | Float32 capture, mixed native/software graphs, Float32 filtered layers, clip-bounded work and reusable buffers | Public RGBA8 output quantizes at that explicit boundary. Scalar fallback rounding can differ from native Skia. |
-| Fonts | Registered family/style/coverage matching, font collections and tables, TTF/OTF/WOFF/WOFF2, variable TrueType/CFF2, color-font data, palettes, glyph geometry and native metrics | Browser registries contain supplied fonts; browser security does not expose the complete installed OS font collection automatically. |
-| Font instancing | HarfBuzz axis instancing, variable metrics/layout/color corrections, retained static CFF2 for rendering and hint-preserving CFF1 for documents | Tests include independent static references and a negative control with hints removed. They are not an exhaustive OpenType font corpus. |
-| Text | Native shaping, bidi/layout, paragraphs, glyph metrics/paths, UTF8/UTF16 and positioned/cluster text blobs | Complex shaping uses the registered fonts. Text selection and extraction can vary between document readers. |
-| Images and streams | Pixel views/strides, bitmap/pixmap operations, native codecs, scanline/incremental interfaces, detailed PNG/JPEG/WebP encoding and memory/mounted file streams | A format must support the requested native codec operation. Browser file paths refer to the explicit mounted file registry. |
-| PDF | Native Skia PDF by default, fonts/searchable text, pictures, paragraphs, gradients, images and native effects | Native Skia can internally rasterize operations PDF cannot represent. Its internal fallback list is unavailable. |
-| Managed PDF and XPS | Embedded vector paths/glyphs/images/fonts, gradients, transformed/repeated brushes, rich text, layer compositing and tracked bounded raster patches | `StrictVector:true` rejects operations the managed writer cannot represent. PDF/XPS cannot express every Skia raster effect as an exact finite vector description. |
-| Skottie/resources/scenes | Native Skottie parsing, rendering, properties/slots, resources, registered fonts, invalidation and retained scene nodes | Native Skottie determines Lottie feature support. The retained node hierarchy is a documented web extension. |
-| Ganesh/WebGL | Compiled native Ganesh renderer and extended context, target, texture and cache controls | Physical WebGL devices and target browsers have not been certified in this environment. |
-| Graphite/WebGPU | Compiled native Graphite/Dawn context, recorder, textures, full-scene drawing and GPU texture presentation | Executed with Dawn/SwiftShader Vulkan. This is actual shader execution on a software adapter, not physical GPU validation. |
-| Platform interop | WebGL objects and WebGPU devices/textures | Desktop Metal/Vulkan/Direct3D process pointers and native UI controls are not browser resources. |
+These are source declaration classifications, not feature percentages or an exhaustive semantic proof. The inventory includes native platform structures, generated/operator/lifetime surfaces and overloads sharing implementations. `docs/OVERLOAD_CONFORMANCE.md` explains the classifier; regenerate its JSON/Markdown for the currently loaded runtime. Native memory tracing is now compiled and tested, but one newly detected facade must not be counted as proof of an entire API family.
 
-Details: [API usage](./docs/API_USAGE.md), [overload audit](./docs/OVERLOAD_CONFORMANCE.md), [font fidelity](./docs/FONT-FIDELITY.md), [effects](./docs/EFFECT_FIDELITY.md), [documents](./docs/DOCUMENTS.md), [animation/resources](./docs/ANIMATION_RESOURCES.md), and [native build](./native/README.md).
+The remaining missing rows are predominantly desktop Vulkan/Metal/Direct3D interop and CLR/COM lifetime surfaces. They are not silently emulated with fake browser handles. Other partial rows still need additional overload-specific and differential evidence. The new 832-case deterministic geometry corpus passes against two .NET versions, but it does not cover all 3,995 declarations.
 
-## Rendering backends
+## Rendering
 
-| Backend / render mode | Actual work |
+| Route | Actual implementation |
 | --- | --- |
-| WebGPU / `skia-graphite-webgpu` | Native Skia Graphite records and renders into a persistent GPU texture; presentation samples that texture without reading a CPU frame. |
-| WebGL | Native Skia Ganesh renders through WebGL. |
-| Canvas | Native Skia rasterizes in WASM and presents through Canvas 2D. |
-| Offscreen `raster` | Native Skia raster surface without an HTML canvas. |
-| WebGPU / `native-primitives` | Compatibility route for an injected engine without Graphite: an instanced WGSL primitive renderer. |
-| WebGPU / `skia-raster-upload` | Compatibility route for an injected engine without Graphite: complex scenes use Skia software rendering and texture upload. |
+| WebGPU / `skia-graphite-webgpu` | Compiled native Skia Graphite/Dawn renders into a persistent GPU texture, presented without uploading a CPU frame. |
+| WebGL | Compiled Skia Ganesh uses WebGL. |
+| Canvas | Skia rasterizes in WebAssembly, then presents through Canvas 2D. |
+| Offscreen raster | A native raster surface without an HTML canvas. |
+| Injected older CanvasKit / WebGPU | A compatibility primitive renderer or raster-upload presenter when the injected runtime lacks Graphite. |
 
-`backend:'auto'` tries WebGPU, WebGL, then Canvas. `allowFallback:false` requires the selected backend. Inspect `surface.Backend`, `RenderMode` and `FallbackReasons`. If a context attempt locks a canvas to an incompatible API, the returned `surface.Element` can be a replacement canvas.
+The bundled runtime includes the native Graphite implementation, specialized effects, document/font extensions, memory tracing and native image identity. It is no longer an uncompiled extension proposal. `Backend`, `RenderMode`, `FallbackReasons` and capability APIs expose the actual route.
 
-Graphite's recorder owns a bounded image conversion cache, so raster images and bitmaps become reusable GPU textures. `GetImageCacheStatistics()` reports actual hits, uploads, bytes and budget; `PurgeImageCache()` releases retained cache entries. Auto-created surfaces submit ordered recordings. Manual contexts keep the upstream configurable ordering behavior.
+`auto` tries WebGPU, WebGL, then Canvas. `allowFallback:false` requires the requested backend. If an unsuccessful context attempt locks the original canvas to another API, `surface.Element` can be a replacement. Graphite CPU readback is asynchronous: use `SnapshotAsync` or the async pixel APIs. `DisposeAsync` waits for GPU cleanup; `Dispose` invalidates the wrapper immediately and schedules cleanup.
 
-Use `await surface.FlushAsync()` when completion matters and `await surface.SnapshotAsync()` when CPU-accessible image bytes are required from an onscreen Graphite surface. A GPU-backed snapshot is a different resource from a CPU-readable snapshot. `Dispose()` invalidates the surface immediately and schedules GPU cleanup; `DisposeAsync()` also waits for that cleanup. A synchronous browser main-thread API cannot wait for mapped WebGPU data.
+Chromium 143 checks passed for all 44 scenes on all three backends, with actual presented pixels and zero Graphite CPU-frame uploads. The adapter was SwiftShader software Vulkan. This verifies execution of the GPU API/shader pipeline on software, **not physical GPU hardware or vendor-driver certification**. A separate runner mode rejects software/fallback adapters when physical evidence is required.
 
-The custom primitive compatibility route uses 52 bytes per instance instead of 264 bytes of repeated vertices. Its edge antialiasing is distinct from native Skia. CPU submission times displayed in the app do not measure GPU execution time.
+## Effects, regions and fonts
 
-## Documents
+The bundled native extension implements compound path effects and region scan conversion using Skia geometry, replacing the previous sampled fallback in the default route. Specialized image/color effects stay native. With an independently injected stock engine, fallback effect graphs use Float32 captures and intermediates; RGBA8 conversion occurs at the explicitly requested pixel boundary. Some fallback scalar rounding and geometric boundary cases differ from native Skia and are documented in `docs/EFFECT_FIDELITY.md`.
 
-`SKDocument.CreatePdf()` selects the native Skia PDF backend when its binding is present. `document.Backend` reports `NativeSkia`. `RasterFallbackReporting` is `UnavailableNative` and `RasterFallbacks` is `null`; a null value must not be interpreted as zero rasterization. Font embedding and supported vector content are handled by native Skia.
+CFF2 font rendering retains the resolved hint programs. CFF2-to-CFF1 document conversion preserves stems, hint/counter masks, private dictionaries and expanded local/global subroutines. Independent hinted pixel fixtures and negative controls exercise these paths. This is not exhaustive coverage of every legal or malformed OpenType font.
 
-Use `NativeBackend:false` or `Backend:'JavaScript'` for the managed PDF writer. XPS uses that writer's OPC/FixedPage implementation. Managed documents report `RasterFallbackReporting:'PerOperation'` with a fallback array. Supported rich paragraphs, pictures and layer groups remain vector; unsupported effects produce bounded raster patches. A destination-dependent patch may flatten earlier vectors within its rectangle.
+Font-manager discovery covers registered/imported fonts, not an unrestricted enumeration of the operating system's installed font collection. Native shaping, fallback, glyph metrics/outlines, variable instances, palettes and supported color-font formats use the supplied font data. Cache limits estimate retained source/pixel bytes, not total JavaScript, native heap or driver allocations.
 
-`StrictVector:true` uses managed recording without a page-sized pixel allocation and throws on unrepresentable drawing. Sweep/conical or unusual shaders, some blend/effect combinations and native callbacks can require fallback. This option gives callers an explicit guarantee that successful managed output did not silently rasterize unsupported operations; it does not make the file formats support new drawing primitives.
+## Documents and interchange
 
-PDF and XPS text extraction has reader-specific behavior. Native PDF can preserve a ligature code point such as U+FB03; Unicode normalization gives the logical letters. PDF/XPS conic approximations and managed vector decompositions have documented tolerances. Full document standards conformance is not certified by the sample exports.
+`SKDocument.CreatePdf` selects native Skia PDF when available. Supported text/fonts and geometry stay vector/searchable. Native Skia can rasterize unsupported PDF operations internally. Its per-operation fallback list is not exposed: `RasterFallbackReporting` is `UnavailableNative` and `RasterFallbacks` is `null`, not an empty list.
 
-## JavaScript adaptations
+`NativeBackend:false` or `Backend:'JavaScript'` selects the managed PDF writer. XPS uses the managed OPC/FixedPage writer. Those routes report bounded raster patches per unsupported operation. Destination-dependent compositing can flatten preceding vectors within the affected rectangle. `StrictVector:true` rejects an unrepresentable operation rather than claiming exact vector fidelity. Sweep/conical shaders, some blend/effect combinations, and native callbacks can require fallback. Conic/vector decompositions have documented tolerances. PDF, PDF/A and XPS standards certification is not claimed.
 
-| C# pattern | JavaScript equivalent |
-| --- | --- |
-| Namespace access | `const S = await Initialize(); new S.SKPaint()` |
-| Object initializers | Constructor options or property assignments |
-| `using` | `try/finally` and `Dispose()`; await `DisposeAsync()` for GPU completion |
-| Value operators | Named `Equals`, arithmetic, mapping and concatenation methods |
-| `ref` / `out` | Mutable output objects or documented convenience return objects |
-| Spans and buffers | Arrays and typed arrays with explicit offset/length rules |
-| Onscreen creation | `await SKSurface.Create(canvas, options)` |
-| WebGPU CPU readback | Async snapshot/readback methods |
-| Desktop file paths | Mounted file streams, selected file bytes or explicit URL loading |
-| ARGB text | `#AARRGGBB`, rather than CSS's eight-digit ordering |
-| Native UI controls | `<skia-canvas>` and browser lifecycle events |
+Pictures, codecs, streams, native Skottie and resource providers are implemented within their documented surfaces. Codec operations depend on format support in the compiled engine. Native Skottie determines supported Lottie semantics; the retained scene-node API is a documented web extension. Browser paths refer to mounted files or selected/loaded bytes, not arbitrary desktop file access.
 
-## Verification limits
+## JavaScript porting conventions
 
-The [verification report](./docs/VERIFICATION.md) records the executed tests, reference runtimes, GPU adapter and results. The [performance report](./docs/PERFORMANCE.md) includes reproducible workloads and measured limits. Tests cover native pixels, .NET reference values, font hints/layout, region bytes, document readers, shader execution and resource lifetime.
+PascalCase types/members are retained. Object initializers become constructor options or assignments; value operators become named methods. Arrays/typed arrays replace spans. `ref`/`out` use documented mutable outputs or convenience result objects. Onscreen creation, URL loading and WebGPU readback require `await`; offscreen raster creation remains synchronous. Hex colors use ARGB ordering. Explicit disposal is required for owned native resources; borrowed canvas/pixel views cannot outlive owners.
 
-The remaining audit rows are retained explicitly. There is no claim of an exhaustive .NET differential suite, full platform UI/native-pointer equivalence, every valid font/document/Lottie input, a production memory soak, or physical GPU/browser certification. Matching declarations and passing sample scenes do not establish those broader claims.
+The custom component coalesces redraw requests, reuses unchanged surfaces, and handles resize, stale initialization, disconnect/reconnect and device loss. It is not a native .NET UI control. The source snapshot excludes font binaries; repository/deployed assets are separate from generated source/test reports.
+
+## Verification scope
+
+See [the current verification report](./docs/VERIFICATION.md) for tests, independent .NET cases, browser results and artifact provenance. Passing tests do not establish universal native-pointer equivalence, all fonts/documents/Lottie inputs, an exhaustive .NET differential corpus, long-running production memory behavior, or physical GPU/browser certification. These boundaries are retained rather than counted as completed features.

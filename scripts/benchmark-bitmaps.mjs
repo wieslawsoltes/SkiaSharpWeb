@@ -13,7 +13,6 @@ sourceCanvas.DrawCircle(12,12,11,paint); sourceCanvas.Dispose(); paint.Dispose()
 const surface = A.SKSurface.Create(new A.SKImageInfo(width,height));
 const samples = {uncached:[],cached:[]}, allocations = {uncached:[],cached:[]};
 const oldFromBitmap = A.SKImage.FromBitmap;
-// Count calls in uncached original drawing; cache misses are independently counted.
 let copies = 0; A.SKImage.FromBitmap = function(...args){ copies++; return oldFromBitmap.apply(this,args); };
 const hash = () => {const image=surface.Snapshot();try{return createHash('sha256').update(image.ReadPixels()).digest('hex');}finally{image.Dispose();}};
 const hashes = {};
@@ -31,7 +30,7 @@ for(let i=0;i<5;i++){workload('uncached');workload('cached');}
 allocations.cached=[];allocations.uncached=[];
 for(let i=0;i<rounds;i++)for(const mode of i%2?['cached','uncached']:['uncached','cached'])samples[mode].push(workload(mode));
 const median = a => [...a].sort((a,b)=>a-b)[Math.floor(a.length/2)];
-const report={runtime:process.version,renderer:'actual Skia CPU raster (not GPU timing)',count,rounds,bitmap:[24,24],surface:[width,height],pixelHashes:hashes,
+const report={runtime:process.version,wasmSHA256:createHash('sha256').update(readFileSync(new URL('../dist/vendor/canvaskit.wasm',import.meta.url))).digest('hex'),renderer:'actual Skia CPU raster (not GPU timing)',count,rounds,bitmap:[24,24],surface:[width,height],pixelHashes:hashes,
   identicalPixels:hashes.cached===hashes.uncached,cases:Object.fromEntries(Object.entries(samples).map(([name,values])=>[name,{medianMs:median(values),p95Ms:[...values].sort((a,b)=>a-b)[Math.floor(values.length*.95)],medianSnapshotConstructions:median(allocations[name])}])),speedup:median(samples.uncached)/median(samples.cached)};
 A.SKImage.FromBitmap=oldFromBitmap;bitmap.Dispose();surface.Dispose();A.SKGraphics.PurgeBitmapCache();
 if(!report.identicalPixels)throw new Error('Optimization changed rendered pixels');

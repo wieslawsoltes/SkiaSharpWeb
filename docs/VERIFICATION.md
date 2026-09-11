@@ -1,52 +1,82 @@
-# Verification — SkiaSharp Web 0.3
+# Verification — SkiaSharp Web 0.4
 
-Verified 2026-09-11 with Node 24.19.0 and the custom compiled Skia engine pinned in native/native-build-manifest.json. This report distinguishes API adapters, output tests, native build evidence, real software GPU execution and untested physical/browser behavior.
+This report records executed checks, not full-parity certification. The integration includes the native runtime published by build run 34606055284, the rendering/cache work and the precision-preserving GPU readback changes through `d8a7e2ac827c3837ecc9ce750b9ef76a16593e02`. The source API target is SkiaSharp `b33cf54f24edc5347567c95b1924c447669c1de8`; the runtime is Skia `f446aec4ce9e0e95e0a504e875955de3eb521f75`, Emscripten 4.0.8.
 
-## Automated integration suite
+## Compiled runtime
 
-The final `npm test` run reports **302 passed, 0 failed, 0 skipped**. Tests use the shipped WASM, including actual native rendering. Legacy file-level assertion groups are not added to the Node test-runner total and no test count is presented as an API-completion percentage.
+The native build completed and its resulting WebAssembly was loaded and executed. The shipped WASM SHA-256 is:
 
-| Area | Evidence |
-| --- | --- |
-| Complete sample app |44 scenes render, preserve matrix/save state, contain visible graphics, and export to PDF and XPS. The gallery produces88 document exports, PNGs and selected documents under test-output/gallery. |
-| Native Graphite | All 44 scenes execute through native Skia Graphite on Dawn/SwiftShader and compare with raster images. No validation errors and no CPU-frame presentation uploads. Exact results and per-scene error metrics: GRAPHITE-VALIDATION.json. |
-| Primitive presenter | Real Dawn WGSL execution checks primitive interiors and an odd-width upload. Baseline/current image comparison has 0 changed components. This tests the compatibility presenter independently of Graphite. |
-| Graphite cache/records | Four record/value tests and ten actual Dawn checks cover alias cache hits, independent wrappers, mipmaps, recorder isolation, 256-entry LRU eviction, disposal before submission and exact pixels. See gpu-records-validation.json. |
-| GPU images and lifetime | Native texture conversion with/without mipmaps, source disposal before drawing, image disposal before submission, recorder guards and exact RGBA readback. Native handle counters return to 0; no GPU errors. |
-| Surface formats | F32 HDR pixels retain values above 1, F16 strides and sized readbacks, additional native formats, linear spaces, surface props, buffer ownership/synchronization and snapshot lifetime. Native mask factories execute. |
-| Fonts | 47 font test entries plus original internal groups cover variable metrics/layout/color, native flags/fallback, hints, caches and formats. CFF2 and hint-preserving CFF1 pixels match independent fontTools fixtures at 3 weights × 7 sizes; removing hints changes pixels. |
-| .NET text/font references | Actual SkiaSharp 3.119 and 4.154 font metrics, IDs, advances and bounds match tested fixtures. Native HarfBuzz shaping matches .NET ligatures, Arabic, combining marks and non-BMP byte clusters/positions; 12 DrawShapedText overloads dispatch equivalently. |
-| .NET value references | 104 HSL/HSV samples, all 256 alpha premultiplication cases, named colors and transfer-function samples compare with executed .NET references. Native ICC, runtime uniforms/children and annotations have output/ownership assertions. |
-| Regions and effects | 36 native region geometry/serialized-byte fixtures and 5 corner raw-Bézier references match. Compound effects use native Skia; mixed graphs, Float32 intermediates, CTM, clipping/layers and cache behavior have regression checks. |
-| Images, streams and codecs | Native JPEG chroma/alpha options, PNG filters, lossless/animated WebP, codec frames/scanline/incremental/subset APIs, typed pixel spans, streams, image filters/readback and clustered text blobs. |
-| SVG sample export | All 44 scenes serialize through native SVG. Independent XML parsing and MuPDF rendering validate a dedicated vector/text fixture; SVG text is outlined. See SVG-VALIDATION.json. |
-| Documents | Independent Poppler/PyMuPDF parsing, rendering and text extraction for native/managed PDF and XPS; metadata, dates, PDF/A metadata/output-intents, glyphs, layers, gradients, clips, pictures and fallback behavior. PDF/A metadata checks are not formal standard certification. |
-| Animation/resources/scenes | Native Skottie frame/property/slot/resource behavior, registered fonts, embedded/external images, ownership, text editing, audio seek callbacks and retained invalidation remain covered. |
-| Browser app control logic | Timeline duration/end position, asynchronous export naming, back-forward cache lifetime and page teardown are checked in an isolated DOM harness. This is not a live browser graphics test. |
+```
+01f467be89998f0c57857dbc47a1aef1a360e5f5076fcbbed254e54939c416f6
+```
 
-## Native build and GPU evidence
+The engine contains Graphite/Dawn/WebGPU, Ganesh/WebGL, raster Skia, specialized native effects, document/font extensions, memory tracing and native image identity. `tests/native-memory.test.mjs` requires the actual exported tracing/identity functions and exercises real callback values and image-alias identities. It does not pass by substituting mocks or ignoring absent bindings.
 
-The delivered native/build_native.py ran successfully against pinned Skia f446aec4ce9e0e95e0a504e875955de3eb521f75 with Emscripten 4.0.8. It built the combined Graphite/Dawn, Ganesh/WebGL and raster WASM. Exact source hashes and output hashes are in native/native-build-manifest.json. This is an operational bundled extension, beyond source preparation.
+Build provenance: [native build](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/runs/34606055284), [runtime commit](https://github.com/wieslawsoltes/SkiaSharpWeb/commit/a99d6095dfe998f9abf0c9fe58527c98ca0c067d), `native/native-build-manifest.json`.
 
-Native Graphite was initialized through an imported GPUDevice and executed real draws on Dawn's Vulkan backend using SwiftShader driver 5.0.0. A native image provider uploads and caches raster images. Pixel assertions, repeat-image cache reuse, purge and teardown counters passed. The [44-scene output contact sheet](./gallery-preview.png) was visually inspected, including images/pixels, advanced fonts and the new asset scenes.
+## Local integration
 
-The adapter explicitly reports `isFallbackAdapter: true`; reports set `physicalGPU: false`. No physical GPU or live WebGL/browser graphics session was performed. Ganesh texture adoption compiled and its JavaScript argument/ownership adapters were tested, but that native WebGL operation was not exercised against a live GL device.
-
-## Reproducing checks
+**343 tests passed, 0 failed, 0 skipped**, using Node 22.16.0 and the WASM above. JavaScript syntax, relative imports and HTML entry assets also passed `npm run check`. The suite covers drawing, regions, path/effect geometry, font metrics/shaping/hints, codecs/streams, vector documents and independent readers, animation/resources, overload adapters, ownership, caches, scheduler behavior and GPU readback validation. Some error/lifecycle tests use controlled mocks; these are separate from real-runtime tests and live browser checks.
 
 ```sh
 npm run check
 npm test
 npm run coverage
-node scripts/benchmark.mjs
 ```
 
-Install Poppler command-line tools and PyMuPDF 1.26.6 plus Pillow 11.3.0 to run independent PDF/XPS parsing/rendering checks. Native tests do not need a GPU unless explicitly invoked. See PERFORMANCE.md and native/README.md for separate Dawn verifier and full build commands. Differential C# source and pinned reference JSON are distributed with the tests; the routine suite consumes recorded independently generated fixtures.
+The earlier integrated baseline passed 332 tests; the precision readback additions increased this to 343. No assertion was removed to obtain this count.
 
-## Remaining verification boundaries
+## Actual Chromium rendering and presentation
 
-The declaration audit preserves all 3995 pinned entries and separates implemented, partial/unverified, missing and not-applicable declarations. Some reported improvement comes from correcting inventory initializer parsing; these corrections are identified separately. A declaration marked implemented has the evidence stated in the audit, without implying exhaustive argument-space equivalence.
+[Browser run 34609790052](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/runs/34609790052) used Chromium **143.0.7499.4**, with a Google **SwiftShader software Vulkan adapter**. It passed:
 
-There is no exhaustive .NET-versus-JavaScript differential suite, complete OpenType/COLRv1/effect/Lottie corpus, physical GPU/browser matrix, production memory soak or full document-standards certification. Managed PDF/XPS operations outside their vector support still rasterize or reject under StrictVector. Native Skia PDF does not report individual raster decisions; its RasterFallbacks value is null. JavaScript and browser pointer/thread/UI semantics retain explicit adaptations.
+- **132 scene/backend combinations:** every one of 44 scenes on native Graphite/WebGPU, Ganesh/WebGL and Canvas.
+- Snapshot size/content checks and CPU-reference comparisons. Maximum scene-level mean absolute component errors were 0.82193 (WebGPU), 2.22776 (WebGL) and 0.07762 (Canvas), on an RGBA8 0–255 scale. The acceptance threshold was 12; visible-content checks separately rejected gross loss.
+- Actual HTML presentation: screenshots showed exact red and white pixels at independently sampled positions for each backend, not just successful offscreen snapshots.
+- Zero per-frame CPU texture-upload bytes on native Graphite; no uncaptured GPU errors.
+- Theme, search, timeline and animation controls.
+- The performance lab's real custom element: 100 simultaneous invalidations produced one additional frame and no extra surface creation. The cached workload recorded 3,999 hits, one miss and 2,304 retained pixel bytes.
 
-Performance figures describe the documented workloads and measurement environment. Sample draw timing and CPU preparation benchmarks are not GPU timing. Raw evidence and precise reproduction commands are in PERFORMANCE.md and associated JSON reports.
+A separate browser workflow using Chromium **140.0.7339.16** passed the same 44-scene/three-backend coverage plus backend switching, PNG download and component resize/disconnect/reconnect. Its 10,000-invalidation batch produced one frame. The [latest precision/lifecycle run](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/runs/34611102168) also exercised the additional checks below.
+
+Both are software-adapter tests. **Physical GPU hardware and vendor drivers were not tested.** `--require-physical-gpu` in the new runner and `--physical` in the lifecycle runner reject software-adapter evidence when hardware qualification is requested. CPU/submission/completion times from SwiftShader are not hardware GPU performance measurements.
+
+```sh
+python -m pip install playwright==1.57.0 Pillow==11.3.0
+python -m playwright install --with-deps chromium
+python scripts/verify-browser.py --output test-output/browser
+```
+
+On Linux CI, the supplied workflow uses Xvfb and `--headed`. Full raw reports and screenshots are retained as Actions artifacts.
+
+## HDR, readback and native identity
+
+The completed precision/lifecycle browser run tested native `rgba16float` Graphite rendering and F32 readback against a color-managed F16 raster reference. Its first pixel was `[4.953125, 0.01435089111328125, 0.2139892578125, 1]`, versus raster `[4.953125, 0.01434326171875, 0.2139892578125, 1]`. The HDR component stayed above 1; all channels met the 0.002 tolerance. This explicitly tests sRGB-to-linear conversion, not an incorrect expectation that linear output equals the original sRGB components.
+
+Raw `rgba32float` texture copies retained the exact Float32 values, including negative and above-one components. Eight readbacks used **one staging allocation and seven reuses**; the pool finished with zero active leases and 512 idle bytes. Ten native aliases of the same image required **one upload and nine cache hits**, with **zero alias scans** when native identity was available. Native memory diagnostics returned 133 entries. Async `Sync:true` submission left the caller's options unchanged. No GPU validation errors were recorded.
+
+Unit tests separately cover row alignment, mip/layer bounds, bit preservation, buffer budgets, disposal, color metadata ownership, callbacks and invalid options. Compressed/depth/stencil formats remain explicitly unsupported by this raw color readback helper.
+
+## Independently executed .NET comparisons
+
+[Run 34609429738](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/runs/34609429738) executed the C# generator against **SkiaSharp 3.119.0** and **4.154.0-preview.1.26454.9**. Each corpus contains 512 matrix/rectangle cases and 320 path Boolean cases using a documented fixed LCG seed. Expected results come from native .NET SkiaSharp, not JavaScript-generated fixtures.
+
+For each version, **39,224 numerical/Boolean comparisons passed, zero failures**. Float tolerance is `0.0002 + abs(expected) * 0.001`; Boolean and structural results are exact. Cases include singular and perspective matrices, inverses, vector/point/rectangle/radius mapping, pre/post concatenation, rectangle predicates, all five path Boolean operations, bounds and point containment. Both independent corpora were replayed locally against the rebuilt WASM with zero failures.
+
+The existing live .NET workflow separately regenerates color, matrix, font, glyph and region fixtures with the exact repository font asset. Independent fontTools/Skia fixtures, hint-removal negative controls and PDF/XPS reader checks remain part of integration tests. These focused corpora are **not an exhaustive .NET differential suite for all 3,995 declarations**.
+
+## Performance
+
+The actual-Skia repeated-bitmap benchmark used 10,000 draws of a 24×24 immutable sprite on a 512×512 raster surface, five warmup rounds and 21 interleaved measured rounds. Median time changed from **43.2813 ms to 31.4288 ms (1.3771x)**. Snapshot construction changed from **10,000 to one**. Cached and uncached outputs have the identical SHA-256:
+
+```
+2ad1467807f46de1d3857fb9bdeab5d83873791ba00f257030d1c754694789bc
+```
+
+See `docs/BITMAP-PERFORMANCE.json` and `scripts/benchmark-bitmaps.mjs`. This measures a repeat-image CPU workload, not a universal application speedup. Cache tests cover mutable images, base-class codec instances, eviction, disposal, explicit notifications and resource purges.
+
+## Remaining unsupported or unproven behavior
+
+The regenerated audit classifies 1,932 declarations as implemented, 1,046 partial/unverified, 873 not applicable and 144 missing. These are declaration counts rather than feature percentages. Remaining native platform pointer/CLR/COM surfaces are not browser equivalents. An exhaustive overload proof, every valid font/document/Lottie input, a production memory soak, physical GPU coverage and document standards certification have not been completed.
+
+Native PDF may internally rasterize operations its file format cannot represent; the internal fallback list is unavailable. Managed PDF/XPS report bounded patches or reject unsupported output in strict-vector mode. Injected stock-engine fallback paths retain documented geometric/rounding qualifications. See [COMPATIBILITY.md](../COMPATIBILITY.md), the detailed font/effect/document reports, and the reproducible declaration audit rather than interpreting successful scenes as universal parity.
