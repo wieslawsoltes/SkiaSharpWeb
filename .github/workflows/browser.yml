@@ -1,0 +1,32 @@
+name: Browser rendering and GPU validation
+on:
+  push:
+    branches: [main]
+    paths: ['dist/**', 'tests/browser/**', 'scripts/verify-browser.py', '.github/workflows/browser.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: browser-validation-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  chromium:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install playwright==1.57.0 Pillow==11.3.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/verify-browser.py --output test-output/browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-${{ github.sha }}
+          path: test-output/browser/
+          retention-days: 14
+          if-no-files-found: error
