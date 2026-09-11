@@ -6,10 +6,10 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 
 | Status | Declarations |
 | --- | ---: |
-| implemented | 1928 |
-| partial | 1029 |
+| implemented | 1932 |
+| partial | 1045 |
 | not-applicable | 873 |
-| missing | 165 |
+| missing | 145 |
 
 ## Interpretation
 
@@ -750,8 +750,8 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 
 | Declaration | Status | JavaScript mapping / reason |
 | --- | --- | --- |
-| `public SKImage FindOrCreate (SKGraphiteRecorder recorder, SKImage image, bool mipmapped)` | missing | `SKGraphiteImageCache.FindOrCreate` — No exported browser type with this declaration identity. |
-| `public void Dispose ()` | missing | `SKGraphiteImageCache.Dispose` — No exported browser type with this declaration identity. |
+| `public SKImage FindOrCreate (SKGraphiteRecorder recorder, SKImage image, bool mipmapped)` | implemented | `SKGraphiteImageCache.FindOrCreate` — Native Graphite texture cache tested on Dawn: independent returned ownership, same-image aliases, mipmaps, recorder isolation, LRU eviction, disposal before submission and exact GPU pixels. |
+| `public void Dispose ()` | implemented | `SKGraphiteImageCache.Dispose` — Native Graphite texture cache tested on Dawn: independent returned ownership, same-image aliases, mipmaps, recorder isolation, LRU eviction, disposal before submission and exact GPU pixels. |
 
 ### SkiaSharp.SKGraphiteMtlBackendContext
 
@@ -2350,8 +2350,8 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | --- | --- | --- |
 | `public SKManagedStream (Stream managedStream) : this (managedStream, false)` | implemented | `SKManagedStream(...)` — Concrete native codec/image/text-blob or managed stream/span overload; native readback gamma, ownership, destination bounds and encoding tests pass in assets.test.mjs. |
 | `public SKManagedStream (Stream managedStream, bool disposeManagedStream) : base (true)` | implemented | `SKManagedStream(...)` — Concrete native codec/image/text-blob or managed stream/span overload; native readback gamma, ownership, destination bounds and encoding tests pass in assets.test.mjs. |
-| `public int CopyTo (SKWStream destination)` | missing | `SKManagedStream.CopyTo` — No matching callable member or explicit overload adapter was found. |
-| `public SKStreamAsset ToMemoryStream ()` | missing | `SKManagedStream.ToMemoryStream` — No matching callable member or explicit overload adapter was found. |
+| `public int CopyTo (SKWStream destination)` | implemented | `SKManagedStream.CopyTo` — Pinned stream-copy semantics preserve current position, Int32 read count, destination flush and independently owned remainder; chunking, short reads, failed writes and exceptions are tested. |
+| `public SKStreamAsset ToMemoryStream ()` | implemented | `SKManagedStream.ToMemoryStream` — Pinned stream-copy semantics preserve current position, Int32 read count, destination flush and independently owned remainder; chunking, short reads, failed writes and exceptions are tested. |
 
 ### SkiaSharp.SKManagedWStream
 
@@ -3989,25 +3989,25 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public Int64 GpuBudgetInBytes` | partial | `SKGraphiteContextOptions.GpuBudgetInBytes` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
 | `public bool RequireOrderedRecordings` | partial | `SKGraphiteContextOptions.RequireOrderedRecordings` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
 | `public bool SetBackendLabels` | partial | `SKGraphiteContextOptions.SetBackendLabels` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
-| `public readonly bool Equals (SKGraphiteContextOptions obj)` | missing | `SKGraphiteContextOptions.Equals` — No matching callable member or explicit overload adapter was found. |
-| `public readonly override bool Equals (object obj)` | missing | `SKGraphiteContextOptions.Equals` — No matching callable member or explicit overload adapter was found. |
+| `public readonly bool Equals (SKGraphiteContextOptions obj)` | partial | `SKGraphiteContextOptions.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public readonly override bool Equals (object obj)` | partial | `SKGraphiteContextOptions.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public static bool operator == (SKGraphiteContextOptions left, SKGraphiteContextOptions right)` | not-applicable | `SKGraphiteContextOptions.Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
 | `public static bool operator != (SKGraphiteContextOptions left, SKGraphiteContextOptions right)` | not-applicable | `SKGraphiteContextOptions.!Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
-| `public readonly override int GetHashCode ()` | missing | `SKGraphiteContextOptions.GetHashCode` — No matching callable member or explicit overload adapter was found. |
+| `public readonly override int GetHashCode ()` | partial | `SKGraphiteContextOptions.GetHashCode` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 
 ### SkiaSharp.SKGraphiteDawnBackendContextInit
 
 | Declaration | Status | JavaScript mapping / reason |
 | --- | --- | --- |
-| `public void* Instance` | missing | `SKGraphiteDawnBackendContextInit.Instance` — No exported browser type with this declaration identity. |
-| `public void* Device` | missing | `SKGraphiteDawnBackendContextInit.Device` — No exported browser type with this declaration identity. |
-| `public void* Queue` | missing | `SKGraphiteDawnBackendContextInit.Queue` — No exported browser type with this declaration identity. |
-| `public bool NonYielding` | missing | `SKGraphiteDawnBackendContextInit.NonYielding` — No exported browser type with this declaration identity. |
-| `public readonly bool Equals (SKGraphiteDawnBackendContextInit obj)` | missing | `SKGraphiteDawnBackendContextInit.Equals` — No exported browser type with this declaration identity. |
-| `public readonly override bool Equals (object obj)` | missing | `SKGraphiteDawnBackendContextInit.Equals` — No exported browser type with this declaration identity. |
+| `public void* Instance` | partial | `SKGraphiteDawnBackendContextInit.Instance` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public void* Device` | partial | `SKGraphiteDawnBackendContextInit.Device` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public void* Queue` | partial | `SKGraphiteDawnBackendContextInit.Queue` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public bool NonYielding` | partial | `SKGraphiteDawnBackendContextInit.NonYielding` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public readonly bool Equals (SKGraphiteDawnBackendContextInit obj)` | partial | `SKGraphiteDawnBackendContextInit.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public readonly override bool Equals (object obj)` | partial | `SKGraphiteDawnBackendContextInit.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public static bool operator == (SKGraphiteDawnBackendContextInit left, SKGraphiteDawnBackendContextInit right)` | not-applicable | `SKGraphiteDawnBackendContextInit.Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
 | `public static bool operator != (SKGraphiteDawnBackendContextInit left, SKGraphiteDawnBackendContextInit right)` | not-applicable | `SKGraphiteDawnBackendContextInit.!Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
-| `public readonly override int GetHashCode ()` | missing | `SKGraphiteDawnBackendContextInit.GetHashCode` — No exported browser type with this declaration identity. |
+| `public readonly override int GetHashCode ()` | partial | `SKGraphiteDawnBackendContextInit.GetHashCode` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 
 ### SkiaSharp.SKGraphiteInsertRecordingInfo
 
@@ -4018,11 +4018,11 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public Int32 TargetTranslationX` | partial | `SKGraphiteInsertRecordingInfo.TargetTranslationX` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
 | `public Int32 TargetTranslationY` | partial | `SKGraphiteInsertRecordingInfo.TargetTranslationY` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
 | `public SKRectI TargetClip` | partial | `SKGraphiteInsertRecordingInfo.TargetClip` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
-| `public readonly bool Equals (SKGraphiteInsertRecordingInfo obj)` | missing | `SKGraphiteInsertRecordingInfo.Equals` — No matching callable member or explicit overload adapter was found. |
-| `public readonly override bool Equals (object obj)` | missing | `SKGraphiteInsertRecordingInfo.Equals` — No matching callable member or explicit overload adapter was found. |
+| `public readonly bool Equals (SKGraphiteInsertRecordingInfo obj)` | partial | `SKGraphiteInsertRecordingInfo.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public readonly override bool Equals (object obj)` | partial | `SKGraphiteInsertRecordingInfo.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public static bool operator == (SKGraphiteInsertRecordingInfo left, SKGraphiteInsertRecordingInfo right)` | not-applicable | `SKGraphiteInsertRecordingInfo.Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
 | `public static bool operator != (SKGraphiteInsertRecordingInfo left, SKGraphiteInsertRecordingInfo right)` | not-applicable | `SKGraphiteInsertRecordingInfo.!Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
-| `public readonly override int GetHashCode ()` | missing | `SKGraphiteInsertRecordingInfo.GetHashCode` — No matching callable member or explicit overload adapter was found. |
+| `public readonly override int GetHashCode ()` | partial | `SKGraphiteInsertRecordingInfo.GetHashCode` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 
 ### SkiaSharp.SKGraphiteMtlBackendContextInit
 
@@ -4043,11 +4043,11 @@ Every one of the **3995 pinned declarations** appears in the JSON companion and 
 | `public bool Sync` | partial | `SKGraphiteSubmitInfo.Sync` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
 | `public bool MarkBoundary` | partial | `SKGraphiteSubmitInfo.MarkBoundary` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
 | `public UInt64 FrameID` | partial | `SKGraphiteSubmitInfo.FrameID` — Type exists; instance field/property and all behavioral invariants require a type-specific audit. No inferred completeness from names. |
-| `public readonly bool Equals (SKGraphiteSubmitInfo obj)` | missing | `SKGraphiteSubmitInfo.Equals` — No matching callable member or explicit overload adapter was found. |
-| `public readonly override bool Equals (object obj)` | missing | `SKGraphiteSubmitInfo.Equals` — No matching callable member or explicit overload adapter was found. |
+| `public readonly bool Equals (SKGraphiteSubmitInfo obj)` | partial | `SKGraphiteSubmitInfo.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
+| `public readonly override bool Equals (object obj)` | partial | `SKGraphiteSubmitInfo.Equals` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 | `public static bool operator == (SKGraphiteSubmitInfo left, SKGraphiteSubmitInfo right)` | not-applicable | `SKGraphiteSubmitInfo.Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
 | `public static bool operator != (SKGraphiteSubmitInfo left, SKGraphiteSubmitInfo right)` | not-applicable | `SKGraphiteSubmitInfo.!Equals(...)` — C# operator/conversion syntax is not available in JavaScript; use explicit value methods or constructors. |
-| `public readonly override int GetHashCode ()` | missing | `SKGraphiteSubmitInfo.GetHashCode` — No matching callable member or explicit overload adapter was found. |
+| `public readonly override int GetHashCode ()` | partial | `SKGraphiteSubmitInfo.GetHashCode` — A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance. |
 
 ### SkiaSharp.SKGraphiteVkTextureInfo
 

@@ -11,7 +11,7 @@ Initialization shares a promise for concurrent default callers and retries after
 | `core`, `paths`, `images`, `canvas` | Values and native handles, geometry, drawing, pictures, surfaces and backend selection |
 | `fonts`, `font-engine`, `font-cff`, `font-cache` | Registries, format/variation processing, hint-preserving document conversion, bounded caches and native text |
 | `regions`, `effects`, `path-effects`, `canvas-effects`, `layer-effects` | Native region/effect execution and Float32 fallback graphs |
-| `gpu`, `webgpu` | Graphite/Ganesh adapters, asynchronous readback, GPU presentation and compatibility primitive renderer |
+| `gpu`, `gpu-records`, `webgpu` | Graphite/Ganesh adapters, asynchronous readback, GPU presentation and compatibility primitive renderer |
 | `overloads`, `conformance`, `color-space`, `portable-values`, `text-interop` | Argument dispatch, value conventions, native color spaces, runtime effects and shaped text |
 | `assets`, `asset-streams`, `asset-codecs`, `asset-pixels`, `asset-textblobs` | Streams, native codecs/encoders, pixel operations and cluster-aware blobs |
 | `surface-formats` | Raster format/stride/ownership dispatch, native surface properties and high precision readback |

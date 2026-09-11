@@ -6,6 +6,8 @@ This release ships the native Graphite extension as part of the bundled runtime,
 
 ## Run the sample app
 
+[Open the live Graphics Lab on GitHub Pages](https://wieslawsoltes.github.io/SkiaSharpWeb/). Pushes to the repository's main branch run the integration suite and publish `dist/` through the included Pages workflow.
+
 The app and its rendering engine are bundled in `dist/`. No package installation, build step, external CDN, server application, or cloud credentials are required to serve it.
 
 From the project directory:

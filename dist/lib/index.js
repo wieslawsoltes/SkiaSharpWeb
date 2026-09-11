@@ -1,3 +1,4 @@
+import { installGpuRecords } from './gpu-records.js';
 import { installSurfaceFormats } from './surface-formats.js';
 import { createCore } from './core.js';
 import { createPaths } from './paths.js';
@@ -61,6 +62,7 @@ async function initializeRuntime(options = {}) {
   Object.assign(api, createDocuments(K, api));
   installConformance(K, api);
   installSurfaceFormats(K, api);
+  installGpuRecords(K, api);
   api.CanvasKit = K;
   api.Version = '0.3.0';
   api.BackendCapabilities = Object.freeze({ WebGL: 'Skia GPU renderer', Canvas: 'Skia software rasterizer presented through Canvas 2D', WebGPU: 'Native Skia Graphite/Dawn; injected runtimes without Graphite use the primitive/raster presenter' });

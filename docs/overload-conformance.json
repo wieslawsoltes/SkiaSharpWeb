@@ -7,16 +7,16 @@
       "missing": 970
     },
     "after": {
-      "implemented": 1928,
-      "partial": 1029,
+      "implemented": 1932,
+      "partial": 1045,
       "not-applicable": 873,
-      "missing": 165
+      "missing": 145
     },
     "transitions": {
       "implemented -> implemented": 716,
-      "missing -> implemented": 722,
-      "missing -> missing": 165,
-      "missing -> partial": 83,
+      "missing -> implemented": 726,
+      "missing -> missing": 145,
+      "missing -> partial": 99,
       "not-applicable -> not-applicable": 873,
       "partial -> implemented": 490,
       "partial -> partial": 946
@@ -33,13 +33,13 @@
   "parserCorrections": 204,
   "repository": "https://github.com/mono/SkiaSharp",
   "commit": "b33cf54f24edc5347567c95b1924c447669c1de8",
-  "generatedAt": "2026-09-11T11:50:43.180Z",
+  "generatedAt": "2026-09-11T12:01:07.692Z",
   "declarations": 3995,
   "statusCounts": {
-    "implemented": 1928,
-    "partial": 1029,
+    "implemented": 1932,
+    "partial": 1045,
     "not-applicable": 873,
-    "missing": 165
+    "missing": 145
   },
   "methodology": [
     "One row per pinned lexical declaration, retaining overload signature, source file, and line.",
@@ -7129,10 +7129,10 @@
       "signature": "public SKImage FindOrCreate (SKGraphiteRecorder recorder, SKImage image, bool mipmapped)",
       "source": "binding/SkiaSharp/Gpu/Graphite/SKGraphiteImageCache.cs",
       "line": 23,
-      "status": "missing",
+      "status": "implemented",
       "mapping": "SKGraphiteImageCache.FindOrCreate",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "Native Graphite texture cache tested on Dawn: independent returned ownership, same-image aliases, mipmaps, recorder isolation, LRU eviction, disposal before submission and exact GPU pixels.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKGraphiteImageCache@binding/SkiaSharp/Gpu/Graphite/SKGraphiteImageCache.cs:70:1",
@@ -7144,10 +7144,10 @@
       "signature": "public void Dispose ()",
       "source": "binding/SkiaSharp/Gpu/Graphite/SKGraphiteImageCache.cs",
       "line": 70,
-      "status": "missing",
+      "status": "implemented",
       "mapping": "SKGraphiteImageCache.Dispose",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "Native Graphite texture cache tested on Dawn: independent returned ownership, same-image aliases, mipmaps, recorder isolation, LRU eviction, disposal before submission and exact GPU pixels.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKGraphiteMtlBackendContext@binding/SkiaSharp/Gpu/Graphite/SKGraphiteMtlBackendContext.cs:15:0",
@@ -27454,10 +27454,10 @@
       "signature": "public int CopyTo (SKWStream destination)",
       "source": "binding/SkiaSharp/SKManagedStream.cs",
       "line": 32,
-      "status": "missing",
+      "status": "implemented",
       "mapping": "SKManagedStream.CopyTo",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "Pinned stream-copy semantics preserve current position, Int32 read count, destination flush and independently owned remainder; chunking, short reads, failed writes and exceptions are tested.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKManagedStream@binding/SkiaSharp/SKManagedStream.cs:48:3",
@@ -27469,10 +27469,10 @@
       "signature": "public SKStreamAsset ToMemoryStream ()",
       "source": "binding/SkiaSharp/SKManagedStream.cs",
       "line": 48,
-      "status": "missing",
+      "status": "implemented",
       "mapping": "SKManagedStream.ToMemoryStream",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "Pinned stream-copy semantics preserve current position, Int32 read count, destination flush and independently owned remainder; chunking, short reads, failed writes and exceptions are tested.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKManagedWStream@binding/SkiaSharp/SKManagedWStream.cs:15:0",
@@ -46039,10 +46039,10 @@
       "signature": "public readonly bool Equals (SKGraphiteContextOptions obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20561,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteContextOptions.Equals",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteContextOptions@binding/SkiaSharp/SkiaApi.generated.cs:20566:6",
@@ -46054,10 +46054,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20566,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteContextOptions.Equals",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteContextOptions@binding/SkiaSharp/SkiaApi.generated.cs:20569:7",
@@ -46099,10 +46099,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20575,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteContextOptions.GetHashCode",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20593:0",
@@ -46114,10 +46114,10 @@
       "signature": "public void* Instance",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20593,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteDawnBackendContextInit.Instance",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20600:1",
@@ -46129,10 +46129,10 @@
       "signature": "public void* Device",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20600,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteDawnBackendContextInit.Device",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20607:2",
@@ -46144,10 +46144,10 @@
       "signature": "public void* Queue",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20607,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteDawnBackendContextInit.Queue",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20614:3",
@@ -46159,10 +46159,10 @@
       "signature": "public bool NonYielding",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20614,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteDawnBackendContextInit.NonYielding",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20619:4",
@@ -46174,10 +46174,10 @@
       "signature": "public readonly bool Equals (SKGraphiteDawnBackendContextInit obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20619,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteDawnBackendContextInit.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20624:5",
@@ -46189,10 +46189,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20624,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteDawnBackendContextInit.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteDawnBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20627:6",
@@ -46234,10 +46234,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20633,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteDawnBackendContextInit.GetHashCode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteInsertRecordingInfo@binding/SkiaSharp/SkiaApi.generated.cs:20650:0",
@@ -46324,10 +46324,10 @@
       "signature": "public readonly bool Equals (SKGraphiteInsertRecordingInfo obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20683,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteInsertRecordingInfo.Equals",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteInsertRecordingInfo@binding/SkiaSharp/SkiaApi.generated.cs:20688:6",
@@ -46339,10 +46339,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20688,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteInsertRecordingInfo.Equals",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteInsertRecordingInfo@binding/SkiaSharp/SkiaApi.generated.cs:20691:7",
@@ -46384,10 +46384,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20697,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteInsertRecordingInfo.GetHashCode",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteMtlBackendContextInit@binding/SkiaSharp/SkiaApi.generated.cs:20715:0",
@@ -46549,10 +46549,10 @@
       "signature": "public readonly bool Equals (SKGraphiteSubmitInfo obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20775,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteSubmitInfo.Equals",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteSubmitInfo@binding/SkiaSharp/SkiaApi.generated.cs:20780:4",
@@ -46564,10 +46564,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20780,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteSubmitInfo.Equals",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteSubmitInfo@binding/SkiaSharp/SkiaApi.generated.cs:20783:5",
@@ -46609,10 +46609,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20789,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteSubmitInfo.GetHashCode",
-      "reason": "No matching callable member or explicit overload adapter was found.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20870:0",

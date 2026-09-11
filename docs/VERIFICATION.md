@@ -4,13 +4,14 @@ Verified 2026-09-11 with Node 24.19.0 and the custom compiled Skia engine pinned
 
 ## Automated integration suite
 
-The final `npm test` run reports **294 passed, 0 failed, 0 skipped**. Tests use the shipped WASM, including actual native rendering. Legacy file-level assertion groups are not added to the Node test-runner total and no test count is presented as an API-completion percentage.
+The final `npm test` run reports **302 passed, 0 failed, 0 skipped**. Tests use the shipped WASM, including actual native rendering. Legacy file-level assertion groups are not added to the Node test-runner total and no test count is presented as an API-completion percentage.
 
 | Area | Evidence |
 | --- | --- |
 | Complete sample app |44 scenes render, preserve matrix/save state, contain visible graphics, and export to PDF and XPS. The gallery produces88 document exports, PNGs and selected documents under test-output/gallery. |
 | Native Graphite | All 44 scenes execute through native Skia Graphite on Dawn/SwiftShader and compare with raster images. No validation errors and no CPU-frame presentation uploads. Exact results and per-scene error metrics: GRAPHITE-VALIDATION.json. |
 | Primitive presenter | Real Dawn WGSL execution checks primitive interiors and an odd-width upload. Baseline/current image comparison has 0 changed components. This tests the compatibility presenter independently of Graphite. |
+| Graphite cache/records | Four record/value tests and ten actual Dawn checks cover alias cache hits, independent wrappers, mipmaps, recorder isolation, 256-entry LRU eviction, disposal before submission and exact pixels. See gpu-records-validation.json. |
 | GPU images and lifetime | Native texture conversion with/without mipmaps, source disposal before drawing, image disposal before submission, recorder guards and exact RGBA readback. Native handle counters return to 0; no GPU errors. |
 | Surface formats | F32 HDR pixels retain values above 1, F16 strides and sized readbacks, additional native formats, linear spaces, surface props, buffer ownership/synchronization and snapshot lifetime. Native mask factories execute. |
 | Fonts | 47 font test entries plus original internal groups cover variable metrics/layout/color, native flags/fallback, hints, caches and formats. CFF2 and hint-preserving CFF1 pixels match independent fontTools fixtures at 3 weights × 7 sizes; removing hints changes pixels. |
@@ -40,7 +41,7 @@ npm run coverage
 node scripts/benchmark.mjs
 ```
 
-Install Poppler command-line tools and PyMuPDF 1.26.6 to run independent PDF/XPS parsing/rendering checks. Native tests do not need a GPU unless explicitly invoked. See PERFORMANCE.md and native/README.md for separate Dawn verifier and full build commands. Differential C# source and pinned reference JSON are distributed with the tests; the routine suite consumes recorded independently generated fixtures.
+Install Poppler command-line tools and PyMuPDF 1.26.6 plus Pillow 11.3.0 to run independent PDF/XPS parsing/rendering checks. Native tests do not need a GPU unless explicitly invoked. See PERFORMANCE.md and native/README.md for separate Dawn verifier and full build commands. Differential C# source and pinned reference JSON are distributed with the tests; the routine suite consumes recorded independently generated fixtures.
 
 ## Remaining verification boundaries
 

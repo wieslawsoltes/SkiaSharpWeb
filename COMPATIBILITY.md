@@ -4,6 +4,8 @@ SkiaSharp Web 0.3 provides a PascalCase JavaScript graphics API, a reusable web 
 
 The API inventory remains pinned to [mono/SkiaSharp b33cf54f24edc5347567c95b1924c447669c1de8](https://github.com/mono/SkiaSharp/tree/b33cf54f24edc5347567c95b1924c447669c1de8). The native engine is built from [Skia f446aec4ce9e0e95e0a504e875955de3eb521f75](https://github.com/google/skia/tree/f446aec4ce9e0e95e0a504e875955de3eb521f75) with the extension sources under `native/`. The 3,995-entry inventory is a lexical source inventory, including overloads, enum values, obsolete forms and conditional declarations. Its counts are not feature percentages.
 
+The final audit records **1,932 implemented, 1,045 partial or unverified, 873 not applicable, and 145 missing declarations**. It separately identifies 204 lexical identity corrections; 143 status upgrades result solely from those parser corrections. See the [change accounting](./docs/conformance-changes.json) and [remaining declarations](./docs/remaining-declarations.json).
+
 ## Capability map
 
 | Family | Delivered implementation | Practical qualification |

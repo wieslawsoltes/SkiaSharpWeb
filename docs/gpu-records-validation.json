@@ -1,0 +1,60 @@
+{
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "swiftshader-device-subzero-",
+    "description": "SwiftShader driver 5.0.0"
+  },
+  "physicalGpu": false,
+  "checks": [
+    "browser Dawn initializer creates native Graphite context",
+    "native image upload and cache hits",
+    "distinct caller-owned wrappers share native cached image",
+    "native source aliases reuse upload",
+    "mipmapped variants and recorder ownership isolation",
+    "256-entry LRU eviction",
+    "cache and raster source disposal before draw",
+    "returned image disposal before submit",
+    "exact RGBA readback",
+    "zero native handles after cleanup"
+  ],
+  "statistics": {
+    "Count": 256,
+    "Hits": 2,
+    "Uploads": 260,
+    "Evictions": 4,
+    "Capacity": 256
+  },
+  "pixels": [
+    [
+      255,
+      0,
+      0,
+      255
+    ],
+    [
+      0,
+      255,
+      0,
+      255
+    ],
+    [
+      0,
+      0,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      0,
+      255
+    ]
+  ],
+  "handles": {
+    "devices": 0,
+    "queues": 0,
+    "textures": 0
+  },
+  "errors": []
+}

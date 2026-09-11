@@ -375,3 +375,10 @@ font.GetGlyphWidths(glyphs, widths, glyphBounds, paint);
 ```
 
 Convenience calls remain available: `TryInvert()` returns `{Success,Inverse}`; `BreakText(text,width)` returns its measurement object, while an explicit mutable output supports the count-return form. UTF-16/UTF-32 byte buffers use little-endian encoding. In glyph APIs, `Uint16Array` represents glyph IDs rather than Unicode text. See [OVERLOAD_USAGE.md](./OVERLOAD_USAGE.md) and the per-signature [declaration audit](./OVERLOAD_CONFORMANCE.md).
+
+
+## Graphite image cache and records
+
+`SKGraphiteImageCache.FindOrCreate(recorder, image, mipmapped)` creates or reuses a native texture image for the selected recorder. Each result is independently owned and must be disposed. The cache retains at most 256 entries; `Dispose()` releases cached references while caller-owned results and submitted recordings retain theirs. Dispose cached images before their recorder. `GetStatistics()` reports hits, uploads, evictions and retained count.
+
+`SKGraphiteDawnBackendContextInit` accepts browser GPU objects for Instance, Device and Queue. The queue must be the device's queue and browser contexts require NonYielding. Integer process pointers are rejected. Graphite option/submit/recording records provide value equality and deterministic JavaScript hashes; hash values are not .NET randomized hash codes.
