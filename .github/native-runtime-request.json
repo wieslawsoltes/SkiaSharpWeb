@@ -1,1 +1,1 @@
-{"run_id":34618183369,"reason":"Qualify native PDF diagnostics with corrected vector text fixture, native path expansion, preserved glyph contours, numeric text counts and extended independent C# contracts."}
+{"run_id":34618183369,"reason":"Qualify native PDF, paint and glyph geometry after fixing independently observed NaN limits and retained empty-text output slots; seed C# output values explicitly."}
