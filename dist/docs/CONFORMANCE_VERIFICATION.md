@@ -1,11 +1,11 @@
-# Conformance verification — 0.4
+# Conformance verification — 0.5
 
-The pinned inventory contains all 3,995 original declarations: **1936 implemented, 1042 partial/unverified, 873 browser-inapplicable and 144 missing**. These are declaration counts, not feature percentages.
+All 3,995 pinned declaration IDs are retained: **1982 implemented, 1063 partial/unverified, 872 browser-inapplicable and 78 missing**. These are declaration counts, not feature percentages.
 
-The 0.4 review adds concrete certificates for native memory callbacks, singular matrix/clip accessors and both asynchronous Graphite readback signatures. Eleven rows were reviewed; four additional rows change to implemented compared with the unextended audit rules. Other argument-space, pointer, hash and format differences stay explicit. Original IDs, signatures and lexical corrections are preserved.
+The 0.5 review upgrades 46 previously partial declarations using targeted native/.NET tests. One additional change corrects an inventory error: the public SKPathMeasure constructor has an IntPtr.Zero base initializer, not a pointer argument. It remains partial because the corpus does not exercise arbitrary resScale. Source and runtime SHA-256 checks prevent these reviews from silently certifying edited code.
 
-The 144 missing rows are 130 desktop Vulkan/Metal/Direct3D declarations and 14 CLR native-object/locking/COM declarations. They are listed in remaining-declarations.json, not silently relabeled as completed web APIs.
+The missing group contains 64 native Vulkan/Metal/Direct3D declarations and 14 CLR native-object/locking/COM declarations. Portable GPU descriptor value objects are distinct from importing a desktop device or process address. The earlier 144-to-78 reduction reflects newly available descriptor records, many still partial—not new browser driver interfaces.
 
-Fresh .NET 3.119.0 and 4.154 preview executions each pass 39,224 seeded geometry comparisons; text/value/font references are checked separately. Chromium runs 44 scenes per rendering backend and additional HDR/cache/lifecycle checks. SwiftShader is a software GPU adapter; neither physical-GPU validation nor exhaustive .NET/OpenType/Lottie conformance is claimed.
+Qualification run 34627270171 passed 374 integration tests and 193,931 comparisons against independently executed SkiaSharp 4.154. Corpus sizes and exact provenance are in [VERIFICATION-0.5.json](./VERIFICATION-0.5.json). The reviewed families are paint expansion/fast bounds, contour-preserving text paths, numeric BreakText, canonical glyph callbacks, path-measure queries and SVG flags. The legacy paint BreakText overload family and untested branches remain partial.
 
-See [the release evidence](./RELEASE-0.4.md) and [the complete audit](./OVERLOAD_CONFORMANCE.md). Run npm run coverage to regenerate this release's signature rows.
+[REVIEW-0.5.json](./REVIEW-0.5.json) records individual before/after changes; [OVERLOAD_CONFORMANCE.md](./OVERLOAD_CONFORMANCE.md) lists every declaration. Finite differential testing is not an exhaustive proof, and SwiftShader is not physical-GPU qualification.

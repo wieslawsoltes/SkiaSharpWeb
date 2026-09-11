@@ -1,0 +1,336 @@
+{
+  "qualificationRun": 34627270171,
+  "runtimeMatches": true,
+  "changes": [
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:448:48",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:451:49",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:454:50",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:457:51",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:466:52",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:469:53",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:908:100",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Compiled canonical native glyph-path callbacks retain contour coordinates and the native callback matrix separately. Twelve independently executed .NET size/scale/skew sets compare path geometry and matrices; callback lifetime tests are retained."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:924:101",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:927:102",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:934:103",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:961:105",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+    },
+    {
+      "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:978:106",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:642:77",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:645:78",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:648:79",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:651:80",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:654:81",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:657:82",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:671:83",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:675:84",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:679:85",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:683:86",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:687:87",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:691:88",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:707:89",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:710:90",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:713:91",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:716:92",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:719:93",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:722:94",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+    },
+    {
+      "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:739:95",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native paint fast bounds and mutable result; 15 independently executed .NET style/effect cases include unsupported bounds and empty-output behavior. No JavaScript geometric approximation."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:22:1",
+      "before": "not-applicable",
+      "after": "partial",
+      "kind": "inventory classification correction",
+      "reason": "Portable path/forceClosed/resScale constructor exists; IntPtr.Zero occurs only in the upstream base initializer, not its parameters. Tested corpus covers default resScale; arbitrary resolution-scale behavior remains unverified."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:44:2",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:52:3",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:74:6",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:86:7",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:93:8",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:104:9",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:111:10",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:122:11",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:129:12",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:140:13",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:151:14",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:164:15",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:175:16",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKSvgCanvas@binding/SkiaSharp/SKSVG.cs:17:0",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native SVG stream writer implements both default and flags overloads; default preserves text nodes, ConvertTextToPaths outlines glyphs. Independent XML and native output tests validate text/path selection, offset bounds, rejected flags, stream failure and borrowed-canvas lifetime."
+    },
+    {
+      "id": "SkiaSharp.SKSvgCanvas@binding/SkiaSharp/SKSVG.cs:26:1",
+      "before": "partial",
+      "after": "implemented",
+      "kind": "tested implementation",
+      "reason": "Native SVG stream writer implements both default and flags overloads; default preserves text nodes, ConvertTextToPaths outlines glyphs. Independent XML and native output tests validate text/path selection, offset bounds, rejected flags, stream failure and borrowed-canvas lifetime."
+    }
+  ],
+  "note": "Finite evidence review, not exhaustive overload or physical-GPU certification. Source/runtime hashes prevent these reviews from silently carrying over to changed implementations."
+}

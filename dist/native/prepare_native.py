@@ -12,7 +12,8 @@ for file in source.glob('skiasharp_*'):
   target=skia/'modules/canvaskit'/file.name
   if not target.exists() or target.read_bytes()!=file.read_bytes():shutil.copyfile(file,target)
 binding=skia/'modules/canvaskit/canvaskit_bindings.cpp'
-include='#include "skiasharp_memory.cpp"'
-if include not in binding.read_text():binding.write_text(binding.read_text()+'\n'+include+'\n')
+for include in ['#include "skiasharp_memory.cpp"', '#include "skiasharp_completion.cpp"']:
+ if include not in binding.read_text():binding.write_text(binding.read_text()+'\n'+include+'\n')
 subprocess.run(['python3',str(source/'patch_emscripten_webgpu.py'),str(a.emscripten.resolve())],check=True)
+subprocess.run(['python3',str(source/'patch_pdf_diagnostics.py'),str(skia)],check=True)
 print('Prepared combined Graphite/Dawn, Ganesh/WebGL, raster, effects, fonts, documents and codec bindings.')

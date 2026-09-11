@@ -21,7 +21,7 @@ const glyphBounds = [];
 font.GetGlyphWidths(glyphs, advances, glyphBounds, paint);
 ```
 
-`TryInvert()` without an output retains the convenience result `{ Success, Inverse }`. `BreakText(text, width)` retains `{ Count, CodepointCount, MeasuredWidth, Text }`; numeric coercion returns `Count`. To use the C#-style count return, supply an output:
+`TryInvert()` without an output retains the convenience result `{ Success, Inverse }`. `BreakText(text, width)` returns a primitive count in 0.5. Use `BreakTextDetails(text, width)` for `{ Count, CodepointCount, MeasuredWidth, Text }`. Strings count UTF-16 code units and encoded buffers count bytes. An optional mutable output receives the width; empty input preserves an existing width slot. For example:
 
 ```js
 const measured = {};

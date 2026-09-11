@@ -2,7 +2,7 @@
 
 `SKDocument.CreatePdf()` uses the bundled native Skia PDF backend by default. It records directly into Skia's document canvas, embeds/subsets fonts, preserves native glyph shaping and color management, supports native picture replay, and delegates filters and compositing to Skia's PDF implementation. `SKDocument.CreateXps()` uses the JavaScript XPS writer. `SKSvgCanvas.Create(bounds, stream)` uses the bundled native SVG canvas.
 
-A native PDF is not necessarily entirely vector. Skia rasterizes operations that PDF cannot represent. Native Skia does not expose a per-operation rasterization log through this bridge; `RasterFallbacks` is therefore `null` and `RasterFallbackReporting` is `"UnavailableNative"`. This deliberately differs from a known empty fallback list.
+A native PDF is not necessarily entirely vector. Skia rasterizes operations that PDF cannot represent. The qualified 0.5 runtime instruments native SkPDF raster-decision sites. `RasterFallbacks` contains the recorded events, `RasterFallbackReporting` is "NativeDecisionSites", and `RasterDiagnostics` includes total/dropped counts and the bounded event list. This reports native decision sites rather than promising one event for every public draw call. Older injected engines without these bindings still report null/unavailable and cannot enable native strict-vector publication.
 
 ## Normal PDF usage
 

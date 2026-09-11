@@ -231,7 +231,7 @@ Create XPS using `S.SKDocument.CreateXps(output, 144)` or `S.SKDocument.CreateXp
 
 Each page canvas becomes invalid after `EndPage()`. Finish with `Close()` or `ToData()`; disposing an unfinished document aborts it. Output stream and returned data remain caller-owned.
 
-With the managed PDF writer (`NativeBackend: false`) or XPS, unsupported operations become bounded raster patches and appear in `RasterFallbacks` with the page, operation, reason and pixel bounds. The default native PDF backend reports `RasterFallbacks = null` because Skia does not expose this telemetry. Rich paragraphs/effected text can retain a searchable glyph overlay. For an external renderer that bypasses public drawing methods:
+With the managed PDF writer (`NativeBackend: false`) or XPS, unsupported operations become bounded raster patches and appear in `RasterFallbacks` with the page, operation, reason and pixel bounds. The qualified native PDF backend exposes instrumented decision events through `RasterFallbacks` and bounded totals through `RasterDiagnostics`. A native event is not necessarily one public draw operation. An older injected engine reports null/unavailable. Rich paragraphs/effected text can retain a searchable glyph overlay. For an external renderer that bypasses public drawing methods:
 
 ```js
 page.DrawNative(
@@ -350,7 +350,7 @@ The bundled runtime includes compiled Graphite/Dawn bindings and the sample sele
 | `new SKPaint { Color = SKColors.Red }` | `new S.SKPaint({ Color: S.SKColors.Red })` |
 | `using var image = ...` | `try { ... } finally { image.Dispose(); }` |
 | `SKMatrix.TryInvert(out inverse)` | `const { Success, Inverse } = matrix.TryInvert()` or pass an output matrix |
-| `SKFont.BreakText(...)` with output arguments | Read the returned result object's text/measurement fields |
+| `SKFont.BreakText(...)` | Returns a primitive count; read measured width from the mutable output. `BreakTextDetails(...)` returns the convenience object. |
 | Native pixel pointer | Borrowed typed-array view with documented ownership |
 | File/stream decoding | Byte arrays, `SKData`, `SKMemoryStream`, or explicit async URL/Blob methods |
 
@@ -374,7 +374,7 @@ const glyphBounds = [];
 font.GetGlyphWidths(glyphs, widths, glyphBounds, paint);
 ```
 
-Convenience calls remain available: `TryInvert()` returns `{Success,Inverse}`; `BreakText(text,width)` returns its measurement object, while an explicit mutable output supports the count-return form. UTF-16/UTF-32 byte buffers use little-endian encoding. In glyph APIs, `Uint16Array` represents glyph IDs rather than Unicode text. See [OVERLOAD_USAGE.md](./OVERLOAD_USAGE.md) and the per-signature [declaration audit](./OVERLOAD_CONFORMANCE.md).
+Convenience calls remain available: `TryInvert()` returns `{Success,Inverse}`; `BreakText(text,width)` returns a primitive count in 0.5; `BreakTextDetails(text,width)` returns the measurement object. Optional mutable outputs expose width/text fields. Empty input preserves an existing width output slot, matching the pinned managed implementation. UTF-16/UTF-32 byte buffers use little-endian encoding. In glyph APIs, `Uint16Array` represents glyph IDs rather than Unicode text. See [OVERLOAD_USAGE.md](./OVERLOAD_USAGE.md) and the per-signature [declaration audit](./OVERLOAD_CONFORMANCE.md).
 
 
 ## Graphite image cache and records

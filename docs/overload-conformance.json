@@ -6,13 +6,13 @@
   "parserCorrections": 204,
   "repository": "https://github.com/mono/SkiaSharp",
   "commit": "b33cf54f24edc5347567c95b1924c447669c1de8",
-  "generatedAt": "2026-09-11T14:54:45.391Z",
+  "generatedAt": "2026-09-11T18:15:58.794Z",
   "declarations": 3995,
   "statusCounts": {
-    "implemented": 1936,
-    "partial": 1042,
-    "not-applicable": 873,
-    "missing": 144
+    "implemented": 1982,
+    "partial": 1063,
+    "not-applicable": 872,
+    "missing": 78
   },
   "methodology": [
     "One row per pinned lexical declaration, retaining overload signature, source file, and line.",
@@ -5812,10 +5812,10 @@
       "signature": "public UInt32 Format",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 301,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.Format",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:302:1",
@@ -5827,10 +5827,10 @@
       "signature": "public UInt64 ExternalFormat",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 302,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.ExternalFormat",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:303:2",
@@ -5842,10 +5842,10 @@
       "signature": "public UInt32 YcbcrModel",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 303,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.YcbcrModel",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:304:3",
@@ -5857,10 +5857,10 @@
       "signature": "public UInt32 YcbcrRange",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 304,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.YcbcrRange",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:305:4",
@@ -5872,10 +5872,10 @@
       "signature": "public UInt32 XChromaOffset",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 305,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.XChromaOffset",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:306:5",
@@ -5887,10 +5887,10 @@
       "signature": "public UInt32 YChromaOffset",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 306,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.YChromaOffset",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:307:6",
@@ -5902,10 +5902,10 @@
       "signature": "public UInt32 ChromaFilter",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 307,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.ChromaFilter",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:308:7",
@@ -5917,10 +5917,10 @@
       "signature": "public UInt32 ForceExplicitReconstruction",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 308,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.ForceExplicitReconstruction",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:309:8",
@@ -5932,10 +5932,10 @@
       "signature": "public GRVkYcbcrComponents Components",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 309,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.Components",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:311:9",
@@ -5947,10 +5947,10 @@
       "signature": "public UInt32 FormatFeatures",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 311,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.FormatFeatures",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:312:10",
@@ -5962,10 +5962,10 @@
       "signature": "public bool SamplerFilterMustMatchChromaFilter",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 312,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.SamplerFilterMustMatchChromaFilter",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:313:11",
@@ -5977,10 +5977,10 @@
       "signature": "public bool SupportsLinearFilter",
       "source": "binding/SkiaSharp/GRDefinitions.cs",
       "line": 313,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GrVkYcbcrConversionInfo.SupportsLinearFilter",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GrVkYcbcrConversionInfo@binding/SkiaSharp/GRDefinitions.cs:315:12",
@@ -21517,10 +21517,10 @@
       "signature": "public int BreakText (string text, float maxWidth, SKPaint paint = null)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 448,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.BreakText",
-      "reason": "String and explicit UTF-8/16/32 forms support mutable measured-width outputs. Calls without an output retain the v0.1 {Count,MeasuredWidth,Text} result; numeric coercion returns Count. This is an intentional JavaScript return-shape difference.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:451:49",
@@ -21532,10 +21532,10 @@
       "signature": "public int BreakText (string text, float maxWidth, out float measuredWidth, SKPaint paint = null)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 451,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.BreakText",
-      "reason": "String and explicit UTF-8/16/32 forms support mutable measured-width outputs. Calls without an output retain the v0.1 {Count,MeasuredWidth,Text} result; numeric coercion returns Count. This is an intentional JavaScript return-shape difference.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:454:50",
@@ -21547,10 +21547,10 @@
       "signature": "public int BreakText (ReadOnlySpan<char> text, float maxWidth, SKPaint paint = null)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 454,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.BreakText",
-      "reason": "String and explicit UTF-8/16/32 forms support mutable measured-width outputs. Calls without an output retain the v0.1 {Count,MeasuredWidth,Text} result; numeric coercion returns Count. This is an intentional JavaScript return-shape difference.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:457:51",
@@ -21562,10 +21562,10 @@
       "signature": "public int BreakText (ReadOnlySpan<char> text, float maxWidth, out float measuredWidth, SKPaint paint = null)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 457,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.BreakText",
-      "reason": "String and explicit UTF-8/16/32 forms support mutable measured-width outputs. Calls without an output retain the v0.1 {Count,MeasuredWidth,Text} result; numeric coercion returns Count. This is an intentional JavaScript return-shape difference.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:466:52",
@@ -21577,10 +21577,10 @@
       "signature": "public int BreakText (ReadOnlySpan<byte> text, SKTextEncoding encoding, float maxWidth, SKPaint paint = null)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 466,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.BreakText",
-      "reason": "String and explicit UTF-8/16/32 forms support mutable measured-width outputs. Calls without an output retain the v0.1 {Count,MeasuredWidth,Text} result; numeric coercion returns Count. This is an intentional JavaScript return-shape difference.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:469:53",
@@ -21592,10 +21592,10 @@
       "signature": "public int BreakText (ReadOnlySpan<byte> text, SKTextEncoding encoding, float maxWidth, out float measuredWidth, SKPaint paint = null)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 469,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.BreakText",
-      "reason": "String and explicit UTF-8/16/32 forms support mutable measured-width outputs. Calls without an output retain the v0.1 {Count,MeasuredWidth,Text} result; numeric coercion returns Count. This is an intentional JavaScript return-shape difference.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:477:54",
@@ -22297,10 +22297,10 @@
       "signature": "public void GetGlyphPaths (ReadOnlySpan<ushort> glyphs, SKGlyphPathDelegate glyphPathDelegate)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 908,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.GetGlyphPaths",
-      "reason": "Callbacks receive glyph outline and SKMatrix as required; geometry is pretransformed and callback transform is Identity. Exact native normalization/transform decomposition is not claimed.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Compiled canonical native glyph-path callbacks retain contour coordinates and the native callback matrix separately. Twelve independently executed .NET size/scale/skew sets compare path geometry and matrices; callback lifetime tests are retained.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:924:101",
@@ -22312,10 +22312,10 @@
       "signature": "public SKPath GetTextPathOnPath (string text, SKPath path, SKTextAlign textAlign = SKTextAlign.Left, SKPoint origin = default)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 924,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.GetTextPathOnPath",
-      "reason": "Listed managed text/glyph forms render warped outlines, including supplied widths/positions. Adaptive curve flattening uses a 0.2 px target rather than native Skia warp internals.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:927:102",
@@ -22327,10 +22327,10 @@
       "signature": "public SKPath GetTextPathOnPath (ReadOnlySpan<char> text, SKPath path, SKTextAlign textAlign = SKTextAlign.Left, SKPoint origin = default)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 927,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.GetTextPathOnPath",
-      "reason": "Listed managed text/glyph forms render warped outlines, including supplied widths/positions. Adaptive curve flattening uses a 0.2 px target rather than native Skia warp internals.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:934:103",
@@ -22342,10 +22342,10 @@
       "signature": "public SKPath GetTextPathOnPath (ReadOnlySpan<byte> text, SKTextEncoding encoding, SKPath path, SKTextAlign textAlign = SKTextAlign.Left, SKPoint origin = default)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 934,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.GetTextPathOnPath",
-      "reason": "Listed managed text/glyph forms render warped outlines, including supplied widths/positions. Adaptive curve flattening uses a 0.2 px target rather than native Skia warp internals.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:941:104",
@@ -22372,10 +22372,10 @@
       "signature": "public SKPath GetTextPathOnPath (ReadOnlySpan<ushort> glyphs, SKPath path, SKTextAlign textAlign = SKTextAlign.Left, SKPoint origin = default)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 961,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.GetTextPathOnPath",
-      "reason": "Listed managed text/glyph forms render warped outlines, including supplied widths/positions. Adaptive curve flattening uses a 0.2 px target rather than native Skia warp internals.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:978:106",
@@ -22387,10 +22387,10 @@
       "signature": "public SKPath GetTextPathOnPath (ReadOnlySpan<ushort> glyphs, ReadOnlySpan<float> glyphWidths, ReadOnlySpan<SKPoint> glyphPositions, SKPath path, SKTextAlign textAlign = SKTextAlign.Left)",
       "source": "binding/SkiaSharp/SKFont.cs",
       "line": 978,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKFont.GetTextPathOnPath",
-      "reason": "Listed managed text/glyph forms render warped outlines, including supplied widths/positions. Adaptive curve flattening uses a 0.2 px target rather than native Skia warp internals.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKFontArguments@binding/SkiaSharp/SKFontArguments.cs:7:0",
@@ -30684,7 +30684,7 @@
       "line": 520,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30699,7 +30699,7 @@
       "line": 524,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30714,7 +30714,7 @@
       "line": 528,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30729,7 +30729,7 @@
       "line": 547,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30744,7 +30744,7 @@
       "line": 551,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30759,7 +30759,7 @@
       "line": 555,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30774,7 +30774,7 @@
       "line": 559,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30789,7 +30789,7 @@
       "line": 563,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -30804,7 +30804,7 @@
       "line": 567,
       "status": "partial",
       "mapping": "SKPaint.BreakText",
-      "reason": "Managed compatibility property/method is present. Some native font flags or historical return/byte-count conventions are not identical or not fully exercised.",
+      "reason": "Delegates to numeric SKFont.BreakText using paint font and TextEncoding. Primitive counts and GlyphId byte input are tested. Unified mutable width/text result objects replace C# out parameters; the full legacy paint overload family has not been independently compared.",
       "statusWithoutNameNormalization": "partial"
     },
     {
@@ -31072,10 +31072,10 @@
       "signature": "public SKPath GetFillPath (SKPath src)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 642,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:645:78",
@@ -31087,10 +31087,10 @@
       "signature": "public SKPath GetFillPath (SKPath src, float resScale)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 645,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:648:79",
@@ -31102,10 +31102,10 @@
       "signature": "public SKPath GetFillPath (SKPath src, SKMatrix matrix)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 648,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:651:80",
@@ -31117,10 +31117,10 @@
       "signature": "public SKPath GetFillPath (SKPath src, SKRect cullRect)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 651,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:654:81",
@@ -31132,10 +31132,10 @@
       "signature": "public SKPath GetFillPath (SKPath src, SKRect cullRect, float resScale)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 654,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:657:82",
@@ -31147,10 +31147,10 @@
       "signature": "public SKPath GetFillPath (SKPath src, SKRect cullRect, SKMatrix matrix)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 657,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:671:83",
@@ -31162,10 +31162,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPath dst)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 671,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:675:84",
@@ -31177,10 +31177,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPath dst, float resScale)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 675,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:679:85",
@@ -31192,10 +31192,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPath dst, SKMatrix matrix)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 679,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:683:86",
@@ -31207,10 +31207,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPath dst, SKRect cullRect)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 683,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:687:87",
@@ -31222,10 +31222,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPath dst, SKRect cullRect, float resScale)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 687,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:691:88",
@@ -31237,10 +31237,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPath dst, SKRect cullRect, SKMatrix matrix)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 691,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:707:89",
@@ -31252,10 +31252,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPathBuilder dst)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 707,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:710:90",
@@ -31267,10 +31267,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPathBuilder dst, float resScale)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 710,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:713:91",
@@ -31282,10 +31282,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPathBuilder dst, SKMatrix matrix)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 713,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:716:92",
@@ -31297,10 +31297,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPathBuilder dst, SKRect cullRect)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 716,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:719:93",
@@ -31312,10 +31312,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPathBuilder dst, SKRect cullRect, float resScale)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 719,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:722:94",
@@ -31327,10 +31327,10 @@
       "signature": "public bool GetFillPath (SKPath src, SKPathBuilder dst, SKRect cullRect, SKMatrix matrix)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 722,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFillPath",
-      "reason": "Fill/stroke/hairline and destination forms are implemented using native stroke geometry; custom effect baking depends on effect metadata. Cull and matrix arguments affect resolution hints, not a native getFillPath entrypoint.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:739:95",
@@ -31342,10 +31342,10 @@
       "signature": "public bool GetFastBounds (SKRect bounds, out SKRect fastBounds)",
       "source": "binding/SkiaSharp/SKPaint.cs",
       "line": 739,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPaint.GetFastBounds",
-      "reason": "Conservative fill/stroke bounds are returned; effect-bearing paints report false instead of guessing filter expansion.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native paint fast bounds and mutable result; 15 independently executed .NET style/effect cases include unsupported bounds and empty-output behavior. No JavaScript geometric approximation.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:757:96",
@@ -34762,10 +34762,10 @@
       "signature": "public SKPathMeasure (SKPath path, bool forceClosed = false, float resScale = 1) : this (IntPtr.Zero, true)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 22,
-      "status": "not-applicable",
+      "status": "partial",
       "mapping": "SKPathMeasure(...)",
-      "reason": "Raw process addresses and native object handles cannot cross the browser sandbox. Typed-array and managed wrapper overloads are audited separately.",
-      "statusWithoutNameNormalization": "not-applicable"
+      "reason": "Portable path/forceClosed/resScale constructor exists; IntPtr.Zero occurs only in the upstream base initializer, not its parameters. Tested corpus covers default resScale; arbitrary resolution-scale behavior remains unverified.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:44:2",
@@ -34777,10 +34777,10 @@
       "signature": "public float Length",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 44,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.Length",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:52:3",
@@ -34792,10 +34792,10 @@
       "signature": "public bool IsClosed",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 52,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.IsClosed",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:62:4",
@@ -34837,10 +34837,10 @@
       "signature": "public bool GetPositionAndTangent (float distance, out SKPoint position, out SKPoint tangent)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 74,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetPositionAndTangent",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:86:7",
@@ -34852,10 +34852,10 @@
       "signature": "public SKPoint GetPosition (float distance)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 86,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetPosition",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:93:8",
@@ -34867,10 +34867,10 @@
       "signature": "public bool GetPosition (float distance, out SKPoint position)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 93,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetPosition",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:104:9",
@@ -34882,10 +34882,10 @@
       "signature": "public SKPoint GetTangent (float distance)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 104,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetTangent",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:111:10",
@@ -34897,10 +34897,10 @@
       "signature": "public bool GetTangent (float distance, out SKPoint tangent)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 111,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetTangent",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:122:11",
@@ -34912,10 +34912,10 @@
       "signature": "public SKMatrix GetMatrix (float distance, SKPathMeasureMatrixFlags flags)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 122,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetMatrix",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:129:12",
@@ -34927,10 +34927,10 @@
       "signature": "public bool GetMatrix (float distance, out SKMatrix matrix, SKPathMeasureMatrixFlags flags)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 129,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetMatrix",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:140:13",
@@ -34942,10 +34942,10 @@
       "signature": "public bool GetSegment (float start, float stop, SKPathBuilder dst, bool startWithMoveTo)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 140,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetSegment",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:151:14",
@@ -34957,10 +34957,10 @@
       "signature": "public bool GetSegment (float start, float stop, SKPath dst, bool startWithMoveTo)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 151,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetSegment",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:164:15",
@@ -34972,10 +34972,10 @@
       "signature": "public SKPath GetSegment (float start, float stop, bool startWithMoveTo)",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 164,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.GetSegment",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:175:16",
@@ -34987,10 +34987,10 @@
       "signature": "public bool NextContour ()",
       "source": "binding/SkiaSharp/SKPathMeasure.cs",
       "line": 175,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKPathMeasure.NextContour",
-      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKPicture@binding/SkiaSharp/SKPicture.cs:18:0",
@@ -39262,10 +39262,10 @@
       "signature": "public static SKCanvas Create (SKRect bounds, Stream stream)",
       "source": "binding/SkiaSharp/SKSVG.cs",
       "line": 17,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKSvgCanvas.Create",
-      "reason": "Native vector SVG canvas and both output stream forms operate; the current native build converts text to outline paths rather than retaining the upstream default SVG text nodes.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native SVG stream writer implements both default and flags overloads; default preserves text nodes, ConvertTextToPaths outlines glyphs. Independent XML and native output tests validate text/path selection, offset bounds, rejected flags, stream failure and borrowed-canvas lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKSvgCanvas@binding/SkiaSharp/SKSVG.cs:26:1",
@@ -39277,10 +39277,10 @@
       "signature": "public static SKCanvas Create (SKRect bounds, SKWStream stream)",
       "source": "binding/SkiaSharp/SKSVG.cs",
       "line": 26,
-      "status": "partial",
+      "status": "implemented",
       "mapping": "SKSvgCanvas.Create",
-      "reason": "Native vector SVG canvas and both output stream forms operate; the current native build converts text to outline paths rather than retaining the upstream default SVG text nodes.",
-      "statusWithoutNameNormalization": "partial"
+      "reason": "Native SVG stream writer implements both default and flags overloads; default preserves text nodes, ConvertTextToPaths outlines glyphs. Independent XML and native output tests validate text/path selection, offset bounds, rejected flags, stream failure and borrowed-canvas lifetime.",
+      "statusWithoutNameNormalization": "implemented"
     },
     {
       "id": "SkiaSharp.SKShader@binding/SkiaSharp/SKShader.cs:20:0",
@@ -44497,10 +44497,10 @@
       "signature": "public UInt64 Memory",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19198,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkAlloc.Memory",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkAlloc@binding/SkiaSharp/SkiaApi.generated.cs:19205:1",
@@ -44512,10 +44512,10 @@
       "signature": "public UInt64 Offset",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19205,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkAlloc.Offset",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkAlloc@binding/SkiaSharp/SkiaApi.generated.cs:19212:2",
@@ -44527,10 +44527,10 @@
       "signature": "public UInt64 Size",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19212,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkAlloc.Size",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkAlloc@binding/SkiaSharp/SkiaApi.generated.cs:19219:3",
@@ -44542,10 +44542,10 @@
       "signature": "public UInt32 Flags",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19219,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkAlloc.Flags",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkAlloc@binding/SkiaSharp/SkiaApi.generated.cs:19226:4",
@@ -44572,10 +44572,10 @@
       "signature": "public readonly bool Equals (GRVkAlloc obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19234,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkAlloc.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkAlloc@binding/SkiaSharp/SkiaApi.generated.cs:19239:6",
@@ -44587,10 +44587,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19239,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkAlloc.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkAlloc@binding/SkiaSharp/SkiaApi.generated.cs:19242:7",
@@ -44632,10 +44632,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19248,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkAlloc.GetHashCode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19348:0",
@@ -44647,10 +44647,10 @@
       "signature": "public UInt64 Image",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19348,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.Image",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19355:1",
@@ -44662,10 +44662,10 @@
       "signature": "public GRVkAlloc Alloc",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19355,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.Alloc",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19362:2",
@@ -44677,10 +44677,10 @@
       "signature": "public UInt32 ImageTiling",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19362,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.ImageTiling",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19369:3",
@@ -44692,10 +44692,10 @@
       "signature": "public UInt32 ImageLayout",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19369,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.ImageLayout",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19376:4",
@@ -44707,10 +44707,10 @@
       "signature": "public UInt32 Format",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19376,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.Format",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19383:5",
@@ -44722,10 +44722,10 @@
       "signature": "public UInt32 ImageUsageFlags",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19383,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.ImageUsageFlags",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19390:6",
@@ -44737,10 +44737,10 @@
       "signature": "public UInt32 SampleCount",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19390,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.SampleCount",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19397:7",
@@ -44752,10 +44752,10 @@
       "signature": "public UInt32 LevelCount",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19397,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.LevelCount",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19404:8",
@@ -44767,10 +44767,10 @@
       "signature": "public UInt32 CurrentQueueFamily",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19404,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.CurrentQueueFamily",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19411:9",
@@ -44782,10 +44782,10 @@
       "signature": "public bool Protected",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19411,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.Protected",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19418:10",
@@ -44797,10 +44797,10 @@
       "signature": "public GRVkYcbcrConversionInfo YcbcrConversionInfo",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19418,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.YcbcrConversionInfo",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19425:11",
@@ -44812,10 +44812,10 @@
       "signature": "public UInt32 SharingMode",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19425,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.SharingMode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19430:12",
@@ -44827,10 +44827,10 @@
       "signature": "public readonly bool Equals (GRVkImageInfo obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19430,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19435:13",
@@ -44842,10 +44842,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19435,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkImageInfo@binding/SkiaSharp/SkiaApi.generated.cs:19438:14",
@@ -44887,10 +44887,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19444,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkImageInfo.GetHashCode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrComponents@binding/SkiaSharp/SkiaApi.generated.cs:19469:0",
@@ -44902,10 +44902,10 @@
       "signature": "public UInt32 R",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19469,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrComponents.R",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrComponents@binding/SkiaSharp/SkiaApi.generated.cs:19476:1",
@@ -44917,10 +44917,10 @@
       "signature": "public UInt32 G",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19476,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrComponents.G",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrComponents@binding/SkiaSharp/SkiaApi.generated.cs:19483:2",
@@ -44932,10 +44932,10 @@
       "signature": "public UInt32 B",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19483,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrComponents.B",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrComponents@binding/SkiaSharp/SkiaApi.generated.cs:19490:3",
@@ -44947,10 +44947,10 @@
       "signature": "public UInt32 A",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19490,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrComponents.A",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrComponents@binding/SkiaSharp/SkiaApi.generated.cs:19495:4",
@@ -44962,10 +44962,10 @@
       "signature": "public readonly bool Equals (GRVkYcbcrComponents obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19495,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrComponents.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrComponents@binding/SkiaSharp/SkiaApi.generated.cs:19500:5",
@@ -44977,10 +44977,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19500,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrComponents.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrComponents@binding/SkiaSharp/SkiaApi.generated.cs:19503:6",
@@ -45022,10 +45022,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19509,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrComponents.GetHashCode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19526:0",
@@ -45037,10 +45037,10 @@
       "signature": "public UInt32 Format",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19526,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.Format",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19533:1",
@@ -45052,10 +45052,10 @@
       "signature": "public UInt64 ExternalFormat",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19533,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.ExternalFormat",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19540:2",
@@ -45067,10 +45067,10 @@
       "signature": "public UInt32 YcbcrModel",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19540,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.YcbcrModel",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19547:3",
@@ -45082,10 +45082,10 @@
       "signature": "public UInt32 YcbcrRange",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19547,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.YcbcrRange",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19554:4",
@@ -45097,10 +45097,10 @@
       "signature": "public UInt32 XChromaOffset",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19554,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.XChromaOffset",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19561:5",
@@ -45112,10 +45112,10 @@
       "signature": "public UInt32 YChromaOffset",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19561,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.YChromaOffset",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19568:6",
@@ -45127,10 +45127,10 @@
       "signature": "public UInt32 ChromaFilter",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19568,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.ChromaFilter",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19575:7",
@@ -45142,10 +45142,10 @@
       "signature": "public UInt32 ForceExplicitReconstruction",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19575,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.ForceExplicitReconstruction",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19582:8",
@@ -45157,10 +45157,10 @@
       "signature": "public GRVkYcbcrComponents Components",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19582,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.Components",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19589:9",
@@ -45172,10 +45172,10 @@
       "signature": "public bool SamplerFilterMustMatchChromaFilter",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19589,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.SamplerFilterMustMatchChromaFilter",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19596:10",
@@ -45187,10 +45187,10 @@
       "signature": "public bool SupportsLinearFilter",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19596,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.SupportsLinearFilter",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19601:11",
@@ -45202,10 +45202,10 @@
       "signature": "public readonly bool Equals (GRVkYcbcrConversionInfo obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19601,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19606:12",
@@ -45217,10 +45217,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19606,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRVkYcbcrConversionInfo@binding/SkiaSharp/SkiaApi.generated.cs:19609:13",
@@ -45262,10 +45262,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 19615,
-      "status": "missing",
+      "status": "partial",
       "mapping": "GRVkYcbcrConversionInfo.GetHashCode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKCodecFrameInfo@binding/SkiaSharp/SkiaApi.generated.cs:19680:0",
@@ -46597,10 +46597,10 @@
       "signature": "public Int32 SampleCount",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20870,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.SampleCount",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20877:1",
@@ -46612,10 +46612,10 @@
       "signature": "public bool Mipmapped",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20877,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.Mipmapped",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20884:2",
@@ -46627,10 +46627,10 @@
       "signature": "public UInt32 Flags",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20884,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.Flags",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20891:3",
@@ -46642,10 +46642,10 @@
       "signature": "public Int32 Format",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20891,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.Format",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20898:4",
@@ -46657,10 +46657,10 @@
       "signature": "public Int32 ImageTiling",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20898,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.ImageTiling",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20905:5",
@@ -46672,10 +46672,10 @@
       "signature": "public UInt32 ImageUsageFlags",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20905,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.ImageUsageFlags",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20912:6",
@@ -46687,10 +46687,10 @@
       "signature": "public Int32 SharingMode",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20912,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.SharingMode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20919:7",
@@ -46702,10 +46702,10 @@
       "signature": "public UInt32 AspectMask",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20919,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.AspectMask",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20924:8",
@@ -46717,10 +46717,10 @@
       "signature": "public readonly bool Equals (SKGraphiteVkTextureInfo obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20924,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20929:9",
@@ -46732,10 +46732,10 @@
       "signature": "public readonly override bool Equals (object obj)",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20929,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.Equals",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.SKGraphiteVkTextureInfo@binding/SkiaSharp/SkiaApi.generated.cs:20932:10",
@@ -46777,10 +46777,10 @@
       "signature": "public readonly override int GetHashCode ()",
       "source": "binding/SkiaSharp/SkiaApi.generated.cs",
       "line": 20938,
-      "status": "missing",
+      "status": "partial",
       "mapping": "SKGraphiteVkTextureInfo.GetHashCode",
-      "reason": "No exported browser type with this declaration identity.",
-      "statusWithoutNameNormalization": "missing"
+      "reason": "A member is exported, but this declaration is not certified by the signature-level audit rules. Member-name presence is deliberately not counted as full overload or behavioral conformance.",
+      "statusWithoutNameNormalization": "partial"
     },
     {
       "id": "SkiaSharp.GRSurfaceOrigin@binding/SkiaSharp/SkiaApi.generated.cs:22390:0",
@@ -60029,5 +60029,341 @@
       "tests/browser-precision.mjs"
     ],
     "note": "Evidence-specific upgrades, not a claim of exhaustive .NET or physical GPU conformance."
+  },
+  "review05": {
+    "qualificationRun": 34627270171,
+    "runtimeMatches": true,
+    "changes": [
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:448:48",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:451:49",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:454:50",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:457:51",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:466:52",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:469:53",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Primitive integer result with UTF16 string units or encoded buffer bytes, measured-width output, and direct glyph IDs. Independent .NET corpus: 216 cases across string and four encodings; includes NaN limits, non-BMP text, size/scale and preserved empty-input output slots. BreakTextDetails retains the former convenience object."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:908:100",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Compiled canonical native glyph-path callbacks retain contour coordinates and the native callback matrix separately. Twelve independently executed .NET size/scale/skew sets compare path geometry and matrices; callback lifetime tests are retained."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:924:101",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:927:102",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:934:103",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:961:105",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+      },
+      {
+        "id": "SkiaSharp.SKFont@binding/SkiaSharp/SKFont.cs:978:106",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Pinned managed first-contour algorithm preserves quadratic/conic/cubic verbs and Float32 operations, not fixed-step polylines. Independent .NET corpus: 216 origin/alignment/curve/font cases, string and explicit glyph-position forms; unit tests additionally compare UTF8 and glyph IDs. Valid-buffer span adaptations are documented; malformed input is not universally certified."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:642:77",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:645:78",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:648:79",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:651:80",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:654:81",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:657:82",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:671:83",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:675:84",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:679:85",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:683:86",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:687:87",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:691:88",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:707:89",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:710:90",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:713:91",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:716:92",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:719:93",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:722:94",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "All eighteen return/path/builder overload shapes call native FillPathWithPaint with cull and resolution matrix. Independent .NET corpus: 162 cases, three destination forms each, including exact geometry and distinct hairline failure/transaction behavior."
+      },
+      {
+        "id": "SkiaSharp.SKPaint@binding/SkiaSharp/SKPaint.cs:739:95",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native paint fast bounds and mutable result; 15 independently executed .NET style/effect cases include unsupported bounds and empty-output behavior. No JavaScript geometric approximation."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:22:1",
+        "before": "not-applicable",
+        "after": "partial",
+        "kind": "inventory classification correction",
+        "reason": "Portable path/forceClosed/resScale constructor exists; IntPtr.Zero occurs only in the upstream base initializer, not its parameters. Tested corpus covers default resScale; arbitrary resolution-scale behavior remains unverified."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:44:2",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:52:3",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:74:6",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:86:7",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:93:8",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:104:9",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:111:10",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:122:11",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:129:12",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:140:13",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:151:14",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:164:15",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKPathMeasure@binding/SkiaSharp/SKPathMeasure.cs:175:16",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native contour queries with corrected convenience/out dispatch. Independent .NET cases cover empty/multiple/forced-closed contours, finite/NaN/infinite distances, all four matrix flags, and path-replace versus builder-append segments. Unit tests also cover failed-query destinations and lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKSvgCanvas@binding/SkiaSharp/SKSVG.cs:17:0",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native SVG stream writer implements both default and flags overloads; default preserves text nodes, ConvertTextToPaths outlines glyphs. Independent XML and native output tests validate text/path selection, offset bounds, rejected flags, stream failure and borrowed-canvas lifetime."
+      },
+      {
+        "id": "SkiaSharp.SKSvgCanvas@binding/SkiaSharp/SKSVG.cs:26:1",
+        "before": "partial",
+        "after": "implemented",
+        "kind": "tested implementation",
+        "reason": "Native SVG stream writer implements both default and flags overloads; default preserves text nodes, ConvertTextToPaths outlines glyphs. Independent XML and native output tests validate text/path selection, offset bounds, rejected flags, stream failure and borrowed-canvas lifetime."
+      }
+    ],
+    "note": "Finite evidence review, not exhaustive overload or physical-GPU certification. Source/runtime hashes prevent these reviews from silently carrying over to changed implementations."
   }
 }

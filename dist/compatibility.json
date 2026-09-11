@@ -1,12 +1,12 @@
 {
   "title": "Exported JavaScript API inventory",
-  "libraryVersion": "0.4.0",
+  "libraryVersion": "0.5.0",
   "canvasKitBuild": "custom combined Graphite/Ganesh/raster",
   "skiaRevision": "f446aec4ce9e0e95e0a504e875955de3eb521f75",
   "emscriptenVersion": "4.0.8",
   "upstreamCommit": "b33cf54f24edc5347567c95b1924c447669c1de8",
   "notice": "Name presence is not overload or behavioral parity. This reports SK/GR names and Skottie/Resources/SceneGraph namespace entries; aliases may occur more than once. Inheritance and instance fields are not expanded. Consult COMPATIBILITY.md and docs/overload-conformance.json for declaration-level status.",
-  "exportedNames": 243,
+  "exportedNames": 249,
   "types": {
     "SKObject": {
       "kind": "class",
@@ -545,9 +545,15 @@
     },
     "SKPaint": {
       "kind": "class",
-      "staticMembers": [],
+      "staticMembers": [
+        "HasNativePathExpansion"
+      ],
       "instanceMembers": [
-        "SetColor"
+        "SetColor",
+        "GetFillPath",
+        "GetFastBounds",
+        "BreakText",
+        "BreakTextDetails"
       ]
     },
     "SKShader": {
@@ -1406,7 +1412,9 @@
     },
     "SKFont": {
       "kind": "class",
-      "staticMembers": [],
+      "staticMembers": [
+        "HasCanonicalPathCallbacks"
+      ],
       "instanceMembers": [
         "ForceAutoHinting",
         "BaselineSnap",
@@ -1439,7 +1447,8 @@
         "Dispose",
         "GetGlyph",
         "ContainsGlyph",
-        "GetTextPathOnPath"
+        "GetTextPathOnPath",
+        "BreakTextDetails"
       ]
     },
     "SKTextBlob": {
@@ -2002,7 +2011,8 @@
         "ToData",
         "Flush",
         "Abort",
-        "Dispose"
+        "Dispose",
+        "RasterDiagnostics"
       ]
     },
     "SKCodecResult": {
@@ -3506,6 +3516,131 @@
         "IsDisposed",
         "GetStatistics",
         "Dispose"
+      ]
+    },
+    "SKSvgCanvasFlags": {
+      "kind": "enum-or-values",
+      "staticMembers": [
+        "None",
+        "ConvertTextToPaths",
+        "NoPrettyXML",
+        "RelativePathEncoding"
+      ],
+      "instanceMembers": []
+    },
+    "GRVkAlloc": {
+      "kind": "class",
+      "staticMembers": [
+        "FromJSON",
+        "op_Equality",
+        "op_Inequality",
+        "InteropKind"
+      ],
+      "instanceMembers": [
+        "Equals",
+        "Clone",
+        "GetHashCode",
+        "toJSON",
+        "Memory",
+        "Offset",
+        "Size",
+        "Flags",
+        "BackendMemory"
+      ]
+    },
+    "GRVkYcbcrComponents": {
+      "kind": "class",
+      "staticMembers": [
+        "FromJSON",
+        "op_Equality",
+        "op_Inequality",
+        "InteropKind"
+      ],
+      "instanceMembers": [
+        "Equals",
+        "Clone",
+        "GetHashCode",
+        "toJSON",
+        "R",
+        "G",
+        "B",
+        "A"
+      ]
+    },
+    "GRVkYcbcrConversionInfo": {
+      "kind": "class",
+      "staticMembers": [
+        "FromJSON",
+        "op_Equality",
+        "op_Inequality",
+        "InteropKind"
+      ],
+      "instanceMembers": [
+        "Equals",
+        "Clone",
+        "GetHashCode",
+        "toJSON",
+        "Format",
+        "ExternalFormat",
+        "YcbcrModel",
+        "YcbcrRange",
+        "XChromaOffset",
+        "YChromaOffset",
+        "ChromaFilter",
+        "ForceExplicitReconstruction",
+        "Components",
+        "SamplerFilterMustMatchChromaFilter",
+        "SupportsLinearFilter"
+      ]
+    },
+    "GRVkImageInfo": {
+      "kind": "class",
+      "staticMembers": [
+        "FromJSON",
+        "op_Equality",
+        "op_Inequality",
+        "InteropKind"
+      ],
+      "instanceMembers": [
+        "Equals",
+        "Clone",
+        "GetHashCode",
+        "toJSON",
+        "Image",
+        "Alloc",
+        "ImageTiling",
+        "ImageLayout",
+        "Format",
+        "ImageUsageFlags",
+        "SampleCount",
+        "LevelCount",
+        "CurrentQueueFamily",
+        "Protected",
+        "YcbcrConversionInfo",
+        "SharingMode"
+      ]
+    },
+    "SKGraphiteVkTextureInfo": {
+      "kind": "class",
+      "staticMembers": [
+        "FromJSON",
+        "op_Equality",
+        "op_Inequality",
+        "InteropKind"
+      ],
+      "instanceMembers": [
+        "Equals",
+        "Clone",
+        "GetHashCode",
+        "toJSON",
+        "SampleCount",
+        "Mipmapped",
+        "Flags",
+        "Format",
+        "ImageTiling",
+        "ImageUsageFlags",
+        "SharingMode",
+        "AspectMask"
       ]
     },
     "Skottie.Animation": {

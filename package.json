@@ -22,13 +22,17 @@
     "test": "node --test tests/*.test.mjs",
     "check": "node scripts/check.mjs",
     "serve": "python3 -m http.server 8080 -d dist",
-    "coverage": "node scripts/coverage.mjs && node scripts/audit-v04.mjs",
+    "coverage": "node scripts/coverage.mjs && node scripts/audit-v05.mjs",
     "benchmark": "node scripts/benchmark.mjs",
     "benchmark:bitmaps": "node scripts/benchmark-bitmaps.mjs",
     "verify:graphite": "node scripts/verify-graphite.mjs",
     "verify:webgpu": "node scripts/verify-webgpu.mjs",
     "verify:browser": "python3 scripts/verify-browser.py",
-    "docs": "node scripts/sync-docs.mjs"
+    "docs": "node scripts/sync-docs.mjs",
+    "verify:geometry": "python3 scripts/verify-geometry.py",
+    "verify:qualification": "python3 scripts/verify-qualification.py",
+    "benchmark:alpha": "node scripts/benchmark-alpha.mjs",
+    "soak": "node --expose-gc scripts/soak-runtime.mjs"
   },
   "license": "MIT",
   "repository": {
