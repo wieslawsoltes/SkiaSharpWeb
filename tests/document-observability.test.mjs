@@ -47,8 +47,10 @@ test('native strict-vector gate rejects before stream publication and cannot be 
 });
 test('native strict-vector writer retains actual searchable text and no image objects for a vector-only scene',{skip:!available},()=>{
  if(!available)return;
- const d=S.SKDocument.CreatePdf({NativeBackend:true,StrictVector:true}),c=d.BeginPage(120,80),font=new S.SKFont(null,14),p=new S.SKPaint({Color:S.SKColors.Black});
- try{c.DrawRect(2,2,12,12,p);c.DrawText('Searchable vector',5,50,font,p);const report=parse(save('strict-vector.pdf',d));assert.equal(report.images,0);assert.match(report.text,/Searchable vector/);assert.equal(d.RasterDiagnostics.Total,0);}finally{p.Dispose();font.Dispose();d.Dispose();}
+ const text='Searchable vector',font=new S.SKFont(null,14),p=new S.SKPaint({Color:S.SKColors.Black});
+ const width=Math.ceil(font.MeasureText(text))+20;
+ const d=S.SKDocument.CreatePdf({NativeBackend:true,StrictVector:true}),c=d.BeginPage(width,80);
+ try{c.DrawRect(2,2,12,12,p);c.DrawText(text,10,50,font,p);const report=parse(save('strict-vector.pdf',d));assert.equal(report.images,0);assert.match(report.text,/Searchable vector/);assert.equal(d.RasterDiagnostics.Total,0);}finally{p.Dispose();font.Dispose();d.Dispose();}
 });
 test('SVG default keeps text nodes and optional flags produce outlines with validated stream lifetime',()=>{
  const font=new S.SKFont(null,20),p=new S.SKPaint({Color:S.SKColors.Red});

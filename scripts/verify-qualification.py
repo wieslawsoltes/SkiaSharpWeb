@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise the shipped qualification lab and preserve actual browser evidence."""
 import functools,http.server,json,pathlib,threading
+import os
 from playwright.sync_api import sync_playwright
 root=pathlib.Path(__file__).resolve().parents[1];out=root/'test-output/qualification';out.mkdir(parents=True,exist_ok=True)
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -10,7 +11,7 @@ threading.Thread(target=server.serve_forever,daemon=True).start()
 errors=[]
 try:
  with sync_playwright() as p:
-  browser=p.chromium.launch(headless=True,args=['--enable-unsafe-webgpu','--enable-unsafe-swiftshader','--use-angle=swiftshader','--use-vulkan=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface'])
+  browser=p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE'),headless=True,args=['--enable-unsafe-webgpu','--enable-unsafe-swiftshader','--use-angle=swiftshader','--use-vulkan=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface'])
   page=browser.new_page(viewport={'width':1440,'height':1100});page.on('pageerror',lambda e:errors.append(str(e)))
   try:
    page.goto(f'http://127.0.0.1:{server.server_port}/qualification.html')

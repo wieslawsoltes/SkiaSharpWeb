@@ -1,6 +1,6 @@
 {
   "name": "skiasharp-web",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "description": "SkiaSharp-style JavaScript graphics API with native Skia Graphite/WebGPU, Ganesh/WebGL and raster Canvas backends",
   "main": "./dist/lib/index.js",

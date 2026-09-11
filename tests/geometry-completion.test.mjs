@@ -71,8 +71,8 @@ test('BreakText returns primitive counts while BreakTextDetails retains the name
  const f=own(new S.SKFont(null,24)),out={};const width=f.MeasureText('AΩ')+.01;
  assert.equal(typeof f.BreakText('AΩ🙂',width),'number');assert.equal(f.BreakText('AΩ🙂',width,out),2);assert.equal(out.Text,'AΩ');
  assert.equal(f.BreakTextDetails('AΩ🙂',width).Text,'AΩ');
- for(const max of [-1,0,NaN,-Infinity])assert.equal(f.BreakText('abc',max),0);
- assert.equal(f.BreakText('A🙂',Infinity),3);assert.equal(f.BreakText('',Infinity),0);
+ for(const max of [-1,0,-Infinity])assert.equal(f.BreakText('abc',max),0);
+ assert.equal(f.BreakText('A🙂',Infinity),3);assert.equal(f.BreakText('A🙂',NaN),3);assert.equal(f.BreakText('',Infinity),0);
 }));
 test('BreakText byte counts preserve UTF encodings and raw glyph IDs, without decoding IDs as text',()=>scope(own=>{
  const f=own(new S.SKFont(null,24)),text='AΩ🙂',limit=f.MeasureText('AΩ')+.01;
@@ -83,4 +83,10 @@ test('BreakText byte counts preserve UTF encodings and raw glyph IDs, without de
  const glyphs=f.GetGlyphs(text),data=new Uint8Array(glyphs.buffer),out={};assert.equal(f.BreakText(data,3,limit,out),4);assert.equal(out.Text,null);
  const p=own(new S.SKPaint(f));p.TextEncoding=3;assert.equal(p.BreakText(data,limit),4);
  assert.throws(()=>f.BreakText(new Uint8Array([1]),3,100),/aligned/);
+}));
+
+test('empty BreakText preserves an existing output slot, matching the pinned managed early return',()=>scope(own=>{
+ const f=own(new S.SKFont(null,24)),out={Value:-123.5};
+ for(const max of [-1,0,NaN,Infinity]){assert.equal(f.BreakText('',max,out),0);assert.equal(out.Value,-123.5);assert.equal(f.BreakText(new Uint8Array(),0,max,out),0);assert.equal(out.Value,-123.5);}
+ assert.equal(f.BreakTextDetails('',Infinity).MeasuredWidth,0);
 }));

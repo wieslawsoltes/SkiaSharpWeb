@@ -64,9 +64,9 @@ for(const [i,c]of(reference.textPaths??[]).entries()){
  finally{a?.Dispose();b?.Dispose();font.Dispose();path.Dispose();}
 }
 for(const [i,c]of(reference.textBreaks??[]).entries()){
- const font=new S.SKFont(null,c.size,c.scale,.15),out={};
+ const font=new S.SKFont(null,c.size,c.scale,.15),out={Value:c.initialWidth};
  try{const limit=numeric(c.limit);check(font.BreakText(c.text,limit,out),c.count,'break/'+i+'/string/count');check(out.Value,c.width,'break/'+i+'/string/width');
-  for(const form of c.forms){check(font.BreakText(Buffer.from(form.bytes,'base64'),form.encoding,limit,out),form.count,'break/'+i+'/'+form.encoding+'/count');check(out.Value,form.width,'break/'+i+'/'+form.encoding+'/width');}
+  for(const form of c.forms){out.Value=c.initialWidth;check(font.BreakText(Buffer.from(form.bytes,'base64'),form.encoding,limit,out),form.count,'break/'+i+'/'+form.encoding+'/count');check(out.Value,form.width,'break/'+i+'/'+form.encoding+'/width');}
  }finally{font.Dispose();}
 }
 

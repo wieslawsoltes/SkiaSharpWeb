@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run live Chromium rendering/UI tests. Software and physical evidence are separate."""
 import argparse,asyncio,functools,http.server,json,pathlib,threading
+import os
 from playwright.async_api import async_playwright
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--physical',action='store_true');p.add_argument('--output',default='test-output/browser');args=p.parse_args()
@@ -13,7 +14,7 @@ base=f'http://127.0.0.1:{server.server_port}'
 async def main():
  async with async_playwright() as p:
   flags=[] if args.physical else ['--enable-unsafe-webgpu','--enable-unsafe-swiftshader','--use-angle=swiftshader','--use-vulkan=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface']
-  browser=await p.chromium.launch(headless=True,args=flags)
+  browser=await p.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE'),headless=True,args=flags)
   context=await browser.new_context(viewport={'width':1440,'height':1000},accept_downloads=True)
   page=await context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   try:

@@ -130,12 +130,12 @@ using(var face=SKTypeface.FromFile(fontFile)) {
             textPaths.Add(new{size,scale,shape,align,ox,text,result=Geometry(result),explicitResult=Geometry(explicitResult)});
         }
         foreach(string text in new[]{"", "AΩ🙂B", "A\u0301 b", "مرحبا"})foreach(float limit in new[]{-1,0,1,13,25,50,1000,float.NaN,float.PositiveInfinity}) {
-            int count=font.BreakText(text,limit,out float measured);var forms=new List<object>();
+            float measured=-123.5f;int count=font.BreakText(text,limit,out measured);var forms=new List<object>();
             for(int encoding=0;encoding<4;encoding++) {
                 byte[] bytes=encoding==0?System.Text.Encoding.UTF8.GetBytes(text):encoding==1?System.Text.Encoding.Unicode.GetBytes(text):encoding==2?System.Text.Encoding.UTF32.GetBytes(text):font.GetGlyphs(text).SelectMany(BitConverter.GetBytes).ToArray();
-                int byteCount=font.BreakText(bytes,(SKTextEncoding)encoding,limit,out float byteWidth);forms.Add(new{encoding,bytes=Convert.ToBase64String(bytes),count=byteCount,width=byteWidth});
+                float byteWidth=-123.5f;int byteCount=font.BreakText(bytes,(SKTextEncoding)encoding,limit,out byteWidth);forms.Add(new{encoding,bytes=Convert.ToBase64String(bytes),count=byteCount,width=byteWidth});
             }
-            textBreaks.Add(new{size,scale,text,limit,count,width=measured,forms});
+            textBreaks.Add(new{size,scale,text,limit,count,width=measured,initialWidth=-123.5f,forms});
         }
     }
 }

@@ -54,7 +54,7 @@ export function installTextMeasureCompletion(K, api) {
     paint?.ThrowIfDisposed();
     const data = units(input, encoding);
     let measured = 0, count = 0, size = 0;
-    if (maxWidth > 0 && data.sizes.length) {
+    if (!(maxWidth <= 0) && data.sizes.length) {
       const widths = this.GetGlyphWidths(data.glyphs ?? data.text, paint);
       for (const width of widths) {
         const next = f(measured + width);
@@ -64,7 +64,8 @@ export function installTextMeasureCompletion(K, api) {
     }
     const text = data.chars ? data.chars.slice(0, count).join('') : null;
     const result = { Count: size, CodepointCount: count, MeasuredWidth: measured, Text: text };
-    if (out) Object.assign(out, { Value: measured, MeasuredWidth: measured, Text: text, MeasuredText: text });
+    // The pinned managed wrapper does not write the width slot on empty input.
+    if (out && data.sizes.length) Object.assign(out, { Value: measured, MeasuredWidth: measured, Text: text, MeasuredText: text });
     return result;
   };
   api.SKFont.prototype.BreakText = function (...args) { return this.BreakTextDetails(...args).Count; };
