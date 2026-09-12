@@ -1,5 +1,5 @@
 import { writeFile } from 'node:fs/promises';
-import { Initialize } from 'skiasharp-web';
+import { Initialize } from '@wieslawsoltes/skiasharpweb';
 const S = await Initialize(); // Bundled WASM is loaded automatically; no font network requests.
 const surface = S.SKSurface.Create(new S.SKImageInfo(256, 160));
 const paint = new S.SKPaint({ IsAntialias:true, Color:S.SKColor.Parse('#1673D3') });

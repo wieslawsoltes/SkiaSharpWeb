@@ -1,6 +1,6 @@
-// With a bundler, use: import { RegisterWebComponent } from 'skiasharp-web/browser';
+// With a bundler, use: import { RegisterWebComponent } from '@wieslawsoltes/skiasharpweb/browser';
 // For this unbundled example, serve the project root after npm install:
-import { RegisterWebComponent } from './node_modules/skiasharp-web/dist/package/browser.js';
+import { RegisterWebComponent } from './node_modules/@wieslawsoltes/skiasharpweb/dist/package/browser.js';
 try {
   const S=await RegisterWebComponent({ assetBaseUrl:'./public/skia/' });
   const view=document.querySelector('skia-canvas');

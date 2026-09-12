@@ -6,7 +6,7 @@ import { Version } from '../dist/package/version.js';
 import { PrepareWoff2 } from './packaging/prepare-woff2.mjs';
 const pkg=readJson('package.json'),native=readJson('dist/vendor/native-build-manifest.json');
 if(pkg.version!==Version||readJson('package-lock.json').version!==Version)throw new Error('Version drift; run npm version or node scripts/sync-version.mjs.');
-if(pkg.private||pkg.name!=='skiasharp-web'||pkg.license!=='MIT')throw new Error('Unexpected package identity or private flag.');
+if(pkg.private||pkg.name!=='@wieslawsoltes/skiasharpweb'||pkg.license!=='MIT')throw new Error('Unexpected package identity or private flag.');
 for(const[name,sha]of Object.entries(native.artifacts))if(digest('dist/vendor/'+name)!==sha)throw new Error(`Native artifact integrity failed: ${name}`);
 const woff2=PrepareWoff2();
 const { Initialize } = await import('../dist/package/node.js');

@@ -7,7 +7,7 @@ import { ReadTarball } from './packaging/tar.mjs';
 export function VerifyRelease(directory, { tag, sourceRevision } = {}) {
   const pkg=readJson('package.json');assertReleaseTag(tag,pkg.version);
   const manifest=JSON.parse(readFileSync(resolve(directory,'package-manifest.json'),'utf8'));
-  const filename=`${pkg.name}-${pkg.version}.tgz`;
+  const filename=`${pkg.name.replace(/^@/, '').replaceAll('/', '-')}-${pkg.version}.tgz`;
   if(manifest.name!==pkg.name||manifest.version!==pkg.version||manifest.filename!==filename||basename(manifest.filename)!==manifest.filename)throw new Error('Release package identity mismatch.');
   if(sourceRevision!==undefined&&manifest.sourceRevision!==sourceRevision)throw new Error('Release source commit mismatch.');
   const bytes=readFileSync(resolve(directory,filename));if(hash(bytes)!==manifest.sha256)throw new Error('Tarball SHA-256 mismatch.');
@@ -37,6 +37,6 @@ import { createHash } from 'node:crypto';
 if(process.argv[1]&&pathToFileURL(resolve(process.argv[1])).href===import.meta.url){
  const tag=process.env.RELEASE_TAG??process.argv[2];
  const commit=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
- const result=VerifyRelease(resolve(root,'artifacts'),{tag,sourceRevision:commit});
+ const result=VerifyRelease(resolve(root,process.argv[3]??'artifacts'),{tag,sourceRevision:commit});
  console.log(JSON.stringify({name:result.name,version:result.version,filename:result.filename,sha256:result.sha256,distTag:result.distTag}));
 }

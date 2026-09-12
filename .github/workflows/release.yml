@@ -1,97 +1,106 @@
 name: Release package
+
 on:
-  push:
-    tags: ['v*']
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      tag:
-        description: Existing tag matching package.json, for example v0.5.0
+      expected_sha:
+        description: Commit that passed Package readiness
         required: true
         type: string
-      dry_run:
-        description: Validate and upload artifacts without creating a draft release
-        type: boolean
-        default: true
+    secrets:
+      NPM_TOKEN:
+        required: false
+
 permissions:
   contents: read
+
 concurrency:
-  group: package-release-${{ inputs.tag || github.ref_name }}
+  group: package-release-${{ inputs.expected_sha }}
   cancel-in-progress: false
+
 jobs:
-  qualify:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 25
-    outputs:
-      tag: ${{ steps.tag.outputs.tag }}
-      version: ${{ steps.tag.outputs.version }}
-      prerelease: ${{ steps.tag.outputs.prerelease }}
-      commit: ${{ steps.tag.outputs.commit }}
-    env:
-      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with:
-          ref: ${{ inputs.tag || github.ref_name }}
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          node-version: '24'
-      - id: tag
-        run: node scripts/check-release-tag.mjs
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - run: npm ci --ignore-scripts
-      - name: Install native document readers and pinned browser
-        run: |
-          sudo apt-get update && sudo apt-get install -y poppler-utils
-          python -m pip install PyMuPDF==1.26.6 Pillow==11.3.0 playwright==1.55.0
-          python -m playwright install --with-deps chromium
-      - run: npm run check && npm run release:check
-      - run: node --disallow-code-generation-from-strings tests/packaging/font-csp.mjs
-      - run: npm test
-      - run: node scripts/verify-package-bundle.mjs
-      - run: python scripts/verify-package-browser.py
-      - run: node scripts/verify-release.mjs
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: release-candidate-${{ github.run_id }}
-          path: artifacts/
-          if-no-files-found: error
-          retention-days: 30
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        if: always()
-        with:
-          name: release-evidence-${{ github.run_id }}
-          path: |
-            test-output/package-browser/
-            test-output/package-verification.json
-          retention-days: 30
-  draft:
-    if: github.event_name == 'push' || !inputs.dry_run
-    needs: qualify
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
+      packages: write
+    outputs:
+      tag: ${{ steps.release.outputs.tag }}
+      publish: ${{ steps.release.outputs.publish }}
+      dist_tag: ${{ steps.release.outputs.dist_tag }}
     steps:
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+      - uses: actions/checkout@v7
         with:
-          name: release-candidate-${{ github.run_id }}
-          path: artifacts
-      - name: Create a draft with the exact tested tarball (never overwrite a release)
+          ref: ${{ inputs.expected_sha }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: https://npm.pkg.github.com
+          scope: '@wieslawsoltes'
+          package-manager-cache: false
+      - run: npm ci --ignore-scripts
+      - name: Assemble qualified runtime and release inventory
+        run: npm run pack:release
+      - name: Test the exact release package
+        run: |
+          packages=( artifacts/*.tgz )
+          node scripts/package-test.mjs --tarball "${packages[0]}"
+      - name: Publish GitHub package if version is new
         env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          RELEASE_TAG: ${{ needs.qualify.outputs.tag }}
-          VERSION: ${{ needs.qualify.outputs.version }}
-          PRERELEASE: ${{ needs.qualify.outputs.prerelease }}
-          SOURCE_COMMIT: ${{ needs.qualify.outputs.commit }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
-          set -euo pipefail
-          printf 'Tested source: `%s`\n\nInstall the attached npm tarball. Check SHA256SUMS and package-manifest.json. The package contains no fonts or demo assets. See docs/RELEASING.md before publishing to npm. Complete SkiaSharp parity and physical GPU qualification are not claimed.\n' "$SOURCE_COMMIT" > notes.md
-          args=(--repo "$GH_REPO" --draft --verify-tag --title "SkiaSharp Web $VERSION" --notes-file notes.md)
-          if [ "$PRERELEASE" = true ]; then args+=(--prerelease); fi
-          gh release create "$RELEASE_TAG" artifacts/*.tgz artifacts/SHA256SUMS artifacts/package-manifest.json artifacts/sbom.cdx.json "${args[@]}"
+          package_name=$(node -p 'JSON.parse(require("fs").readFileSync("package.json", "utf8")).name')
+          package_version=$(node -p 'JSON.parse(require("fs").readFileSync("package.json", "utf8")).version')
+          if npm view "$package_name@$package_version" version --registry=https://npm.pkg.github.com >/dev/null 2>&1; then
+            echo 'Package version already published.'
+          else
+            packages=( artifacts/*.tgz )
+            npm publish "${packages[0]}" --registry=https://npm.pkg.github.com --provenance=false --ignore-scripts
+          fi
+      - name: Publish immutable release assets
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERIFIED_SHA: ${{ inputs.expected_sha }}
+        shell: bash
+        run: |
+          package_version=$(node -p 'JSON.parse(require("fs").readFileSync("package.json", "utf8")).version')
+          release_tag="v$package_version"
+          if gh release view "$release_tag" >/dev/null 2>&1; then
+            echo 'Existing release retained without replacing assets.'
+          else
+            gh release create "$release_tag" --target "$VERIFIED_SHA" --title "SkiaSharp Web $package_version" --notes-file docs/release-notes.md artifacts/*.tgz artifacts/SHA256SUMS artifacts/SHA256SUMS.txt artifacts/package-manifest.json artifacts/sbom.cdx.json
+          fi
+          echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+          if [[ "$package_version" == *-* ]]; then echo 'dist_tag=next' >> "$GITHUB_OUTPUT"; else echo 'dist_tag=latest' >> "$GITHUB_OUTPUT"; fi
+          git fetch --no-tags origin "refs/tags/$release_tag:refs/tags/$release_tag"
+          if [[ "$(git rev-list -n 1 "$release_tag")" == "$VERIFIED_SHA" ]]; then
+            echo 'publish=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'publish=false' >> "$GITHUB_OUTPUT"
+            echo 'Existing release identifies another commit; npm publication skipped.'
+          fi
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: release-package-${{ inputs.expected_sha }}
+          path: artifacts/
+          retention-days: 30
+          if-no-files-found: error
+
+  npm:
+    needs: release
+    if: needs.release.outputs.publish == 'true'
+    permissions:
+      contents: read
+      id-token: write
+    uses: ./.github/workflows/npm-publish.yml
+    with:
+      tag: ${{ needs.release.outputs.tag }}
+      expected_sha: ${{ inputs.expected_sha }}
+      dist_tag: ${{ needs.release.outputs.dist_tag }}
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

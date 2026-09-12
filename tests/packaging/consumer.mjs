@@ -1,16 +1,16 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { Initialize, Version, GetAssetUrls } from 'skiasharp-web';
-import { Initialize as BrowserInitialize } from 'skiasharp-web/browser';
-import { Initialize as CoreInitialize } from 'skiasharp-web/core';
+import { Initialize, Version, GetAssetUrls } from '@wieslawsoltes/skiasharpweb';
+import { Initialize as BrowserInitialize } from '@wieslawsoltes/skiasharpweb/browser';
+import { Initialize as CoreInitialize } from '@wieslawsoltes/skiasharpweb/core';
 import { createRequire } from 'node:module';
-const require=createRequire(import.meta.url),cjs=require('skiasharp-web');
+const require=createRequire(import.meta.url),cjs=require('@wieslawsoltes/skiasharpweb');
 assert.equal(cjs.Version,Version);
 const [S,other]=await Promise.all([Initialize(),cjs.Initialize()]);assert.equal(S,other);
 assert.equal(S.Version,Version);assert.equal(S.SKFontManager.Default.FontFamilies.length,0);
 assert.equal((await BrowserInitialize({CanvasKit:S.CanvasKit})),S);
 assert.equal((await CoreInitialize({CanvasKit:S.CanvasKit,fonts:false})),S);
-assert.equal(require.resolve('skiasharp-web/canvaskit.wasm').endsWith('canvaskit.wasm'),true);
+assert.equal(require.resolve('@wieslawsoltes/skiasharpweb/canvaskit.wasm').endsWith('canvaskit.wasm'),true);
 assert.equal((await readFile(new URL(GetAssetUrls().wasmUrl))).length>1000000,true);
 const paint=new S.SKPaint({Color:S.SKColors.Red}),surface=S.SKSurface.Create(new S.SKImageInfo(16,16));
 try {

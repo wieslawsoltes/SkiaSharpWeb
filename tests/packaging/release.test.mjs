@@ -26,7 +26,7 @@ test('npm version synchronizes package, lockfile and runtime module without crea
  const temp=mkdtempSync(join(tmpdir(),'skia version '));
  try {
   mkdirSync(join(temp,'dist/package'),{recursive:true});mkdirSync(join(temp,'scripts'),{recursive:true});
-  const pkg={name:'skiasharp-web',version:'0.5.0',type:'module',scripts:{version:'node scripts/sync-version.mjs && git add dist/package/version.js'}};
+  const pkg={name:'@wieslawsoltes/skiasharpweb',version:'0.5.0',type:'module',scripts:{version:'node scripts/sync-version.mjs && git add dist/package/version.js'}};
   writeFileSync(join(temp,'package.json'),JSON.stringify(pkg));
   writeFileSync(join(temp,'package-lock.json'),JSON.stringify({name:pkg.name,version:pkg.version,lockfileVersion:3,packages:{'':{name:pkg.name,version:pkg.version}}}));
   writeFileSync(join(temp,'dist/package/version.js'),"export const Version = '0.5.0';\n");

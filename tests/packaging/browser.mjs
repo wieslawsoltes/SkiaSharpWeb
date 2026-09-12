@@ -1,4 +1,4 @@
-import {Initialize,RegisterWebComponent,Version} from './node_modules/skiasharp-web/dist/package/browser.js';
+import {Initialize,RegisterWebComponent,Version} from './node_modules/@wieslawsoltes/skiasharpweb/dist/package/browser.js';
 const assert=(ok,message)=>{if(!ok)throw new Error(message);};
 window.packageResult=(async()=>{
  const S=await Initialize({assetBaseUrl:'./public/skia/'});
