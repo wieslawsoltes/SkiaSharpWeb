@@ -25,6 +25,6 @@ export async function Initialize(options = {}) {
   return PrepareRuntime(await InitializeCore({ ...normalized, CanvasKit, fonts }));
 }
 export async function RegisterWebComponent() {
-  throw new Error('RegisterWebComponent requires the skiasharp-web/browser entry and a browser DOM.');
+  throw new Error('RegisterWebComponent requires the @wieslawsoltes/skiasharpweb/browser entry and a browser DOM.');
 }
 export default Initialize;

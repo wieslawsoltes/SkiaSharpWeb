@@ -7,7 +7,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/build-package.mjs')],{cwd:r
 mkdirSync(resolve(root,'artifacts'),{recursive:true});
 const pkg=readJson('package.json');
 const [result]=JSON.parse(npm(['pack','--ignore-scripts','--json','--pack-destination','artifacts']));
-if(result.name!==pkg.name||result.version!==pkg.version||result.filename!==`${pkg.name}-${pkg.version}.tgz`)throw new Error('Unexpected npm pack identity.');
+if(result.name!==pkg.name||result.version!==pkg.version||result.filename!==`${pkg.name.replace(/^@/, '').replaceAll('/', '-')}-${pkg.version}.tgz`)throw new Error('Unexpected npm pack identity.');
 const bytes=readFileSync(resolve(root,'artifacts',result.filename)),entries=ReadTarball(bytes);
 const runtime=readJson('dist/package/build-manifest.json');
 for(const [file,sha]of Object.entries(runtime.files))if(!entries.has(file)||hash(entries.get(file))!==sha)throw new Error(`Packed runtime differs: ${file}`);
@@ -22,3 +22,5 @@ writeFileSync(resolve(root,'artifacts/package-manifest.json'),JSON.stringify(met
 copyFileSync(resolve(root,'dist/package/sbom.cdx.json'),resolve(root,'artifacts/sbom.cdx.json'));
 writeFileSync(resolve(root,'artifacts/SHA256SUMS'),[result.filename,'package-manifest.json','sbom.cdx.json'].map(p=>`${hash(readFileSync(resolve(root,'artifacts',p)))}  ${p}\n`).join(''));
 console.log(JSON.stringify({package:result.filename,files:entries.size,bytes:result.size,sha256:metadata.sha256}));
+
+copyFileSync(resolve(root,'artifacts/SHA256SUMS'),resolve(root,'artifacts/SHA256SUMS.txt'));

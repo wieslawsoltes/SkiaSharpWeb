@@ -1,5 +1,12 @@
 # SkiaSharp Web
 
+[![CI](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/workflows/package-ci.yml/badge.svg?branch=main)](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/workflows/package-ci.yml)
+[![npm version](https://img.shields.io/npm/v/%40wieslawsoltes%2Fskiasharpweb)](https://www.npmjs.com/package/@wieslawsoltes/skiasharpweb)
+[![npm downloads](https://img.shields.io/npm/dm/%40wieslawsoltes%2Fskiasharpweb)](https://www.npmjs.com/package/@wieslawsoltes/skiasharpweb)
+[![GitHub release](https://img.shields.io/github/v/release/wieslawsoltes/SkiaSharpWeb)](https://github.com/wieslawsoltes/SkiaSharpWeb/releases/latest)
+[![License: MIT](https://img.shields.io/github/license/wieslawsoltes/SkiaSharpWeb)](LICENSE)
+[![Graphics Lab](https://img.shields.io/badge/demo-GitHub%20Pages-blue)](https://wieslawsoltes.github.io/SkiaSharpWeb/)
+
 An unofficial JavaScript graphics library with a familiar PascalCase `SK*` API,
 compiled Skia Graphite/Dawn **WebGPU**, Ganesh **WebGL**, and a Skia raster **Canvas**
 fallback. Reusable as a JavaScript library or `<skia-canvas>` web component.
@@ -13,6 +20,14 @@ The qualified native renderer is bundled, not a placeholder. This project does
 qualification. See [compatibility](COMPATIBILITY.md) and the
 [declaration audit](docs/OVERLOAD_CONFORMANCE.md).
 
+## Install
+
+```sh
+npm install @wieslawsoltes/skiasharpweb
+```
+
+The package includes the qualified native WASM runtime and TypeScript declarations.
+
 ## Build a releasable npm package
 
 ```sh
@@ -20,11 +35,12 @@ npm ci
 npm run release:check
 ```
 
-The result is `artifacts/skiasharp-web-<version>.tgz`, a checksum list, per-file
+The result is `artifacts/wieslawsoltes-skiasharpweb-<version>.tgz`, a checksum list, per-file
 manifest and SBOM. The check installs the tarball into a fresh external application,
 exercises real drawing/PNG/PDF output through ESM and CommonJS, validates TypeScript
 consumers, and checks reproducible packing, native hashes, licensing and size budgets.
-No npm publication is implied by building or merging this repository.
+After the version PR passes all checks and merges, CI publishes immutable GitHub
+release assets and verifies the public npm package, including a fresh install.
 
 The runtime distribution contains **no font binaries, gallery, test corpus, native
 build toolchain, install-time scripts, or runtime npm dependencies**. Font management
@@ -34,11 +50,11 @@ browser packages are covered by the package CI matrix.
 
 ## Use in Node
 
-Install the tested tarball in your application, then:
+After installing the package:
 
 ```js
-import { Initialize } from 'skiasharp-web';
-// CommonJS: const { Initialize } = require('skiasharp-web');
+import { Initialize } from '@wieslawsoltes/skiasharpweb';
+// CommonJS: const { Initialize } = require('@wieslawsoltes/skiasharpweb');
 const S = await Initialize(); // Loads local bundled WASM. No implicit font downloads.
 const surface = S.SKSurface.Create(new S.SKImageInfo(256, 160));
 const paint = new S.SKPaint({ Color: S.SKColors.Teal, IsAntialias: true });
@@ -65,7 +81,7 @@ npx --no-install skiasharp-web-assets public/skia
 ```
 
 ```js
-import { RegisterWebComponent } from 'skiasharp-web/browser';
+import { RegisterWebComponent } from '@wieslawsoltes/skiasharpweb/browser';
 const S = await RegisterWebComponent({ assetBaseUrl: '/skia/' });
 const view = document.createElement('skia-canvas');
 view.style.cssText = 'width:100%;height:240px';
@@ -82,7 +98,7 @@ HTTPS/localhost for WebGPU; `auto` falls back when unavailable. Raw ESM/CDN use 
 load `dist/package/browser.js` with adjacent vendor assets. See the
 [embedding guide](docs/PACKAGING.md) for CSP, MIME, CORS, font registration,
 TypeScript, lifecycle and bundler asset rules. The existing gallery/core entry
-retains its legacy defaults via `skiasharp-web/core`.
+retains its legacy defaults via `@wieslawsoltes/skiasharpweb/core`.
 
 ## Run the gallery
 
@@ -111,10 +127,10 @@ Software GPU testing is separate from physical-device qualification.
 ## Maintainers
 
 `npm version` synchronizes package, lockfile and runtime versions. Tags must match
-`v<package-version>` and be reachable from `main`. The release workflow creates a
-**draft** with tested artifacts. Registry publishing requires explicit opt-in and
-npm trusted-publisher/owner configuration; it verifies the same tarball instead of
-rebuilding it. See [RELEASING.md](docs/RELEASING.md), [CONTRIBUTING.md](CONTRIBUTING.md)
+`v<package-version>`. After the version PR merges and package CI passes, the
+release workflow publishes the tested assets and the npm package. Publication
+uses the configured `NPM_TOKEN` or npm trusted publishing and verifies the
+exact archive, public registry metadata and fresh installed consumers. See [RELEASING.md](docs/RELEASING.md), [CONTRIBUTING.md](CONTRIBUTING.md)
 and [SECURITY.md](SECURITY.md). The qualified native build remains independent.
 
 ## Attribution

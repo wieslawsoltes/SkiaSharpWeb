@@ -1,4 +1,4 @@
-import Skia = require('skiasharp-web');
+import Skia = require('@wieslawsoltes/skiasharpweb');
 async function render() {
   const S = await Skia.Initialize({fonts:false});
   const surface=S.SKSurface.Create(new S.SKImageInfo(1,1));

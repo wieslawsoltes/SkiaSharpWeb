@@ -1,6 +1,6 @@
 # Installing and embedding SkiaSharp Web
 
-The `skiasharp-web` npm package is a **font-free runtime distribution**, separate
+The `@wieslawsoltes/skiasharpweb` npm package is a **font-free runtime distribution**, separate
 from the repository's Graphics Lab. It contains the qualified native WASM,
 JavaScript library, Node/browser entry points, TypeScript declarations, native
 hash manifest, bundled-component SBOM and license notices. It contains no demo,
@@ -10,24 +10,22 @@ The package build replaces two legacy WOFF2 JavaScript invoker generators with
 static closures, with exact input/output hashes. Its embedded decoder WASM and
 qualified CanvasKit runtime remain unchanged; JavaScript `unsafe-eval` is not required.
 
-## Install the tested tarball
+## Install the npm package
 
 ```sh
-npm ci
-npm run release:check
-npm install /path/to/SkiaSharpWeb/artifacts/skiasharp-web-0.5.0.tgz
+npm install @wieslawsoltes/skiasharpweb@0.5.0
 ```
 
-The last command runs in your application's directory. Once the maintainer has
-published a version, `npm install skiasharp-web@<version>` uses the registry.
-Merging this packaging change does **not** claim an npm publication or name ownership.
+Run this in your application's directory. For a local archive, run `npm ci` and
+`npm run release:check` in the source checkout, then install
+`artifacts/wieslawsoltes-skiasharpweb-<version>.tgz` into your application.
 Node 22 and 24 are the CI targets; the package declares Node >=22.
 
 ## Node ESM and CommonJS
 
 ```js
-import { Initialize } from 'skiasharp-web';
-// CommonJS: const { Initialize } = require('skiasharp-web');
+import { Initialize } from '@wieslawsoltes/skiasharpweb';
+// CommonJS: const { Initialize } = require('@wieslawsoltes/skiasharpweb');
 const S = await Initialize();
 const surface = S.SKSurface.Create(new S.SKImageInfo(64, 64));
 try {
@@ -61,7 +59,7 @@ npx --no-install skiasharp-web-assets public/skia --overwrite
 ```
 
 ```js
-import { Initialize, RegisterWebComponent } from 'skiasharp-web/browser';
+import { Initialize, RegisterWebComponent } from '@wieslawsoltes/skiasharpweb/browser';
 const S = await RegisterWebComponent({ assetBaseUrl: '/skia/' });
 const view = document.createElement('skia-canvas');
 view.style.cssText = 'width:100%;height:240px';
@@ -103,7 +101,7 @@ const S = await Initialize({ fonts: [{ family: 'My UI', url: '/fonts/my-ui.woff2
 
 Use a separate `isolated:true` namespace or explicit font-manager registration to
 change font configuration after the cached default runtime has initialized.
-`skiasharp-web/core` retains the legacy caller-supplied-engine and gallery-font
+`@wieslawsoltes/skiasharpweb/core` retains the legacy caller-supplied-engine and gallery-font
 behavior. Existing gallery imports from `dist/lib/index.js` are unchanged.
 Fonts themselves are not embedded into the package as a workaround for licensing.
 The original custom rendering, document and native-platform compatibility limits
@@ -111,7 +109,7 @@ continue to apply. Packaging does not certify every SkiaSharp overload.
 
 ## TypeScript
 
-Use named types from `skiasharp-web`, e.g. `InitializationOptions`, `Surface`,
+Use named types from `@wieslawsoltes/skiasharpweb`, e.g. `InitializationOptions`, `Surface`,
 `PaintSurfaceDetail`, and `SkiaCanvasElement`. NodeNext ESM/CommonJS and bundler
 resolution are tested against the **installed tarball**, not repository aliases.
 The initializer, surface, common drawing/value types and component events have
@@ -125,7 +123,7 @@ classes are obtained from the awaited `S` namespace, not individual named JS exp
 `npm pack` runs the deterministic metadata build. `npm run pack:release` additionally
 checks the package allowlist, native hashes, size budgets and produces:
 
-- `artifacts/skiasharp-web-<version>.tgz`
+- `artifacts/wieslawsoltes-skiasharpweb-<version>.tgz`
 - `artifacts/package-manifest.json` with per-file hashes, tarball integrity and source commit
 - `artifacts/sbom.cdx.json` and `artifacts/SHA256SUMS`
 

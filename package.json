@@ -1,5 +1,5 @@
 {
-  "name": "skiasharp-web",
+  "name": "@wieslawsoltes/skiasharpweb",
   "version": "0.5.0",
   "type": "module",
   "description": "SkiaSharp-style JavaScript graphics API with native Skia Graphite/WebGPU, Ganesh/WebGL and raster Canvas backends",
@@ -8,26 +8,58 @@
   "types": "./dist/package/index.d.ts",
   "exports": {
     ".": {
-      "browser": {"types": "./dist/package/index.d.ts", "default": "./dist/package/browser.js"},
+      "browser": {
+        "types": "./dist/package/index.d.ts",
+        "default": "./dist/package/browser.js"
+      },
       "node": {
-        "import": {"types": "./dist/package/index.d.ts", "default": "./dist/package/node.js"},
-        "require": {"types": "./dist/package/node.d.cts", "default": "./dist/package/node.cjs"}
+        "import": {
+          "types": "./dist/package/index.d.ts",
+          "default": "./dist/package/node.js"
+        },
+        "require": {
+          "types": "./dist/package/node.d.cts",
+          "default": "./dist/package/node.cjs"
+        }
       },
       "types": "./dist/package/index.d.ts",
       "default": "./dist/package/browser.js"
     },
-    "./browser": {"types": "./dist/package/index.d.ts", "default": "./dist/package/browser.js"},
-    "./node": {
-      "import": {"types": "./dist/package/index.d.ts", "default": "./dist/package/node.js"},
-      "require": {"types": "./dist/package/node.d.cts", "default": "./dist/package/node.cjs"}
+    "./browser": {
+      "types": "./dist/package/index.d.ts",
+      "default": "./dist/package/browser.js"
     },
-    "./core": {"types": "./dist/package/core.d.ts", "default": "./dist/lib/index.js"},
+    "./node": {
+      "import": {
+        "types": "./dist/package/index.d.ts",
+        "default": "./dist/package/node.js"
+      },
+      "require": {
+        "types": "./dist/package/node.d.cts",
+        "default": "./dist/package/node.cjs"
+      }
+    },
+    "./core": {
+      "types": "./dist/package/core.d.ts",
+      "default": "./dist/lib/index.js"
+    },
     "./canvaskit": "./dist/vendor/canvaskit.cjs",
     "./canvaskit.js": "./dist/vendor/canvaskit.js",
     "./canvaskit.wasm": "./dist/vendor/canvaskit.wasm",
     "./package.json": "./package.json"
   },
-  "files": ["dist/lib/", "dist/vendor/", "dist/package/", "dist/licenses/", "LICENSE", "README.md", "CHANGELOG.md", "COMPATIBILITY.md", "docs/PACKAGING.md", "docs/RELEASING.md"],
+  "files": [
+    "dist/lib/",
+    "dist/vendor/",
+    "dist/package/",
+    "dist/licenses/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "COMPATIBILITY.md",
+    "docs/PACKAGING.md",
+    "docs/RELEASING.md"
+  ],
   "scripts": {
     "test": "node --test tests/*.test.mjs",
     "check": "node scripts/check.mjs",
@@ -57,13 +89,37 @@
     "release:check": "npm run build && npm run test:packaging && npm run test:package && npm run test:types"
   },
   "license": "MIT",
-  "repository": {"type": "git", "url": "https://github.com/wieslawsoltes/SkiaSharpWeb.git"},
-  "homepage": "https://github.com/wieslawsoltes/SkiaSharpWeb#readme",
-  "bugs": {"url": "https://github.com/wieslawsoltes/SkiaSharpWeb/issues"},
-  "engines": {"node": ">=22"},
-  "keywords": ["skia", "skiasharp", "webgpu", "webgl", "canvas", "wasm", "graphics"],
-  "sideEffects": ["./dist/vendor/**"],
-  "publishConfig": {"access": "public", "registry": "https://registry.npmjs.org/"},
-  "bin": {"skiasharp-web-assets": "./dist/package/copy-assets.mjs"},
-  "devDependencies": {"typescript": "5.8.3"}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wieslawsoltes/SkiaSharpWeb.git"
+  },
+  "homepage": "https://wieslawsoltes.github.io/SkiaSharpWeb/",
+  "bugs": {
+    "url": "https://github.com/wieslawsoltes/SkiaSharpWeb/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "skia",
+    "skiasharp",
+    "webgpu",
+    "webgl",
+    "canvas",
+    "wasm",
+    "graphics"
+  ],
+  "sideEffects": [
+    "./dist/vendor/**"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "bin": {
+    "skiasharp-web-assets": "./dist/package/copy-assets.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
 }

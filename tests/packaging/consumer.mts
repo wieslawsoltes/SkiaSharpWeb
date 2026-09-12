@@ -1,5 +1,5 @@
-import initialize, { type Surface, type InitializationOptions, GetAssetUrls } from 'skiasharp-web';
-import { RegisterWebComponent } from 'skiasharp-web/browser';
+import initialize, { type Surface, type InitializationOptions, GetAssetUrls } from '@wieslawsoltes/skiasharpweb';
+import { RegisterWebComponent } from '@wieslawsoltes/skiasharpweb/browser';
 const options: InitializationOptions = { fonts:false, assetBaseUrl:'/skia/' };
 const S = await initialize(options);
 const surface: Surface = S.SKSurface.Create(new S.SKImageInfo(16,16));

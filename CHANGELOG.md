@@ -1,5 +1,7 @@
 # Packaging readiness (unreleased)
 
+The 0.5.0 runtime is now distributed as `@wieslawsoltes/skiasharpweb` with verified GitHub and npm releases. Native renderer behavior is unchanged.
+
 - Add conditional Node ESM/CommonJS and browser entries with no implicit font downloads.
 - Add typed initialization/core drawing/component APIs and a generated advanced namespace.
 - Add deterministic tarball manifests, native integrity/size/content checks, bundled notices and SBOM.

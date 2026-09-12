@@ -113,3 +113,16 @@ jobs:
           NATIVE_RESULT: ${{ needs.native.result }}
           BROWSER_RESULT: ${{ needs.browser.result }}
         run: test "$PACKAGE_RESULT" = success && test "$NATIVE_RESULT" = success && test "$BROWSER_RESULT" = success
+
+  release:
+    needs: ready
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+    uses: ./.github/workflows/release.yml
+    with:
+      expected_sha: ${{ github.sha }}
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
