@@ -58,7 +58,7 @@ jobs:
             echo 'Package version already published.'
           else
             packages=( artifacts/*.tgz )
-            npm publish "${packages[0]}" --registry=https://npm.pkg.github.com --provenance=false --ignore-scripts
+            npm publish "./${packages[0]}" --registry=https://npm.pkg.github.com --provenance=false --ignore-scripts
           fi
       - name: Publish immutable release assets
         id: release
