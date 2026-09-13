@@ -1,0 +1,36 @@
+@page "/"
+@namespace SkiaSharpWeb.Blazor.Sample
+@using SkiaSharpWeb.Blazor
+@using Microsoft.AspNetCore.Components
+@using Microsoft.JSInterop
+<main>
+    <h1>SkiaSharpWeb + Blazor</h1>
+    <p>Actual locally packaged Skia WASM, retained drawing batches, native pixel readback and PNG encoding.</p>
+    <button id="action" @onclick="RenderAndVerify" disabled="@(!_ready)">Draw and verify native pixels / PNG</button>
+    <button id="toggle" @onclick="Toggle">@(_show ? "Unmount" : "Mount")</button>
+    @if (_show) { <SkiaCanvas @ref="_canvas" Backend="canvas" Width="800" Height="400" DrawCommands="_commands" Ready="Initialize" aria-label="Skia drawing sample" role="img" Style="display:block;height:400px" /> }
+    <output id="status">@_status</output><output id="result">@_result</output>
+    <p>@_details</p>
+</main>
+@code {
+    private SkiaCanvas _canvas = default!;
+    private readonly SkiaDrawCommand[] _commands = [SkiaDrawCommand.Clear("#ffffff"), SkiaDrawCommand.Rect(40, 40, 220, 130, "#356ac3"), SkiaDrawCommand.Circle(440, 150, 85, "#d74c62"), SkiaDrawCommand.Line(40, 300, 740, 300, "#17344d", 8)];
+    private bool _show = true, _ready;
+    private string _status = "Loading", _result = "", _details = "";
+    private async Task Initialize(IJSObjectReference control)
+    {
+        var info = await _canvas.GetInfoAsync();
+        if (info.Width != 800 || info.Height != 400 || info.Backend != "canvas") throw new InvalidOperationException("Unexpected native surface configuration.");
+        _details = $"Backend: {info.Backend}; native size: {info.Width} × {info.Height}"; _ready = true; _status = "Ready";
+    }
+    private async Task RenderAndVerify()
+    {
+        await _canvas.DrawAsync([SkiaDrawCommand.Clear("#ffffff"), SkiaDrawCommand.Rect(20, 20, 300, 180, "#ff0000"), SkiaDrawCommand.Circle(480, 180, 90, "#204fc0")]);
+        var pixel = await _canvas.ReadPixelAsync(50, 50);
+        if (pixel.Length != 4 || pixel[0] != 255 || pixel[1] != 0 || pixel[2] != 0 || pixel[3] != 255) throw new InvalidOperationException("Native Skia drawing/pixel readback failed.");
+        var png = await _canvas.SnapshotAsync();
+        if (png.Length < 100 || !png.Take(8).SequenceEqual(new byte[] { 137, 80, 78, 71, 13, 10, 26, 10 })) throw new InvalidOperationException("Native Skia PNG encoding failed.");
+        _details = $"Verified native red pixel and {png.Length:N0}-byte PNG."; _result = "Passed";
+    }
+    private void Toggle() { _show = !_show; _ready = false; _status = _show ? "Loading" : "Unmounted"; _result = ""; }
+}

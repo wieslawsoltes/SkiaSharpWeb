@@ -1,0 +1,5 @@
+{
+  "name": "SkiaSharpWeb",
+  "external": ["./engine/*"],
+  "copy": [["dist/lib", "engine/lib"], ["dist/package", "engine/package"], ["dist/vendor", "engine/vendor"], ["dist/licenses", "engine/licenses"]]
+}
