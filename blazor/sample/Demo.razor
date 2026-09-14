@@ -1,5 +1,5 @@
 @page "/"
-@namespace SkiaSharpWeb.Blazor.Sample
+@namespace SkiaSharpWebBlazorSample
 @using SkiaSharpWeb.Blazor
 @using Microsoft.AspNetCore.Components
 @using Microsoft.JSInterop
@@ -11,6 +11,7 @@
     @if (_show) { <SkiaCanvas @ref="_canvas" Backend="canvas" Width="800" Height="400" DrawCommands="_commands" Ready="Initialize" aria-label="Skia drawing sample" role="img" Style="display:block;height:400px" /> }
     <output id="status">@_status</output><output id="result">@_result</output>
     <p>@_details</p>
+    <InteropProbe />
 </main>
 @code {
     private SkiaCanvas _canvas = default!;

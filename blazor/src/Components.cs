@@ -30,8 +30,8 @@ public sealed class SkiaCanvas : BrowserComponent
     public ValueTask<bool> DrawAsync(IEnumerable<SkiaDrawCommand> commands) => InvokeAsync<bool>("Draw", commands);
     public ValueTask FlushAsync() => InvokeVoidAsync("Flush");
     public ValueTask<SkiaSurfaceInfo> GetInfoAsync() => InvokeAsync<SkiaSurfaceInfo>("GetInfo");
-    public ValueTask<byte[]> SnapshotAsync(string format = "Png", int quality = 100) => InvokeAsync<byte[]>("Snapshot", format, quality);
-    public ValueTask<byte[]> ReadPixelAsync(int x, int y) => InvokeAsync<byte[]>("ReadPixel", x, y);
+    public ValueTask<byte[]> SnapshotAsync(string format = "Png", int quality = 100) => InvokeBytesAsync("Snapshot", format, quality);
+    public ValueTask<byte[]> ReadPixelAsync(int x, int y) => InvokeBytesAsync("ReadPixel", x, y);
     public ValueTask<IJSObjectReference> GetSurfaceAsync() => Module is not null && Control is not null ? Module.GetAsync<IJSObjectReference>(Control, "Surface") : ValueTask.FromException<IJSObjectReference>(new InvalidOperationException("Wait for Ready."));
     public ValueTask<IJSObjectReference> GetCanvasAsync() => Module is not null && Control is not null ? Module.GetAsync<IJSObjectReference>(Control, "Canvas") : ValueTask.FromException<IJSObjectReference>(new InvalidOperationException("Wait for Ready."));
 }

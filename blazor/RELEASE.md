@@ -1,5 +1,10 @@
 # SkiaSharpWeb.Blazor 0.6.0
 
-Add .NET 8 / .NET 10 SkiaCanvas components, retained browser-side drawing batches, native pixel readback and image encoding, native surface/canvas references and complete initialized engine interop. Package the actual qualified JavaScript/WASM runtime locally, preserving relative paths and notices; no font binaries or implicit font downloads are included.
+- .NET 8/.NET 10 SkiaCanvas and provider with the qualified native JavaScript/WASM runtime and preserved relative asset layout.
+- Retained drawing batches, synchronous browser paint callbacks, surface/canvas handles, resize/backend lifecycle and asynchronous disposal fences.
+- Streamed PNG snapshots and pixel reads, full native function handles and literal application data.
+- Native binary/asset integrity checks, no bundled font files, preserved dependency notices.
+- Package-restored WebAssembly/Server samples validating actual pixels/PNG, streams, Razor callbacks and remounting.
+- Root/Blazor documentation and validation-gated NuGet publication with public-payload verification and runnable sample artifacts.
 
-Add functional WebAssembly and Server samples, native pixel/PNG assertions, lifecycle and actual-package checks, and independently versioned NuGet publishing. The browser matrix uses software Skia and does not claim physical-GPU qualification. Advanced native APIs use generic interop or synchronous browser paint callbacks rather than an exhaustive generated C# SkiaSharp port.
+Native capabilities/limitations remain unchanged. Typed helpers are complemented by generic native interop; this is not an exhaustive generated C# SkiaSharp port. Chromium software tests do not establish physical-GPU qualification.

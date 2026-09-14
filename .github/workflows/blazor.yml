@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
     branches: [main]
-    paths: ['blazor/**', 'dist/**', 'src/**', 'package*.json', '.gitmodules', '.github/workflows/blazor.yml']
+    paths: ['blazor/**', 'src/**', 'dist/**', 'package*.json', '.gitmodules', '.github/workflows/blazor.yml']
   workflow_dispatch:
     inputs:
       publish:
@@ -16,7 +16,7 @@ jobs:
   blazor:
     permissions:
       contents: write
-    uses: wieslawsoltes/Dockyard/.github/workflows/blazor.yml@9a894d7c647a180669853660fd2acec24eb2885a
+    uses: wieslawsoltes/Dockyard/.github/workflows/blazor.yml@4da3066e32f61c05b42563f952281fa78e1bb96a
     with:
       project: blazor/src/SkiaSharpWeb.Blazor.csproj
       package_name: SkiaSharpWeb
