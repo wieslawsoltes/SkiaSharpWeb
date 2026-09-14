@@ -4,7 +4,7 @@ SkiaSharp-style JavaScript graphics with native Skia Graphite/WebGPU, Ganesh/Web
 
 [![npm](https://img.shields.io/npm/v/%40wieslawsoltes%2Fskiasharpweb)](https://www.npmjs.com/package/@wieslawsoltes/skiasharpweb)
 [![npm downloads](https://img.shields.io/npm/dm/%40wieslawsoltes%2Fskiasharpweb)](https://www.npmjs.com/package/@wieslawsoltes/skiasharpweb)
-[![NuGet](https://img.shields.io/nuget/v/SkiaSharpWeb.Blazor)](https://www.nuget.org/packages/SkiaSharpWeb.Blazor)
+[![SkiaSharpWeb.Blazor on NuGet](https://img.shields.io/nuget/v/SkiaSharpWeb.Blazor?label=SkiaSharpWeb.Blazor&logo=nuget)](https://www.nuget.org/packages/SkiaSharpWeb.Blazor)
 [![NuGet downloads](https://img.shields.io/nuget/dt/SkiaSharpWeb.Blazor)](https://www.nuget.org/packages/SkiaSharpWeb.Blazor)
 [![Blazor CI](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/workflows/blazor.yml/badge.svg)](https://github.com/wieslawsoltes/SkiaSharpWeb/actions/workflows/blazor.yml)
 
