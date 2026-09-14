@@ -1,0 +1,15 @@
+# Hosting and native interop
+
+Use interactive WebAssembly or Interactive Server, not static SSR for engine execution. Initialize after `Ready`. Assets resolve relative to the app base URI under `_content/SkiaSharpWeb.Blazor/`; all engine modules/WASM are local. Supply application fonts explicitly when needed. Browser/GPU permissions and native backend limits remain applicable.
+
+Keep `BrowserModule` scoped to its owner/app/circuit, never shared across Server users. Use constructor/invoke/call/get/set/events for advanced native APIs. Returned native functions use `InvokeReferenceAsync`, `CallReferenceAsync`, `GetReferenceAsync` and `CallFunctionAsync`, preserving identity when passed back to native calls. Synchronous native paint/selectors must run as browser functions; `BrowserFunction.DotNet` is asynchronous and valid only for promise-compatible APIs. Canceling a wait does not preempt native synchronous work.
+
+JSON results use `CallJsonAsync`, `InvokeJsonAsync`, `GetJsonAsync`; byte equivalents stream image/pixel data. The explicit default read limit is 64 MiB. `SubscribeJsonAsync` is for complete DTO notifications; `SubscribeAsync` creates bounded diagnostic snapshots of native graphs. `CallBatchAsync` is sequential, not atomic. Generic application values should use `BrowserValue.Literal` to prevent `$fn`-shaped data being interpreted as callbacks. Never accept untrusted executable module URLs.
+
+Dispose owned native resources through `ReleaseAsync` and modules/services asynchronously. Borrowed surface/canvas handles should only have their JS reference disposed, not their native owner. The canvas controller awaits native disposal fences. Do not retain a surface across backend/dimension recreation; acquire its current reference after initialization.
+
+Optional DOM Razor factories use `BrowserTemplate<TItem>` and `BrowserFunction.RazorTemplate`, with `AddSkiaSharpWebBlazor()` service registration and `RegisterSkiaSharpWebBlazor()` on WASM RootComponents or Server CircuitOptions.RootComponents. These are independent roots with nested-component/callback/shadow-input support, not canvas paint primitives. Outer cascading values are not inherited automatically; place required CascadingValue components inside templates and store durable state separately.
+
+Source builds require recursive submodules, npm ci/build and `node blazor/build.mjs`. NuGet consumers need neither Node nor Dockyard. The build checks actual WASM bytes, native hashes and absence of font binaries. CI restores actual packages for net8.0/net10.0 into WebAssembly and Server (`/probe/`), checking native drawing/pixels/PNG, streams, function references, templates and remounting. Chromium software tests do not qualify physical GPUs, every browser or hybrid WebViews.
+
+NuGet versions are independent of npm in `Version.props`. Version-changing main merges publish after validation using `NUGET_API_KEY` (`NUGET_TOKEN`/`NUGET_KEY` aliases), reject conflicting immutable versions, verify public package payloads and attach packages, symbols, runnable samples and checksums to `blazor-v*` releases.
