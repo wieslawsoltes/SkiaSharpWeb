@@ -12,7 +12,9 @@ const bytes=readFileSync(resolve(root,'artifacts',result.filename)),entries=Read
 const runtime=readJson('dist/package/build-manifest.json');
 for(const [file,sha]of Object.entries(runtime.files))if(!entries.has(file)||hash(entries.get(file))!==sha)throw new Error(`Packed runtime differs: ${file}`);
 for(const path of entries.keys()) {
-  if(!/^(?:dist\/(?:lib|vendor|package|licenses)\/|dist\/(?:README|COMPATIBILITY)\.md$|docs\/(?:PACKAGING|RELEASING)\.md$|(?:package\.json|README\.md|CHANGELOG\.md|COMPATIBILITY\.md|LICENSE)$)/.test(path))throw new Error(`Unapproved package entry: ${path}`);
+  // Only the reviewed Markdown integration guides are added; source trees,
+  // build tools, samples, keys and font binaries remain excluded.
+  if(!/^(?:dist\/(?:lib|vendor|package|licenses)\/|dist\/(?:README|COMPATIBILITY)\.md$|docs\/(?:PACKAGING|RELEASING)\.md$|blazor\/(?:README|INTEGRATION)\.md$|(?:package\.json|README(?:\.web)?\.md|CHANGELOG\.md|COMPATIBILITY\.md|LICENSE)$)/.test(path))throw new Error(`Unapproved package entry: ${path}`);
   if(/\.(?:ttf|otf|woff2?|ttc|otc|eot|pfa|pfb|pem|key)$/i.test(path)||/(^|\/)(?:\.env|\.git|node_modules|test-output)(\/|$)/.test(path))throw new Error(`Disallowed package entry: ${path}`);
 }
 if(result.size>12*1024*1024||result.unpackedSize>24*1024*1024)throw new Error('Package exceeds its release size budget.');
@@ -22,5 +24,4 @@ writeFileSync(resolve(root,'artifacts/package-manifest.json'),JSON.stringify(met
 copyFileSync(resolve(root,'dist/package/sbom.cdx.json'),resolve(root,'artifacts/sbom.cdx.json'));
 writeFileSync(resolve(root,'artifacts/SHA256SUMS'),[result.filename,'package-manifest.json','sbom.cdx.json'].map(p=>`${hash(readFileSync(resolve(root,'artifacts',p)))}  ${p}\n`).join(''));
 console.log(JSON.stringify({package:result.filename,files:entries.size,bytes:result.size,sha256:metadata.sha256}));
-
 copyFileSync(resolve(root,'artifacts/SHA256SUMS'),resolve(root,'artifacts/SHA256SUMS.txt'));
