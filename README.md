@@ -19,7 +19,7 @@ The [complete JavaScript guide](README.web.md) preserves existing API examples, 
 ## Blazor
 
 ```sh
-dotnet add package SkiaSharpWeb.Blazor --version 0.6.1
+dotnet add package SkiaSharpWeb.Blazor --version 0.6.2
 ```
 
 The .NET 8/.NET 10 RCL supports interactive WebAssembly and Server, with actual native JavaScript/WASM assets packaged locally. `SkiaCanvas` provides retained drawing batches, synchronous browser rendering callbacks, backend selection, dimensions, snapshots, pixel reads and native surface/canvas handles. No consumer npm/CDN dependency or implicit font download is required.

@@ -1,6 +1,6 @@
 # SkiaSharpWeb.Blazor
 
-Install `SkiaSharpWeb.Blazor` 0.6.1 for .NET 8/.NET 10. The real Skia JavaScript/WASM runtime is packaged as local static web assets, retaining native relative paths and dependency notices. Fonts are neither bundled nor implicitly downloaded.
+Install `SkiaSharpWeb.Blazor` 0.6.2 for .NET 8/.NET 10. The real Skia JavaScript/WASM runtime is packaged as local static web assets, retaining native relative paths and dependency notices. Fonts are neither bundled nor implicitly downloaded.
 
 ## Canvas and drawing
 
@@ -13,3 +13,7 @@ For text, paths, images, effects, documents and advanced GPU APIs, use a synchro
 The [sample](sample/Demo.razor) draws with native Skia, checks an exact red RGBA pixel, verifies a real PNG signature and tests unmount/remount. Full native compatibility boundaries remain in the project guide. This is a browser-engine wrapper, not an exhaustive generated C# SkiaSharp replacement.
 
 See [INTEGRATION.md](INTEGRATION.md) for lifecycle, hosting, reference ownership, streaming and publishing.
+
+## Lifecycle in 0.6.2
+
+`SkiaCanvas.IsReady` and `IsDisposed` expose visual lifecycle state. Concurrent cleanup awaits the native disposal fence, releases handles even after errors and retains cleanup failures. Late callbacks are suppressed after removal. Shared Razor roots now have awaitable teardown and safe late-import/creation cleanup; package-restored samples exercise template movement/update/recreation. Native Skia binaries, build prerequisites, asset paths and integrity checks are preserved.
