@@ -1,6 +1,6 @@
 # SkiaSharpWeb.Blazor
 
-Install `SkiaSharpWeb.Blazor` 0.6.0 for .NET 8/.NET 10. The real Skia JavaScript/WASM runtime is packaged as local static web assets, retaining native relative paths and dependency notices. Fonts are neither bundled nor implicitly downloaded.
+Install `SkiaSharpWeb.Blazor` 0.6.1 for .NET 8/.NET 10. The real Skia JavaScript/WASM runtime is packaged as local static web assets, retaining native relative paths and dependency notices. Fonts are neither bundled nor implicitly downloaded.
 
 ## Canvas and drawing
 
