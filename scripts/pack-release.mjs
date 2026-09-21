@@ -14,7 +14,7 @@ for(const [file,sha]of Object.entries(runtime.files))if(!entries.has(file)||hash
 for(const path of entries.keys()) {
   // Only the reviewed Markdown integration guides are added; source trees,
   // build tools, samples, keys and font binaries remain excluded.
-  if(!/^(?:dist\/(?:lib|vendor|package|licenses)\/|dist\/(?:README|COMPATIBILITY)\.md$|docs\/(?:PACKAGING|RELEASING)\.md$|blazor\/(?:README|INTEGRATION)\.md$|(?:package\.json|README(?:\.web)?\.md|CHANGELOG\.md|COMPATIBILITY\.md|LICENSE)$)/.test(path))throw new Error(`Unapproved package entry: ${path}`);
+  if(!/^(?:dist\/(?:lib|vendor|package|licenses)\/|dist\/(?:README|COMPATIBILITY)\.md$|docs\/(?:PACKAGING|RELEASING|BROWSER_TEXT)\.md$|blazor\/(?:README|INTEGRATION)\.md$|(?:package\.json|README(?:\.web)?\.md|CHANGELOG\.md|COMPATIBILITY\.md|LICENSE)$)/.test(path))throw new Error(`Unapproved package entry: ${path}`);
   if(/\.(?:ttf|otf|woff2?|ttc|otc|eot|pfa|pfb|pem|key)$/i.test(path)||/(^|\/)(?:\.env|\.git|node_modules|test-output)(\/|$)/.test(path))throw new Error(`Disallowed package entry: ${path}`);
 }
 if(result.size>12*1024*1024||result.unpackedSize>24*1024*1024)throw new Error('Package exceeds its release size budget.');
