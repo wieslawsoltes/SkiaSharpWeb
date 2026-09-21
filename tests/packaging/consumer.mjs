@@ -27,3 +27,7 @@ const abort=new AbortController();abort.abort();await assert.rejects(Initialize(
 await assert.rejects(Initialize({fonts:true}),TypeError);
 await assert.rejects(cjs.RegisterWebComponent(),/browser/);
 console.log('Clean installed ESM/CJS consumers: native drawing, PNG, PDF, exports, initialization and cancellation passed.');
+
+const browserText = await import('@wieslawsoltes/skiasharpweb/browser-text');
+const textPlan = browserText.CreateTextRasterPlan({Width:1000000},14,{ScaleX:1,ScaleY:1},64);
+assert.ok([...textPlan.Tiles({Left:900000,Top:-20,Right:900060,Bottom:20})].length <= 2);

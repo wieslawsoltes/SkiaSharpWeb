@@ -18,3 +18,12 @@ await initialize({fonts:true});
 await S.SKSurface.Create(document.createElement('canvas'),{backend:'metal'});
 // @ts-expect-error misspelled initialization option
 await initialize({assetBaseURL:'/skia/'});
+
+import { ConfigureCanvasText, GetDeviceTextGeometry, CreateTextRasterPlan } from '@wieslawsoltes/skiasharpweb/browser-text';
+const context = document.createElement('canvas').getContext('2d')!;
+ConfigureCanvasText(context, { FontFamily: 'system-ui' }, 14, { LetterSpacing: .25 });
+const geometry = GetDeviceTextGeometry(new Float32Array([1,0,0,0,1,0,0,0,1]), 10, 20);
+const plan = CreateTextRasterPlan(context.measureText('Hello'), 14, geometry);
+for (const tile of plan.Tiles({Left:0,Top:-20,Right:200,Bottom:20})) console.log(tile.PixelWidth);
+// @ts-expect-error missing vertical scale must be diagnosed
+CreateTextRasterPlan({Width:20},14,{ScaleX:1});
