@@ -1,10 +1,7 @@
-# SkiaSharp Web 0.5.0
+# SkiaSharp Web 0.5.1
 
-First public npm distribution: `@wieslawsoltes/skiasharpweb`.
+Browser startup now loads JavaScript and compiles WASM concurrently. The new side-effect-free `@wieslawsoltes/skiasharpweb/wasm` entry supports bounded, retry-safe compilation and sharing compiled code between workers while retaining independent native instances and heaps. `Initialize({ wasmModule, wasmUrl })` accepts precompiled code and exact asset URLs.
 
-- Includes the existing qualified native Skia WASM renderer, ESM/CommonJS/browser entries, TypeScript declarations, asset-copy CLI and third-party notices.
-- Uses explicit font registration; the runtime package contains no font binaries or gallery assets.
-- Automates GitHub release, GitHub Packages and npm publication after cross-platform package, browser, native and .NET checks.
-- Verifies exact release bytes, source/native hashes, npm integrity, distribution tags, provenance metadata and a fresh anonymous install with real PNG/PDF rendering.
+A deterministic JavaScript-only post-link correction makes the bundled loader honor precompiled modules and propagates instantiation failures without an unhandled internal ready promise. Original/generated loader hashes are recorded. The qualified native WASM binary, native rendering paths, shaders, text shaping, and raster quality settings are unchanged.
 
-The package retains the documented SkiaSharp compatibility and physical GPU qualification boundaries. This release does not change native rendering behavior.
+Regression tests count real compiled-module versus byte instantiations, verify independent native surfaces, cache bounds, MIME fallback, cancellation isolation, and error propagation. Existing cross-platform package, native/.NET, installed-browser and publication gates remain required. See `docs/STARTUP.md` for ownership and compatibility details. No universal startup-time or physical-GPU qualification claim is made.

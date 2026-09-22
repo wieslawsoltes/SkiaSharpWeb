@@ -1,0 +1,35 @@
+name: Refresh startup generated assets
+on:
+  push:
+    branches: [maintenance/startup-initialization]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: refresh-startup-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  refresh:
+    if: github.repository == 'wieslawsoltes/SkiaSharpWeb' && github.ref == 'refs/heads/maintenance/startup-initialization'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: node --test tests/wasm-startup.test.mjs
+      - name: Commit only regenerated release inventory and JS glue
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dist/vendor/canvaskit.js dist/vendor/canvaskit.cjs dist/vendor/native-build-manifest.json dist/package
+          if ! git diff --cached --quiet; then
+            git commit -m 'build: regenerate verified startup loader and package inventory'
+            git push origin HEAD:maintenance/startup-initialization
+          fi

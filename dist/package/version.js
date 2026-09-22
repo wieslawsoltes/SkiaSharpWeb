@@ -1,2 +1,2 @@
-/** Kept in sync by npm version; validated before every package build. */
-export const Version = '0.5.0';
+/** Generated from package.json by scripts/sync-version.mjs. Do not edit. */
+export const Version = '0.5.1';
