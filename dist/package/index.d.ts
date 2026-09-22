@@ -16,6 +16,10 @@ export interface InitializationOptions {
   /** Browser loader/WASM directory, e.g. /skia/. Copy with skiasharp-web-assets. */
   assetBaseUrl?: string | URL;
   scriptUrl?: string;
+  /** Exact WASM URL; overrides wasmBaseUrl for the native engine. */
+  wasmUrl?: string | URL;
+  /** Precompiled native code. Each initialized engine retains independent memory. */
+  wasmModule?: WebAssembly.Module;
   wasmBaseUrl?: string | URL;
 }
 export interface AssetUrls { readonly scriptUrl: string; readonly wasmUrl: string; readonly wasmBaseUrl: string; }

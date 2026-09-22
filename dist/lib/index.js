@@ -1,3 +1,4 @@
+import { CompileWasmAsync, InstantiateWasmAsync } from './wasm.js';
 import { Version } from '../package/version.js';
 import { installTextMeasureCompletion } from './text-measure-completion.js';
 import { installPaintCompletion } from './paint-completion.js';
@@ -51,14 +52,25 @@ async function initializeRuntime(options = {}) {
   const root = new URL('../', import.meta.url);
   let K = options.CanvasKit;
   if (!K) {
-    if (!globalThis.CanvasKitInit) {
-      if (typeof document === 'undefined') throw new Error('In Node, pass an initialized CanvasKit instance to Initialize({ CanvasKit }).');
-      await (loaderPromise ??= new Promise((resolve, reject) => {
-        const s = document.createElement('script'); s.src = options.scriptUrl || new URL('vendor/canvaskit.js', root).href;
-        s.onload = resolve; s.onerror = () => reject(new Error('Could not load the bundled Skia engine.')); document.head.append(s);
-      }).catch(error => { loaderPromise = undefined; throw error; }));
-    }
-    K = await globalThis.CanvasKitInit({ locateFile: file => new URL(file, options.wasmBaseUrl || new URL('vendor/', root)).href });
+    if (!globalThis.CanvasKitInit && typeof document === 'undefined')
+      throw new Error('In Node, pass an initialized CanvasKit instance to Initialize({ CanvasKit }).');
+    const wasmUrl = options.wasmUrl ?? new URL('canvaskit.wasm', options.wasmBaseUrl || new URL('vendor/', root)).href;
+    const compiled = options.wasmModule !== undefined
+      ? Promise.resolve(options.wasmModule) : CompileWasmAsync(wasmUrl, { signal: options.signal });
+    const loading = (async () => {
+      if (!globalThis.CanvasKitInit) {
+        await (loaderPromise ??= new Promise((resolve, reject) => {
+          const s = document.createElement('script'); s.src = options.scriptUrl || new URL('vendor/canvaskit.js', root).href;
+          s.onload = resolve; s.onerror = () => { s.remove(); reject(new Error('Could not load the bundled Skia engine.')); }; document.head.append(s);
+        }).catch(error => { loaderPromise = undefined; throw error; }));
+      }
+      return globalThis.CanvasKitInit;
+    })();
+    const [module, factory] = await Promise.all([compiled, loading]);
+    options.signal?.throwIfAborted();
+    K = await InstantiateWasmAsync(factory, module, {
+      locateFile: file => file.endsWith('.wasm') ? String(wasmUrl) : new URL(file, options.wasmBaseUrl || new URL('vendor/', root)).href
+    });
   }
   const api = createCore(K);
   Object.assign(api, createPaths(K, api));
